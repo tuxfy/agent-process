@@ -24,6 +24,7 @@
 | Schwachstellen in Abhängigkeiten | | |
 | Geheimnisse im Code | | |
 | Barrierefreiheit *(optional)* | | |
+| Sauberer Lauf | | |
 | Git-Hook vor dem Commit | | |
 | Commit-Format | | |
 
