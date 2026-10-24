@@ -1,6 +1,13 @@
 -   **Version** <version>
 -   **Status** planned | testing | released | failed
 
+# Version
+
+*Vom Agenten in 8a vorgeschlagen, vom Nutzer bestätigt.*
+
+-   **Vorher:** `v<letzte version>` · **Neu:** `v<version>` · **Stufe:** Major | Minor | Patch
+-   **Ausschlaggebend:** Commits bzw. Pull Requests, die die Stufe bestimmen
+
 # Inhalt
 
 | Anforderung | Kurz |

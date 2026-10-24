@@ -33,11 +33,11 @@ Branches — `main` ist beim Hoster geschützt; dorthin gelangt alles nur per Pu
 | Branch | Zweck | Weg nach `main` |
 |---|---|---|
 | `backlog` | neue Ideen und Bugs (Stufe 1) | Pull Request, Nutzer führt zusammen |
-| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung ab ihrer Aufnahme (Stufe 2) bis zur Abnahme: Dokument, Plan, Code, QA | Pull Request in `rc/<version>` (Stufe 6/7) |
-| `rc/<version>` | Release-Kandidat: abgenommene Anforderungen, Release-Dokument | Pull Request nach `main` (Stufe 8), danach Tag `v<version>` |
+| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung ab ihrer Aufnahme (Stufe 2) bis zur Abnahme: Dokument, Plan, Code, QA | Pull Request nach `next` (Stufe 6/7) |
+| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8), danach Tag `v<version>` |
 | `release/<version>-abschluss` | Abschluss nach dem Ausliefern: Status `done`, Release `released` | Pull Request |
 
-Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt der Release-Kandidat (siehe `08-release.md`, Abkürzung).
+Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (siehe `08-release.md`, Abkürzung).
 
 ## Regeln
 
@@ -56,7 +56,7 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt der Releas
 
 ## Commits
 
-Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; bricht eine Änderung Bestehendes: `!` nach dem Scope. Für Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`.
+Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; bricht eine Änderung Bestehendes: `!` nach dem Scope. Für Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** folgen demselben Format — beim Zusammenführen per „Squash" wird der Titel zur Commit-Nachricht und zählt für die Version (Stufe 8).
 
 **Der Agent committet selbst** (ohne Rückfrage), nur an diesen Stellen:
 
@@ -68,7 +68,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Nach jedem grünen Schritt des Plans (5c–5e) | Feature-Branch | Code, Tests, Testnachweis |
 | Je Korrektur in der QA (6c) | Feature-Branch | Korrektur mit ihrem Test |
 | Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Rückblick |
-| Im Release (8a, 8b) | `rc/<version>` | Release-Dokument |
+| Im Release (8a, 8b) | `next` | Release-Dokument |
 | Nach dem Ausliefern (8f) | `release/<version>-abschluss` | Status `done`, Release `released` |
 
 -   **Leitplanken** (in Stufe 0 festgelegt, im Grundgerüst eingerichtet): Vor jedem Commit laufen alle Prüfungen (ein Befehl) und die Prüfung des Commit-Formats. Der Agent umgeht sie nie (z. B. kein `--no-verify`).
@@ -76,6 +76,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 -   **Pushen:** Der Agent pusht nur die Branches aus der Tabelle oben (nie `main`, nie Tags) und eröffnet die Pull Requests — mit kurzer Beschreibung, was drin ist, und Verweis auf das Anforderungs- bzw. Release-Dokument.
 -   **Zusammenführen und Tags: nur der Nutzer** — Zusammenführen im Pull Request beim Hoster (erst bei grüner CI möglich), den Tag `v<version>` setzt und pusht er nach dem Release-Pull-Request. Erst damit wird ausgeliefert.
 -   **Grün heißt grün in der CI.** Ein lokales Grün reicht nicht für Abnahme oder Tag; maßgeblich ist der CI-Lauf auf dem gepushten Branch.
+-   **Nach jedem vom Nutzer zusammengeführten Pull Request** wechselt der Agent auf `main` und holt den aktuellen Stand: `git switch main`, dann `git pull --ff-only`. Auf `main` wird lokal nie committet — so bleibt der lokale `main` immer gleich dem beim Hoster.
 -   Verlauf nicht umschreiben (kein Rebase, kein Reset, kein Amend).
 -   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>` (fragt nach). **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git tag`, Push von `main` oder Tags, `--force`, `git rebase`, `git reset`, `git stash`, `git cherry-pick`, `git commit --amend`, `git commit --no-verify`, `git -c …`.
 

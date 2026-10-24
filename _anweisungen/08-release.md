@@ -1,27 +1,41 @@
 # Stufe 8: Release
 
-Bringt einen Release-Kandidaten mit einer oder mehreren abgenommenen Anforderungen live. Ein Release hat ein eigenes Dokument `releases/<version>.md`; **wann** released wird, entscheidet der Nutzer. Release-Modell und Auslieferung: `_kontext/projekt.md`.
+Bringt den Stand von `next` — eine oder mehrere abgenommene Anforderungen — live. **Wann** released wird, entscheidet der Nutzer; die **Version** wird erst jetzt bestimmt, aus dem Inhalt. Ein Release hat ein eigenes Dokument `releases/<version>.md`. Auslieferung: `_kontext/projekt.md`.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
-| 8a Umfang | Nutzer | Inhalt des Releases festgelegt |
-| 8b Gesamtprüfung | Agent | alle Prüfungen grün auf `rc/<version>`, **CI grün** |
+| 8a Umfang und Version | Agent schlägt vor, Nutzer bestätigt | Inhalt, Version, Release-Dokument auf `next` |
+| 8b Gesamtprüfung | Agent | alle Prüfungen grün auf `next`, Pull Request nach `main`, **CI grün** |
 | 8c Freigabe | Nutzer | Release freigegeben |
-| 8d Ausliefern | Agent eröffnet Pull Request, Nutzer führt zusammen und taggt | `rc/<version>` in `main`, Tag `v<version>`, ausgeliefert |
+| 8d Ausliefern | Nutzer | Pull Request zusammengeführt, Tag `v<version>` gesetzt und gepusht |
 | 8e Nachprüfen | Agent + Nutzer | kurzer Test des ausgelieferten Stands |
 | 8f Abschluss | Agent | Anforderungen `done`, Release-Dokument abgeschlossen |
 
-## 8a: Umfang
+## 8a: Umfang und Version
 
--   Im Release-Dokument stehen die enthaltenen Anforderungen (alle `accepted` und im Release-Kandidaten).
--   Soll eine abgenommene Anforderung doch nicht mit: der Nutzer entscheidet, wie sie wieder herauskommt (z. B. Revert im Release-Kandidaten).
+-   **Inhalt:** alle Anforderungen, die seit dem letzten Tag nach `next` zusammengeführt wurden (Status `accepted`).
+-   **Soll eine davon doch nicht mit:** der Nutzer entscheidet; der Agent nimmt sie per Revert-Commit auf `next` wieder heraus (nach Rückfrage) — die Anforderung bleibt `accepted` und kommt mit einem späteren Release.
+-   **Version bestimmen** — Grundlage sind die Commits auf `next` seit dem letzten Tag `v<x.y.z>` (bei Zusammenführen per „Squash": die Titel der Pull Requests):
+
+    | Enthalten | ab Version 1.0.0 | vor 1.0.0 |
+    |---|---|---|
+    | mindestens eine Änderung mit `!` (bricht Bestehendes) | Major: `x+1.0.0` | Minor: `0.y+1.0` |
+    | mindestens ein `feat` | Minor: `x.y+1.0` | Minor: `0.y+1.0` |
+    | sonst (`fix`, `refactor`, `test`, `chore`, `design`) | Patch: `x.y.z+1` | Patch: `0.y.z+1` |
+
+    -   Es gilt die **höchste** Stufe. Erstes Release ohne vorherigen Tag: `0.1.0`.
+    -   **Gegenprobe** mit den Anforderungen: Ist eine Anforderung ein Feature, aber kein `feat`-Commit dabei (oder ein Bug mit `feat`)? Dann stimmen die Commit-Typen nicht — dem Nutzer melden, nicht still korrigieren.
+    -   Den Sprung auf **1.0.0** entscheidet nur der Nutzer.
+    -   Enthält `next` seit dem letzten Tag nur `chore`, `test` oder `refactor`: dem Nutzer vorschlagen, ob sich ein Release überhaupt lohnt.
+-   Der Agent schlägt Version und Begründung vor (je Stufe die ausschlaggebenden Commits), **der Nutzer bestätigt**.
+-   Dann legt der Agent `releases/<version>.md` nach `_anweisungen/vorlagen/release.md` auf `next` an, committet und pusht.
 
 ## 8b: Gesamtprüfung
 
 Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusammen** funktionieren:
 
--   Alle Tests, der Prüflauf, die automatischen Prüfungen aus Stufe 6 und der saubere Lauf auf `rc/<version>`.
--   Der Agent eröffnet den **Pull Request von `rc/<version>` nach `main`**; die CI läuft dort. **Ohne grüne CI kein Zusammenführen und kein Tag.**
+-   Alle Tests, der Prüflauf, die automatischen Prüfungen aus Stufe 6 und der saubere Lauf auf `next`.
+-   Der Agent eröffnet den **Pull Request von `next` nach `main`** (Titel z. B. `chore(release): v<version>`); die CI läuft dort. **Ohne grüne CI kein Zusammenführen und kein Tag.**
 -   Kurzer Klicktest über alle enthaltenen Anforderungen (Rolle Klicktester, nur die Hauptwege).
 -   Ergebnis im Release-Dokument. Befunde → betroffene Anforderung zurück in Stufe 5; neue Abnahme nur für deren Änderung.
 
@@ -45,7 +59,8 @@ Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusamme
 -   Release-Dokument: Status `released`, Datum — **erst**, wenn die Nachprüfung (8e) den ausgelieferten Stand bestätigt hat.
 -   Optional: kurzer Rückblick zum Release (wie 7d).
 -   Pushen, Pull Request eröffnen; der Nutzer führt zusammen.
+-   Danach: `git switch main`, `git pull --ff-only` — der Durchlauf ist abgeschlossen, der nächste beginnt auf dem aktuellen `main`.
 
 ## Abkürzung
 
-Ist im Projekt festgelegt, dass Zusammenführen bereits ausliefert (z. B. „jeder Stand auf `main` geht live"), gibt es keinen Release-Kandidaten: Der Pull Request der Anforderung geht direkt nach `main`; der Nutzer führt ihn nach der Abnahme zusammen; Stufe 8 besteht dann nur aus 8b (auf dem Feature-Branch), 8e und 8f, ein Release-Dokument entfällt.
+Ist im Projekt festgelegt, dass Zusammenführen bereits ausliefert (z. B. „jeder Stand auf `main` geht live"), gibt es kein `next`: Der Pull Request der Anforderung geht direkt nach `main`; der Nutzer führt ihn nach der Abnahme zusammen; Stufe 8 besteht dann nur aus 8b (auf dem Feature-Branch), 8e und 8f, ein Release-Dokument entfällt.

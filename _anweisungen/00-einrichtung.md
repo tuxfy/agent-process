@@ -21,7 +21,7 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
 5.  **Prüfungen** — je Kategorie das passende Werkzeug für den Stack (siehe „Standardprüfungen").
 6.  **Ein Befehl für alles** — alle Prüfungen laufen mit einem Befehl, lokal in der Umgebung des Agenten und in der CI gleich.
 7.  **Umgebung des Agenten** — wo der Agent arbeitet und testet (z. B. Container), was dort verfügbar sein muss.
-8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_kontext/`), Release-Modell (Release-Kandidat oder „Zusammenführen nach `main` = Ausliefern", siehe `_anweisungen/08-release.md`), Zurückrollen.
+8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_kontext/`), Release-Modell (Sammel-Branch `next` oder „Zusammenführen nach `main` = Ausliefern", siehe `_anweisungen/08-release.md`), Zurückrollen.
 9.  **Abnahme** — wo und wie der Nutzer abnimmt (lokal, Befehl) und was nur am echten Gerät geprüft werden kann (dann beim Nachprüfen nach dem Release).
 
 ## Standardprüfungen

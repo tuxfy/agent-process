@@ -23,8 +23,8 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 
 -   Der Nutzer gibt ausdrücklich frei. Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde).
 -   Der Agent committet Status, Abnahme und Rückblick (7d) auf dem Feature-Branch und pusht; die CI im Pull Request läuft erneut.
--   **Der Nutzer führt den Pull Request zusammen** (in `rc/<version>`).
--   Danach trägt der Agent die Anforderung im Release-Dokument auf `rc/<version>` ein und pusht.
+-   **Der Nutzer führt den Pull Request zusammen** (nach `next`). Der Agent wartet darauf und fragt nicht nach.
+-   Ein Release-Dokument gibt es noch nicht — es entsteht erst in Stufe 8.
 -   Das Anforderungsdokument bleibt in `anforderungen/` bis zum Release.
 
 ## 7d: Rückblick
