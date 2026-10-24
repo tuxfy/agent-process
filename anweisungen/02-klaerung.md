@@ -39,4 +39,6 @@ Lösungen, Akzeptanzkriterien, Design, Implementierungsdetails.
 
 Die Klärung ist abgeschlossen, wenn der **Nutzer Spielraum und Weg bestätigt** hat. Offene Fragen dürfen bleiben — sie werden in Stufe 3 bzw. 4 beantwortet.
 
-**Dann committet der Agent** das Anforderungsdokument auf dem Feature-Branch (`chore(<kurzer-name>): Klärung`), ohne Rückfrage.
+Vorher fasst der Agent im Gespräch zusammen: Art, Spielraum, Weg (Design ja/nein), offene Fragen — der Nutzer bestätigt.
+
+**Dann committet und pusht der Agent** das Anforderungsdokument auf dem Feature-Branch (`chore(<kurzer-name>): Klärung`), ohne Rückfrage.

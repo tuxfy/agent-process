@@ -17,11 +17,20 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
 1.  **Zweck** — wofür das Projekt da ist, in zwei, drei Sätzen.
 2.  **Stack** — Sprache, Framework, Build (oder keiner), Laufzeit-Abhängigkeiten.
 3.  **Zielformat** — Geräte, Bildschirmgrößen, Ausrichtung, hell/dunkel, Sprache, Barrierefreiheit. Gilt für Entwurf, Tests und Klicktest.
-4.  **Design-System** — welches, und wie es zur Laufzeit in die App kommt (z. B. welche Dateien, ob kopiert wird; dann Kopierbefehl).
+4.  **Design-System** — welches, und wie es zur Laufzeit in die App kommt (z. B. welche Dateien, ob kopiert wird; dann Kopierbefehl). Soll es als Submodul `_design-system/` eingebunden werden, gibt der Agent dem Nutzer die Befehle fertig aus (`git submodule add <design-system> _design-system` und Commit) und wartet — er bindet es nicht selbst ein.
 5.  **Prüfungen** — je Kategorie das passende Werkzeug für den Stack (siehe „Standardprüfungen").
 6.  **Ein Befehl für alles** — alle Prüfungen laufen mit einem Befehl, lokal in der Umgebung des Agenten und in der CI gleich.
 7.  **Umgebung des Agenten** — wo der Agent arbeitet und testet (z. B. Container), was dort verfügbar sein muss.
-8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `next` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/anweisungen/08-release.md`), Zurückrollen.
+8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `next` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/anweisungen/08-release.md`), Zurückrollen. Standard für die CI:
+    -   **Tag automatisch:** Nach dem Zusammenführen des Release-Pull-Requests setzt die CI den Tag `v<version>` aus dem Release-Dokument; die Auslieferung startet mit dem Tag.
+    -   **Nachprüfung automatisch:** Nach der Auslieferung prüft die CI die ausgelieferte App (startet sie, Hauptwege); Geräteprüfung bleibt beim Nutzer.
+    -   **Backlog automatisch zusammenführen:** Pull Requests von `backlog`, die nur `_requirements/backlog/` ändern, führt die CI bei grüner Prüfung selbst zusammen.
+    -   **Einstellungen beim Hoster** — der Agent gibt dem Nutzer diese Liste zum Abhaken; im How-to festgehalten:
+        -   [ ] `main`: Änderungen nur per Pull Request, Prüfung der CI muss grün sein, nur Merge-Commits, kein Force-Push, nicht löschbar
+        -   [ ] `next`: nicht löschbar
+        -   [ ] Tags `v*`: nicht änderbar und nicht löschbar
+        -   [ ] Auslieferung (z. B. Umgebung beim Hoster) für Tags `v*` freigegeben
+        -   [ ] Automatisches Zusammenführen erlaubt; Branches nach dem Zusammenführen automatisch löschen (erst wenn `next` geschützt ist)
 9.  **Abnahme** — wo und wie der Nutzer abnimmt (lokal, Befehl) und was nur am echten Gerät geprüft werden kann (dann beim Nachprüfen nach dem Release).
 
 ## Standardprüfungen
@@ -49,5 +58,6 @@ Im Grundgerüst werden Werkzeuge in aktuellen Versionen eingerichtet; Warnungen 
 ## Ergebnis
 
 -   `_context/projekt.md` (und `_context/design.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
+-   **Branch:** Der Agent legt `feature/grundgeruest` von `main` an, committet `_context/` und die erste Anforderung dort und pusht. Stufe 4 läuft auf diesem Branch weiter.
 -   **Erste Anforderung** `_requirements/backlog/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, Status `new`): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
 -   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`).

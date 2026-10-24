@@ -52,7 +52,7 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 -   **Was riskant ist** und wie damit umgegangen wird.
 -   **Wer geprüft hat** und was sich dadurch am Plan geändert hat.
 
-Abschluss: Der **Nutzer gibt den Plan frei** — er beurteilt Umfang, Entscheidungen und Risiken; die technische Güte sichern Selbstprüfung und Rollen. **Der Agent committet den freigegebenen Plan sofort und pusht den Branch** (`chore(<kurzer-name>): Umsetzungsplan`), Status bleibt `refined` — so ist der Plan gesichert, auch wenn das „Go" erst viel später kommt. Dann fragt er nach dem „Go" (5b). Freigabe des Plans und „Go" sind zwei getrennte Antworten des Nutzers: Ein Plan kann freigegeben sein und später umgesetzt werden.
+Abschluss: Der **Nutzer gibt den Plan frei** — und bestätigt damit auch das Refinement (Stufe 4) — er beurteilt Umfang, Entscheidungen und Risiken; die technische Güte sichern Selbstprüfung und Rollen. **Der Agent committet den freigegebenen Plan sofort und pusht den Branch** (`chore(<kurzer-name>): Umsetzungsplan`), Status bleibt `refined` — so ist der Plan gesichert, auch wenn das „Go" erst viel später kommt. Dann fragt er nach dem „Go" (5b). Freigabe des Plans und „Go" sind zwei getrennte Antworten des Nutzers: Ein Plan kann freigegeben sein und später umgesetzt werden.
 
 ## 5b: Go
 

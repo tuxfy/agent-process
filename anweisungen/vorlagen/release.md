@@ -4,7 +4,7 @@
 
 # Version
 
-*Vom Agenten in 8a vorgeschlagen, vom Nutzer bestätigt.*
+*Vom Agenten in 8a nach den Regeln in `08-release.md` festgelegt.*
 
 -   **Vorher:** `v<letzte version>` · **Neu:** `v<version>` · **Stufe:** Major | Minor | Patch
 -   **Ausschlaggebend:** Commits bzw. Pull Requests (`#<Nummer>`), die die Stufe bestimmen
@@ -23,7 +23,6 @@
 -   **Tests und Prüflauf:** `<Befehl>` — <Ergebnis>
 -   **Automatische Prüfungen:** <Ergebnis>
 -   **Klicktest (Hauptwege):** <Ergebnis>
--   **CI im Release-Pull-Request** `#<Nummer>`: <Ergebnis, Datum>
 
 # Zurückrollen
 

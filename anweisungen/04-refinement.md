@@ -37,10 +37,10 @@ Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderun
 -   [ ] Abgrenzung formuliert
 -   [ ] Bei Design: Entwurf freigegeben und abgelegt
 -   [ ] Größe passt
--   [ ] **Nutzer setzt den Status auf `refined`**
+-   Sind alle Punkte erfüllt, setzt **der Agent** den Status `refined` und geht direkt zum Plan (Stufe 5a). Der Nutzer bestätigt das Refinement zusammen mit der Freigabe des Plans — eine Antwort statt zwei. Will er am Refinement etwas ändern, geht es von dort zurück.
 
 ## Übergang
 
 -   Bei `refined` wandert das Dokument (auf dem Feature-Branch) von `_requirements/backlog/` nach `_requirements/` — **ohne Nummer**, Dateiname bleibt `<kurzer-name>.md`.
--   **Dann committet der Agent** auf dem Feature-Branch (`chore(<kurzer-name>): Refinement, Status refined`), ohne Rückfrage — Verschieben und Statuswechsel in einem Commit.
+-   **Dann committet und pusht der Agent** auf dem Feature-Branch (`chore(<kurzer-name>): Refinement, Status refined`), ohne Rückfrage — Verschieben und Statuswechsel in einem Commit.
 -   Die Nummer wird erst beim **„Go"** vergeben (Stufe 5).
