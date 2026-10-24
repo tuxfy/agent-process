@@ -1,6 +1,6 @@
 # Rolle: Senior Dev
 
-Prüft den Umsetzungsplan auf **Code, Tests und Reihenfolge**. Allgemeine Regeln und Form des Ergebnisses: `_anweisungen/rollen/README.md`.
+Prüft den Umsetzungsplan auf **Code, Tests und Reihenfolge**. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
 ## Prüfpunkte
 

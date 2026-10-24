@@ -2,7 +2,7 @@
 
 Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann welche Rolle prüft, steht in der jeweiligen Stufe.
 
-## Plan (Stufe 5b, `_anweisungen/05-umsetzung.md`)
+## Plan (Stufe 5b, `_agent-process/anweisungen/05-umsetzung.md`)
 
 | Rolle | Blick | Datei |
 |---|---|---|
@@ -10,19 +10,19 @@ Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann wel
 | Senior Dev | Code, Tests, Reihenfolge, Fehlerfälle, lokale Umgebung und Container | `senior-dev.md` |
 | DevOps | alles ab dem Commit: CI, Hosting, Release, Betrieb | `devops.md` |
 
-## Umsetzung (Stufe 6 QA, `_anweisungen/06-qa.md`; Klicktester auch in 8b)
+## Umsetzung (Stufe 6 QA, `_agent-process/anweisungen/06-qa.md`; Klicktester auch in 8b)
 
 | Rolle | Blick | Liest | Datei |
 |---|---|---|---|
 | Reviewer | Code gegen Anforderung, Plan und Entscheidungen | Diff des Feature-Branches, Anforderung, Plan | `reviewer.md` |
-| Security | Sicherheit nach Checkliste | Diff des Feature-Branches, Anforderung, Plan, `_kontext/` | `security.md` |
+| Security | Sicherheit nach Checkliste | Diff des Feature-Branches, Anforderung, Plan, `_context/` | `security.md` |
 | Klicktester | die laufende App wie ein Mensch | laufende App im Zielformat, Anforderung, Entwurf | `klicktester.md` |
 
 Die drei laufen **parallel**; keiner wartet auf die anderen. Der Agent, der sie startet, führt die Ergebnisse zusammen: **doppelte Befunde** werden zu einem, mit Nennung aller Rollen, die ihn gefunden haben.
 
 ## Für alle Rollen
 
--   **Lesen:** die Anforderung (inkl. `# Umsetzungsplan`), `_kontext/`, `AGENTS.md`, die betroffenen `_anweisungen/`; bei Design den Entwurf unter `anforderungen/mockups/<kurzer-name>/`; vorhandenen Code nach Bedarf.
+-   **Lesen:** die Anforderung (inkl. `# Umsetzungsplan`), `_context/`, `AGENTS.md` des Projekts und `_agent-process/AGENTS.md`, die betroffenen `_agent-process/anweisungen/`; bei Design den Entwurf unter `_requirements/mockups/<kurzer-name>/`; vorhandenen Code nach Bedarf.
 -   **Nichts ändern** — keine Dateien, keine Befehle mit Wirkung. Ausnahme: Der Klicktester startet die App und legt Screenshots unter `.qa/` ab (wird nicht committet).
 -   **Nur im eigenen Blick prüfen;** was zu einer anderen Rolle gehört, höchstens als Hinweis.
 -   **Keine Entscheidungen der Anforderung neu verhandeln** (Stack, Verhalten, Umfang). Hält eine Entscheidung nicht: als blockierenden Befund mit Begründung melden — sie geht dann zurück ins Refinement.

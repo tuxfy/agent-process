@@ -1,32 +1,35 @@
-# Agent Guidelines
+# Prozessregeln
 
-Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und Werkzeugen.
+Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und Werkzeugen. Gilt in jedem Projekt, das dieses Prozess-Repo als Submodul unter `_agent-process/` einbindet. Projektspezifisches steht in der `AGENTS.md` des Projekts und in `_context/`.
 
 ## Ordner
 
-| Ordner | Inhalt | Gehört |
+| Ordner im Projekt | Inhalt | Gehört |
 |---|---|---|
-| `_anweisungen/` | **Wie** gearbeitet wird: eine Datei je Stufe, dazu `vorlagen/`, `pruefung/` (Prüflauf der UI-Richtlinie) und `rollen/` (Prüfer des Umsetzungsplans) | Template — im Projekt nicht ändern |
-| `.claude/agents/` | Prüfer-Rollen als Unteragenten für Claude Code; verweisen auf `_anweisungen/rollen/` | Template — im Projekt nicht ändern |
-| `_kontext/` | **Was** man über das Projekt wissen muss (Stack, Befehle, …) | Projekt |
-| `anforderungen/backlog/` | Ideen und Anforderungen in Klärung/Refinement, ohne Nummer | Projekt |
-| `anforderungen/` | `refined` (ohne Nummer) und ab Umsetzung bis zum Release (mit Nummer) | Projekt |
-| `anforderungen/done/` | abgeschlossene (releaste) Anforderungen | Projekt |
-| `releases/` | ein Dokument je Release: Inhalt, Gesamtprüfung, Zurückrollen | Projekt |
+| `_agent-process/` | dieses Prozess-Repo: Prozessregeln, `anweisungen/` (eine Datei je Stufe, dazu `vorlagen/` und `rollen/`), Vorlagen für Init | Prozess-Repo — im Projekt nie ändern |
+| `.claude/agents` | Link auf `_agent-process/.claude/agents/`: Prüfer-Rollen als Unteragenten für Claude Code | Prozess-Repo — im Projekt nie ändern |
+| `_context/` | **Was** man über das Projekt wissen muss (Stack, Befehle, …) | Projekt |
+| `_requirements/backlog/` | Ideen und Anforderungen in Klärung/Refinement, ohne Nummer | Projekt |
+| `_requirements/` | `refined` (ohne Nummer) und ab Umsetzung bis zum Release (mit Nummer) | Projekt |
+| `_requirements/done/` | abgeschlossene (releaste) Anforderungen | Projekt |
+| `_releases/` | ein Dokument je Release: Inhalt, Gesamtprüfung, Zurückrollen | Projekt |
+| `_design-system/` *(optional)* | Submodul des Design-Systems, nur lesen | Design-System — im Projekt nie ändern |
+
+**Grundsatz:** Das Projekt läuft ohne `_agent-process/`. Bauen, Prüfen und Ausliefern (lokal und in der CI) nutzen nur, was im Projekt liegt — nie Dateien aus `_agent-process/`.
 
 ## Ablauf
 
 | Stufe | Status | Anweisung |
 |---|---|---|
-| 0. Projekt einrichten *(einmal, bei Bedarf erneut)* | — | `_anweisungen/00-einrichtung.md` |
-| 1. Idee oder Bug | `idea` / `bug` | `_anweisungen/01-idee.md` |
-| 2. Klärung | `new` | `_anweisungen/02-klaerung.md` |
-| 3. Design *(nur bei Bedarf)* | `new` | `_anweisungen/03-design.md` |
-| 4. Refinement | `new` → `refined` | `_anweisungen/04-refinement.md` |
-| 5. Umsetzung | `in progress` | `_anweisungen/05-umsetzung.md` |
-| 6. QA | `qa` | `_anweisungen/06-qa.md` |
-| 7. Abnahme | `review` → `accepted` | `_anweisungen/07-abnahme.md` |
-| 8. Release *(mehrere Anforderungen)* | `accepted` → `done` | `_anweisungen/08-release.md` |
+| 0. Projekt einrichten *(einmal, bei Bedarf erneut)* | — | `_agent-process/anweisungen/00-einrichtung.md` |
+| 1. Idee oder Bug | `idea` / `bug` | `_agent-process/anweisungen/01-idee.md` |
+| 2. Klärung | `new` | `_agent-process/anweisungen/02-klaerung.md` |
+| 3. Design *(nur bei Bedarf)* | `new` | `_agent-process/anweisungen/03-design.md` |
+| 4. Refinement | `new` → `refined` | `_agent-process/anweisungen/04-refinement.md` |
+| 5. Umsetzung | `in progress` | `_agent-process/anweisungen/05-umsetzung.md` |
+| 6. QA | `qa` | `_agent-process/anweisungen/06-qa.md` |
+| 7. Abnahme | `review` → `accepted` | `_agent-process/anweisungen/07-abnahme.md` |
+| 8. Release *(mehrere Anforderungen)* | `accepted` → `done` | `_agent-process/anweisungen/08-release.md` |
 
 Branches — `main` ist beim Hoster geschützt; dorthin gelangt alles nur per Pull Request:
 
@@ -42,9 +45,9 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 ## Regeln
 
 -   **Vor der Arbeit an einer Stufe** die zugehörige Anweisungsdatei lesen.
--   **Vor jeder Arbeit am Projekt** `_kontext/projekt.md` lesen, bei Design-Arbeit zusätzlich `_kontext/design.md`. Ist `_kontext/projekt.md` noch nicht ausgefüllt: zuerst Stufe 0.
+-   **Vor jeder Arbeit am Projekt** `_context/projekt.md` lesen, bei Design-Arbeit zusätzlich `_context/design.md`. Ist `_context/projekt.md` noch nicht ausgefüllt: zuerst Stufe 0.
 -   Eine Stufe wird erst begonnen, wenn die vorherige abgeschlossen ist.
--   **Meldet der Nutzer einen Fehler oder Wunsch: zuerst als Bug bzw. Idee festhalten** (`_anweisungen/01-idee.md`) — nicht sofort beheben. Code entsteht nur für eine Anforderung nach ihrem „Go" (Stufe 5).
+-   **Meldet der Nutzer einen Fehler oder Wunsch: zuerst als Bug bzw. Idee festhalten** (`_agent-process/anweisungen/01-idee.md`) — nicht sofort beheben. Code entsteht nur für eine Anforderung nach ihrem „Go" (Stufe 5).
 -   **Abgenommene und abgeschlossene Anforderungsdokumente** (`accepted`, `done`) werden nicht mehr geändert; Nachträge gehören in eine neue Anforderung.
 -   **Tests werden nie abgeschwächt,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert). Passt ein Test nicht mehr zur Umgebung: die Umgebung des Tests anpassen, nicht die Prüfung.
 -   **Am Ende jeder Stufe** sagt der Agent dem Nutzer kurz: was erledigt ist, was als Nächstes kommt (Stufe bzw. Schritt und Anweisungsdatei) und was der Nutzer dafür tun oder entscheiden muss (z. B. Status setzen, freigeben, committen).
@@ -52,7 +55,7 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
     -   Neue Pakete nur, wenn sie im freigegebenen Umsetzungsplan stehen.
     -   Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
 -   **Git:** Der Agent committet und pusht Arbeits-Branches selbst und eröffnet Pull Requests; **zusammenführen und taggen nur der Nutzer** — siehe Abschnitt „Commits".
--   **Kennung** einer Anforderung ist ihr kurzer Name (Dateiname im Backlog). Die **Nummer** wird erst beim „Go" vergeben (nur im Dateinamen, der Branch behält den kurzen Namen): höchste vergebene Nummer in `anforderungen/` und `anforderungen/done/` + 1, dreistellig mit führenden Nullen (`007-boulder-log.md`); Nummern werden nie wiederverwendet.
+-   **Kennung** einer Anforderung ist ihr kurzer Name (Dateiname im Backlog). Die **Nummer** wird erst beim „Go" vergeben (nur im Dateinamen, der Branch behält den kurzen Namen): höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1, dreistellig mit führenden Nullen (`007-boulder-log.md`); Nummern werden nie wiederverwendet.
 
 ## Commits
 
@@ -63,7 +66,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Stelle | Branch | Inhalt |
 |---|---|---|
 | Neue Idee bzw. neuer Bug (Stufe 1) | `backlog` | Eintrag im Backlog |
-| Nach Klärung, Design-Übergabe, Refinement (Stufen 2–4) | Feature-Branch | Anforderungsdokument, Entwurf, ggf. `_kontext/` |
+| Nach Klärung, Design-Übergabe, Refinement (Stufen 2–4) | Feature-Branch | Anforderungsdokument, Entwurf, ggf. `_context/` |
 | Nach freigegebenem Plan (5b) | Feature-Branch | Plan im Anforderungsdokument |
 | Nach jedem grünen Schritt des Plans (5c–5e) | Feature-Branch | Code, Tests, Testnachweis |
 | Je Korrektur in der QA (6c) | Feature-Branch | Korrektur mit ihrem Test |
@@ -87,6 +90,6 @@ Damit die App einheitlich aussieht, gilt bei **jeder** UI-Arbeit — mit oder oh
 -   **Das Design-System ist die Richtlinie.** UI nur mit seinen Tokens und Komponenten; seine README-Regeln gelten.
 -   **Keine festen Werte** für Farben, Maße, Abstände, Radien oder Schriftgrößen im App-Code — nur Tokens.
 -   **Keine Inline-Styles** — Gestaltung steht nur in Stylesheets, damit sie prüfbar bleibt.
--   **Prüflauf:** Die Prüf-Konfiguration liegt in `_anweisungen/pruefung/` und läuft mit den Tests (im Container und in der CI). **Ausnahme** nur mit Markierung an der Stelle (mit Grund) und Eintrag in `_kontext/design.md`.
--   **Fehlt etwas im Design-System:** in `_kontext/design.md` benennen, im Projekt vorerst lokal umsetzen (mit Tokens), als Idee für das Design-System vermerken.
+-   **Prüflauf:** Die Prüf-Konfiguration liegt im Projekt als `.stylelintrc.json` (von Init angelegt, Erklärung in `_agent-process/init/pruefung/README.md`) und läuft mit den Tests (im Container und in der CI). **Ausnahme** nur mit Markierung an der Stelle (mit Grund) und Eintrag in `_context/design.md`.
+-   **Fehlt etwas im Design-System:** in `_context/design.md` benennen, im Projekt vorerst lokal umsetzen (mit Tokens), als Idee für das Design-System vermerken.
 -   **Das Design-System wird im Projekt nie bearbeitet.**

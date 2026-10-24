@@ -25,13 +25,13 @@ Ist-Stand: Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fe
 
 # Design-Brief
 
-*Nur wenn Design nötig (siehe `_anweisungen/03-design.md`).*
+*Nur wenn Design nötig (siehe `_agent-process/anweisungen/03-design.md`).*
 
 -   **Ziel:**
 -   **Ist-Stand:**
 -   **Spielraum:** (aus Einordnung)
 -   **Feste Grenzen:**
--   **Design-System:** System · benötigte Komponenten/Tokens · Zuordnungen aus `_kontext/design.md`
+-   **Design-System:** System · benötigte Komponenten/Tokens · Zuordnungen aus `_context/design.md`
 -   **Rahmen:**
 -   **Lücken:**
 

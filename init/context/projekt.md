@@ -1,6 +1,6 @@
 # Projekt
 
-*In Stufe 0 (`_anweisungen/00-einrichtung.md`) festgelegt; bei Änderungen dort erneut. Offenes ausdrücklich als offen markieren.*
+*In Stufe 0 (`_agent-process/anweisungen/00-einrichtung.md`) festgelegt; bei Änderungen dort erneut. Offenes ausdrücklich als offen markieren.*
 
 ## Zweck
 
@@ -18,7 +18,7 @@
 |---|---|---|
 | Code-Linter | | |
 | Formatierer | | |
-| Prüflauf UI-Richtlinie | Stylelint, `_anweisungen/pruefung/stylelint.json` | |
+| Prüflauf UI-Richtlinie | Stylelint, `.stylelintrc.json` | |
 | Unit-Tests | | |
 | E2E-Tests | | |
 | Schwachstellen in Abhängigkeiten | | |
@@ -40,7 +40,7 @@
 
 ## Auslieferung und Release
 
-*Wohin (Rolle „Hoster", How-to in `_kontext/`), Release-Modell — Standard: Sammel-Branch `next`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_anweisungen/08-release.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
+*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `next`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/anweisungen/08-release.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
 
 ## Abnahme
 

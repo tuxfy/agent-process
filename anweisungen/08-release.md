@@ -1,6 +1,6 @@
 # Stufe 8: Release
 
-Bringt den Stand von `next` — eine oder mehrere abgenommene Anforderungen — live. **Wann** released wird, entscheidet der Nutzer; die **Version** wird erst jetzt bestimmt, aus dem Inhalt. Ein Release hat ein eigenes Dokument `releases/<version>.md`. Auslieferung: `_kontext/projekt.md`.
+Bringt den Stand von `next` — eine oder mehrere abgenommene Anforderungen — live. **Wann** released wird, entscheidet der Nutzer; die **Version** wird erst jetzt bestimmt, aus dem Inhalt. Ein Release hat ein eigenes Dokument `_releases/<version>.md`. Auslieferung: `_context/projekt.md`.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
@@ -28,7 +28,7 @@ Bringt den Stand von `next` — eine oder mehrere abgenommene Anforderungen — 
     -   Den Sprung auf **1.0.0** entscheidet nur der Nutzer.
     -   Enthält `next` seit dem letzten Tag nur `chore`, `test` oder `refactor`: dem Nutzer vorschlagen, ob sich ein Release überhaupt lohnt.
 -   Der Agent schlägt Version und Begründung vor (je Stufe die ausschlaggebenden Commits), **der Nutzer bestätigt**.
--   Dann legt der Agent `releases/<version>.md` nach `_anweisungen/vorlagen/release.md` auf `next` an, committet und pusht.
+-   Dann legt der Agent `_releases/<version>.md` nach `_agent-process/anweisungen/vorlagen/release.md` auf `next` an, committet und pusht.
 
 ## 8b: Gesamtprüfung
 
@@ -46,7 +46,7 @@ Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusamme
 ## 8d: Ausliefern
 
 -   **Der Nutzer führt den Pull Request** nach `main` zusammen, setzt auf dem neuen Stand von `main` den Tag `v<version>` und pusht ihn; erst damit wird ausgeliefert.
--   Ausgeliefert wird nach `_kontext/projekt.md` bzw. dem How-to in `_kontext/` (z. B. automatisch beim Push auf `main`).
+-   Ausgeliefert wird nach `_context/projekt.md` bzw. dem How-to in `_context/` (z. B. automatisch beim Push auf `main`).
 
 ## 8e: Nachprüfen
 
@@ -55,7 +55,7 @@ Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusamme
 
 ## 8f: Abschluss
 
--   Auf dem Branch `release/<version>-abschluss` (von `main`): alle enthaltenen Anforderungen Status `done`, Dokument nach `anforderungen/done/`.
+-   Auf dem Branch `release/<version>-abschluss` (von `main`): alle enthaltenen Anforderungen Status `done`, Dokument nach `_requirements/done/`.
 -   Release-Dokument: Status `released`, Datum — **erst**, wenn die Nachprüfung (8e) den ausgelieferten Stand bestätigt hat.
 -   Optional: kurzer Rückblick zum Release (wie 7d).
 -   Pushen, Pull Request eröffnen; der Nutzer führt zusammen.

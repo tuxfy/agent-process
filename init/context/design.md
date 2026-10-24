@@ -1,10 +1,10 @@
 # Design
 
-*In Stufe 0 (`_anweisungen/00-einrichtung.md`) ergänzen.*
+*In Stufe 0 (`_agent-process/anweisungen/00-einrichtung.md`) ergänzen.*
 
 ## Design-System
 
-Welches zentrale Design-System das Projekt nutzt und wie es eingebunden ist (z. B. Kopie unter `_kontext/designsystem/`).
+Welches zentrale Design-System das Projekt nutzt und wie es eingebunden ist (z. B. Submodul `_design-system/` zum Lesen, Kopie der benötigten Dateien im Code der App).
 
 -   **Stand:** Commit-Hash des Design-Systems, aus dem eingebunden wurde (z. B. `git -C <design-system> rev-parse --short HEAD`). Bei jeder Aktualisierung neu eintragen.
 

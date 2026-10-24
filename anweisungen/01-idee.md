@@ -4,10 +4,10 @@ Festhalten, nicht lösen. Ein Eintrag ist bewusst kurz — er dient dem **Festha
 
 | Art | Vorlage | Status | Inhalt |
 |---|---|---|---|
-| **Idee** — etwas Neues oder anders | `_anweisungen/vorlagen/idee.md` | `idea` | was stört oder fehlt · was danach anders sein soll |
-| **Bug** — etwas funktioniert nicht wie festgelegt | `_anweisungen/vorlagen/bug.md` | `bug` | was passiert · was erwartet war · wie es auftritt · Stand |
+| **Idee** — etwas Neues oder anders | `_agent-process/anweisungen/vorlagen/idee.md` | `idea` | was stört oder fehlt · was danach anders sein soll |
+| **Bug** — etwas funktioniert nicht wie festgelegt | `_agent-process/anweisungen/vorlagen/bug.md` | `bug` | was passiert · was erwartet war · wie es auftritt · Stand |
 
--   Ablage: `anforderungen/backlog/<kurzer-name>.md` auf dem Branch `backlog` (von `main`); der Agent committet, pusht und eröffnet einen Pull Request bzw. ergänzt den offenen. Der Nutzer führt ihn zusammen, wann es passt.
+-   Ablage: `_requirements/backlog/<kurzer-name>.md` auf dem Branch `backlog` (von `main`); der Agent committet, pusht und eröffnet einen Pull Request bzw. ergänzt den offenen. Der Nutzer führt ihn zusammen, wann es passt.
 -   Festhalten darf **jeder** — auch der Agent mitten im Gespräch.
 -   Der Agent schärft einen Eintrag **nicht von sich aus** aus; das passiert erst, wenn der Nutzer ihn aufgreift (→ Stufe 2).
 -   **Meldet der Nutzer einen Fehler oder Wunsch** oder kommt im Gespräch etwas Neues auf: **zuerst** festhalten — nicht sofort beheben, planen oder Code schreiben. Auch nicht „schnell nebenbei".

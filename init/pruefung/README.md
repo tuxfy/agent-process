@@ -1,6 +1,6 @@
 # Prüf-Konfiguration der UI-Richtlinie
 
-Konfiguration für Stylelint. Sie meldet feste Werte in den Stylesheets eines Projekts, die aus den Tokens des Design-Systems kommen sollen. Sie kennt keine einzelnen Tokens und passt deshalb zu jedem Design-System, das seine Tokens als CSS-Variablen liefert. Teil des Templates — im Projekt nicht ändern.
+Konfiguration für Stylelint. Sie meldet feste Werte in den Stylesheets eines Projekts, die aus den Tokens des Design-Systems kommen sollen. Sie kennt keine einzelnen Tokens und passt deshalb zu jedem Design-System, das seine Tokens als CSS-Variablen liefert. Init kopiert sie als `.stylelintrc.json` ins Projekt; danach gehört sie dem Projekt. Neue Stände kommen über das Prozess-Repo (Init meldet Abweichungen).
 
 ## Was gemeldet wird
 
@@ -16,7 +16,7 @@ Konfiguration für Stylelint. Sie meldet feste Werte in den Stylesheets eines Pr
 
 ## Voraussetzung an das Design-System
 
-Für jede gemeldete Art von Wert braucht das Design-System Tokens: Farben, Längen (Maße, Abstände, Radien, Ränder, Schriftgrößen), Dauern, Schrift (Familie, Gewicht, Zeilenhöhe), Ebenen, Deckkraft, Schatten. Fehlt eine Art, meldet der erste Prüflauf es — dann im Projekt als Lücke in `_kontext/design.md` eintragen und als Idee für das Design-System vermerken.
+Für jede gemeldete Art von Wert braucht das Design-System Tokens: Farben, Längen (Maße, Abstände, Radien, Ränder, Schriftgrößen), Dauern, Schrift (Familie, Gewicht, Zeilenhöhe), Ebenen, Deckkraft, Schatten. Fehlt eine Art, meldet der erste Prüflauf es — dann im Projekt als Lücke in `_context/design.md` eintragen und als Idee für das Design-System vermerken.
 
 ## Einbinden im Projekt
 
@@ -25,13 +25,13 @@ Voraussetzung: Node (z. B. im Agent-Container oder in der CI). Benötigte Pakete
 -   `stylelint` (Hauptversion 16)
 -   `stylelint-declaration-strict-value` (Hauptversion 1)
 
-Befehl — nur die Stylesheets der App angeben, nicht die Kopie des Design-Systems:
+Befehl (Stylelint findet `.stylelintrc.json` im Projekt-Hauptordner selbst) — nur die Stylesheets der App angeben, nicht die Kopie des Design-Systems:
 
 ```
-stylelint "<Stylesheets der App, z. B. src/**/*.css>" --config _anweisungen/pruefung/stylelint.json
+stylelint "<Stylesheets der App, z. B. src/**/*.css>"
 ```
 
-Den Befehl in `_kontext/projekt.md` eintragen (z. B. als `npm run check:ui`).
+Den Befehl in `_context/projekt.md` eintragen (z. B. als `npm run check:ui`).
 
 ## Ausnahmen
 
@@ -41,4 +41,4 @@ Nur mit Grund, direkt an der Stelle:
 /* stylelint-disable-next-line color-no-hex -- ui-ausnahme: <Grund> */
 ```
 
-Ohne Grund nach `--` meldet der Prüflauf die Ausnahme selbst als Fehler; überflüssige Ausnahmen ebenfalls. Jede Ausnahme zusätzlich im Projekt in `_kontext/design.md` unter „Lokal umgesetzt — gehört ins Design-System" eintragen.
+Ohne Grund nach `--` meldet der Prüflauf die Ausnahme selbst als Fehler; überflüssige Ausnahmen ebenfalls. Jede Ausnahme zusätzlich im Projekt in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" eintragen.

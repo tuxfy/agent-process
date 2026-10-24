@@ -7,8 +7,8 @@ Der Nutzer greift eine Idee auf. Bevor über Lösungen nachgedacht wird, klärt 
 ## Start
 
 -   Auslöser: Der Nutzer greift eine Idee ausdrücklich auf.
--   Status `idea` → `new`. Das Dokument bleibt in `anforderungen/backlog/`.
--   Das Dokument wird nach `_anweisungen/vorlagen/anforderung.md` erweitert; der Abschnitt „Idee" bleibt unverändert erhalten.
+-   Status `idea` → `new`. Das Dokument bleibt in `_requirements/backlog/`.
+-   Das Dokument wird nach `_agent-process/anweisungen/vorlagen/anforderung.md` erweitert; der Abschnitt „Idee" bleibt unverändert erhalten.
 
 ## Was der Agent macht
 
@@ -29,7 +29,7 @@ Der Nutzer greift eine Idee auf. Bevor über Lösungen nachgedacht wird, klärt 
 
     Bei einem **neuen Projekt** ohne bestehenden Stand gilt meist alles als änderbar — dann das kurz sagen statt vier Einzelfragen zu stellen.
 4.  **Offene Fragen sammeln** — als Liste, noch ohne Antworten.
-5.  **Weg vorschlagen**: Braucht es ein Design (→ Stufe 3)? Bei einem Bug: Ursache bestätigen und „Welche Prüfung hätte ihn finden müssen?" sind Pflicht (siehe `_anweisungen/01-idee.md`, Weg eines Bugs).
+5.  **Weg vorschlagen**: Braucht es ein Design (→ Stufe 3)? Bei einem Bug: Ursache bestätigen und „Welche Prüfung hätte ihn finden müssen?" sind Pflicht (siehe `_agent-process/anweisungen/01-idee.md`, Weg eines Bugs).
 
 ## Was noch nicht hineingehört
 
