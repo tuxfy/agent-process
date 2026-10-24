@@ -32,14 +32,35 @@ Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht lad
 
 ## Aktualisieren
 
-Auf einem Branch im Projekt:
+Der Stand des Prozesses hängt am Branch (das Projekt speichert nur einen Verweis auf einen Commit dieses Repos). Neue Feature-Branches zweigen von `main` ab — deshalb geht ein Update **direkt nach `main`**, nicht über `next`.
 
-1.  `git submodule update --remote _agent-process`
-2.  `sh _agent-process/init.sh` — legt Neues an, meldet Abweichungen (z. B. neuer Stand der Prüf-Konfiguration)
-3.  Committen, Pull Request, zusammenführen
-4.  Claude neu starten — Unteragenten (`.claude/agents`) und `CLAUDE.md` werden nur beim Start gelesen
+Im Projekt-Hauptordner:
 
-Den Agenten kann man das ebenfalls tun lassen (nach Rückfrage).
+```
+git switch main
+git pull --ff-only
+git switch -c feature/prozess-aktualisieren
+git submodule update --remote _agent-process
+sh _agent-process/init.sh
+git add -A
+git commit -m "chore(prozess-aktualisieren): Prozess-Repo auf neuen Stand"
+git push -u origin feature/prozess-aktualisieren
+```
+
+1.  Ausgabe von Init prüfen (Hinweise, z. B. neuer Stand der Prüf-Konfiguration).
+2.  Pull Request **nach `main`** eröffnen, bei grüner CI zusammenführen.
+3.  `main` in `next` übernehmen, damit beide gleich bleiben:
+
+    ```
+    git switch main
+    git pull --ff-only
+    git switch next
+    git pull --ff-only
+    git merge main -m "chore: main in next nach Prozess-Update"
+    git push origin next
+    git switch main
+    ```
+4.  Claude neu starten — Unteragenten (`.claude/agents`) und `CLAUDE.md` werden nur beim Start gelesen.
 
 ## Was Init anlegt
 
