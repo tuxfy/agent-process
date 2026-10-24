@@ -45,7 +45,15 @@ Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusamme
 
 ## 8d: Ausliefern
 
--   **Der Nutzer führt den Pull Request** nach `main` zusammen, setzt auf dem neuen Stand von `main` den Tag `v<version>` und pusht ihn; erst damit wird ausgeliefert.
+-   **Der Nutzer führt den Pull Request** nach `main` zusammen — **als Merge-Commit, nicht per „Squash"**, damit `next` und `main` denselben Verlauf behalten — setzt auf dem neuen Stand von `main` den Tag `v<version>` und pusht ihn; erst damit wird ausgeliefert.
+-   **Der Agent gibt dem Nutzer die Befehle für den Tag** fertig aus (mit der Version eingesetzt), zusammen mit dem Hinweis auf den Merge-Commit — Tags lassen sich beim Hoster nicht über die Oberfläche setzen:
+
+    ```
+    git switch main
+    git pull --ff-only
+    git tag -a v<version> -m "Release v<version>"
+    git push origin v<version>
+    ```
 -   Ausgeliefert wird nach `_context/projekt.md` bzw. dem How-to in `_context/` (z. B. automatisch beim Push auf `main`).
 
 ## 8e: Nachprüfen

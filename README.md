@@ -22,7 +22,7 @@ Im neuen Projekt-Hauptordner:
 2.  `git submodule add <prozess-repo> _agent-process`
 3.  `sh _agent-process/init.sh` — gibt aus, was angelegt wurde und was nur gemeldet wird
 4.  Ausgabe prüfen, erster Commit auf `main` (bevor `main` beim Hoster geschützt wird)
-5.  Mit dem Agenten Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
+5.  Claude starten (erst nach Init, sonst fehlen die Unteragenten) und mit Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
 
 Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht laden.
 
@@ -37,6 +37,7 @@ Auf einem Branch im Projekt:
 1.  `git submodule update --remote _agent-process`
 2.  `sh _agent-process/init.sh` — legt Neues an, meldet Abweichungen (z. B. neuer Stand der Prüf-Konfiguration)
 3.  Committen, Pull Request, zusammenführen
+4.  Claude neu starten — Unteragenten (`.claude/agents`) und `CLAUDE.md` werden nur beim Start gelesen
 
 Den Agenten kann man das ebenfalls tun lassen (nach Rückfrage).
 
