@@ -25,15 +25,16 @@ Ist-Stand: Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fe
 
 # Design-Brief
 
-*Nur wenn Design nötig (siehe `_agent-process/anweisungen/03-design.md`).*
+*Nur wenn Design nötig. Entsteht mit dem Entwurf extern und wird in 3c unverändert übernommen (siehe `_agent-process/anweisungen/03-design.md`).*
 
 -   **Ziel:**
--   **Ist-Stand:**
--   **Spielraum:** (aus Einordnung)
--   **Feste Grenzen:**
--   **Design-System:** System · benötigte Komponenten/Tokens · Zuordnungen aus `_context/design.md`
+-   **Aufbau und Zustände:** Screens, Bereiche, Zustände und Übergänge
+-   **Abläufe:** was der Nutzer wo tut
+-   **Texte:**
+-   **Design-System:** genutzte Komponenten und Tokens · Zuordnungen aus `_context/design.md`
 -   **Rahmen:**
--   **Lücken:**
+-   **Lücken:** was das Design-System nicht hat
+-   **Entwurf:** `_requirements/mockups/<kurzer-name>/`
 
 # Entscheidungen
 

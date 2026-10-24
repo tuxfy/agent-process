@@ -68,7 +68,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Stelle | Branch | Inhalt |
 |---|---|---|
 | Neue Idee bzw. neuer Bug (Stufe 1) | `backlog` | Eintrag im Backlog |
-| Nach Klärung, Design-Übergabe, Refinement (Stufen 2–4) | Feature-Branch | Anforderungsdokument, Entwurf, ggf. `_context/` |
+| Nach Klärung, freigegebenem Entwurf, Refinement (Stufen 2–4) | Feature-Branch | Anforderungsdokument, bereitgestellter Entwurf, ggf. `_context/` |
 | Nach freigegebenem Plan (5b) | Feature-Branch | Plan im Anforderungsdokument |
 | Nach jedem grünen Schritt des Plans (5c–5e) | Feature-Branch | Code, Tests, Testnachweis |
 | Je Korrektur in der QA (6c) | Feature-Branch | Korrektur mit ihrem Test |

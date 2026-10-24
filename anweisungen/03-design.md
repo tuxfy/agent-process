@@ -4,10 +4,11 @@ Nur bei Bedarf — für neue oder deutlich veränderte Screens (z. B. ein neues 
 
 | Teilschritt | Wer | Ergebnis |
 |---|---|---|
-| 3a Brief | Agent schreibt, Nutzer prüft | Abschnitt `# Design-Brief` im Anforderungsdokument |
-| 3b Entwurf | Nutzer + Claude | Design-Artifact (Titel = kurzer Name) — oder ohne Ansicht im Gespräch: Datei im Mockup-Ordner |
-| 3c Freigabe | Nutzer | Entwurf freigegeben, Lücken eingetragen |
-| 3d Übergabe | Claude | freigegebene Entwurfsquelle unter `_requirements/mockups/<kurzer-name>/` |
+| 3a Ausgangslage | Agent | kurzer Text zum Kopieren: nur Fakten aus der Klärung, **keine Gestaltung** |
+| 3b Entwurf | **Nutzer, extern** | Entwurf **und Design-Brief** entstehen außerhalb des Projekts, in einem Werkzeug seiner Wahl (z. B. Chat mit Ansicht, Design-Werkzeug) — **der Agent im Projekt wartet** |
+| 3c Übergabe und Freigabe | Nutzer stellt bereit, Agent prüft | Entwurf unter `_requirements/mockups/<kurzer-name>/`, Brief im Anforderungsdokument, vom Nutzer freigegeben, Lücken eingetragen |
+
+**Der Entwurf entsteht extern, nicht in der Arbeitsumgebung des Projekts** (CLI, Container) — z. B. in einem Chat mit Ansicht oder einem Design-Werkzeug. Der Agent im Projekt baut dafür kein Mockup und keinen Prototyp: Dort läuft ein Entwurf in Details und nimmt die Umsetzung vorweg. Auch den Design-Brief schreibt er nicht vorab — ein Brief aus dem Projekt legt Gestaltung fest, bevor jemand entworfen hat. Er liefert die Ausgangslage, wartet auf Entwurf und Brief und prüft beides gegen die Anforderung.
 
 ## Grundsätze
 
@@ -21,52 +22,39 @@ Nur bei Bedarf — für neue oder deutlich veränderte Screens (z. B. ein neues 
     2.  im Projekt vorerst lokal umsetzen — mit den Tokens des Design-Systems, so nah wie möglich an dessen Regeln,
     3.  als Idee für das Design-System vermerken, damit es später von dort verwendet und die lokale Lösung ersetzt wird.
 
-## 3a: Design-Brief
+## 3a: Ausgangslage
 
-Der Agent schreibt den Brief in das Anforderungsdokument (Vorlage: `_agent-process/anweisungen/vorlagen/anforderung.md`, Abschnitt „Design-Brief"). Der Brief ist der Auftrag für den Entwurf und hält fest, wovon der Entwurf ausging.
+Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus Idee und Klärung, so, dass er ohne Wissen über das Projekt verständlich ist:
 
-Inhalt:
+1.  **Ziel** — was der Nutzer danach tun kann (aus der Idee).
+2.  **Ist-Stand** — was es heute gibt (ein, zwei Sätze).
+3.  **Spielraum** — was sich ändern darf, was unverändert bleibt (aus der Klärung).
+4.  **Feste Grenzen** — Daten bzw. Felder, Wertebereiche, Zustände, vorgegebene Texte.
+5.  **Rahmen** — Gerät, Bildschirmgröße, hell/dunkel, Bedienung (aus `_context/projekt.md`).
+6.  **Design-System** — welches; nur dessen Tokens und Komponenten nutzen, Fehlendes als Lücke benennen.
 
-1.  **Ziel** — was das Design erreichen soll (aus der Idee).
-2.  **Ist-Stand** — wie der betroffene Bereich heute aussieht und funktioniert.
-3.  **Spielraum** — aus der Klärung übernommen; nicht Angekreuztes bleibt unverändert.
-4.  **Feste Grenzen** — was der Entwurf einhalten muss: Felder, Wertebereiche, Zustände, Texte.
-5.  **Design-System** — welches System; welche vorhandenen Komponenten und Tokens voraussichtlich gebraucht werden (aus dessen README); die Zuordnungen des Projekts aus `_context/design.md`.
-6.  **Rahmen** — Geräte, Bildschirmgröße, hell/dunkel, Barrierefreiheit.
-7.  **Lücken** — was das Design-System dafür nicht hat. Ausdrücklich benennen, nie still erfinden (weiter siehe Grundsätze).
+**Nicht hinein:** Aufbau von Screens, Anordnung, Wahl von Komponenten, Abläufe der Bedienung, Gestaltungsideen — das entsteht im Entwurf. Fehlt eine Angabe, fragt der Agent den Nutzer, statt sie zu erfinden.
 
-Abschluss: Der **Nutzer bestätigt** den Brief. Erst dann folgt 3b.
+## 3b: Entwurf (extern)
 
-## 3b: Entwurf
+-   Nach der Ausgangslage **wartet** der Agent, bis der Nutzer Entwurf und Brief bereitstellt. Er fragt nicht nach und beginnt nichts anderes an dieser Anforderung.
+-   Der Nutzer entwirft extern mit der Ausgangslage und überarbeitet dort, bis er zufrieden ist. **Am Ende entsteht dort auch der Design-Brief:** was der Entwurf festlegt (Aufbau, Zustände, Abläufe, Texte, genutzte Komponenten, Lücken) — gegliedert wie der Abschnitt `# Design-Brief` der Vorlage.
 
--   Claude legt ein **Design-Artifact** an, das auf dem Design-System aufbaut, und folgt dem Brief.
--   **Titel** = kurzer Name der Anforderung, wie ihr Dateiname im Backlog (z. B. „menue-neu"). Eine Nummer gibt es in dieser Stufe noch nicht — sie wird erst beim „Go" vergeben. Im Anforderungsdokument steht nur: `Entwurf: Design-Artifact „menue-neu"` — kein Link.
--   Der Nutzer kommentiert direkt am Entwurf; Claude überarbeitet, bis der Nutzer zufrieden ist.
--   Braucht der Entwurf etwas, das das Design-System nicht hat: als **Lücke** im Brief nachtragen (siehe Grundsätze), nicht still erfinden.
+## 3c: Übergabe und Freigabe
 
-**Wo der Entwurf entsteht:**
-
--   **Standard: im Chat bzw. in Claude Design** — dort sieht und kommentiert der Nutzer den Entwurf direkt. Ab der Übergabe (3d) arbeiten Refinement und Umsetzung nur mit der abgelegten Datei, auch in der CLI.
--   **Ohne Ansicht im Gespräch (z. B. CLI, Entwicklungs-Container)** — sinnvoll vor allem für kleine Entwürfe:
-    -   Der Agent schreibt den Entwurf direkt als HTML-Seite nach `_requirements/mockups/<kurzer-name>/`; Styles und Komponenten relativ aus der Kopie des Design-Systems im Projekt.
-    -   Der Nutzer öffnet die Datei im Browser und lädt nach jeder Änderung neu; besprochen wird im Terminal.
-    -   Kann der Agent Screenshots machen (z. B. mit Playwright), prüft er den Entwurf damit selbst, bevor er ihn zeigt — das ersetzt nicht die Sicht des Nutzers.
-    -   Im Anforderungsdokument steht: `Entwurf: _requirements/mockups/<kurzer-name>/`.
-
-## 3c: Freigabe
-
--   Der **Nutzer gibt den Entwurf frei.** Erst dann wird er abgelegt (3d).
--   Offene Lücken stehen in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" und sind als Idee für das Design-System vermerkt.
-
-## 3d: Übergabe
-
--   **Entstand der Entwurf schon als Datei im Mockup-Ordner** (ohne Ansicht im Gespräch, siehe 3b): Er bleibt dort; es gelten nur die Prüfungen unten (Verweise, Vertraulichkeit).
--   Sonst legt Claude die **freigegebene Quelle des Entwurfs** im Projekt ab: `_requirements/mockups/<kurzer-name>/`. So steht sie auch dem Agenten in der Umsetzung zur Verfügung, der keinen Zugriff auf Claude Design hat.
--   **Die Ablage muss für sich allein laufen:** jede lokal verwiesene Datei (`src`, `href`, Laufzeit-Skripte wie `support.js`, Bilder) wird mit abgelegt — oder verweist relativ auf die Kopie des Design-Systems im Projekt. Vor dem Abschluss alle Verweise prüfen (z. B. `grep -oE '(src|href)="[^"]+"'`) und sicherstellen, dass jede Datei existiert.
--   **Abgelegt wird das Original** des Entwurfs mit seiner Laufzeit (z. B. `Main.dc.html` + `support.js`) — keine Übersetzung in ein anderes Format und keine zweite, abgeleitete Fassung. Das Original ist maßgeblich und Grundlage der Umsetzung; Werte, Texte und Logik werden aus seinem Quelltext gelesen.
--   Vor dem Ablegen: Vertraulichkeit prüfen; eingebettete Metadaten in Bildern entfernen. Technische Adressen von Bibliotheken in der Laufzeit des Entwurfswerkzeugs (z. B. React aus einem CDN mit fester Version) sind in Ordnung; Links zu Projekt, System oder Dritten nicht.
--   Im Anforderungsdokument unter dem Brief den Ablageort nennen.
+-   **Der Nutzer stellt Entwurf und Brief bereit** — den Brief als Text, den Entwurf als Datei bzw. Ordner (z. B. HTML mit Laufzeit, Bilder, Screenshots) unter `_requirements/mockups/<kurzer-name>/` — oder er gibt sie dem Agenten, der sie unverändert dort ablegt. Den Brief übernimmt der Agent unverändert in `# Design-Brief`.
+-   **Der Agent prüft Entwurf und Brief gegen die Anforderung** (Ausgangslage, Klärung) und meldet dem Nutzer — ohne beides zu ändern:
+    -   Abweichungen von den festen Grenzen (Felder, Wertebereiche, Zustände, Texte) und vom Rahmen (Gerät, hell/dunkel);
+    -   **Lücken:** was der Entwurf nutzt, das das Design-System nicht hat (siehe Grundsätze);
+    -   offene Fragen, die sich aus dem Entwurf ergeben.
+    -   Ändern muss der Nutzer extern; danach stellt er den neuen Stand bereit.
+-   **Die Ablage muss für sich allein laufen:** jede lokal verwiesene Datei (`src`, `href`, Skripte, Bilder) liegt mit im Ordner oder verweist relativ auf die Kopie des Design-Systems im Projekt. Fehlt etwas, meldet der Agent es dem Nutzer.
+-   **Vertraulichkeit:** keine Links zu Projekt, System oder Dritten; eingebettete Metadaten in Bildern entfernen. Technische Adressen von Bibliotheken in der Laufzeit des Entwurfs (z. B. aus einem CDN mit fester Version) sind in Ordnung.
+-   Der **Nutzer gibt den Entwurf frei.** Offene Lücken stehen dann in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" und sind als Idee für das Design-System vermerkt.
+-   Im Anforderungsdokument unter dem Brief: `Entwurf: _requirements/mockups/<kurzer-name>/`.
+-   Widersprechen sich Entwurf und Brief: der Nutzer entscheidet, was gilt, und korrigiert extern.
 
 ## Hinweis für die Umsetzung
 
-Der Entwurf ist eine **ausführbare Vorlage**, kein Bild: Werte und Formeln werden aus der Quelle **übernommen, nicht nachempfunden** — umgesetzt mit den Tokens und Komponenten des Design-Systems.
+-   Der freigegebene Entwurf ist maßgeblich. **Ausführbare Entwürfe** (z. B. HTML): Werte, Texte und Formeln werden aus der Quelle **übernommen, nicht nachempfunden**. **Bilder:** sie zeigen Aufbau und Zustände; Werte kommen aus den Tokens des Design-Systems.
+-   Umgesetzt wird immer mit den Tokens und Komponenten des Design-Systems.
