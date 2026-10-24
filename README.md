@@ -29,7 +29,7 @@ Der ganze Weg von der Idee bis live auf einer Seite. Die Einzelheiten je Schritt
 | **PR** | der Agent eröffnet einen Pull Request |
 | **ZF** | der Agent gibt dir eine Zusammenfassung im Gespräch |
 
-Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was du tun oder entscheiden musst.
+Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was du tun oder entscheiden musst. **Er hält nur an deinen Freigaben (GO) und Handgriffen (DU) an** — sonst geht er ohne Rückfrage weiter.
 
 | Schritt | Wer | Was passiert | Markierung | Branch |
 |---|---|---|---|---|
