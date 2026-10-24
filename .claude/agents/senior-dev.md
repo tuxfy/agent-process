@@ -1,6 +1,6 @@
 ---
 name: senior-dev
-description: Prüft einen Umsetzungsplan (Stufe 5b) auf Code, Tests, Reihenfolge, Fehlerfälle und lokale Umgebung. Nur lesend.
+description: Prüft einen Umsetzungsplan (Stufe 5a) auf Code, Tests, Reihenfolge, Fehlerfälle und lokale Umgebung. Nur lesend.
 tools: Read, Grep, Glob
 ---
 

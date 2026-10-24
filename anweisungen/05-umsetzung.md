@@ -1,25 +1,18 @@
 # Stufe 5: Umsetzung
 
-Voraussetzung: Status `refined`, Dokument liegt in `_requirements/`. Konkrete Befehle (Tests, Start, Deploy) stehen in `_context/projekt.md`.
+Voraussetzung: Status `refined`, Dokument liegt in `_requirements/`, auf dem Branch der Anforderung (angelegt in Stufe 2). Konkrete Befehle (Tests, Start, Deploy) stehen in `_context/projekt.md`.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
-| 5a Go | Nutzer | Nummer vergeben, Status `in progress` |
-| 5b Plan | Agent schreibt, Rollen prüfen, Nutzer gibt frei | Abschnitt `# Umsetzungsplan`, Zusammenfassung für den Nutzer |
+| 5a Plan | Agent schreibt, Rollen prüfen, Nutzer gibt frei | Abschnitt `# Umsetzungsplan`, Zusammenfassung für den Nutzer, **Commit und Push** |
+| 5b Go | Nutzer | Nummer vergeben, Status `in progress`, **Commit** |
 | 5c Test zuerst | Agent | roter Test, Testnachweis „Rot" |
 | 5d Umsetzen | Agent | Änderung nach Plan, Entscheidungen und UI-Richtlinie |
 | 5e Grün | Agent | alle Tests und Prüflauf grün, Testnachweis „Grün", Status `qa` |
 
 Danach: Stufe 6 (QA), Stufe 7 (Abnahme), Stufe 8 (Release).
 
-## 5a: Go
-
--   Erst nach ausdrücklichem **„Go"** des Nutzers — vorher kein Code.
--   **Nummer vergeben:** höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1. Datei umbenennen in `<Nr>-<kurzer-name>.md`, Nummer **dreistellig mit führenden Nullen** (z. B. `007-boulder-log.md`), damit die Dateien richtig sortiert werden. Der Ordner eines Entwurfs (`mockups/<kurzer-name>/`) wird nicht umbenannt.
--   Weiter auf dem Branch der Anforderung (angelegt in Stufe 2).
--   Status `in progress`.
-
-## 5b: Plan
+## 5a: Plan
 
 Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht:
 
@@ -59,7 +52,13 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 -   **Was riskant ist** und wie damit umgegangen wird.
 -   **Wer geprüft hat** und was sich dadurch am Plan geändert hat.
 
-Abschluss: Der **Nutzer gibt den Plan frei** — er beurteilt Umfang, Entscheidungen und Risiken; die technische Güte sichern Selbstprüfung und Rollen. Der Agent committet den freigegebenen Plan; erst dann folgt 5c.
+Abschluss: Der **Nutzer gibt den Plan frei** — er beurteilt Umfang, Entscheidungen und Risiken; die technische Güte sichern Selbstprüfung und Rollen. **Der Agent committet den freigegebenen Plan sofort und pusht den Branch** (`chore(<kurzer-name>): Umsetzungsplan`), Status bleibt `refined` — so ist der Plan gesichert, auch wenn das „Go" erst viel später kommt. Dann fragt er nach dem „Go" (5b). Freigabe des Plans und „Go" sind zwei getrennte Antworten des Nutzers: Ein Plan kann freigegeben sein und später umgesetzt werden.
+
+## 5b: Go
+
+-   Erst nach ausdrücklichem **„Go"** des Nutzers — vorher kein Code.
+-   **Nummer vergeben:** höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1. Datei umbenennen in `<Nr>-<kurzer-name>.md`, Nummer **dreistellig mit führenden Nullen** (z. B. `007-boulder-log.md`), damit die Dateien richtig sortiert werden. Der Ordner eines Entwurfs (`mockups/<kurzer-name>/`) wird nicht umbenannt.
+-   Status `in progress`; der Agent committet Umbenennung und Status (`chore(<kurzer-name>): Go, Nummer <Nr>`), dann folgt 5c.
 
 ## 5c: Test zuerst (rot)
 

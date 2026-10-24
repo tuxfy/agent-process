@@ -1,6 +1,6 @@
 ---
 name: architekt
-description: Prüft einen Umsetzungsplan (Stufe 5b) auf Aufbau, Schnitt, Abhängigkeiten und Größe. Nur lesend.
+description: Prüft einen Umsetzungsplan (Stufe 5a) auf Aufbau, Schnitt, Abhängigkeiten und Größe. Nur lesend.
 tools: Read, Grep, Glob
 ---
 

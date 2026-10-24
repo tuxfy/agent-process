@@ -1,6 +1,6 @@
 ---
 name: devops
-description: Prüft einen Umsetzungsplan (Stufe 5b) auf CI, Hosting, Release und Betrieb. Nur lesend.
+description: Prüft einen Umsetzungsplan (Stufe 5a) auf CI, Hosting, Release und Betrieb. Nur lesend.
 tools: Read, Grep, Glob
 ---
 

@@ -2,7 +2,7 @@
 
 Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann welche Rolle prüft, steht in der jeweiligen Stufe.
 
-## Plan (Stufe 5b, `_agent-process/anweisungen/05-umsetzung.md`)
+## Plan (Stufe 5a, `_agent-process/anweisungen/05-umsetzung.md`)
 
 | Rolle | Blick | Datei |
 |---|---|---|

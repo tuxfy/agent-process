@@ -64,7 +64,7 @@ Was der Nutzer sieht und tut.
 
 # Umsetzungsplan
 
-*Vom Agenten in Stufe 5 (5b) geschrieben, vom Nutzer freigegeben.*
+*Vom Agenten in Stufe 5 (5a) geschrieben, vom Nutzer freigegeben.*
 
 1.  **Schritte:**
 2.  **Betroffene Dateien:**
