@@ -50,7 +50,7 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 -   Eine Stufe wird erst begonnen, wenn die vorherige abgeschlossen ist.
 -   **Meldet der Nutzer einen Fehler oder Wunsch: zuerst als Bug bzw. Idee festhalten** (`_agent-process/anweisungen/01-idee.md`) — nicht sofort beheben. Code entsteht nur für eine Anforderung nach ihrem „Go" (Stufe 5).
 -   **Abgenommene Anforderungsdokumente** (`accepted`, in `_requirements/done/`) und **Release-Dokumente nach dem Release** werden nicht mehr geändert; Nachträge gehören in eine neue Anforderung bzw. ins nächste Release.
--   **Verweise in Dokumenten:** zwischen Dokumenten als relative Markdown-Links; Pull Requests nur als `#<Nummer>`, CI-Läufe nur als Ergebnis mit Datum — keine Links zum Hoster.
+-   **Verweise in Dokumenten:** zwischen Dokumenten als relative Markdown-Links; Pull Requests nur als `#<Nummer>`, CI-Läufe nur als Ergebnis mit Datum. Keine Adressen beim Hoster — weder Repo, Pull Requests, CI-Läufe noch die ausgelieferte App; lokale Adressen (z. B. `localhost`) und Platzhalter sind in Ordnung.
 -   **Tests werden nie abgeschwächt,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert). Passt ein Test nicht mehr zur Umgebung: die Umgebung des Tests anpassen, nicht die Prüfung.
 -   **Am Ende jeder Stufe** sagt der Agent dem Nutzer kurz: was erledigt ist, was als Nächstes kommt (Stufe bzw. Schritt und Anweisungsdatei) und was der Nutzer dafür tun oder entscheiden muss (z. B. Status setzen, freigeben, committen).
 -   **Abhängigkeiten und Werkzeuge** (Pakete, Browser für Tests u. ä.) installiert der Agent **selbst in seiner Umgebung** (z. B. im Container), nach Rückfrage — nie auf dem Rechner des Nutzers und nie als Aufgabe an den Nutzer.
