@@ -56,7 +56,7 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 -   **Abhängigkeiten und Werkzeuge** (Pakete, Browser für Tests u. ä.) installiert der Agent **selbst in seiner Umgebung** (z. B. im Container), nach Rückfrage — nie auf dem Rechner des Nutzers und nie als Aufgabe an den Nutzer.
     -   Neue Pakete nur, wenn sie im freigegebenen Umsetzungsplan stehen.
     -   Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
--   **Git:** Der Agent committet und pusht Arbeits-Branches selbst und eröffnet Pull Requests; **zusammenführen und taggen nur der Nutzer** — siehe Abschnitt „Commits".
+-   **Git:** Nur der Agent im Projekt (CLI) committet — externe Werkzeuge (z. B. ein Chat für den Entwurf) nie. Der Agent committet und pusht Arbeits-Branches selbst und eröffnet Pull Requests; **zusammenführen und taggen nur der Nutzer** — siehe Abschnitt „Commits".
 -   **Kennung** einer Anforderung ist ihr kurzer Name (Dateiname im Backlog). Die **Nummer** wird erst beim „Go" vergeben (nur im Dateinamen, der Branch behält den kurzen Namen): höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1, dreistellig mit führenden Nullen (`007-boulder-log.md`); Nummern werden nie wiederverwendet.
 
 ## Commits

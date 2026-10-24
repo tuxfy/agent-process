@@ -38,6 +38,7 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 ## 3b: Entwurf (extern)
 
 -   Nach der Ausgangslage **wartet** der Agent, bis der Nutzer Entwurf und Brief bereitstellt. Er fragt nicht nach und beginnt nichts anderes an dieser Anforderung.
+-   **Extern wird nicht committet** — auch nicht, wenn das externe Werkzeug Zugriff auf den Projektordner hat. Es legt Entwurf und Brief höchstens als Dateien unter `_requirements/mockups/<kurzer-name>/` ab; kein git, keine Zwischenstände im Verlauf.
 -   Der Nutzer entwirft extern mit der Ausgangslage und überarbeitet dort, bis er zufrieden ist. **Am Ende entsteht dort auch der Design-Brief:** was der Entwurf festlegt (Aufbau, Zustände, Abläufe, Texte, genutzte Komponenten, Lücken) — gegliedert wie der Abschnitt `# Design-Brief` der Vorlage.
 
 ## 3c: Übergabe und Freigabe
@@ -52,6 +53,7 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 -   **Vertraulichkeit:** keine Links zu Projekt, System oder Dritten; eingebettete Metadaten in Bildern entfernen. Technische Adressen von Bibliotheken in der Laufzeit des Entwurfs (z. B. aus einem CDN mit fester Version) sind in Ordnung.
 -   Der **Nutzer gibt den Entwurf frei.** Offene Lücken stehen dann in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" und sind als Idee für das Design-System vermerkt.
 -   Im Anforderungsdokument unter dem Brief: `Entwurf: _requirements/mockups/<kurzer-name>/`.
+-   **Erst nach der Freigabe committet der Agent im Projekt** — einmal: Entwurf, Brief und eingetragene Lücken (siehe `_agent-process/AGENTS.md`, Abschnitt „Commits").
 -   Widersprechen sich Entwurf und Brief: der Nutzer entscheidet, was gilt, und korrigiert extern.
 
 ## Hinweis für die Umsetzung
