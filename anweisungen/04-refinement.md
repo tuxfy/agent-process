@@ -42,4 +42,5 @@ Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderun
 ## Übergang
 
 -   Bei `refined` wandert das Dokument (auf dem Feature-Branch) von `_requirements/backlog/` nach `_requirements/` — **ohne Nummer**, Dateiname bleibt `<kurzer-name>.md`.
+-   **Dann committet der Agent** auf dem Feature-Branch (`chore(<kurzer-name>): Refinement, Status refined`), ohne Rückfrage — Verschieben und Statuswechsel in einem Commit.
 -   Die Nummer wird erst beim **„Go"** vergeben (Stufe 5).
