@@ -11,7 +11,7 @@ Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und 
 | `_context/` | **Was** man über das Projekt wissen muss (Stack, Befehle, …) | Projekt |
 | `_requirements/backlog/` | Ideen und Anforderungen in Klärung/Refinement, ohne Nummer | Projekt |
 | `_requirements/` | `refined` (ohne Nummer) und ab Umsetzung bis zum Release (mit Nummer) | Projekt |
-| `_requirements/done/` | abgeschlossene (releaste) Anforderungen | Projekt |
+| `_requirements/done/` | abgenommene Anforderungen (ab Stufe 7c, eingefroren) | Projekt |
 | `_releases/` | ein Dokument je Release: Inhalt, Gesamtprüfung, Zurückrollen | Projekt |
 | `_design-system/` *(optional)* | Submodul des Design-Systems, nur lesen | Design-System — im Projekt nie ändern |
 
@@ -29,7 +29,7 @@ Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und 
 | 5. Umsetzung | `in progress` | `_agent-process/anweisungen/05-umsetzung.md` |
 | 6. QA | `qa` | `_agent-process/anweisungen/06-qa.md` |
 | 7. Abnahme | `review` → `accepted` | `_agent-process/anweisungen/07-abnahme.md` |
-| 8. Release *(mehrere Anforderungen)* | `accepted` → `done` | `_agent-process/anweisungen/08-release.md` |
+| 8. Release *(mehrere Anforderungen)* | — *(live ist, was in einem Release mit Tag steht)* | `_agent-process/anweisungen/08-release.md` |
 
 Branches — `main` ist beim Hoster geschützt; dorthin gelangt alles nur per Pull Request:
 
@@ -37,8 +37,9 @@ Branches — `main` ist beim Hoster geschützt; dorthin gelangt alles nur per Pu
 |---|---|---|
 | `backlog` | neue Ideen und Bugs (Stufe 1) | Pull Request, Nutzer führt zusammen |
 | `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung ab ihrer Aufnahme (Stufe 2) bis zur Abnahme: Dokument, Plan, Code, QA | Pull Request nach `next` (Stufe 6/7) |
-| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8), danach Tag `v<version>` |
-| `release/<version>-abschluss` | Abschluss nach dem Ausliefern: Status `done`, Release `released` | Pull Request |
+| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8) als Merge-Commit, danach Tag `v<version>` |
+
+**Zusammenführen nach `next` heißt: kommt ins nächste Release.** Soll eine abgenommene Anforderung noch warten, bleibt ihr Pull Request offen.
 
 Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (siehe `08-release.md`, Abkürzung).
 
@@ -48,7 +49,8 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 -   **Vor jeder Arbeit am Projekt** `_context/projekt.md` lesen, bei Design-Arbeit zusätzlich `_context/design.md`. Ist `_context/projekt.md` noch nicht ausgefüllt: zuerst Stufe 0.
 -   Eine Stufe wird erst begonnen, wenn die vorherige abgeschlossen ist.
 -   **Meldet der Nutzer einen Fehler oder Wunsch: zuerst als Bug bzw. Idee festhalten** (`_agent-process/anweisungen/01-idee.md`) — nicht sofort beheben. Code entsteht nur für eine Anforderung nach ihrem „Go" (Stufe 5).
--   **Abgenommene und abgeschlossene Anforderungsdokumente** (`accepted`, `done`) werden nicht mehr geändert; Nachträge gehören in eine neue Anforderung.
+-   **Abgenommene Anforderungsdokumente** (`accepted`, in `_requirements/done/`) und **Release-Dokumente nach dem Release** werden nicht mehr geändert; Nachträge gehören in eine neue Anforderung bzw. ins nächste Release.
+-   **Verweise in Dokumenten:** zwischen Dokumenten als relative Markdown-Links; Pull Requests nur als `#<Nummer>`, CI-Läufe nur als Ergebnis mit Datum — keine Links zum Hoster.
 -   **Tests werden nie abgeschwächt,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert). Passt ein Test nicht mehr zur Umgebung: die Umgebung des Tests anpassen, nicht die Prüfung.
 -   **Am Ende jeder Stufe** sagt der Agent dem Nutzer kurz: was erledigt ist, was als Nächstes kommt (Stufe bzw. Schritt und Anweisungsdatei) und was der Nutzer dafür tun oder entscheiden muss (z. B. Status setzen, freigeben, committen).
 -   **Abhängigkeiten und Werkzeuge** (Pakete, Browser für Tests u. ä.) installiert der Agent **selbst in seiner Umgebung** (z. B. im Container), nach Rückfrage — nie auf dem Rechner des Nutzers und nie als Aufgabe an den Nutzer.
@@ -59,7 +61,7 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 
 ## Commits
 
-Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; bricht eine Änderung Bestehendes: `!` nach dem Scope. Für Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** folgen demselben Format — beim Zusammenführen per „Squash" wird der Titel zur Commit-Nachricht und zählt für die Version (Stufe 8).
+Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; bricht eine Änderung Bestehendes: `!` nach dem Scope. Für Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** folgen demselben Format — beim Zusammenführen per „Squash" (erlaubt für Pull Requests nach `next`) wird der Titel zur Commit-Nachricht und zählt für die Version (Stufe 8). Der Release-Pull-Request nach `main` wird nur als Merge-Commit zusammengeführt.
 
 **Der Agent committet selbst** (ohne Rückfrage), nur an diesen Stellen:
 
@@ -70,9 +72,8 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Nach freigegebenem Plan (5b) | Feature-Branch | Plan im Anforderungsdokument |
 | Nach jedem grünen Schritt des Plans (5c–5e) | Feature-Branch | Code, Tests, Testnachweis |
 | Je Korrektur in der QA (6c) | Feature-Branch | Korrektur mit ihrem Test |
-| Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Rückblick |
+| Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Dokument nach `_requirements/done/`, Rückblick |
 | Im Release (8a, 8b) | `next` | Release-Dokument |
-| Nach dem Ausliefern (8f) | `release/<version>-abschluss` | Status `done`, Release `released` |
 
 -   **Leitplanken** (in Stufe 0 festgelegt, im Grundgerüst eingerichtet): Vor jedem Commit laufen alle Prüfungen (ein Befehl) und die Prüfung des Commit-Formats. Der Agent umgeht sie nie (z. B. kein `--no-verify`).
 -   Ein Commit mit rotem Test gibt es nicht: In 5c wird der rote Test nachgewiesen, committet wird erst der grüne Schritt.

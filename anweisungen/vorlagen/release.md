@@ -1,18 +1,20 @@
 -   **Version** <version>
--   **Status** planned | testing | released | failed
+
+*Fertig mit dem Release-Pull-Request (8b); danach unverändert. Ob das Release live ist, zeigt der Tag `v<version>`.*
 
 # Version
 
 *Vom Agenten in 8a vorgeschlagen, vom Nutzer bestätigt.*
 
 -   **Vorher:** `v<letzte version>` · **Neu:** `v<version>` · **Stufe:** Major | Minor | Patch
--   **Ausschlaggebend:** Commits bzw. Pull Requests, die die Stufe bestimmen
+-   **Ausschlaggebend:** Commits bzw. Pull Requests (`#<Nummer>`), die die Stufe bestimmen
+-   **Ersetzt:** *(nur nach einem fehlgeschlagenen Release)* `v<version>` (fehlgeschlagen)
 
 # Inhalt
 
 | Anforderung | Kurz |
 |---|---|
-| `<Nr>-<kurzer-name>` | |
+| [`<Nr>-<kurzer-name>`](../_requirements/done/<Nr>-<kurzer-name>.md) | |
 
 # Gesamtprüfung
 
@@ -21,15 +23,11 @@
 -   **Tests und Prüflauf:** `<Befehl>` — <Ergebnis>
 -   **Automatische Prüfungen:** <Ergebnis>
 -   **Klicktest (Hauptwege):** <Ergebnis>
+-   **CI im Release-Pull-Request** `#<Nummer>`: <Ergebnis, Datum>
 
 # Zurückrollen
 
 Wie der vorherige Stand wieder live geht (z. B. Revert in `main` und erneut ausliefern; Tag `v<vorherige version>`).
-
-# Ausgeliefert
-
--   **Datum:**
--   **Nachprüfung:** <Ergebnis>
 
 # Notizen
 

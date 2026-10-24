@@ -6,7 +6,7 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 |---|---|---|
 | 7a Prüfen | Nutzer | Abnahme nach Checkliste des Abnahmepakets |
 | 7b Befunde | Agent | zurück zu Stufe 5, danach QA erneut |
-| 7c Abgenommen | Nutzer | Status `accepted`, Pull Request vom Nutzer zusammengeführt |
+| 7c Abgenommen | Nutzer | Status `accepted`, Dokument in `_requirements/done/`, Pull Request vom Nutzer zusammengeführt |
 | 7d Rückblick | Agent | Erkenntnisse für Projekt bzw. Prozess-Repo |
 
 ## 7a: Prüfen
@@ -22,10 +22,11 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 ## 7c: Abgenommen
 
 -   Der Nutzer gibt ausdrücklich frei. Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde).
--   Der Agent committet Status, Abnahme und Rückblick (7d) auf dem Feature-Branch und pusht; die CI im Pull Request läuft erneut.
+-   Der Agent verschiebt das Dokument nach `_requirements/done/` — ab jetzt ist es eingefroren.
+-   Der Agent committet Status, Abnahme, Verschieben und Rückblick (7d) auf dem Feature-Branch und pusht; die CI im Pull Request läuft erneut.
 -   **Der Nutzer führt den Pull Request zusammen** (nach `next`). Der Agent wartet darauf und fragt nicht nach.
+-   **Zusammenführen nach `next` heißt: kommt ins nächste Release.** Der Agent sagt das am Ende der Abnahme dazu: Soll die Anforderung noch warten, bleibt der Pull Request offen.
 -   Ein Release-Dokument gibt es noch nicht — es entsteht erst in Stufe 8.
--   Das Anforderungsdokument bleibt in `_requirements/` bis zum Release.
 
 ## 7d: Rückblick
 

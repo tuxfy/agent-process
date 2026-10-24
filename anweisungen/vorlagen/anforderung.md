@@ -1,5 +1,5 @@
 -   **Title** Kurzer Titel
--   **Status** idea | bug | new | refined | in progress | qa | review | accepted | done
+-   **Status** idea | bug | new | refined | in progress | qa | review | accepted
 
 # Idee
 
@@ -94,4 +94,3 @@ Was der Nutzer sieht und tut.
 *In Stufe 7 ergänzt.*
 
 -   **Abgenommen am:** <Datum> — <was geprüft wurde>
--   **Release:** <version>
