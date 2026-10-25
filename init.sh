@@ -5,6 +5,11 @@
 
 set -eu
 
+case "${1:-}" in
+  ""|--hoster) ;;
+  *) echo "Fehler: unbekannte Option '$1'. Aufruf: sh _agent-process/init.sh [--hoster]" >&2; exit 2;;
+esac
+
 P=_agent-process
 SRC="$P/init"
 
@@ -89,6 +94,6 @@ else
 fi
 
 echo
-echo "Fertig: $angelegt angelegt, $hinweise Hinweis(e). Nichts wurde überschrieben."
+echo "Fertig: $angelegt angelegt, $hinweise Hinweis(e). Keine Datei wurde überschrieben."
 [ "$angelegt" -gt 0 ] && echo "Änderungen prüfen und committen."
 exit 0

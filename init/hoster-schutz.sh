@@ -3,7 +3,7 @@
 # GitHub über gh, GitLab über glab — angemeldet, mit Admin- bzw. Maintainer-Rechten.
 # Andere Hoster: Checkliste in _agent-process/anweisungen/00-einrichtung.md.
 # Vorhandene Regeln bleiben unverändert; einzige Ausnahme: ein Schutz des Haupt-Branches,
-# der Push erlaubt, wird verschärft. Wird von init.sh aufgerufen.
+# der Push erlaubt, wird verschärft. Wird von `init.sh --hoster` aufgerufen.
 # Läuft mit deinen Rechten auf deinem Rechner, nicht im Agent-Container: dessen Token hat
 # bewusst keine Admin-Rechte, dort meldet das Skript nur, was fehlt.
 # Optional (GitHub): CI_PRUEFUNG=<Name des CI-Jobs> macht die CI-Prüfung für main zur Pflicht.
@@ -11,7 +11,7 @@
 set -eu
 
 hinweis(){ echo "Hinweis:  Hoster: $1"; }
-leer()   { hinweis "Repo noch leer — erst den ersten Commit pushen, dann Init erneut ausführen"; }
+leer()   { hinweis "Repo noch leer — erst den ersten Commit pushen, dann sh _agent-process/init.sh --hoster erneut ausführen"; }
 
 # ---------- GitHub ----------
 github() {
@@ -115,7 +115,7 @@ if command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1 \
 elif command -v glab >/dev/null 2>&1 && glab api "projects/:id" >/dev/null 2>&1; then
   gitlab
 else
-  hinweis "weder gh noch glab angemeldet oder kein Repo beim Hoster — Regeln nicht gesetzt; nach dem ersten Push Init erneut ausführen oder Checkliste Stufe 0"
+  hinweis "weder gh noch glab angemeldet oder kein Repo beim Hoster — Regeln nicht gesetzt; nach dem ersten Push sh _agent-process/init.sh --hoster erneut ausführen oder Checkliste Stufe 0"
   exit 0
 fi
 hinweis "Handgriffe laut Checkliste Stufe 0: Auslieferung für Tags v* freigeben; Branches nach dem Zusammenführen löschen erst, wenn next nachweislich geschützt ist"
