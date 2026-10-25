@@ -6,8 +6,8 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 |---|---|---|
 | 7a Prüfen | Nutzer | Abnahme nach Checkliste des Abnahmepakets |
 | 7b Befunde | Agent | zurück zu Stufe 5, danach QA erneut |
-| 7c Abgenommen | Nutzer | Status `accepted`, Dokument in `_requirements/done/`, Pull Request vom Nutzer zusammengeführt |
-| 7d Rückblick | Agent | Erkenntnisse für Projekt bzw. Prozess-Repo |
+| 7c Abgenommen | Nutzer, dann Agent | Status `accepted`, Abnahme und Rückblick in einem Commit, CI grün, dann „bereit zum Zusammenführen“ |
+| 7d Rückblick | Agent | Inhalt des Rückblicks — Teil des Commits aus 7c |
 
 ## 7a: Prüfen
 
@@ -21,17 +21,16 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 
 ## 7c: Abgenommen
 
--   Der Nutzer gibt ausdrücklich frei. Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde).
--   Der Agent verschiebt das Dokument nach `_requirements/done/` — ab jetzt ist es eingefroren.
--   Der Agent committet Status, Abnahme, Verschieben und Rückblick (7d) auf dem Feature-Branch und pusht; die CI im Pull Request läuft erneut.
+-   Der Nutzer gibt ausdrücklich frei.
+-   **Ein Commit, vor dem Zusammenführen:** Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde), Rückblick (7d), Dokument nach `_requirements/done/` verschoben. Der Agent committet und pusht; die CI im Pull Request läuft erneut.
+-   **Erst bei grüner CI** meldet der Agent „bereit zum Zusammenführen“ — vorher nicht. Dazu sagt er: Zusammenführen nach `next` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
 -   **Der Nutzer führt den Pull Request zusammen** (nach `next`). Der Agent wartet darauf und fragt nicht nach.
--   **Zusammenführen nach `next` heißt: kommt ins nächste Release.** Der Agent sagt das am Ende der Abnahme dazu: Soll die Anforderung noch warten, bleibt der Pull Request offen.
+-   Ab dem Commit ist das Dokument eingefroren. Was danach noch auffällt, wird eine neue Idee bzw. ein Bug — kein zweiter Pull Request.
 -   Ein Release-Dokument gibt es noch nicht — es entsteht erst in Stufe 8.
 
 ## 7d: Rückblick
 
-Kurz festhalten, was gehakt hat:
+Kurz festhalten, was gehakt hat — fertig, bevor der Commit aus 7c entsteht:
 
 -   **Projekt betreffend** → `_context/` ergänzen.
 -   **Prozess betreffend** → als Vorschlag fürs Prozess-Repo notieren (nichts unter `_agent-process/` im Projekt ändern).
--   Rückblick committen.

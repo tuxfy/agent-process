@@ -78,7 +78,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Nach jedem grünen Schritt des Plans (5c–5e) | Feature-Branch | Code, Tests, Testnachweis |
 | Je Korrektur in der QA (6c) bzw. Abnahme (7b) | Feature-Branch | Korrektur mit ihrem Test |
 | Vor dem Pull Request (6d) | Feature-Branch | QA-Abschnitt, Status `review` |
-| Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Dokument nach `_requirements/done/`, Rückblick |
+| Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit, vor dem Zusammenführen |
 | Im Release (8a, 8b) | `next` | Release-Dokument — fertig, bevor der Pull Request nach `main` eröffnet wird |
 
 -   **Leitplanken** (in Stufe 0 festgelegt, im Grundgerüst eingerichtet): Vor jedem Commit laufen alle Prüfungen (ein Befehl) und die Prüfung des Commit-Formats. Der Agent umgeht sie nie (z. B. kein `--no-verify`).

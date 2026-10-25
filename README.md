@@ -58,8 +58,8 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **7a Prüfen** | du | nur, was sich nicht automatisch prüfen lässt (z. B. am Gerät) | **DU** | |
 | **7b Befunde** | Agent | zurück zu 5, danach QA erneut | **C+P** je Korrektur | Feature-Branch |
 | **7c Abgenommen** | du | Abnahme aussprechen | **GO** | |
-| | Agent | Status `accepted`, Dokument nach `_requirements/done/`, Rückblick | **C+P** | Feature-Branch |
-| | du | PR nach `next` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
+| | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
+| | du | erst danach: PR nach `next` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
 | | Agent | `git switch main`, `git pull --ff-only` | — | `main` |
 | **8a Inhalt und Version** | du | „release" — wann, entscheidest du | **GO** | |
 | | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `next` |
