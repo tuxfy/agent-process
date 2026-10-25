@@ -30,7 +30,7 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 **Plan prüfen**, bevor er dem Nutzer vorgelegt wird:
 
 1.  **Selbstprüfung — immer:** Der Agent prüft den Plan mit den Prüfpunkten der Rollen (`_agent-process/anweisungen/rollen/`), soweit sie den Plan betreffen, und bessert nach.
-2.  **Prüfung durch Rollen** — unabhängige Prüfer mit frischem Blick, die nur lesen (in Claude Code als Unteragenten unter `.claude/agents/`; ohne Unteragenten: eigene Sitzung je Rolle):
+2.  **Prüfung durch Rollen** (Prüfer-Rollen, siehe `AGENTS.md`):
     -   **Architekt** und **Senior Dev:** bei neuem Projekt oder Grundgerüst, neuen externen Abhängigkeiten oder einem Plan ab etwa fünf Schritten.
     -   **DevOps** zusätzlich, wenn der Plan CI, Hosting, Auslieferung oder das Release-Modell berührt.
     -   Sonst genügt die Selbstprüfung.

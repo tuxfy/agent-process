@@ -11,7 +11,8 @@ Grundlage: Anforderung (vor allem „Verhalten" und Akzeptanzkriterien), Entwurf
 3.  **Hauptwege:** das „Verhalten" der Anforderung Schritt für Schritt.
 4.  **Erkunden:** Was ein Mensch auch tun würde — leere und sehr lange Eingaben, schnelles Mehrfachtippen, Abbrechen mitten im Ablauf, Zurück, Neuladen, ohne Netz (falls relevant), Tastatur statt Maus bzw. Finger.
 5.  **Screenshots** der wichtigen Zustände unter `.qa/<Nr>-<kurzer-name>/` (wird nicht committet); bei Design jeweils neben den entsprechenden Zustand des Entwurfs.
-6.  **Kann die App nicht gestartet oder bedient werden** (z. B. fehlendes Werkzeug): als blockierenden Befund melden, nicht raten.
+6.  **Im Release (8b):** nur die Hauptwege aller genannten Anforderungen, nicht erkunden; Screenshots unter `.qa/release-<version>/`.
+7.  **Kann die App nicht gestartet oder bedient werden** (z. B. fehlendes Werkzeug): als blockierenden Befund melden, nicht raten.
 
 ## Prüfpunkte
 

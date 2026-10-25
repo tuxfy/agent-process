@@ -36,7 +36,7 @@ Bringt den Stand von `next` — eine oder mehrere abgenommene Anforderungen — 
 Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusammen** funktionieren:
 
 -   Alle Tests, der Prüflauf, die automatischen Prüfungen aus Stufe 6 und der saubere Lauf auf `next`.
--   Kurzer Klicktest über alle enthaltenen Anforderungen (Rolle Klicktester, nur die Hauptwege).
+-   Kurzer Klicktest über alle enthaltenen Anforderungen (Rolle Klicktester, nur die Hauptwege) — dem Klicktester Version und Liste der Anforderungen nennen.
 -   Ergebnis ins Release-Dokument; damit ist es **fertig** — committen, pushen, danach wird es nicht mehr geändert. Das Ergebnis der CI steht im Pull Request, nicht im Dokument.
 -   Dann eröffnet der Agent den **Pull Request von `next` nach `main`** (Titel z. B. `chore(release): v<version>`); die CI läuft dort. **Ohne grüne CI kein Zusammenführen und kein Tag.** Dem Nutzer sagt er: Pull Request `#<Nummer>`, CI grün, bereit zum Zusammenführen.
 -   Befunde → betroffene Anforderung über einen neuen Bug bzw. Fix-Branch nach `next` korrigieren (das abgenommene Dokument bleibt eingefroren); danach 8b erneut.
