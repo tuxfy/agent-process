@@ -66,19 +66,10 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `next` |
 | **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `next` |
 | **8c Ausliefern** | du | PR nach `main` **als Merge-Commit** zusammenführen — das ist die Freigabe | **DU** | `main` |
-| | CI | Tag setzen, Auslieferung startet (ohne CI: **ZF** Befehle für den Tag, siehe unten) | **CI** | `main` |
+| | CI | Tag setzen, Auslieferung startet (ohne CI: **ZF** Befehle für den Tag, mit Version) | **CI** | `main` |
 | **8d Nachprüfen** | CI + Agent + du | ausgelieferte App testen, Gerät durch dich; sonst zurückrollen, Bug ins Backlog · **ZF:** Ergebnis | **CI** | — |
 
 Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
-
-**Tag von Hand** (solange die CI ihn nicht setzt):
-
-```
-git switch main
-git pull --ff-only
-git tag -a v<version> -m "Release v<version>"
-git push origin v<version>
-```
 
 **Nie durch den Agenten:** zusammenführen, Tags, Push nach `main`. **Nie extern** (z. B. ein Chat für den Entwurf): Commits.
 
@@ -142,7 +133,7 @@ git push -u origin feature/prozess-aktualisieren
 | — | `_requirements/backlog/`, `_requirements/done/`, `_releases/` | nichts tun |
 | `init/pruefung/stylelint.json` | `.stylelintrc.json` | unverändert; weicht die Vorlage ab: melden |
 | `init/gitignore` | `.gitignore` | fehlende Zeilen ergänzen |
-| `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster: Schutz von `main` (nur PR; nur Merge-Commit bei GitHub — bei GitLab bleibt Squash wählbar, Release-MR von Hand ohne Squash), `next`, Tags `v*`. GitHub mit angemeldetem `gh` bzw. GitLab mit `glab`, erst nach dem ersten Push; bei GitHub macht `CI_PRUEFUNG=<Job>` die CI-Prüfung zur Pflicht, bei GitLab gilt „nur bei erfolgreicher Pipeline“ | vorhandene Regel unverändert — außer einem Schutz von `main`, der Push erlaubt: wird verschärft; ohne `gh`/`glab` oder vor dem ersten Push: melden |
+| `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster laut Checkliste in Stufe 0 (GitHub per `gh`, GitLab per `glab`); Einzelheiten und Grenzen im Kopf des Skripts | vorhandene Regeln unverändert, außer einem zu schwachen Schutz von `main`; was fehlt: melden |
 
 ## Änderungen am Prozess
 
