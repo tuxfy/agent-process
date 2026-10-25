@@ -37,7 +37,7 @@ Branches — `main` nur per Pull Request (beim Hoster erzwungen):
 |---|---|---|
 | `backlog` | neue Ideen und Bugs (Stufe 1) | Pull Request, Nutzer führt zusammen |
 | `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung ab ihrer Aufnahme (Stufe 2) bis zur Abnahme: Dokument, Plan, Code, QA | Pull Request nach `next` (Stufe 6/7) |
-| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8) als Merge-Commit, danach Tag `v<version>` |
+| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8), danach Tag `v<version>` |
 
 **Zusammenführen nach `next` heißt: kommt ins nächste Release.** Soll eine abgenommene Anforderung noch warten, bleibt ihr Pull Request offen.
 
@@ -57,12 +57,12 @@ Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (si
 -   **Abhängigkeiten und Werkzeuge** (Pakete, Browser für Tests u. ä.) installiert der Agent **selbst in seiner Umgebung** (z. B. im Container), nach Rückfrage — nie auf dem Rechner des Nutzers und nie als Aufgabe an den Nutzer.
     -   Neue Pakete nur, wenn sie im freigegebenen Umsetzungsplan stehen.
     -   Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
--   **Git:** Nur der Agent im Projekt (CLI) committet — externe Werkzeuge (z. B. ein Chat für den Entwurf) nie. Der Agent committet und pusht Arbeits-Branches selbst und eröffnet Pull Requests; **zusammenführen und taggen nur der Nutzer** — siehe Abschnitt „Commits".
+-   **Git:** Nur der Agent im Projekt (CLI) committet, externe Werkzeuge (z. B. ein Chat für den Entwurf) nie. Zusammenführen und taggen nie der Agent — Abschnitt „Commits".
 -   **Kennung** einer Anforderung ist ihr kurzer Name (Dateiname im Backlog). Die **Nummer** wird erst beim „Go" vergeben (nur im Dateinamen, der Branch behält den kurzen Namen): höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1, dreistellig mit führenden Nullen (`007-boulder-log.md`); Nummern werden nie wiederverwendet.
 
 ## Commits
 
-Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; bricht eine Änderung Bestehendes: `!` nach dem Scope. Für Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** folgen demselben Format — beim Zusammenführen per „Squash" (erlaubt für Pull Requests nach `next`) wird der Titel zur Commit-Nachricht und zählt für die Version (Stufe 8). Der Release-Pull-Request nach `main` wird nur als Merge-Commit zusammengeführt.
+Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** ebenso — beim Squash nach `next` wird der Titel zur Commit-Nachricht und zählt für die Version.
 
 **Der Agent committet selbst** (ohne Rückfrage), nur an diesen Stellen — und **pusht nach jedem Commit sofort**:
 
@@ -81,15 +81,15 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit, vor dem Zusammenführen |
 | Im Release (8a, 8b) | `next` | Release-Dokument — fertig, bevor der Pull Request nach `main` eröffnet wird |
 
--   **Leitplanken** (in Stufe 0 festgelegt, im Grundgerüst eingerichtet): Vor jedem Commit laufen alle Prüfungen (ein Befehl) und die Prüfung des Commit-Formats. Der Agent umgeht sie nie (z. B. kein `--no-verify`).
+-   **Leitplanken:** Vor jedem Commit laufen alle Prüfungen und die Prüfung des Commit-Formats (Git-Hook aus dem Grundgerüst) — nie umgehen.
 -   Ein Commit mit rotem Test gibt es nicht: In 5c wird der rote Test nachgewiesen, committet wird erst der grüne Schritt.
 -   **Pushen:** Der Agent pusht nur die Branches aus der Tabelle oben und eröffnet die Pull Requests — mit kurzer Beschreibung und Verweis auf das Anforderungs- bzw. Release-Dokument.
--   **Zusammenführen: nur der Nutzer** — im Pull Request beim Hoster. Ausnahme: Pull Requests von `backlog` führt die CI selbst zusammen, wenn das Projekt es eingerichtet hat (Stufe 0). **Tags** setzt die CI nach dem Release-Pull-Request, sonst der Nutzer (Stufe 8); der Agent nie.
--   **CI-Ergebnisse stehen im Pull Request, nicht in Dokumenten.** Anforderungs- und Release-Dokumente nennen den Pull Request (`#<Nummer>`), aber kein Ergebnis eines CI-Laufs — ein Eintrag danach bräuchte einen neuen Commit und damit einen neuen Lauf.
+-   **Zusammenführen: nur der Nutzer** (Pull Requests von `backlog`: die CI, wenn eingerichtet). **Tags:** die CI nach dem Release-Pull-Request, sonst der Nutzer; nie der Agent.
+-   **CI-Ergebnisse stehen im Pull Request, nicht in Dokumenten.** Anforderungs- und Release-Dokumente nennen den Pull Request (`#<Nummer>`), aber kein Ergebnis eines CI-Laufs — ein Eintrag danach bräuchte einen neuen Commit und Lauf.
 -   **Grün heißt grün in der CI.** Ein lokales Grün reicht nicht für Abnahme oder Tag; maßgeblich ist der CI-Lauf auf dem gepushten Branch.
--   **Nach jedem vom Nutzer zusammengeführten Pull Request** wechselt der Agent auf `main` und holt den aktuellen Stand: `git switch main`, dann `git pull --ff-only`. Auf `main` wird lokal nie committet — so bleibt der lokale `main` immer gleich dem beim Hoster.
--   **Gepushte Commits nie umschreiben.** Vor dem Push darf der Agent lokal aufräumen (`git commit --amend`, `git rebase`, `git reset` ohne `--hard`, `git stash`); danach nicht mehr.
--   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>`. **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git reset --hard`, Push von Tags, `--force`, `--delete`, `git commit --no-verify`, `git -c …`, `git config` (schreiben). **Tags** legt der Agent nie an — `git tag` nur zum Auflisten (z. B. letzter Tag für die Version).
+-   **Nach jedem vom Nutzer zusammengeführten Pull Request** wechselt der Agent auf `main` und holt den Stand (`git switch main`, `git pull --ff-only`); auf `main` wird lokal nie committet.
+-   **Gepushte Commits nie umschreiben;** vorher darf der Agent lokal aufräumen (`--amend`, `rebase`, `reset` ohne `--hard`, `stash`).
+-   **Git-Befehle:** Branches nur mit `git switch` (`-c` zum Anlegen), Dateien zurücksetzen mit `git restore`, `git tag` nur zum Auflisten. Was die Umgebung sperrt, nicht versuchen (u. a. `checkout`, `merge`, `reset --hard`, `--force`, `--delete`, `--no-verify`, `git -c`, `git config` schreiben, Tags pushen).
 
 ## UI-Richtlinie
 
