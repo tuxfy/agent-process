@@ -88,8 +88,8 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 -   **CI-Ergebnisse stehen im Pull Request, nicht in Dokumenten.** Anforderungs- und Release-Dokumente nennen den Pull Request (`#<Nummer>`), aber kein Ergebnis eines CI-Laufs — ein Eintrag danach bräuchte einen neuen Commit und damit einen neuen Lauf.
 -   **Grün heißt grün in der CI.** Ein lokales Grün reicht nicht für Abnahme oder Tag; maßgeblich ist der CI-Lauf auf dem gepushten Branch.
 -   **Nach jedem vom Nutzer zusammengeführten Pull Request** wechselt der Agent auf `main` und holt den aktuellen Stand: `git switch main`, dann `git pull --ff-only`. Auf `main` wird lokal nie committet — so bleibt der lokale `main` immer gleich dem beim Hoster.
--   Verlauf nicht umschreiben (kein Rebase, kein Reset, kein Amend).
--   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>` (fragt nach). **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git tag`, Push von `main` oder Tags, `--force`, `git rebase`, `git reset`, `git stash`, `git cherry-pick`, `git commit --amend`, `git commit --no-verify`, `git -c …`.
+-   **Gepushte Commits nie umschreiben.** Vor dem Push darf der Agent lokal aufräumen (`git commit --amend`, `git rebase`, `git reset` ohne `--hard`, `git stash`); danach nicht mehr.
+-   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>`. **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git reset --hard`, Push von Tags, `--force`, `--delete`, `git commit --no-verify`, `git -c …`, `git config` (schreiben). **Tags** legt der Agent nie an — `git tag` nur zum Auflisten (z. B. letzter Tag für die Version). Nach `main` wird nie direkt gepusht — dorthin nur per Pull Request (der Hoster lehnt den direkten Push ab).
 
 ## UI-Richtlinie
 
