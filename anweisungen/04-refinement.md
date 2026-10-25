@@ -18,7 +18,7 @@ Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderun
 4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar. Standardmäßig enthalten:
     -   Test für das abzusichernde Verhalten geschrieben — ohne die Änderung rot
     -   Nach der Umsetzung laufen alle Tests grün
-    -   UI-Richtlinie eingehalten (nur Tokens und Komponenten des Design-Systems, keine festen Werte, keine Inline-Styles) — Prüflauf grün
+    -   UI-Richtlinie eingehalten — Prüflauf grün
     -   Bei Design: Entwurf umgesetzt, Werte und Logik aus der abgelegten Quelle übernommen
     -   `README.md` ergänzt — nur wenn sich Setup, Konfiguration oder Bedienung ändern
 5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät).

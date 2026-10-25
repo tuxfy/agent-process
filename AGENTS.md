@@ -99,5 +99,5 @@ Damit die App einheitlich aussieht, gilt bei **jeder** UI-Arbeit — mit oder oh
 -   **Keine festen Werte** für Farben, Maße, Abstände, Radien oder Schriftgrößen im App-Code — nur Tokens.
 -   **Keine Inline-Styles** — Gestaltung steht nur in Stylesheets, damit sie prüfbar bleibt.
 -   **Prüflauf:** Die Prüf-Konfiguration liegt im Projekt als `.stylelintrc.json` (von Init angelegt, Erklärung in `_agent-process/init/pruefung/README.md`) und läuft mit den Tests (im Container und in der CI). **Ausnahme** nur mit Markierung an der Stelle (mit Grund) und Eintrag in `_context/design.md`.
--   **Fehlt etwas im Design-System:** in `_context/design.md` benennen, im Projekt vorerst lokal umsetzen (mit Tokens), als Idee für das Design-System vermerken.
+-   **Fehlt etwas im Design-System** (Komponente, Wert, Muster): in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" eintragen, vorerst lokal mit Tokens umsetzen, als Idee für das Design-System vermerken.
 -   **Das Design-System wird im Projekt nie bearbeitet.**

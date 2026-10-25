@@ -51,7 +51,7 @@ Was der Nutzer sieht und tut.
 | ... | Unit / E2E / manuell |
 | Test für das abzusichernde Verhalten geschrieben — ohne die Änderung rot | Testlauf |
 | Nach der Umsetzung laufen alle Tests grün | Testlauf |
-| UI-Richtlinie eingehalten (nur Tokens und Komponenten des Design-Systems) | Review / Test |
+| UI-Richtlinie eingehalten | Prüflauf / Review |
 | *(bei Design)* Entwurf umgesetzt, Werte und Logik aus der Quelle übernommen | manuell |
 
 # Abgrenzung

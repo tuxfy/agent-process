@@ -15,12 +15,8 @@ Nur bei Bedarf — für neue oder deutlich veränderte Screens (z. B. ein neues 
 -   **Faustregel — was gehört wohin:** Würde ein zweites Projekt es auch brauchen? Ja → Design-System (Tokens, Komponenten, allgemeine Muster, Vorlagen-Seiten). Nein → Projekt (konkrete Screens, Texte, Zuordnungen).
 -   **In sich geschlossene Module** (z. B. ein Intervall-Timer) kommen **als Ganzes** ins Design-System — als Vorlage mit allen Zuständen, nicht nur in Einzelteilen; die Bausteine bleiben darunter erhalten.
 -   **Aussehen ja, Logik nein:** Das Design-System zeigt, wie etwas aussieht, welche Zustände es gibt und wie sie wechseln (als Beschreibung). Logik (Berechnung, Abläufe, Speichern, Geräte-Funktionen) gehört in die App — oder, wenn mehrere Apps sie teilen, in ein eigenes Modul-Repo.
--   **Das Design-System wird benutzt, nie bearbeitet.** Es ist zentral und liegt außerhalb des Projekts.
 -   **App-Spezifisches bleibt im Projekt:** Entwürfe, Texte und Zuordnungen (z. B. welcher Ton was bedeutet) stehen in `_context/design.md`, nicht im Design-System.
--   **Fehlt etwas im Design-System** (Komponente, Wert, Muster):
-    1.  in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" benennen,
-    2.  im Projekt vorerst lokal umsetzen — mit den Tokens des Design-Systems, so nah wie möglich an dessen Regeln,
-    3.  als Idee für das Design-System vermerken, damit es später von dort verwendet und die lokale Lösung ersetzt wird.
+-   **Tokens, Komponenten, Lücken:** nach der UI-Richtlinie in `_agent-process/AGENTS.md`.
 
 ## 3a: Ausgangslage
 
@@ -46,12 +42,12 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 -   **Der Nutzer stellt Entwurf und Brief bereit** — den Brief als Text, den Entwurf als Datei bzw. Ordner (z. B. HTML mit Laufzeit, Bilder, Screenshots) unter `_requirements/mockups/<kurzer-name>/` — oder er gibt sie dem Agenten, der sie unverändert dort ablegt. Den Brief übernimmt der Agent unverändert in `# Design-Brief`.
 -   **Der Agent prüft Entwurf und Brief gegen die Anforderung** (Ausgangslage, Klärung) und meldet dem Nutzer — ohne beides zu ändern:
     -   Abweichungen von den festen Grenzen (Felder, Wertebereiche, Zustände, Texte) und vom Rahmen (Gerät, hell/dunkel);
-    -   **Lücken:** was der Entwurf nutzt, das das Design-System nicht hat (siehe Grundsätze);
+    -   **Lücken:** was der Entwurf nutzt, das das Design-System nicht hat (siehe UI-Richtlinie);
     -   offene Fragen, die sich aus dem Entwurf ergeben.
     -   Ändern muss der Nutzer extern; danach stellt er den neuen Stand bereit.
 -   **Die Ablage muss für sich allein laufen:** jede lokal verwiesene Datei (`src`, `href`, Skripte, Bilder) liegt mit im Ordner oder verweist relativ auf die Kopie des Design-Systems im Projekt. Fehlt etwas, meldet der Agent es dem Nutzer.
 -   **Vertraulichkeit:** keine Links zu Projekt, System oder Dritten; eingebettete Metadaten in Bildern entfernen. Technische Adressen von Bibliotheken in der Laufzeit des Entwurfs (z. B. aus einem CDN mit fester Version) sind in Ordnung.
--   Der **Nutzer gibt den Entwurf frei.** Offene Lücken stehen dann in `_context/design.md` unter „Lokal umgesetzt — gehört ins Design-System" und sind als Idee für das Design-System vermerkt.
+-   Der **Nutzer gibt den Entwurf frei.** Offene Lücken sind dann nach der UI-Richtlinie eingetragen.
 -   Im Anforderungsdokument unter dem Brief: `Entwurf: _requirements/mockups/<kurzer-name>/`.
 -   **Erst nach der Freigabe committet der Agent im Projekt** — einmal: Entwurf, Brief und eingetragene Lücken (siehe `_agent-process/AGENTS.md`, Abschnitt „Commits").
 -   Widersprechen sich Entwurf und Brief: der Nutzer entscheidet, was gilt, und korrigiert extern.
@@ -59,4 +55,3 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 ## Hinweis für die Umsetzung
 
 -   Der freigegebene Entwurf ist maßgeblich. **Ausführbare Entwürfe** (z. B. HTML): Werte, Texte und Formeln werden aus der Quelle **übernommen, nicht nachempfunden**. **Bilder:** sie zeigen Aufbau und Zustände; Werte kommen aus den Tokens des Design-Systems.
--   Umgesetzt wird immer mit den Tokens und Komponenten des Design-Systems.

@@ -71,16 +71,15 @@ Abschluss: Der **Nutzer gibt den Plan frei** — und bestätigt damit auch das R
 
 -   Nach dem freigegebenen **Plan**, den **Entscheidungen** der Anforderung und der **UI-Richtlinie** (`_agent-process/AGENTS.md`).
 -   **Abweichung vom Plan:** Plan aktualisieren und dem Nutzer sagen; ist es eine Grundsatzfrage, zurück ins Refinement.
--   **Bei Design:** Werte, Texte und Logik aus der abgelegten Quelle übernehmen, nicht nachempfinden — umgesetzt mit Tokens und Komponenten des Design-Systems.
+-   **Bei Design:** Werte, Texte und Logik aus der abgelegten Quelle übernehmen, nicht nachempfinden.
 -   **Neue Grundsatzfrage** (Architektur, Verhalten, Umfang) → nicht selbst entscheiden: zurück ins Refinement, Nutzer fragen, Entscheidung festhalten.
--   Fehlt etwas im Design-System: wie in `_agent-process/anweisungen/03-design.md` (benennen, lokal umsetzen, als Idee vermerken).
 
 ## 5e: Grün
 
 -   Alle Tests grün — vom Agenten ausgeführt. Ergebnis unter `# Testnachweis → Grün`.
 -   **Sauberer Lauf** (Befehl in `_context/projekt.md`) grün — Ergebnis im Testnachweis.
 -   Jedes Akzeptanzkriterium prüfen und abhaken; was nur manuell prüfbar ist, für die Abnahme (Stufe 7) markieren.
--   **Prüflauf der UI-Richtlinie** ausführen (Befehl in `_context/projekt.md`) — Ergebnis unter `# Testnachweis → UI-Richtlinie`. Ausnahmen sind markiert und in `_context/design.md` eingetragen.
+-   **Prüflauf der UI-Richtlinie** ausführen (Befehl in `_context/projekt.md`) — Ergebnis unter `# Testnachweis → UI-Richtlinie`.
 -   **Kann der Prüflauf nicht laufen** (z. B. ohne Container und ohne CI): Der Agent sucht selbst nach festen Werten und Inline-Styles im geänderten Code und vermerkt im Testnachweis, dass der Prüflauf nicht lief.
 -   Status `qa`; weiter mit `_agent-process/anweisungen/06-qa.md`.
 
