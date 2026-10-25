@@ -4,56 +4,55 @@ Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und 
 
 ## Ordner
 
-| Ordner im Projekt | Inhalt | Gehört |
-|---|---|---|
-| `_agent-process/` | dieses Prozess-Repo: Prozessregeln, `anweisungen/` (eine Datei je Stufe, dazu `vorlagen/` und `rollen/`), Vorlagen für Init | Prozess-Repo — im Projekt nie ändern |
-| `.claude/agents` | Link auf `_agent-process/.claude/agents/`: Prüfer-Rollen als Unteragenten für Claude Code | Prozess-Repo — im Projekt nie ändern |
-| `_context/` | **Was** man über das Projekt wissen muss (Stack, Befehle, …) | Projekt |
-| `_requirements/backlog/` | Ideen und Anforderungen in Klärung/Refinement, ohne Nummer | Projekt |
-| `_requirements/` | `refined` (ohne Nummer) und ab Umsetzung bis zum Release (mit Nummer) | Projekt |
-| `_requirements/done/` | abgenommene Anforderungen (ab Stufe 7c, eingefroren) | Projekt |
-| `_releases/` | ein Dokument je Release: Inhalt, Gesamtprüfung, Zurückrollen | Projekt |
-| `_design-system/` *(optional)* | Submodul des Design-Systems, nur lesen | Design-System — im Projekt nie ändern |
+Im Projekt **nie ändern:** `_agent-process/` (dieses Prozess-Repo), `.claude/agents` (Link auf dessen Prüfer-Rollen), `_design-system/` (optional, nur lesen).
 
-**Grundsatz:** Das Projekt läuft ohne `_agent-process/`. Bauen, Prüfen und Ausliefern (lokal und in der CI) nutzen nur, was im Projekt liegt — nie Dateien aus `_agent-process/`.
+| Ordner | Inhalt |
+|---|---|
+| `_context/` | was man über das Projekt wissen muss (Stack, Befehle, …) |
+| `_requirements/backlog/` | Ideen und Anforderungen bis zum Refinement, ohne Nummer |
+| `_requirements/` | ab `refined`; Nummer ab dem „Go“ |
+| `_requirements/done/` | abgenommen (ab 7c), eingefroren |
+| `_releases/` | ein Dokument je Release |
+
+**Grundsatz:** Bauen, Prüfen und Ausliefern (lokal und in der CI) nutzen nie Dateien aus `_agent-process/`.
 
 ## Ablauf
 
-| Stufe | Status | Anweisung |
+Je Stufe eine Anweisung in `_agent-process/anweisungen/`:
+
+| Stufe | Status | Datei |
 |---|---|---|
-| 0. Projekt einrichten *(einmal, bei Bedarf erneut)* | — | `_agent-process/anweisungen/00-einrichtung.md` |
-| 1. Idee oder Bug | `idea` / `bug` | `_agent-process/anweisungen/01-idee.md` |
-| 2. Klärung | `new` | `_agent-process/anweisungen/02-klaerung.md` |
-| 3. Design *(nur bei Bedarf)* | `new` | `_agent-process/anweisungen/03-design.md` |
-| 4. Refinement | `new` → `refined` *(mit der Freigabe des Plans bestätigt)* | `_agent-process/anweisungen/04-refinement.md` |
-| 5. Umsetzung | `in progress` | `_agent-process/anweisungen/05-umsetzung.md` |
-| 6. QA | `qa` | `_agent-process/anweisungen/06-qa.md` |
-| 7. Abnahme | `review` → `accepted` | `_agent-process/anweisungen/07-abnahme.md` |
-| 8. Release *(mehrere Anforderungen)* | — *(live ist, was in einem Release mit Tag steht)* | `_agent-process/anweisungen/08-release.md` |
+| 0. Projekt einrichten *(einmal)* | — | `00-einrichtung.md` |
+| 1. Idee oder Bug | `idea` / `bug` | `01-idee.md` |
+| 2. Klärung | `new` | `02-klaerung.md` |
+| 3. Design *(bei Bedarf)* | `new` | `03-design.md` |
+| 4. Refinement | `refined` | `04-refinement.md` |
+| 5. Umsetzung | `in progress` → `qa` | `05-umsetzung.md` |
+| 6. QA | `qa` → `review` | `06-qa.md` |
+| 7. Abnahme | `accepted` | `07-abnahme.md` |
+| 8. Release | — *(live ist, was einen Tag hat)* | `08-release.md` |
 
 Branches — `main` nur per Pull Request (beim Hoster erzwungen):
 
 | Branch | Zweck | Weg nach `main` |
 |---|---|---|
-| `backlog` | neue Ideen und Bugs (Stufe 1) | Pull Request, Nutzer führt zusammen |
-| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung ab ihrer Aufnahme (Stufe 2) bis zur Abnahme: Dokument, Plan, Code, QA | Pull Request nach `next` (Stufe 6/7) |
-| `next` | dauerhafter Sammel-Branch: abgenommene Anforderungen bis zum nächsten Release, dazu das Release-Dokument | Pull Request nach `main` (Stufe 8), danach Tag `v<version>` |
+| `backlog` | Ideen und Bugs (Stufe 1) | Pull Request |
+| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung von Stufe 2 bis zur Abnahme | Pull Request nach `next` (6d) |
+| `next` | Sammel-Branch bis zum nächsten Release, mit Release-Dokument | Pull Request nach `main` (8b), dann Tag |
 
-**Zusammenführen nach `next` heißt: kommt ins nächste Release.** Soll eine abgenommene Anforderung noch warten, bleibt ihr Pull Request offen.
-
-Ist im Projekt „Zusammenführen = Ausliefern" festgelegt, entfällt `next` (siehe `08-release.md`, Abkürzung).
+**Zusammenführen nach `next` heißt: kommt ins nächste Release.** Ohne `next`: siehe Abkürzung in `08-release.md`.
 
 ## Regeln
 
 -   **Vor der Arbeit an einer Stufe** die zugehörige Anweisungsdatei lesen.
 -   **Vor jeder Arbeit am Projekt** `_context/projekt.md` lesen, bei Design-Arbeit zusätzlich `_context/design.md`. Ist `_context/projekt.md` noch nicht ausgefüllt: zuerst Stufe 0.
 -   Eine Stufe wird erst begonnen, wenn die vorherige abgeschlossen ist.
--   **Angehalten wird nur an den Freigaben** des Nutzers — Klärung (2), Entwurf (3b/3c), Plan (5a), Go (5b), Abnahme (7a/7c), „release" (8a), Zusammenführen (7c, 8c) — und wenn der Agent eine Entscheidung braucht. **Sonst geht er ohne Rückfrage zum nächsten Schritt weiter**, z. B. vom Refinement zum Plan, vom Go zum ersten Test, von 5e in die QA, nach grüner CI zum Abnahmepaket, von 8a zu 8b.
+-   **Angehalten wird nur an den Freigaben** des Nutzers — Klärung (2), Entwurf (3b/3c), Plan (5a), Go (5b), Abnahme (7a/7c), „release" (8a), Zusammenführen (7c, 8c) — und wenn der Agent eine Entscheidung braucht. **Sonst geht er ohne Rückfrage weiter.**
 -   **Meldet der Nutzer einen Fehler oder Wunsch: zuerst als Bug bzw. Idee festhalten** (`_agent-process/anweisungen/01-idee.md`) — nicht sofort beheben. Code entsteht nur für eine Anforderung nach ihrem „Go" (Stufe 5).
 -   **Abgenommene Anforderungsdokumente** (`accepted`, in `_requirements/done/`) und **Release-Dokumente nach dem Release** werden nicht mehr geändert; Nachträge gehören in eine neue Anforderung bzw. ins nächste Release.
 -   **Verweise in Dokumenten:** zwischen Dokumenten als relative Markdown-Links; Pull Requests nur als `#<Nummer>`, CI-Läufe nur als Ergebnis mit Datum. Keine Adressen beim Hoster — weder Repo, Pull Requests, CI-Läufe noch die ausgelieferte App; lokale Adressen (z. B. `localhost`) und Platzhalter sind in Ordnung.
 -   **Tests werden nie abgeschwächt,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert). Passt ein Test nicht mehr zur Umgebung: die Umgebung des Tests anpassen, nicht die Prüfung.
--   **Am Ende jeder Stufe** sagt der Agent dem Nutzer kurz (Zusammenfassung im Gespräch, nicht im Dokument) — und macht weiter, wenn keine Freigabe ansteht: was erledigt ist, was als Nächstes kommt (Stufe bzw. Schritt und Anweisungsdatei) und was der Nutzer dafür tun oder entscheiden muss (z. B. Status setzen, freigeben, committen).
+-   **Am Ende jeder Stufe** sagt der Agent kurz im Gespräch: was erledigt ist, was als Nächstes kommt, was der Nutzer tun oder entscheiden muss.
 -   **Abhängigkeiten und Werkzeuge** (Pakete, Browser für Tests u. ä.) installiert der Agent **selbst in seiner Umgebung** (z. B. im Container), nach Rückfrage — nie auf dem Rechner des Nutzers und nie als Aufgabe an den Nutzer.
     -   Neue Pakete nur, wenn sie im freigegebenen Umsetzungsplan stehen.
     -   Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
