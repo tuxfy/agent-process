@@ -80,6 +80,9 @@ while IFS= read -r zeile; do
   fi
 done < "$SRC/gitignore"
 
+# Regeln beim Hoster (Schutz von main, next, Tags), soweit sie fehlen
+sh "$SRC/hoster-schutz.sh" || hinweis "Regeln beim Hoster: Skript fehlgeschlagen (Checkliste Stufe 0)"
+
 echo
 echo "Fertig: $angelegt angelegt, $hinweise Hinweis(e). Nichts wurde überschrieben."
 [ "$angelegt" -gt 0 ] && echo "Änderungen prüfen und committen."

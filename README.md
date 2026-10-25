@@ -11,6 +11,7 @@ Prozess für die Arbeit mit KI-Agenten von der Idee bis zum Release. Wird in jed
 | `.claude/agents/` | Prüfer-Rollen als Unteragenten für Claude Code; verweisen auf `anweisungen/rollen/` |
 | `init/` | Vorlagen, die Init ins Projekt schreibt |
 | `init.sh` | legt im Projekt an, was fehlt; überschreibt nie |
+| `test/` | Tests fürs Prozess-Repo selbst, z. B. `hoster-schutz-test.sh` (Regeln beim Hoster an einem Wegwerf-Repo); im Projekt nie genutzt |
 
 **Grundsatz:** Das Projekt läuft ohne dieses Repo. Init kopiert alles, was Bauen, Prüfen und Ausliefern brauchen, ins Projekt; CI und Build lesen nie aus `_agent-process/`.
 
@@ -33,7 +34,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 
 | Schritt | Wer | Was passiert | Markierung | Branch |
 |---|---|---|---|---|
-| **0 Einrichten** *(einmal je Projekt)* | Agent schlägt vor | Stack, Prüfungen, Auslieferung, Abnahme in `_context/`; erste Anforderung `grundgeruest` · **ZF:** Checkliste der Einstellungen beim Hoster, ggf. Befehle für das Design-System-Submodul | **GO**, **DU** | — |
+| **0 Einrichten** *(einmal je Projekt)* | Agent schlägt vor | Stack, Prüfungen, Auslieferung, Abnahme in `_context/`; erste Anforderung `grundgeruest` · **ZF:** Einstellungen beim Hoster, soweit Init sie nicht gesetzt hat, ggf. Befehle für das Design-System-Submodul | **GO**, **DU** | — |
 | | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
 | **1 Idee oder Bug** | Agent | Eintrag im Backlog | **C+P**, **PR** nach `main` | `backlog` |
 | | CI | Backlog-PR bei grüner Prüfung zusammenführen | **CI** | — |
@@ -88,8 +89,9 @@ Im neuen Projekt-Hauptordner:
 1.  `git init -b main`
 2.  `git submodule add <prozess-repo> _agent-process`
 3.  `sh _agent-process/init.sh` — gibt aus, was angelegt wurde und was nur gemeldet wird
-4.  Ausgabe prüfen, erster Commit auf `main` (bevor `main` beim Hoster geschützt wird)
-5.  Claude starten (erst nach Init, sonst fehlen die Unteragenten) und mit Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
+4.  Ausgabe prüfen, erster Commit auf `main`, pushen
+5.  `sh _agent-process/init.sh` erneut — setzt jetzt die Regeln beim Hoster (siehe „Was Init anlegt")
+6.  Claude starten (erst nach Init, sonst fehlen die Unteragenten) und mit Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
 
 Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht laden.
 
@@ -140,6 +142,7 @@ git push -u origin feature/prozess-aktualisieren
 | — | `_requirements/backlog/`, `_requirements/done/`, `_releases/` | nichts tun |
 | `init/pruefung/stylelint.json` | `.stylelintrc.json` | unverändert; weicht die Vorlage ab: melden |
 | `init/gitignore` | `.gitignore` | fehlende Zeilen ergänzen |
+| `init/hoster-schutz.sh` | Regeln beim Hoster: Schutz von `main` (nur PR, nur Merge-Commit), `next`, Tags `v*`; Branches nach dem Zusammenführen löschen. GitHub mit angemeldetem `gh` bzw. GitLab mit `glab`, erst nach dem ersten Push; bei GitHub macht `CI_PRUEFUNG=<Job>` die CI-Prüfung zur Pflicht, bei GitLab gilt „nur bei erfolgreicher Pipeline“ | vorhandene Regel unverändert — außer einem Schutz von `main`, der Push erlaubt: wird verschärft; ohne `gh`/`glab` oder vor dem ersten Push: melden |
 
 ## Änderungen am Prozess
 
