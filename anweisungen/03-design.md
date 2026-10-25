@@ -28,6 +28,7 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 4.  **Feste Grenzen** — Daten bzw. Felder, Wertebereiche, Zustände, vorgegebene Texte.
 5.  **Rahmen** — Gerät, Bildschirmgröße, hell/dunkel, Bedienung (aus `_context/projekt.md`).
 6.  **Design-System** — welches; nur dessen Tokens und Komponenten nutzen, Fehlendes als Lücke benennen.
+7.  **Gliederung des Design-Briefs** — die Überschriften aus `# Design-Brief` der Vorlage, leer und ohne die Zeile „Entwurf", damit der Brief extern passend entsteht.
 
 **Nicht hinein:** Aufbau von Screens, Anordnung, Wahl von Komponenten, Abläufe der Bedienung, Gestaltungsideen — das entsteht im Entwurf. Fehlt eine Angabe, fragt der Agent den Nutzer, statt sie zu erfinden.
 
@@ -35,11 +36,11 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 
 -   Nach der Ausgangslage **wartet** der Agent, bis der Nutzer Entwurf und Brief bereitstellt. Er fragt nicht nach und beginnt nichts anderes an dieser Anforderung.
 -   **Extern wird nicht committet** — auch nicht, wenn das externe Werkzeug Zugriff auf den Projektordner hat. Es legt Entwurf und Brief höchstens als Dateien unter `_requirements/mockups/<kurzer-name>/` ab; kein git, keine Zwischenstände im Verlauf.
--   Der Nutzer entwirft extern mit der Ausgangslage und überarbeitet dort, bis er zufrieden ist. **Am Ende entsteht dort auch der Design-Brief:** was der Entwurf festlegt (Aufbau, Zustände, Abläufe, Texte, genutzte Komponenten, Lücken) — gegliedert wie der Abschnitt `# Design-Brief` der Vorlage.
+-   Der Nutzer entwirft extern mit der Ausgangslage und überarbeitet dort, bis er zufrieden ist. **Am Ende entsteht dort auch der Design-Brief** — was der Entwurf festlegt, gegliedert wie am Ende der Ausgangslage angegeben.
 
 ## 3c: Übergabe und Freigabe
 
--   **Der Nutzer stellt Entwurf und Brief bereit** — den Brief als Text, den Entwurf als Datei bzw. Ordner (z. B. HTML mit Laufzeit, Bilder, Screenshots) unter `_requirements/mockups/<kurzer-name>/` — oder er gibt sie dem Agenten, der sie unverändert dort ablegt. Den Brief übernimmt der Agent unverändert in `# Design-Brief`.
+-   **Der Nutzer stellt Entwurf und Brief bereit** — den Brief als Text, den Entwurf als Datei bzw. Ordner (z. B. HTML mit Laufzeit, Bilder, Screenshots) unter `_requirements/mockups/<kurzer-name>/` — oder er gibt sie dem Agenten, der sie unverändert dort ablegt. Den Brief übernimmt der Agent unverändert in `# Design-Brief`; die Zeile `Entwurf: _requirements/mockups/<kurzer-name>/` setzt er selbst.
 -   **Der Agent prüft Entwurf und Brief gegen die Anforderung** (Ausgangslage, Klärung) und meldet dem Nutzer — ohne beides zu ändern:
     -   Abweichungen von den festen Grenzen (Felder, Wertebereiche, Zustände, Texte) und vom Rahmen (Gerät, hell/dunkel);
     -   **Lücken:** was der Entwurf nutzt, das das Design-System nicht hat (siehe UI-Richtlinie);
@@ -48,7 +49,6 @@ Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus 
 -   **Die Ablage muss für sich allein laufen:** jede lokal verwiesene Datei (`src`, `href`, Skripte, Bilder) liegt mit im Ordner oder verweist relativ auf die Kopie des Design-Systems im Projekt. Fehlt etwas, meldet der Agent es dem Nutzer.
 -   **Vertraulichkeit:** keine Links zu Projekt, System oder Dritten; eingebettete Metadaten in Bildern entfernen. Technische Adressen von Bibliotheken in der Laufzeit des Entwurfs (z. B. aus einem CDN mit fester Version) sind in Ordnung.
 -   Der **Nutzer gibt den Entwurf frei.** Offene Lücken sind dann nach der UI-Richtlinie eingetragen.
--   Im Anforderungsdokument unter dem Brief: `Entwurf: _requirements/mockups/<kurzer-name>/`.
 -   **Erst nach der Freigabe committet der Agent im Projekt** — einmal: Entwurf, Brief und eingetragene Lücken (siehe `_agent-process/AGENTS.md`, Abschnitt „Commits").
 -   Widersprechen sich Entwurf und Brief: der Nutzer entscheidet, was gilt, und korrigiert extern.
 

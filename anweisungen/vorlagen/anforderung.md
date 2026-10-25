@@ -53,6 +53,7 @@ Was der Nutzer sieht und tut.
 | Nach der Umsetzung laufen alle Tests grün | Testlauf |
 | UI-Richtlinie eingehalten | Prüflauf / Review |
 | *(bei Design)* Entwurf umgesetzt, Werte und Logik aus der Quelle übernommen | manuell |
+| *(nur wenn sich Setup, Konfiguration oder Bedienung ändern)* `README.md` ergänzt | Review |
 
 # Abgrenzung
 

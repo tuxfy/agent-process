@@ -14,15 +14,7 @@ Danach: Stufe 6 (QA), Stufe 7 (Abnahme), Stufe 8 (Release).
 
 ## 5a: Plan
 
-Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht:
-
-1.  **Schritte** in Reihenfolge, jeder klein genug für einen Testlauf.
-2.  **Betroffene Dateien** — bestehende und neue.
-3.  **Testfälle** — je Akzeptanzkriterium der konkrete Test (Name, erwartetes Ergebnis).
-4.  **Bei Design:** welches Entwurfselement zu welcher Komponente bzw. Code-Stelle wird.
-5.  **Externe Abhängigkeiten** (Schnittstellen, Dienste, Bibliotheken, Hosting) — je Abhängigkeit, wo das **How-to** festgehalten ist (siehe unten).
-6.  **Annahmen und Risiken.**
-7.  **Was nicht angefasst wird** — aus Spielraum und Abgrenzung.
+Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments (Gliederung dort) — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht. Dabei: Schritte in Reihenfolge, jeder klein genug für einen Testlauf; betroffene Dateien, bestehende und neue; Testfälle je Akzeptanzkriterium mit Name und erwartetem Ergebnis; bei Design, welches Entwurfselement zu welcher Komponente bzw. Code-Stelle wird; je externer Abhängigkeit (Schnittstellen, Dienste, Bibliotheken, Hosting), wo das **How-to** steht (siehe unten); „Nicht angefasst" aus Spielraum und Abgrenzung.
 
 **Externe Abhängigkeiten — How-to vorher klären.** Bevor Code gegen eine externe Abhängigkeit geschrieben wird, ist geklärt und festgehalten (in `_context/` bzw. der Anforderung):
 

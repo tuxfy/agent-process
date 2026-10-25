@@ -15,12 +15,7 @@ Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderun
 
     Der Agent schlägt vor, **der Nutzer entscheidet**. Ergebnis in „Entscheidungen".
 3.  **Verhalten beschreiben** — was der Nutzer sieht und tut, aus seiner Sicht. Bei Design aus dem Entwurf.
-4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar. Standardmäßig enthalten:
-    -   Test für das abzusichernde Verhalten geschrieben — ohne die Änderung rot
-    -   Nach der Umsetzung laufen alle Tests grün
-    -   UI-Richtlinie eingehalten — Prüflauf grün
-    -   Bei Design: Entwurf umgesetzt, Werte und Logik aus der abgelegten Quelle übernommen
-    -   `README.md` ergänzt — nur wenn sich Setup, Konfiguration oder Bedienung ändern
+4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar. Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen; fehlt eine, aus der Vorlage ergänzen; trifft eine nicht zu, mit „entfällt" und Grund markieren.
 5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät).
 6.  **Abgrenzung** — was ausdrücklich **nicht** dazugehört (ggf. mit Verweis auf eigene Ideen im Backlog).
 7.  **Technische Notizen** — erlaubt, aber nicht bindend (z. B. betroffene Dateien, Hinweise für die Umsetzung).
