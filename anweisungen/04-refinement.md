@@ -1,6 +1,6 @@
 # Stufe 4: Refinement
 
-Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderung**. Am Ende setzt der **Nutzer** den Status auf `refined`.
+Aus der geklärten (und ggf. entworfenen) Idee wird eine **umsetzbare Anforderung**. Am Ende setzt der Agent `refined`; der Nutzer bestätigt es mit der Freigabe des Plans (5a).
 
 ## Was der Agent macht
 

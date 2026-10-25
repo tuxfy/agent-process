@@ -1,6 +1,7 @@
 #!/bin/sh
-# Legt im Projekt an, was aus dem Prozess-Repo fehlt. Überschreibt nie.
-# Aufruf im Projekt-Hauptordner: sh _agent-process/init.sh
+# Legt im Projekt an, was aus dem Prozess-Repo fehlt. Überschreibt nie Dateien.
+# Aufruf im Projekt-Hauptordner: sh _agent-process/init.sh [--hoster]
+# --hoster: setzt zusätzlich die Regeln beim Hoster (init/hoster-schutz.sh, mit deinen Rechten).
 
 set -eu
 
@@ -80,8 +81,12 @@ while IFS= read -r zeile; do
   fi
 done < "$SRC/gitignore"
 
-# Regeln beim Hoster (Schutz von main, next, Tags), soweit sie fehlen
-sh "$SRC/hoster-schutz.sh" || hinweis "Regeln beim Hoster: Skript fehlgeschlagen (Checkliste Stufe 0)"
+# Regeln beim Hoster (Schutz von main, next, Tags) nur auf ausdrücklichen Aufruf
+if [ "${1:-}" = --hoster ]; then
+  sh "$SRC/hoster-schutz.sh" || hinweis "Regeln beim Hoster: Skript fehlgeschlagen (Checkliste Stufe 0)"
+else
+  echo "Regeln beim Hoster: nicht geprüft (bei Bedarf: sh $P/init.sh --hoster)"
+fi
 
 echo
 echo "Fertig: $angelegt angelegt, $hinweise Hinweis(e). Nichts wurde überschrieben."

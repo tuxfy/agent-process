@@ -10,7 +10,7 @@ Prozess für die Arbeit mit KI-Agenten von der Idee bis zum Release. Wird in jed
 | `anweisungen/` | eine Datei je Stufe (0–8), `rollen/` (Prüfer), `vorlagen/` (Idee, Bug, Anforderung, Release) |
 | `.claude/agents/` | Prüfer-Rollen als Unteragenten für Claude Code; verweisen auf `anweisungen/rollen/` |
 | `init/` | Vorlagen, die Init ins Projekt schreibt |
-| `init.sh` | legt im Projekt an, was fehlt; überschreibt nie |
+| `init.sh` | legt im Projekt an, was fehlt; überschreibt nie Dateien; mit `--hoster` setzt es die Regeln beim Hoster |
 | `test/` | Tests fürs Prozess-Repo selbst, z. B. `hoster-schutz-test.sh` (Regeln beim Hoster an einem Wegwerf-Repo); im Projekt nie genutzt |
 
 **Grundsatz:** Das Projekt läuft ohne dieses Repo. Init kopiert alles, was Bauen, Prüfen und Ausliefern brauchen, ins Projekt; CI und Build lesen nie aus `_agent-process/`.
@@ -90,7 +90,7 @@ Im neuen Projekt-Hauptordner:
 2.  `git submodule add <prozess-repo> _agent-process`
 3.  `sh _agent-process/init.sh` — gibt aus, was angelegt wurde und was nur gemeldet wird
 4.  Ausgabe prüfen, erster Commit auf `main`, pushen
-5.  `sh _agent-process/init.sh` erneut — setzt jetzt die Regeln beim Hoster (siehe „Was Init anlegt")
+5.  `sh _agent-process/init.sh --hoster` — setzt jetzt die Regeln beim Hoster (siehe „Was Init anlegt")
 6.  Claude starten (erst nach Init, sonst fehlen die Unteragenten) und mit Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
 
 Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht laden.
@@ -142,7 +142,7 @@ git push -u origin feature/prozess-aktualisieren
 | — | `_requirements/backlog/`, `_requirements/done/`, `_releases/` | nichts tun |
 | `init/pruefung/stylelint.json` | `.stylelintrc.json` | unverändert; weicht die Vorlage ab: melden |
 | `init/gitignore` | `.gitignore` | fehlende Zeilen ergänzen |
-| `init/hoster-schutz.sh` | Regeln beim Hoster: Schutz von `main` (nur PR, nur Merge-Commit), `next`, Tags `v*`; Branches nach dem Zusammenführen löschen. GitHub mit angemeldetem `gh` bzw. GitLab mit `glab`, erst nach dem ersten Push; bei GitHub macht `CI_PRUEFUNG=<Job>` die CI-Prüfung zur Pflicht, bei GitLab gilt „nur bei erfolgreicher Pipeline“ | vorhandene Regel unverändert — außer einem Schutz von `main`, der Push erlaubt: wird verschärft; ohne `gh`/`glab` oder vor dem ersten Push: melden |
+| `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster: Schutz von `main` (nur PR; nur Merge-Commit bei GitHub — bei GitLab bleibt Squash wählbar, Release-MR von Hand ohne Squash), `next`, Tags `v*`. GitHub mit angemeldetem `gh` bzw. GitLab mit `glab`, erst nach dem ersten Push; bei GitHub macht `CI_PRUEFUNG=<Job>` die CI-Prüfung zur Pflicht, bei GitLab gilt „nur bei erfolgreicher Pipeline“ | vorhandene Regel unverändert — außer einem Schutz von `main`, der Push erlaubt: wird verschärft; ohne `gh`/`glab` oder vor dem ersten Push: melden |
 
 ## Änderungen am Prozess
 

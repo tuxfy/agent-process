@@ -50,8 +50,8 @@ github() {
     hinweis "CI-Prüfung für main nicht als Pflicht gesetzt — in main-schutz ergänzen oder vorher mit CI_PRUEFUNG=<Job> aufrufen"
   fi
 
-  if gh api -X PATCH "repos/$R" -F delete_branch_on_merge=true -F allow_auto_merge=true >/dev/null 2>&1; then
-    echo "gesetzt:  Branches nach dem Zusammenführen löschen, automatisches Zusammenführen erlaubt"
+  if gh api -X PATCH "repos/$R" -F allow_auto_merge=true >/dev/null 2>&1; then
+    echo "gesetzt:  automatisches Zusammenführen erlaubt"
   else
     hinweis "Repo-Einstellungen nicht gesetzt — von Hand nach Checkliste Stufe 0"
   fi
@@ -100,9 +100,9 @@ gitlab() {
     hinweis "Schutz Tags v* nicht angelegt (Rechte?) — von Hand nach Checkliste Stufe 0"
   fi
 
-  if glab api -X PUT "projects/:id" -f merge_method=merge -F only_allow_merge_if_pipeline_succeeds=true \
-       -F remove_source_branch_after_merge=true >/dev/null 2>&1; then
-    echo "gesetzt:  nur Merge-Commits (Squash bleibt wählbar), Zusammenführen nur bei erfolgreicher Pipeline, Branch danach löschen"
+  if glab api -X PUT "projects/:id" -f merge_method=merge -F only_allow_merge_if_pipeline_succeeds=true >/dev/null 2>&1; then
+    echo "gesetzt:  Merge-Commits, Zusammenführen nur bei erfolgreicher Pipeline"
+    hinweis "Squash bleibt wählbar — Release-MR nach $haupt von Hand als Merge-Commit ohne Squash"
   else
     hinweis "Projekt-Einstellungen nicht gesetzt — von Hand nach Checkliste Stufe 0"
   fi
@@ -118,5 +118,5 @@ else
   hinweis "weder gh noch glab angemeldet oder kein Repo beim Hoster — Regeln nicht gesetzt; nach dem ersten Push Init erneut ausführen oder Checkliste Stufe 0"
   exit 0
 fi
-hinweis "Auslieferung für Tags v* beim Hoster bleibt Handgriff (Checkliste Stufe 0)"
+hinweis "Handgriffe laut Checkliste Stufe 0: Auslieferung für Tags v* freigeben; Branches nach dem Zusammenführen löschen erst, wenn next nachweislich geschützt ist"
 exit 0

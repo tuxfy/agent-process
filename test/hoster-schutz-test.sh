@@ -109,13 +109,10 @@ if [ "$HOSTER" = github ]; then
   gh pr create -R "$R" --base main --head feature/test --title "test: pr" --body "Test" >/dev/null 2>&1
   soll_scheitern "PR nach main per Squash" gh pr merge -R "$R" feature/test --squash
   soll_gehen "PR nach main als Merge-Commit" gh pr merge -R "$R" feature/test --merge
-  sleep 3
-  soll_scheitern "Branch nach dem Zusammenführen noch da" gh api "repos/$R/branches/feature/test"
 else
   P=$(glab api "projects/:id")
   [ "$(feld "$P" merge_method)" = merge ] && ok "nur Merge-Commits" || fehler "nur Merge-Commits"
   [ "$(feld "$P" only_allow_merge_if_pipeline_succeeds)" = true ] && ok "nur bei erfolgreicher Pipeline" || fehler "nur bei erfolgreicher Pipeline"
-  [ "$(feld "$P" remove_source_branch_after_merge)" = true ] && ok "Branch danach löschen" || fehler "Branch danach löschen"
   echo "   (Zusammenführen selbst nicht getestet: ohne CI blockiert die Pipeline-Pflicht)"
 fi
 
