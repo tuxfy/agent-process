@@ -25,7 +25,7 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
     -   **Tag automatisch:** Nach dem Zusammenführen des Release-Pull-Requests setzt die CI den Tag `v<version>` aus dem Release-Dokument; die Auslieferung startet mit dem Tag.
     -   **Nachprüfung automatisch:** Nach der Auslieferung prüft die CI die ausgelieferte App (startet sie, Hauptwege); Geräteprüfung bleibt beim Nutzer.
     -   **Backlog automatisch zusammenführen:** Pull Requests von `backlog`, die nur `_requirements/backlog/` ändern, führt die CI bei grüner Prüfung selbst zusammen.
-    -   **Einstellungen beim Hoster** — der Agent gibt dem Nutzer diese Liste zum Abhaken; im How-to festgehalten:
+    -   **Einstellungen beim Hoster** — setzt Init, soweit möglich (`init/hoster-schutz.sh`, meldet, was fehlt); sonst gibt der Agent dem Nutzer diese Liste zum Abhaken; im How-to festgehalten:
         -   [ ] `main`: Änderungen nur per Pull Request, Prüfung der CI muss grün sein, nur Merge-Commits, kein Force-Push, nicht löschbar
         -   [ ] `next`: nicht löschbar
         -   [ ] Tags `v*`: nicht änderbar und nicht löschbar

@@ -31,7 +31,7 @@ Prozess von der Idee bis zum Release — unabhängig von Sprache, Framework und 
 | 7. Abnahme | `review` → `accepted` | `_agent-process/anweisungen/07-abnahme.md` |
 | 8. Release *(mehrere Anforderungen)* | — *(live ist, was in einem Release mit Tag steht)* | `_agent-process/anweisungen/08-release.md` |
 
-Branches — `main` ist beim Hoster geschützt; dorthin gelangt alles nur per Pull Request:
+Branches — `main` nur per Pull Request (beim Hoster erzwungen):
 
 | Branch | Zweck | Weg nach `main` |
 |---|---|---|
@@ -83,13 +83,13 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 
 -   **Leitplanken** (in Stufe 0 festgelegt, im Grundgerüst eingerichtet): Vor jedem Commit laufen alle Prüfungen (ein Befehl) und die Prüfung des Commit-Formats. Der Agent umgeht sie nie (z. B. kein `--no-verify`).
 -   Ein Commit mit rotem Test gibt es nicht: In 5c wird der rote Test nachgewiesen, committet wird erst der grüne Schritt.
--   **Pushen:** Der Agent pusht nur die Branches aus der Tabelle oben (nie `main`, nie Tags) und eröffnet die Pull Requests — mit kurzer Beschreibung, was drin ist, und Verweis auf das Anforderungs- bzw. Release-Dokument.
--   **Zusammenführen: nur der Nutzer** — im Pull Request beim Hoster (erst bei grüner CI möglich). Ausnahme: Pull Requests von `backlog` führt die CI selbst zusammen, wenn das Projekt es eingerichtet hat (Stufe 0). **Tags** setzt die CI nach dem Release-Pull-Request, sonst der Nutzer (Stufe 8); der Agent nie.
+-   **Pushen:** Der Agent pusht nur die Branches aus der Tabelle oben und eröffnet die Pull Requests — mit kurzer Beschreibung und Verweis auf das Anforderungs- bzw. Release-Dokument.
+-   **Zusammenführen: nur der Nutzer** — im Pull Request beim Hoster. Ausnahme: Pull Requests von `backlog` führt die CI selbst zusammen, wenn das Projekt es eingerichtet hat (Stufe 0). **Tags** setzt die CI nach dem Release-Pull-Request, sonst der Nutzer (Stufe 8); der Agent nie.
 -   **CI-Ergebnisse stehen im Pull Request, nicht in Dokumenten.** Anforderungs- und Release-Dokumente nennen den Pull Request (`#<Nummer>`), aber kein Ergebnis eines CI-Laufs — ein Eintrag danach bräuchte einen neuen Commit und damit einen neuen Lauf.
 -   **Grün heißt grün in der CI.** Ein lokales Grün reicht nicht für Abnahme oder Tag; maßgeblich ist der CI-Lauf auf dem gepushten Branch.
 -   **Nach jedem vom Nutzer zusammengeführten Pull Request** wechselt der Agent auf `main` und holt den aktuellen Stand: `git switch main`, dann `git pull --ff-only`. Auf `main` wird lokal nie committet — so bleibt der lokale `main` immer gleich dem beim Hoster.
 -   **Gepushte Commits nie umschreiben.** Vor dem Push darf der Agent lokal aufräumen (`git commit --amend`, `git rebase`, `git reset` ohne `--hard`, `git stash`); danach nicht mehr.
--   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>`. **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git reset --hard`, Push von Tags, `--force`, `--delete`, `git commit --no-verify`, `git -c …`, `git config` (schreiben). **Tags** legt der Agent nie an — `git tag` nur zum Auflisten (z. B. letzter Tag für die Version). Nach `main` wird nie direkt gepusht — dorthin nur per Pull Request (der Hoster lehnt den direkten Push ab).
+-   **Git-Befehle:** Branch wechseln oder anlegen **nur mit `git switch`** (`git switch <branch>`, `git switch -c <branch>`); Datei auf den letzten Commit zurücksetzen mit `git restore <datei>`. **Nicht verwenden** — in der Umgebung des Agenten gesperrt, Versuche kosten nur Zeit: `git checkout`, `git merge`, `git reset --hard`, Push von Tags, `--force`, `--delete`, `git commit --no-verify`, `git -c …`, `git config` (schreiben). **Tags** legt der Agent nie an — `git tag` nur zum Auflisten (z. B. letzter Tag für die Version).
 
 ## UI-Richtlinie
 
