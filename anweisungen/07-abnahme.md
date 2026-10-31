@@ -23,8 +23,8 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 
 -   Der Nutzer gibt ausdrücklich frei.
 -   **Ein Commit, vor dem Zusammenführen:** Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde), Rückblick (7d), Dokument nach `_requirements/done/` verschoben. Der Agent committet und pusht; die CI im Pull Request läuft erneut.
--   **Erst bei grüner CI** meldet der Agent „bereit zum Zusammenführen“ — vorher nicht. Dazu sagt er: Zusammenführen nach `next` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
--   **Der Nutzer führt den Pull Request zusammen** (nach `next`). Der Agent wartet darauf und fragt nicht nach.
+-   **Erst bei grüner CI** meldet der Agent „bereit zum Zusammenführen“ — vorher nicht. Dazu sagt er: Zusammenführen nach `release-candidate` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
+-   **Der Nutzer führt den Pull Request zusammen** (nach `release-candidate`). Der Agent wartet darauf und fragt nicht nach.
 -   Ab dem Commit ist das Dokument eingefroren. Was danach noch auffällt, wird eine neue Idee bzw. ein Bug — kein zweiter Pull Request.
 -   Ein Release-Dokument gibt es noch nicht — es entsteht erst in Stufe 8.
 

@@ -90,12 +90,12 @@ git reset -q --hard origin/main
 git tag v0.0.1
 soll_gehen "Tag v0.0.1 anlegen" git push origin v0.0.1
 
-git switch -q -c next
-git commit -q --allow-empty -m "test: next"
-soll_gehen "Push nach next" git push -u origin next
-git commit -q --amend --allow-empty -m "test: next umgeschrieben"
-soll_scheitern "Force-Push nach next" git push --force origin next
-soll_scheitern "next löschen" git push origin --delete next
+git switch -q -c release-candidate
+git commit -q --allow-empty -m "test: release-candidate"
+soll_gehen "Push nach release-candidate" git push -u origin release-candidate
+git commit -q --amend --allow-empty -m "test: release-candidate umgeschrieben"
+soll_scheitern "Force-Push nach release-candidate" git push --force origin release-candidate
+soll_scheitern "release-candidate löschen" git push origin --delete release-candidate
 
 git tag -f v0.0.1 >/dev/null
 soll_scheitern "Tag v0.0.1 verschieben" git push --force origin v0.0.1

@@ -21,16 +21,16 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
 5.  **Prüfungen** — je Kategorie das passende Werkzeug für den Stack (siehe „Standardprüfungen").
 6.  **Ein Befehl für alles** — alle Prüfungen laufen mit einem Befehl, lokal in der Umgebung des Agenten und in der CI gleich.
 7.  **Umgebung des Agenten** — wo der Agent arbeitet und testet (z. B. Container), was dort verfügbar sein muss.
-8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `next` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/anweisungen/08-release.md`), Zurückrollen. Standard für die CI:
+8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `release-candidate` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/anweisungen/08-release.md`), Zurückrollen. Standard für die CI:
     -   **Tag automatisch:** Nach dem Zusammenführen des Release-Pull-Requests setzt die CI den Tag `v<version>` aus dem Release-Dokument; die Auslieferung startet mit dem Tag.
     -   **Nachprüfung automatisch:** Nach der Auslieferung prüft die CI die ausgelieferte App (startet sie, Hauptwege); Geräteprüfung bleibt beim Nutzer.
     -   **Backlog automatisch zusammenführen:** Pull Requests von `backlog`, die nur `_requirements/backlog/` ändern, führt die CI bei grüner Prüfung selbst zusammen.
     -   **Einstellungen beim Hoster** — setzt `sh _agent-process/init.sh --hoster`, soweit möglich (meldet, was fehlt); sonst gibt der Agent dem Nutzer diese Liste zum Abhaken; im How-to festgehalten:
         -   [ ] `main`: Änderungen nur per Pull Request, Prüfung der CI muss grün sein, nur Merge-Commits, kein Force-Push, nicht löschbar
-        -   [ ] `next`: nicht löschbar
+        -   [ ] `release-candidate`: nicht löschbar
         -   [ ] Tags `v*`: nicht änderbar und nicht löschbar
         -   [ ] Auslieferung (z. B. Umgebung beim Hoster) für Tags `v*` freigegeben
-        -   [ ] Automatisches Zusammenführen erlaubt; Branches nach dem Zusammenführen automatisch löschen (erst wenn `next` geschützt ist)
+        -   [ ] Automatisches Zusammenführen erlaubt; Branches nach dem Zusammenführen automatisch löschen (erst wenn `release-candidate` geschützt ist)
 9.  **Abnahme** — wo und wie der Nutzer abnimmt (lokal, Befehl) und was nur am echten Gerät geprüft werden kann (dann beim Nachprüfen nach dem Release).
 
 ## Standardprüfungen

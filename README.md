@@ -19,7 +19,7 @@ Prozess für die Arbeit mit KI-Agenten von der Idee bis zum Release. Wird in jed
 
 Der ganze Weg von der Idee bis live auf einer Seite. Die Einzelheiten je Schritt stehen in `anweisungen/`; maßgeblich sind die Anweisungen und `AGENTS.md` — diese Übersicht wird mit ihnen gepflegt.
 
-**Je Anforderung gibst du vier Freigaben** (bei Design fünf) und führst den Pull Request nach `next` zusammen. **Je Release** sagst du „release" und führst den Pull Request nach `main` zusammen. Alles andere erledigen Agent und CI.
+**Je Anforderung gibst du vier Freigaben** (bei Design fünf) und führst den Pull Request nach `release-candidate` zusammen. **Je Release** sagst du „release" und führst den Pull Request nach `main` zusammen. Alles andere erledigen Agent und CI.
 
 | Zeichen | Bedeutung |
 |---|---|
@@ -54,17 +54,17 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **5c Test zuerst** | Agent | roter Test nachgewiesen — kein Commit mit rotem Test | — | |
 | **5d/5e Umsetzen, grün** | Agent | je grünem Schritt des Plans; am Ende Status `qa` | **C+P** je Schritt | Feature-Branch |
 | **6a–6c QA** | Agent + Rollen | Prüfungen, Befunde; je Korrektur | **C+P** je Korrektur | Feature-Branch |
-| **6d CI** | Agent | QA-Abschnitt fertig, Status `review`; dann PR, CI abwarten — Ergebnis steht im PR | **C+P**, **PR** nach `next` | Feature-Branch |
+| **6d CI** | Agent | QA-Abschnitt fertig, Status `review`; dann PR, CI abwarten — Ergebnis steht im PR | **C+P**, **PR** nach `release-candidate` | Feature-Branch |
 | **6e Abnahmepaket** | Agent | **ZF:** Umgesetztes, Screenshots, Befunde, was nicht automatisch prüfbar war, Checkliste, Startbefehl, PR-Nummer | — | |
 | **7a Prüfen** | du | nur, was sich nicht automatisch prüfen lässt (z. B. am Gerät) | **DU** | |
 | **7b Befunde** | Agent | zurück zu 5, danach QA erneut | **C+P** je Korrektur | Feature-Branch |
 | **7c Abgenommen** | du | Abnahme aussprechen | **GO** | |
 | | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
-| | du | erst danach: PR nach `next` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
+| | du | erst danach: PR nach `release-candidate` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
 | | Agent | `git switch main`, `git pull --ff-only` | — | `main` |
 | **8a Inhalt und Version** | du | „release" — wann, entscheidest du | **GO** | |
-| | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `next` |
-| **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `next` |
+| | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `release-candidate` |
+| **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `release-candidate` |
 | **8c Ausliefern** | du | PR nach `main` **als Merge-Commit** zusammenführen — das ist die Freigabe | **DU** | `main` |
 | | CI | Tag setzen, Auslieferung startet (ohne CI: **ZF** Befehle für den Tag, mit Version) | **CI** | `main` |
 | **8d Nachprüfen** | CI + Agent + du | ausgelieferte App testen, Gerät durch dich; sonst zurückrollen, Bug ins Backlog · **ZF:** Ergebnis | **CI** | — |
@@ -92,7 +92,7 @@ Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht lad
 
 ## Aktualisieren
 
-Der Stand des Prozesses hängt am Branch (das Projekt speichert nur einen Verweis auf einen Commit dieses Repos). Neue Feature-Branches zweigen von `main` ab — deshalb geht ein Update **direkt nach `main`**, nicht über `next`.
+Der Stand des Prozesses hängt am Branch (das Projekt speichert nur einen Verweis auf einen Commit dieses Repos). Neue Feature-Branches zweigen von `main` ab — deshalb geht ein Update **direkt nach `main`**, nicht über `release-candidate`.
 
 Im Projekt-Hauptordner:
 
@@ -109,15 +109,15 @@ git push -u origin feature/prozess-aktualisieren
 
 1.  Ausgabe von Init prüfen (Hinweise, z. B. neuer Stand der Prüf-Konfiguration).
 2.  Pull Request **nach `main`** eröffnen, bei grüner CI zusammenführen.
-3.  `main` in `next` übernehmen, damit beide gleich bleiben:
+3.  `main` in `release-candidate` übernehmen, damit beide gleich bleiben:
 
     ```
     git switch main
     git pull --ff-only
-    git switch next
+    git switch release-candidate
     git pull --ff-only
-    git merge main -m "chore: main in next nach Prozess-Update"
-    git push origin next
+    git merge main -m "chore(prozess-aktualisieren): main in release-candidate"
+    git push origin release-candidate
     git switch main
     ```
 4.  Claude neu starten — Unteragenten (`.claude/agents`) und `CLAUDE.md` werden nur beim Start gelesen.

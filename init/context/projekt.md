@@ -40,7 +40,7 @@
 
 ## Auslieferung und Release
 
-*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `next`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/anweisungen/08-release.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
+*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `release-candidate`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/anweisungen/08-release.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
 
 ## Abnahme
 

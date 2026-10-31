@@ -86,7 +86,7 @@ while IFS= read -r zeile; do
   fi
 done < "$SRC/gitignore"
 
-# Regeln beim Hoster (Schutz von main, next, Tags) nur auf ausdrücklichen Aufruf
+# Regeln beim Hoster (Schutz von main, release-candidate, Tags) nur auf ausdrücklichen Aufruf
 if [ "${1:-}" = --hoster ]; then
   sh "$SRC/hoster-schutz.sh" || hinweis "Regeln beim Hoster: Skript fehlgeschlagen (Checkliste Stufe 0)"
 else

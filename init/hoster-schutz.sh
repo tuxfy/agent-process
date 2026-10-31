@@ -8,10 +8,10 @@
 # bewusst keine Admin-Rechte, dort meldet das Skript nur, was fehlt.
 # Erst nach dem ersten Push sinnvoll (vorher ist das Repo beim Hoster leer).
 # GitHub: Rulesets main-schutz (nur PR, nur Merge-Commit, kein Force-Push, nicht löschbar),
-#   next-schutz, tag-schutz (v*). Optional CI_PRUEFUNG=<Name des CI-Jobs>: CI-Prüfung für main als Pflicht.
+#   release-candidate-schutz, tag-schutz (v*). Optional CI_PRUEFUNG=<Name des CI-Jobs>: CI-Prüfung für main als Pflicht.
 #   Repo-Einstellung: automatisches Zusammenführen erlaubt (bei jedem Lauf gesetzt).
 #   Im kostenlosen Plan setzt GitHub Regeln nur in öffentlichen Repos durch.
-# GitLab: geschützte Branches main (Push niemand) und next (Push Developer), geschützte Tags v*,
+# GitLab: geschützte Branches main (Push niemand) und release-candidate (Push Developer), geschützte Tags v*,
 #   Merge-Commits und „nur bei erfolgreicher Pipeline“ (Projekt-Einstellung, bei jedem Lauf gesetzt); Squash bleibt wählbar — Release-MR
 #   nach main von Hand ohne Squash.
 # Branches nach dem Zusammenführen löschen und Auslieferung für Tags freigeben: Handgriffe laut Checkliste.
@@ -46,8 +46,8 @@ github() {
    \"rules\":[{\"type\":\"deletion\"},{\"type\":\"non_fast_forward\"},
     {\"type\":\"pull_request\",\"parameters\":{\"required_approving_review_count\":0,\"dismiss_stale_reviews_on_push\":false,\"require_code_owner_review\":false,\"require_last_push_approval\":false,\"required_review_thread_resolution\":false,\"allowed_merge_methods\":[\"merge\"]}}$pruefung]}"
 
-  regel next-schutz '{"name":"next-schutz","target":"branch","enforcement":"active",
-   "conditions":{"ref_name":{"include":["refs/heads/next"],"exclude":[]}},
+  regel release-candidate-schutz '{"name":"release-candidate-schutz","target":"branch","enforcement":"active",
+   "conditions":{"ref_name":{"include":["refs/heads/release-candidate"],"exclude":[]}},
    "rules":[{"type":"deletion"},{"type":"non_fast_forward"}]}'
 
   regel tag-schutz '{"name":"tag-schutz","target":"tag","enforcement":"active",
@@ -98,7 +98,7 @@ gitlab() {
     fi
   }
   branch "$haupt" 0  "Push niemand, Merge Maintainer, kein Force-Push" streng
-  branch next     30 "Push Developer, Merge Maintainer, kein Force-Push"
+  branch release-candidate     30 "Push Developer, Merge Maintainer, kein Force-Push"
 
   if glab api "projects/:id/protected_tags" 2>/dev/null | grep -Eq '"name": *"v\*"'; then
     echo "vorhanden: Schutz Tags v* (unverändert)"
@@ -126,5 +126,5 @@ else
   hinweis "weder gh noch glab angemeldet oder kein Repo beim Hoster — Regeln nicht gesetzt; nach dem ersten Push sh _agent-process/init.sh --hoster erneut ausführen oder Checkliste Stufe 0"
   exit 0
 fi
-hinweis "Handgriffe laut Checkliste Stufe 0: Auslieferung für Tags v* freigeben; Branches nach dem Zusammenführen löschen erst, wenn next nachweislich geschützt ist"
+hinweis "Handgriffe laut Checkliste Stufe 0: Auslieferung für Tags v* freigeben; Branches nach dem Zusammenführen löschen erst, wenn release-candidate nachweislich geschützt ist"
 exit 0

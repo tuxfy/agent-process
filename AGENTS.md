@@ -37,10 +37,10 @@ Branches — `main` nur per Pull Request (beim Hoster erzwungen):
 | Branch | Zweck | Weg nach `main` |
 |---|---|---|
 | `backlog` | Ideen und Bugs (Stufe 1) | Pull Request |
-| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung von Stufe 2 bis zur Abnahme | Pull Request nach `next` (6d) |
-| `next` | Sammel-Branch bis zum nächsten Release, mit Release-Dokument | Pull Request nach `main` (8b), dann Tag |
+| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung von Stufe 2 bis zur Abnahme | Pull Request nach `release-candidate` (6d) |
+| `release-candidate` | Sammel-Branch bis zum nächsten Release, mit Release-Dokument | Pull Request nach `main` (8b), dann Tag |
 
-**Zusammenführen nach `next` heißt: kommt ins nächste Release.** Ohne `next`: siehe Abkürzung in `08-release.md`.
+**Zusammenführen nach `release-candidate` heißt: kommt ins nächste Release.** Ohne `release-candidate`: siehe Abkürzung in `08-release.md`.
 
 ## Regeln
 
@@ -63,7 +63,7 @@ Branches — `main` nur per Pull Request (beim Hoster erzwungen):
 
 ## Commits
 
-Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** ebenso — beim Squash nach `next` wird der Titel zur Commit-Nachricht und zählt für die Version.
+Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. **Titel von Pull Requests** ebenso — beim Squash nach `release-candidate` wird der Titel zur Commit-Nachricht und zählt für die Version.
 
 **Der Agent committet selbst** (ohne Rückfrage), nur an diesen Stellen — und **pusht nach jedem Commit sofort**:
 
@@ -80,7 +80,7 @@ Format: Conventional Commits mit dem kurzen Namen als Scope — `<typ>(<kurzer-n
 | Je Korrektur in der QA (6c) bzw. Abnahme (7b) | Feature-Branch | Korrektur mit ihrem Test |
 | Vor dem Pull Request (6d) | Feature-Branch | QA-Abschnitt, Status `review` |
 | Nach der Abnahme (7c, 7d) | Feature-Branch | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit, vor dem Zusammenführen |
-| Im Release (8a, 8b) | `next` | Release-Dokument — fertig, bevor der Pull Request nach `main` eröffnet wird |
+| Im Release (8a, 8b) | `release-candidate` | Release-Dokument — fertig, bevor der Pull Request nach `main` eröffnet wird |
 
 -   **Leitplanken:** Vor jedem Commit laufen alle Prüfungen und die Prüfung des Commit-Formats (Git-Hook aus dem Grundgerüst) — nie umgehen.
 -   Ein Commit mit rotem Test gibt es nicht: In 5c wird der rote Test nachgewiesen, committet wird erst der grüne Schritt.
