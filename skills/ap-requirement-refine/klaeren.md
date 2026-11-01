@@ -4,7 +4,7 @@
 
 -   **Kurzer Name** aus dem Titel — wenige Wörter, nur `a–z`, `0–9` und Bindestrich (ä → ae, ö → oe, ü → ue, ß → ss), z. B. `timer-ton`; noch nicht vergeben als Branch (`feature/` oder `fix/`, lokal oder beim Hoster nach `git fetch`), unter `_requirements/` (auch `done/`, dort mit Nummer davor) oder `_requirements/mockups/`. Gibt es schon einen Branch mit diesem Namen, aber keinen Kommentar im Issue: fragen. Er ist die Kennung der Anforderung (Branch, Commits, Dateiname); der Agent nennt ihn dem Nutzer gleich zu Beginn.
 -   **Branch:** `fix/<kurzer-name>` bei Label `bug`, sonst `feature/<kurzer-name>`; ohne Label fragen. Die Art („Was der Agent macht", Schritt 2) ändert ihn nicht. Angelegt vom aktuellen `main` (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand"), bei einem Fix aus 8b vom aktuellen `release-candidate`. **Direkt nach dem Push** ins Issue kommentieren: „Aufgegriffen auf `<Branch>`".
--   **Dokument** `_requirements/<kurzer-name>.md` (nur, wenn es fehlt), neu nach `_agent-process/anweisungen/vorlagen/anforderung.md`: Titel aus dem Issue-Titel, `Issue #<Nummer>`, Status `new`; im Abschnitt „Anliegen" der Text des Issues, unverändert — nur Sicherheitsdetails abstrakt fassen und Adressen beim Hoster durch `#<Nummer>` ersetzen (`_agent-process/AGENTS.md`, Abschnitt „Grundsätze"). Inhaltlich Neues aus den Kommentaren unter „Hintergrund", mit Verweis auf das Issue.
+-   **Dokument** `_requirements/<kurzer-name>.md` (nur, wenn es fehlt), neu nach `_agent-process/anweisungen/vorlagen/anforderung.md`: Titel aus dem Issue-Titel, `Issue #<Nummer>`, Status `new`, Zeile `Track` unverändert lassen (`quick | complete`) — eingetragen erst beim Abschluss. Im Abschnitt „Anliegen" **nur** der Text des Issues, unverändert — nur Sicherheitsdetails abstrakt fassen und Adressen beim Hoster durch `#<Nummer>` ersetzen (`_agent-process/AGENTS.md`, Abschnitt „Grundsätze"); inhaltlich Neues aus den Kommentaren gehört unter „Hintergrund", mit Verweis auf das Issue. **Sofort committen und pushen** (`chore(<kurzer-name>): Anliegen aus Issue #<Nummer>`), ohne Rückfrage — so liegt das Dokument auf seinem Branch.
 
 Geht Lesen oder Kommentieren nicht (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Der Nutzer gibt Nummer, Titel, Label, Text und ggf. Kommentare; den Kommentar gibt der Agent zum Kopieren aus und arbeitet weiter.
 
@@ -50,7 +50,7 @@ Lösungen, Akzeptanzkriterien, Design, Implementierungsdetails.
 
 Die Klärung ist abgeschlossen, wenn der **Nutzer Spielraum, Weg und Track bestätigt** hat. Offene Fragen dürfen bleiben — sie werden in Stufe 3 bzw. 4 beantwortet; der Track ist dann `complete`.
 
-Vorher fasst der Agent im Gespräch zusammen: Art, Spielraum, Weg (Design ja/nein, Track), offene Fragen — der Nutzer bestätigt. Den Track trägt der Agent in die Zeile `Track` im Kopf des Dokuments ein.
+Vorher fasst der Agent im Gespräch zusammen: Art, Spielraum, Weg (Design ja/nein, Track), offene Fragen — der Nutzer bestätigt. Erst danach trägt der Agent den Track in die Zeile `Track` im Kopf des Dokuments ein.
 
 **Dann committet und pusht der Agent** das Anforderungsdokument auf dem Feature-Branch (`chore(<kurzer-name>): Klärung`), ohne Rückfrage.
 

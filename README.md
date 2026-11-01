@@ -38,7 +38,9 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **0 Einrichten** *(einmal je Projekt)* | Agent schlägt vor | Stack, Prüfungen, Auslieferung, Abnahme in `_context/`; erste Anforderung `grundgeruest` · **ZF:** Einstellungen beim Hoster, soweit Init sie nicht gesetzt hat, ggf. Befehle für das Design-System-Submodul | **GO**, **DU** | — |
 | | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
 | **1 Idee oder Bug** | Agent oder du | Issue beim Hoster, Label `idee` bzw. `bug` · **ZF:** Nummer | — | — |
-| **2 Klärung** | Agent | Issue lesen, Branch vom aktuellen `main` anlegen, ins Issue kommentieren, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
+| **2 Klärung** | Agent | Issue lesen, Branch vom aktuellen `main` anlegen, ins Issue kommentieren | — | `feature/…` bzw. `fix/…` |
+| | Agent | Dokument mit Anliegen aus dem Issue | **C+P** | Feature-Branch |
+| | Agent | Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | |
 | | du | Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
 | | Agent | Anforderungsdokument | **C+P** | Feature-Branch |
 | **3a Ausgangslage** *(nur bei Design)* | Agent | Fakten, keine Gestaltung · **ZF:** Ausgangslage als Text zum Kopieren | — | |
