@@ -11,7 +11,7 @@ Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem k
 ## 5c: Test zuerst (rot)
 
 -   Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bugs: die Regression) absichert — Art laut Teststrategie der Anforderung.
--   Der Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein. Ein Commit mit rotem Test gibt es nicht — committet wird erst der grüne Schritt.
+-   Der Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein. Ein Commit mit rotem Test gibt es nicht — committet wird erst, wenn es grün ist.
 -   Ergebnis unter `# Testnachweis → Rot`: Befehl, Anzahl bestanden/fehlgeschlagen, Namen der roten Tests.
 -   Lässt sich ein Kriterium nicht sinnvoll automatisch testen: begründen, Prüfung erfolgt manuell in der Abnahme (Stufe 7).
 
@@ -34,4 +34,5 @@ Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem k
 
 ## Commits
 
--   Der Agent committet nach dem freigegebenen Plan und nach **jedem grünen Schritt** des Plans auf dem Feature-Branch — mit dem zugehörigen Stand des Testnachweises. Format und Regeln: `_agent-process/AGENTS.md`, Abschnitt „Git".
+-   Die Umsetzung kommt in einem oder mehreren Commits auf dem Feature-Branch, jeder grün und mit dem zugehörigen Stand des Testnachweises; gepusht wird nach jedem Commit. Größere Pläne besser in mehreren Commits — was gepusht ist, übersteht einen Abbruch der Sitzung.
+-   **Korrekturen aus QA (6c), Abnahme (7b) und nach roter CI (6d):** je umgesetztem Befund ein eigener Commit `<typ>(<kurzer-name>): <Befund>` (meist `fix`, bei reinem Testzusatz `test`), mit eigenem Test oder Begründung im Testnachweis. Mehrere Befunde nicht in einem Commit — außer dieselbe Änderung behebt sie: dann gelten sie als ein Befund, alle im Titel genannt. Was mehrere Rollen zur selben Sache melden, ist ohnehin ein Befund (Einstufung). Ein Fix-Branch aus 8b ist eine eigene Anforderung; für ihn gilt der Absatz davor. Format und Regeln: `_agent-process/AGENTS.md`, Abschnitt „Git".

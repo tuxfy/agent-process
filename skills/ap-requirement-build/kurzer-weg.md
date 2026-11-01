@@ -11,7 +11,7 @@ Plan und Umsetzung in einem, für Anforderungen mit Track `quick` (Kriterien: `_
 
 -   Unter `# Umsetzungsplan` nur: Schritte (meist einer), betroffene Dateien, Testfälle je Akzeptanzkriterium; die übrigen Punkte der Gliederung mit „entfällt (quick)".
 -   Selbstprüfung mit den Prüfpunkten der Rollen wie in 5a (`_agent-process/skills/ap-requirement-build/planen.md`); keine Prüfung durch Rollen.
--   Die Notiz wird mit dem ersten grünen Schritt committet.
+-   Die Notiz wird mit dem ersten Commit der Umsetzung committet.
 
 ## Umsetzen
 

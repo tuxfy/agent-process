@@ -10,6 +10,7 @@ Grundlage: Diff aus `.qa/diff.txt`, dazu Anforderung, Umsetzungsplan, Entscheidu
 -   **Kriterien:** Ist jedes Akzeptanzkriterium wirklich umgesetzt — nicht nur getestet?
 -   **Abgeschwächte Tests:** Wurde eine Prüfung entfernt, nur bedingt ausgeführt oder ihre Erwartung gelockert?
 -   **Testnachweis:** Hat jede Code-Änderung — auch aus der QA — einen Test oder eine Begründung, warum nicht? Ob die Tests Fehler finden würden, prüft die Rolle Testwirkung.
+-   **Korrektur-Commits:** Hat jede umgesetzte Korrektur (Befunde unter `# QA → Befunde` bzw. `# Abnahme → Befunde`) einen eigenen Commit mit dem Befund im Titel (`git log`)? Mehrere Befunde in einem Commit — außer dieselbe Änderung behebt sie — oder ein umgesetzter Befund ohne Commit sind ein Befund; abgelehnte oder verschobene brauchen keinen.
 -   **Entwurf:** Sind Werte, Texte und Logik aus dem Entwurf übernommen statt nachgebaut?
 -   **UI-Richtlinie:** Was der Prüflauf nicht erkennt — z. B. eigene Komponenten, wo das Design-System eine hat; Inline-Styles; Ausnahmen ohne Eintrag in `_context/design.md`.
 -   **Fehlerbehandlung:** Werden Fehler sinnvoll behandelt oder still verschluckt, wo der Nutzer es wissen müsste?

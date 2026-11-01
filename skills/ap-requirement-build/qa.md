@@ -36,10 +36,10 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 
 ## 6c: Befunde bearbeiten
 
--   **Blockierend:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut, mindestens die betroffenen Prüfungen. Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
+-   **Blockierend:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
 -   **Empfohlen:** umsetzen, mit Grund ablehnen oder bewusst verschieben — dann Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d); was jemand umsetzen will, als Idee bzw. Bug ins Backlog.
 -   **Hinweis:** nach Ermessen; nichts muss. Kandidaten für später ebenfalls nach `_requirements/deferred/`.
--   **Ändert der Agent in der QA etwas:** wie in Stufe 5 — Test, wo möglich (erst rot, dann grün), danach alle Prüfungen erneut; Eintrag im Testnachweis. Unter `# QA → Befunde` steht **je Änderung** der Test (Name) oder, warum es keinen gibt — ohne eins von beiden gilt die Änderung als nicht abgeschlossen. Jede Korrektur ist ein eigener Commit.
+-   **Ändert der Agent in der QA etwas:** wie in Stufe 5 — Test, wo möglich (erst rot, dann grün), danach alle Prüfungen erneut; Eintrag im Testnachweis. Unter `# QA → Befunde` steht **je Änderung** der Test (Name) oder, warum es keinen gibt — ohne eins von beiden gilt die Änderung als nicht abgeschlossen. Je umgesetztem Befund ein eigener Commit (`umsetzen.md`, Abschnitt „Commits"). **Danach läuft der Reviewer immer erneut** — auch wenn er den Befund nicht gemeldet hat —, die übrigen Rollen für die betroffenen Teile.
 -   Berührt ein Befund eine Entscheidung der Anforderung: nicht selbst entscheiden — dem Nutzer vorlegen.
 -   Ergebnis unter `# QA → Befunde`: je Befund kurz, was damit passiert ist.
 
@@ -50,8 +50,8 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
     -   Gibt es `release-candidate` noch nicht: der Agent legt ihn von `main` an und pusht ihn.
     -   Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): Pull Request direkt nach `main`.
 -   **CI-Lauf abwarten** (im Pull Request).
--   **Rot in der CI:** zurück zu Stufe 5 — zuerst klären, warum lokal grün war (was hat lokal anders gelegen?), und das als Test bzw. im sauberen Lauf absichern.
--   **Das Ergebnis der CI steht im Pull Request,** nicht im Dokument. Bei Rot geht der Status zurück auf `qa`, bis wieder alles grün ist.
+-   **Rot in der CI:** zurück zu Stufe 5, die Korrektur als eigener Commit wie ein Befund (`umsetzen.md`, Abschnitt „Commits") — zuerst klären, warum lokal grün war (was hat lokal anders gelegen?), und das als Test bzw. im sauberen Lauf absichern.
+-   **Das Ergebnis der CI steht im Pull Request,** nicht im Dokument. Bei Rot geht der Status zurück auf `qa`, bis wieder alles grün ist; der Befund kommt dann unter `# QA → Befunde`, und der Reviewer läuft erneut.
 
 ## 6e: Abnahmepaket
 

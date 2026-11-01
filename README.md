@@ -53,12 +53,12 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | | Agent | Plan | **C+P** | Feature-Branch |
 | **5b Start** | Agent | direkt nach der Plan-Freigabe (hast du „später" gesagt: auf dein Wort): Nummer vergeben, Status `in progress` | **C+P** | Feature-Branch |
 | **5c Test zuerst** | Agent | roter Test nachgewiesen — kein Commit mit rotem Test | — | |
-| **5d/5e Umsetzen, grün** | Agent | je grünem Schritt des Plans; am Ende Status `qa` | **C+P** je Schritt | Feature-Branch |
-| **6a–6c QA** | Agent + Rollen | Prüfungen, Befunde; je Korrektur | **C+P** je Korrektur | Feature-Branch |
+| **5d/5e Umsetzen, grün** | Agent | ein oder mehrere grüne Commits; am Ende Status `qa` | **C+P** | Feature-Branch |
+| **6a–6c QA** | Agent + Rollen | Prüfungen, Befunde; je umgesetztem Befund ein Korrektur-Commit | **C+P** je Befund | Feature-Branch |
 | **6d CI** | Agent | QA-Abschnitt fertig, Status `review`; dann PR, CI abwarten — Ergebnis steht im PR | **C+P**, **PR** nach `release-candidate` | Feature-Branch |
 | **6e Abnahmepaket** | Agent | **ZF:** Umgesetztes, Screenshots, Befunde, was nicht automatisch prüfbar war, Checkliste, Startbefehl, PR-Nummer | — | |
 | **7a Prüfen** | du | nur, was sich nicht automatisch prüfen lässt (z. B. am Gerät) | **DU** | |
-| **7b Befunde** | Agent | zurück zu 5, danach QA erneut | **C+P** je Korrektur | Feature-Branch |
+| **7b Befunde** | Agent | zurück zu 5, je umgesetztem Befund ein Korrektur-Commit, danach QA erneut | **C+P** je Befund | Feature-Branch |
 | **7c Abgenommen** | du | Abnahme aussprechen | **GO** | |
 | | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/`, ggf. Zurückgestelltes — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
 | | du | erst danach: PR nach `release-candidate` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |

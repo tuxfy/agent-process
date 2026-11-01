@@ -96,4 +96,5 @@ Was der Nutzer sieht und tut.
 
 *In Stufe 7 ergänzt.*
 
+-   **Befunde:** <je Befund aus 7b ein Punkt — was, was damit passiert ist>
 -   **Abgenommen am:** <Datum> — <was geprüft wurde>

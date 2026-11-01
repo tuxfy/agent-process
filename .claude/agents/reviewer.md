@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: Prüft die Umsetzung einer Anforderung (Stufe 6 QA) am Code gegen Anforderung, Plan und Entscheidungen. Nur lesend.
+description: Prüft die Umsetzung einer Anforderung (Stufe 6 QA, erneut nach Korrekturen) am Code gegen Anforderung, Plan und Entscheidungen. Nur lesend.
 tools: Read, Grep, Glob, Bash
 ---
 
