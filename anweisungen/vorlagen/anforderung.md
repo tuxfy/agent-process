@@ -1,5 +1,6 @@
 -   **Title** Kurzer Titel
 -   **Status** idea | bug | new | refined | in progress | qa | review | accepted
+-   **Track** quick | complete
 
 # Idee
 
@@ -25,7 +26,7 @@ Ist-Stand: Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fe
 
 # Design-Brief
 
-*Nur wenn Design nötig. Entsteht mit dem Entwurf extern und wird in 3c unverändert übernommen (siehe `_agent-process/anweisungen/03-design.md`).*
+*Nur wenn Design nötig. Entsteht mit dem Entwurf extern und wird in 3c unverändert übernommen (siehe `_agent-process/skills/ap-requirement-refine/entwerfen.md`).*
 
 -   **Ziel:**
 -   **Aufbau und Zustände:** Screens, Bereiche, Zustände und Übergänge
@@ -65,7 +66,7 @@ Was der Nutzer sieht und tut.
 
 # Umsetzungsplan
 
-*Vom Agenten in Stufe 5 (5a) geschrieben, vom Nutzer freigegeben.*
+*Vom Agenten in Stufe 5 (5a) geschrieben, vom Nutzer freigegeben — bei Track `quick` nur als Notiz, ohne Freigabe.*
 
 1.  **Schritte:**
 2.  **Betroffene Dateien:**

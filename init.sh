@@ -1,5 +1,5 @@
 #!/bin/sh
-# Legt im Projekt an, was aus dem Prozess-Repo fehlt. Überschreibt nie Dateien.
+# Legt im Projekt an, was aus dem Prozess-Repo fehlt. Überschreibt nie Dateien; entfernt nur eigene tote ap-Skill-Links.
 # Aufruf im Projekt-Hauptordner: sh _agent-process/init.sh [--hoster]
 # --hoster: setzt zusätzlich die Regeln beim Hoster (init/hoster-schutz.sh, mit deinen Rechten).
 
@@ -19,8 +19,10 @@ if [ ! -f "$P/AGENTS.md" ] || [ ! -d "$SRC" ]; then
 fi
 
 angelegt=0
+entfernt=0
 hinweise=0
 neu()    { echo "angelegt: $1"; angelegt=$((angelegt + 1)); }
+weg()    { echo "entfernt: $1"; entfernt=$((entfernt + 1)); }
 hinweis(){ echo "Hinweis:  $1"; hinweise=$((hinweise + 1)); }
 
 # Datei kopieren, wenn sie fehlt
@@ -54,10 +56,38 @@ else
   neu ".claude/agents -> ../$P/.claude/agents"
 fi
 
+# .claude/skills: je Skill ein Link; Init verwaltet nur Einträge mit Präfix ap-, eigene Skills bleiben
+if [ -L .claude/skills ]; then
+  hinweis ".claude/skills ist ein Link, kein Ordner; Skill-Links nicht angelegt"
+else
+  for s in "$P"/skills/ap-*; do
+    [ -d "$s" ] || continue
+    n=$(basename "$s")
+    z=".claude/skills/$n"
+    if [ -L "$z" ]; then
+      [ "$(readlink "$z")" = "../../$s" ] || hinweis "$z zeigt nicht auf ../../$s"
+    elif [ -e "$z" ]; then
+      hinweis "$z ist ein Ordner, kein Link auf ../../$s"
+    else
+      mkdir -p .claude/skills
+      ln -s "../../$s" "$z"
+      neu "$z -> ../../$s"
+    fi
+  done
+  for z in .claude/skills/ap-*; do
+    [ -L "$z" ] && [ ! -e "$z" ] || continue
+    [ "$(readlink "$z")" = "../../$P/skills/$(basename "$z")" ] || continue
+    rm "$z"
+    weg "$z (Skill gibt es nicht mehr)"
+  done
+fi
+
 # _context/
 for f in "$SRC"/context/*; do
   kopiere "$f" "_context/$(basename "$f")" || true
 done
+grep -q '^## UI-Pfade' _context/projekt.md || \
+  hinweis "_context/projekt.md hat keinen Abschnitt „## UI-Pfade“ (Vorlage: $SRC/context/projekt.md)"
 
 # Ordner für Anforderungen und Releases (.gitkeep, damit Git sie kennt)
 for d in _requirements/backlog _requirements/done _releases; do
@@ -67,6 +97,7 @@ for d in _requirements/backlog _requirements/done _releases; do
     neu "$d/"
   fi
 done
+kopiere "$SRC/requirements/deferred/README.md" _requirements/deferred/README.md || true
 
 # Prüf-Konfiguration der UI-Richtlinie
 if ! kopiere "$SRC/pruefung/stylelint.json" .stylelintrc.json; then
@@ -94,6 +125,6 @@ else
 fi
 
 echo
-echo "Fertig: $angelegt angelegt, $hinweise Hinweis(e). Keine Datei wurde überschrieben."
-[ "$angelegt" -gt 0 ] && echo "Änderungen prüfen und committen."
+echo "Fertig: $angelegt angelegt, $entfernt entfernt, $hinweise Hinweis(e). Keine Datei wurde überschrieben."
+[ $((angelegt + entfernt)) -gt 0 ] && echo "Änderungen prüfen und committen."
 exit 0

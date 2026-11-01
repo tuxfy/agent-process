@@ -2,7 +2,7 @@
 
 Prüft die **Umsetzung** einer Anforderung auf Sicherheit — mit eigenem Fokus, getrennt von der Code-Review. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
-Grundlage: Diff des Feature-Branches gegen `main`, Anforderung, Plan, `_context/` (Stack, Auslieferung, externe Abhängigkeiten).
+Grundlage: Diff aus `.qa/diff.txt`, Anforderung, Plan, `_context/` (Stack, Auslieferung, externe Abhängigkeiten).
 
 **Befunde in Dokumenten nur abstrakt** (z. B. „Eingaben an einer Stelle ungeprüft weiterverarbeitet"); die konkrete Stelle nur im Gespräch an den Agenten, der sie behebt.
 

@@ -6,20 +6,21 @@ Prozess für die Arbeit mit KI-Agenten von der Idee bis zum Release. Wird in jed
 
 | Eintrag | Wozu |
 |---|---|
-| `AGENTS.md` | Prozessregeln: Ablauf, Branches, Commits, UI-Richtlinie |
-| `anweisungen/` | eine Datei je Stufe (0–8), `rollen/` (Prüfer), `vorlagen/` (Idee, Bug, Anforderung, Release) |
+| `AGENTS.md` | Regeln, die immer gelten: welcher Skill wann, Halten, Ordner und Branches, Git, Grundsätze |
+| `skills/` | je Stufe ein Skill (`ap-project-setup`, `ap-requirement-capture`, `ap-requirement-refine`, `ap-requirement-build`, `ap-requirement-accept`, `ap-release`), dazu `ap-guideline-ui` für jede UI-Arbeit — `SKILL.md` als Einstieg, Schritt-Dateien daneben |
+| `anweisungen/` | `rollen/` (Prüfer), `vorlagen/` (Idee, Bug, Anforderung, Release) |
 | `.claude/agents/` | Prüfer-Rollen als Unteragenten für Claude Code; verweisen auf `anweisungen/rollen/` |
 | `init/` | Vorlagen, die Init ins Projekt schreibt |
-| `init.sh` | legt im Projekt an, was fehlt; überschreibt nie Dateien; mit `--hoster` setzt es die Regeln beim Hoster |
-| `test/` | Tests fürs Prozess-Repo selbst, z. B. `hoster-schutz-test.sh` (Regeln beim Hoster an einem Wegwerf-Repo); im Projekt nie genutzt |
+| `init.sh` | legt im Projekt an, was fehlt; überschreibt nie Dateien, entfernt nur eigene tote `ap-`-Skill-Links; mit `--hoster` setzt es die Regeln beim Hoster |
+| `test/` | Tests fürs Prozess-Repo selbst: `init-test.sh` (Init in einem Wegwerf-Ordner), `hoster-schutz-test.sh` (Regeln beim Hoster an einem Wegwerf-Repo); im Projekt nie genutzt |
 
 **Grundsatz:** Das Projekt läuft ohne dieses Repo. Init kopiert alles, was Bauen, Prüfen und Ausliefern brauchen, ins Projekt; CI und Build lesen nie aus `_agent-process/`.
 
 ## Ablauf im Überblick
 
-Der ganze Weg von der Idee bis live auf einer Seite. Die Einzelheiten je Schritt stehen in `anweisungen/`; maßgeblich sind die Anweisungen und `AGENTS.md` — diese Übersicht wird mit ihnen gepflegt.
+Der ganze Weg von der Idee bis live auf einer Seite. Die Einzelheiten je Schritt stehen in `skills/` (Rollen und Vorlagen in `anweisungen/`); maßgeblich sind die Skills und `AGENTS.md` — diese Übersicht wird mit ihnen gepflegt.
 
-**Je Anforderung gibst du vier Freigaben** (bei Design fünf) und führst den Pull Request nach `release-candidate` zusammen. **Je Release** sagst du „release" und führst den Pull Request nach `main` zusammen. Alles andere erledigen Agent und CI.
+**Je Anforderung gibst du drei Freigaben** — Klärung, Plan, Abnahme (bei Design vier; bei Track `quick` zwei: Klärung und Abnahme) und führst den Pull Request nach `release-candidate` zusammen. **Je Release** sagst du „release" und führst den Pull Request nach `main` zusammen. Alles andere erledigen Agent und CI.
 
 | Zeichen | Bedeutung |
 |---|---|
@@ -30,7 +31,7 @@ Der ganze Weg von der Idee bis live auf einer Seite. Die Einzelheiten je Schritt
 | **PR** | der Agent eröffnet einen Pull Request |
 | **ZF** | der Agent gibt dir eine Zusammenfassung im Gespräch |
 
-Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was du tun oder entscheiden musst. **Er hält nur an deinen Freigaben (GO) und Handgriffen (DU) an** — sonst geht er ohne Rückfrage weiter.
+Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was du tun oder entscheiden musst. **Er hält nur an deinen Freigaben (GO) und Handgriffen (DU) an** — und vor dem Start der Umsetzung, wenn du „später" gesagt hast — sonst geht er ohne Rückfrage weiter.
 
 | Schritt | Wer | Was passiert | Markierung | Branch |
 |---|---|---|---|---|
@@ -38,19 +39,19 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
 | **1 Idee oder Bug** | Agent | Eintrag im Backlog | **C+P**, **PR** nach `main` | `backlog` |
 | | CI | Backlog-PR bei grüner Prüfung zusammenführen | **CI** | — |
-| **2 Klärung** | Agent | Branch von `main` anlegen, Fragen stellen, Art und Weg vorschlagen · **ZF:** Spielraum und Weg | — | `feature/…` bzw. `fix/…` |
-| | du | Spielraum und Weg bestätigen | **GO** | |
+| **2 Klärung** | Agent | Branch von `main` anlegen, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
+| | du | Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
 | | Agent | Anforderungsdokument | **C+P** | Feature-Branch |
 | **3a Ausgangslage** *(nur bei Design)* | Agent | Fakten, keine Gestaltung · **ZF:** Ausgangslage als Text zum Kopieren | — | |
 | **3b Entwurf** | du, extern | Entwurf und Brief im Werkzeug deiner Wahl — **extern wird nichts committet** | **DU**, Agent wartet | |
-| **3c Übergabe** | du stellst bereit, Agent prüft | Abweichungen, Lücken, Fragen · **ZF:** Prüfbericht | **GO** Entwurf freigeben | |
+| **3c Übergabe** | du stellst bereit, Agent + Rollen prüfen | Befunde der Rollen Entwurf und Barrierefreiheit, Lücken, Fragen · **ZF:** Prüfbericht | **GO** Entwurf freigeben | |
 | | Agent | Entwurf, Brief, Lücken | **C+P** | Feature-Branch |
 | **4 Refinement** | Agent | Entscheidungen, Verhalten, Akzeptanzkriterien, Abgrenzung; setzt `refined` | **C+P** | Feature-Branch |
+| **5 kurzer Weg** *(nur Track `quick`, statt 5a/5b)* | Agent | Nummer, Plan als Notiz, Start ohne Freigabe (hast du „später" gesagt: auf dein Wort) · **ZF:** was umgesetzt wird, Akzeptanzkriterien · Abbruch → Track `complete`, zurück zu 5a | **C+P** | Feature-Branch |
 | **5a Plan** | Agent + Rollen | Plan schreiben, prüfen lassen · **ZF:** was passiert, was du entscheidest, Risiken, wer geprüft hat | — | |
 | | du | Plan freigeben — bestätigt auch das Refinement | **GO** | |
 | | Agent | Plan | **C+P** | Feature-Branch |
-| **5b Go** | du | „Go" — jetzt oder später | **GO** | |
-| | Agent | Nummer vergeben, Status `in progress` | **C+P** | Feature-Branch |
+| **5b Start** | Agent | direkt nach der Plan-Freigabe (hast du „später" gesagt: auf dein Wort): Nummer vergeben, Status `in progress` | **C+P** | Feature-Branch |
 | **5c Test zuerst** | Agent | roter Test nachgewiesen — kein Commit mit rotem Test | — | |
 | **5d/5e Umsetzen, grün** | Agent | je grünem Schritt des Plans; am Ende Status `qa` | **C+P** je Schritt | Feature-Branch |
 | **6a–6c QA** | Agent + Rollen | Prüfungen, Befunde; je Korrektur | **C+P** je Korrektur | Feature-Branch |
@@ -59,7 +60,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **7a Prüfen** | du | nur, was sich nicht automatisch prüfen lässt (z. B. am Gerät) | **DU** | |
 | **7b Befunde** | Agent | zurück zu 5, danach QA erneut | **C+P** je Korrektur | Feature-Branch |
 | **7c Abgenommen** | du | Abnahme aussprechen | **GO** | |
-| | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/` — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
+| | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/`, ggf. Zurückgestelltes — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
 | | du | erst danach: PR nach `release-candidate` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
 | | Agent | `git switch main`, `git pull --ff-only` | — | `main` |
 | **8a Inhalt und Version** | du | „release" — wann, entscheidest du | **GO** | |
@@ -73,6 +74,25 @@ Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
 
 **Nie durch den Agenten:** zusammenführen, Tags, Push nach `main`. **Nie extern** (z. B. ein Chat für den Entwurf): Commits.
 
+## Ordner und Branches im Projekt
+
+| Ordner | Inhalt |
+|---|---|
+| `_context/` | was man über das Projekt wissen muss (Stack, Befehle, …) |
+| `_requirements/backlog/` | Ideen und Anforderungen bis zum Refinement, ohne Nummer |
+| `_requirements/` | ab `refined`; Nummer ab dem Start der Umsetzung |
+| `_requirements/done/` | abgenommen (ab 7c), eingefroren |
+| `_requirements/deferred/` | bewusst Zurückgestelltes (Befunde, abgetrennte Ziele), eine Datei je Eintrag; Regeln in der `README.md` dort |
+| `_releases/` | ein Dokument je Release |
+
+| Branch | Zweck | Weg nach `main` |
+|---|---|---|
+| `backlog` | Ideen und Bugs (Stufe 1) | Pull Request |
+| `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung von Stufe 2 bis zur Abnahme | Pull Request nach `release-candidate` (6d) |
+| `release-candidate` | Sammel-Branch bis zum nächsten Release, mit Release-Dokument | Pull Request nach `main` (8b), dann Tag |
+
+Ohne `release-candidate`: siehe Abkürzung in `skills/ap-release/SKILL.md`.
+
 ## Neues Projekt
 
 Im neuen Projekt-Hauptordner:
@@ -82,7 +102,7 @@ Im neuen Projekt-Hauptordner:
 3.  `sh _agent-process/init.sh` — gibt aus, was angelegt wurde und was nur gemeldet wird
 4.  Ausgabe prüfen, erster Commit auf `main`, pushen
 5.  `sh _agent-process/init.sh --hoster` — setzt jetzt die Regeln beim Hoster (siehe „Was Init anlegt")
-6.  Claude starten (erst nach Init, sonst fehlen die Unteragenten) und mit Stufe 0 beginnen (`anweisungen/00-einrichtung.md`)
+6.  Claude starten (erst nach Init, sonst fehlen die Unteragenten und Skills) und mit Stufe 0 beginnen (`skills/ap-project-setup/SKILL.md`)
 
 Die CI braucht das Submodul nicht; beim Auschecken in der CI Submodule nicht laden.
 
@@ -107,7 +127,7 @@ git commit -m "chore(prozess-aktualisieren): Prozess-Repo auf neuen Stand"
 git push -u origin feature/prozess-aktualisieren
 ```
 
-1.  Ausgabe von Init prüfen (Hinweise, z. B. neuer Stand der Prüf-Konfiguration).
+1.  Ausgabe von Init prüfen (Hinweise, z. B. neuer Stand der Prüf-Konfiguration; neue oder entfernte Skill-Links). Verweise in eingefrorenen Dokumenten (`_requirements/done/`, Release-Dokumente) auf umbenannte Dateien des Prozesses bleiben, wie sie sind.
 2.  Pull Request **nach `main`** eröffnen, bei grüner CI zusammenführen.
 3.  `main` in `release-candidate` übernehmen, damit beide gleich bleiben:
 
@@ -120,7 +140,7 @@ git push -u origin feature/prozess-aktualisieren
     git push origin release-candidate
     git switch main
     ```
-4.  Claude neu starten — Unteragenten (`.claude/agents`) und `CLAUDE.md` werden nur beim Start gelesen.
+4.  Claude neu starten — Unteragenten (`.claude/agents`), Skills (`.claude/skills`) und `CLAUDE.md` werden nur beim Start gelesen.
 
 ## Was Init anlegt
 
@@ -129,8 +149,10 @@ git push -u origin feature/prozess-aktualisieren
 | `init/AGENTS.md` | `AGENTS.md` | unverändert; fehlt der Verweis auf `_agent-process/AGENTS.md`: melden |
 | `init/CLAUDE.md` | `CLAUDE.md` | unverändert; fehlende `@`-Verweise melden |
 | `.claude/agents/` | `.claude/agents` als Link | ist es ein Ordner statt Link: melden |
-| `init/context/*` | `_context/` | unverändert |
+| `skills/ap-*/` | je Skill ein Link `.claude/skills/ap-*` | Link unverändert, zeigt er woandershin oder ist es ein Ordner: melden; ein `ap-`-Link ohne Ziel, der auf `../../_agent-process/skills/` zeigt (Skill entfallen) wird entfernt; ist `.claude/skills` selbst ein Link: melden, nichts anlegen; Einträge ohne Präfix `ap-` (eigene Skills) bleiben unberührt |
+| `init/context/*` | `_context/` | unverändert; fehlt in `projekt.md` der Abschnitt `## UI-Pfade`: Hinweis |
 | — | `_requirements/backlog/`, `_requirements/done/`, `_releases/` | nichts tun |
+| `init/requirements/deferred/README.md` | `_requirements/deferred/README.md` | unverändert |
 | `init/pruefung/stylelint.json` | `.stylelintrc.json` | unverändert; weicht die Vorlage ab: melden |
 | `init/gitignore` | `.gitignore` | fehlende Zeilen ergänzen |
 | `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster laut Checkliste in Stufe 0 (GitHub per `gh`, GitLab per `glab`); Einzelheiten und Grenzen im Kopf des Skripts | vorhandene Regeln unverändert, außer einem zu schwachen Schutz von `main`; was fehlt: melden |

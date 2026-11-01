@@ -1,6 +1,6 @@
 # Projekt
 
-*In Stufe 0 (`_agent-process/anweisungen/00-einrichtung.md`) festgelegt; bei Änderungen dort erneut. Offenes ausdrücklich als offen markieren.*
+*In Stufe 0 (`_agent-process/skills/ap-project-setup/SKILL.md`) festgelegt; bei Änderungen dort erneut. Offenes ausdrücklich als offen markieren.*
 
 ## Zweck
 
@@ -11,6 +11,10 @@
 ## Zielformat
 
 *Geräte, Bildschirmgrößen, Ausrichtung, hell/dunkel, Sprache, Barrierefreiheit.*
+
+## UI-Pfade
+
+*Wo UI-Code liegt (z. B. `app/**/*.{css,html,jsx,tsx,vue}`); daran erkennt der Agent UI-Arbeit (Skill `ap-guideline-ui`).*
 
 ## Prüfungen
 
@@ -40,7 +44,7 @@
 
 ## Auslieferung und Release
 
-*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `release-candidate`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/anweisungen/08-release.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
+*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `release-candidate`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/skills/ap-release/SKILL.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
 
 ## Abnahme
 
