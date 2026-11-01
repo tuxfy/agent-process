@@ -16,7 +16,7 @@ Bringt den Stand von `release-candidate` — eine oder mehrere abgenommene Anfor
 | 8c Ausliefern | Nutzer | Pull Request als Merge-Commit zusammengeführt — **das ist die Freigabe**; Tag durch die CI (sonst durch den Nutzer) |
 | 8d Nachprüfen | CI + Agent + Nutzer | automatischer Test des ausgelieferten Stands, Gerät durch den Nutzer |
 
-Welche Datei dran ist, zeigen die Release-Dokumente unter `_releases/` auf `release-candidate`, die Tags `v*`, der Git-Verlauf von `release-candidate` und der Pull Request nach `main`. **Offenes Release** = ein Release-Dokument, zu dem es noch keinen Tag `v<version>` gibt. Es gilt die erste passende Zeile. Nur diese Datei laden — ganz:
+Vor der Auswahl `release-candidate` auf aktuellen Stand bringen (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand", mit Tags). Welche Datei dran ist, zeigen die Release-Dokumente unter `_releases/` auf `release-candidate`, die Tags `v*`, der Git-Verlauf von `release-candidate` und der Pull Request nach `main`. **Offenes Release** = ein Release-Dokument, zu dem es noch keinen Tag `v<version>` gibt. Es gilt die erste passende Zeile. Nur diese Datei laden — ganz:
 
 | Stand | Datei |
 |---|---|
