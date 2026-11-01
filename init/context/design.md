@@ -1,6 +1,6 @@
 # Design
 
-*In Stufe 0 (`_agent-process/anweisungen/00-einrichtung.md`) ergänzen.*
+*In Stufe 0 (`_agent-process/skills/ap-project-setup/SKILL.md`) ergänzen.*
 
 ## Design-System
 

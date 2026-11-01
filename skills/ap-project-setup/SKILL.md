@@ -1,3 +1,8 @@
+---
+name: ap-project-setup
+description: Stufe 0 des Agent-Prozesses (`_agent-process`) – legt Stack, Prüfungen, Auslieferung und Abnahme eines Projekts in `_context/` fest und legt die erste Anforderung an. Nutzen, wenn `_context/projekt.md` noch nicht ausgefüllt ist oder Stack, Prüfungen oder Auslieferung neu festgelegt werden. Nicht für einzelne Befehle oder kleine Korrekturen an `_context/`.
+---
+
 # Stufe 0: Projekt einrichten
 
 Legt **einmal** fest, wie im Projekt gebaut, geprüft, abgenommen und ausgeliefert wird. Alle späteren Stufen lesen diese Festlegungen aus `_context/` statt sie je Anforderung neu zu klären.
@@ -12,16 +17,16 @@ Legt **einmal** fest, wie im Projekt gebaut, geprüft, abgenommen und ausgeliefe
 
 ## Was festgelegt wird
 
-Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/anweisungen/02-klaerung.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`.
+Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`.
 
 1.  **Zweck** — wofür das Projekt da ist, in zwei, drei Sätzen.
 2.  **Stack** — Sprache, Framework, Build (oder keiner), Laufzeit-Abhängigkeiten.
 3.  **Zielformat** — Geräte, Bildschirmgrößen, Ausrichtung, hell/dunkel, Sprache, Barrierefreiheit. Gilt für Entwurf, Tests und Klicktest.
-4.  **Design-System** — welches, und wie es zur Laufzeit in die App kommt (z. B. welche Dateien, ob kopiert wird; dann Kopierbefehl). Soll es als Submodul `_design-system/` eingebunden werden, gibt der Agent dem Nutzer die Befehle fertig aus (`git submodule add <design-system> _design-system` und Commit) und wartet — er bindet es nicht selbst ein.
+4.  **Design-System** — welches, und wie es zur Laufzeit in die App kommt (z. B. welche Dateien, ob kopiert wird; dann Kopierbefehl). Soll es als Submodul `_design-system/` eingebunden werden, gibt der Agent dem Nutzer die Befehle fertig aus (`git submodule add <design-system> _design-system` und Commit) und wartet — er bindet es nicht selbst ein. Dazu die **UI-Pfade** (in `_context/projekt.md`): wo UI-Code liegt, damit UI-Arbeit erkennbar ist.
 5.  **Prüfungen** — je Kategorie das passende Werkzeug für den Stack (siehe „Standardprüfungen").
 6.  **Ein Befehl für alles** — alle Prüfungen laufen mit einem Befehl, lokal in der Umgebung des Agenten und in der CI gleich.
 7.  **Umgebung des Agenten** — wo der Agent arbeitet und testet (z. B. Container), was dort verfügbar sein muss.
-8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `release-candidate` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/anweisungen/08-release.md`), Zurückrollen. Standard für die CI:
+8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `release-candidate` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/skills/ap-release/SKILL.md`), Zurückrollen. Standard für die CI:
     -   **Tag automatisch:** Nach dem Zusammenführen des Release-Pull-Requests setzt die CI den Tag `v<version>` aus dem Release-Dokument; die Auslieferung startet mit dem Tag.
     -   **Nachprüfung automatisch:** Nach der Auslieferung prüft die CI die ausgelieferte App (startet sie, Hauptwege); Geräteprüfung bleibt beim Nutzer.
     -   **Backlog automatisch zusammenführen:** Pull Requests von `backlog`, die nur `_requirements/backlog/` ändern, führt die CI bei grüner Prüfung selbst zusammen.
@@ -59,5 +64,5 @@ Im Grundgerüst werden Werkzeuge in aktuellen Versionen eingerichtet; Warnungen 
 
 -   `_context/projekt.md` (und `_context/design.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
 -   **Branch:** Der Agent legt `feature/grundgeruest` von `main` an, committet `_context/` und die erste Anforderung dort und pusht. Stufe 4 läuft auf diesem Branch weiter.
--   **Erste Anforderung** `_requirements/backlog/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, Status `new`): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
+-   **Erste Anforderung** `_requirements/backlog/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, Status `new`, Track `complete`): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
 -   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`).

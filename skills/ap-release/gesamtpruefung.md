@@ -1,0 +1,10 @@
+# Stufe 8b: Gesamtprüfung
+
+Die Anforderungen sind einzeln geprüft — hier wird geprüft, ob sie **zusammen** funktionieren:
+
+-   Alle Tests, der Prüflauf, die automatischen Prüfungen aus Stufe 6 und der saubere Lauf auf `release-candidate`.
+-   **Zurückgestelltes aufräumen** (`_requirements/deferred/`, Regeln in der `README.md` dort; bei der Abkürzung gilt deren Abschnitt dazu): Übernommenes oder Erledigtes löschen; was jetzt jemand will, zuerst als Idee bzw. Bug festhalten (`ap-requirement-capture`, Branch `backlog`, danach zurück auf `release-candidate`), dann löschen; dem Nutzer kurz nennen, was bleibt. Die Änderungen gehen mit dem Commit des Release-Dokuments.
+-   Kurzer Klicktest über alle enthaltenen Anforderungen (Rolle Klicktester, nur die Hauptwege) — dem Klicktester Version und Liste der Anforderungen nennen. Die Befunde stuft der Agent ein (`_agent-process/anweisungen/rollen/README.md`).
+-   Ergebnis unter `# Gesamtprüfung` ins Release-Dokument; damit ist es **fertig** — committen, pushen. Läuft 8b nach Befunden erneut, ersetzt der Agent diesen Abschnitt; eingefroren ist das Release-Dokument erst ab dem Zusammenführen nach `main`. Das Ergebnis der CI steht im Pull Request, nicht im Dokument.
+-   Dann eröffnet der Agent den **Pull Request von `release-candidate` nach `main`** (Titel z. B. `chore(release): v<version>`) — beim erneuten 8b gibt es ihn schon; die CI läuft dort. **Ohne grüne CI kein Zusammenführen und kein Tag.** Dem Nutzer sagt er: Pull Request `#<Nummer>`, CI grün, bereit zum Zusammenführen.
+-   Blockierende Befunde → betroffene Anforderung über einen neuen Bug bzw. Fix-Branch nach `release-candidate` korrigieren (das abgenommene Dokument bleibt eingefroren); dem Nutzer sagen: Pull Request `#<Nummer>` vorerst nicht zusammenführen; danach 8b erneut. Empfohlene Befunde und Hinweise: als Eintrag `release-<version>-<n>.md` in `_requirements/deferred/` (vor dem Commit des Release-Dokuments), als Idee bzw. Bug ins Backlog oder mit Grund verwerfen; das Release geht weiter.

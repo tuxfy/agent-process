@@ -1,7 +1,7 @@
 #!/bin/sh
 # Setzt die Regeln beim Hoster aus der Checkliste in Stufe 0, soweit sie fehlen.
 # GitHub über gh, GitLab über glab — angemeldet, mit Admin- bzw. Maintainer-Rechten.
-# Andere Hoster: Checkliste in _agent-process/anweisungen/00-einrichtung.md.
+# Andere Hoster: Checkliste in _agent-process/skills/ap-project-setup/SKILL.md.
 # Vorhandene Regeln bleiben unverändert; einzige Ausnahme: ein Schutz des Haupt-Branches,
 # der Push erlaubt, wird verschärft. Wird von `init.sh --hoster` aufgerufen.
 # Läuft mit deinen Rechten auf deinem Rechner, nicht im Agent-Container: dessen Token hat

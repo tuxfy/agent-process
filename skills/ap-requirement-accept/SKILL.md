@@ -1,3 +1,8 @@
+---
+name: ap-requirement-accept
+description: Stufe 7 des Agent-Prozesses (`_agent-process`) – der Nutzer nimmt eine Anforderung ab; Befunde, Abnahme-Commit und Rückblick. Nutzen bei Status review mit grüner CI und übergebenem Abnahmepaket, oder wenn der Nutzer Befunde oder „abgenommen" meldet. Nicht für neue Wünsche (Skill ap-requirement-capture).
+---
+
 # Stufe 7: Abnahme
 
 Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraussetzung: Stufe 6 abgeschlossen, Abnahmepaket liegt vor, Status `review`.
@@ -16,13 +21,13 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 
 ## 7b: Befunde
 
--   Befunde → zurück zu Stufe 5 (mit Test, wo möglich), danach Stufe 6 für die betroffenen Teile erneut.
--   Neue Wünsche, die über die Anforderung hinausgehen: als Idee ins Backlog, nicht in diese Anforderung.
+-   Befunde → zurück zu Stufe 5 (mit Test, wo möglich), je Korrektur ein eigener Commit; danach Stufe 6 für die betroffenen Teile erneut. Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
+-   Neue Wünsche, die über die Anforderung hinausgehen: als Idee ins Backlog, nicht in diese Anforderung. Ein Befund, den der Nutzer bewusst verschiebt: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem Commit aus 7c.
 
 ## 7c: Abgenommen
 
 -   Der Nutzer gibt ausdrücklich frei.
--   **Ein Commit, vor dem Zusammenführen:** Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde), Rückblick (7d), Dokument nach `_requirements/done/` verschoben. Der Agent committet und pusht; die CI im Pull Request läuft erneut.
+-   **Ein Commit, vor dem Zusammenführen:** Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde), Rückblick (7d), Dokument nach `_requirements/done/` verschoben, ggf. Einträge in `_requirements/deferred/`. Der Agent committet und pusht; die CI im Pull Request läuft erneut.
 -   **Erst bei grüner CI** meldet der Agent „bereit zum Zusammenführen“ — vorher nicht. Dazu sagt er: Zusammenführen nach `release-candidate` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
 -   **Der Nutzer führt den Pull Request zusammen** (nach `release-candidate`). Der Agent wartet darauf und fragt nicht nach.
 -   Ab dem Commit ist das Dokument eingefroren. Was danach noch auffällt, wird eine neue Idee bzw. ein Bug — kein zweiter Pull Request.
@@ -33,4 +38,4 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 Kurz festhalten, was gehakt hat — fertig, bevor der Commit aus 7c entsteht:
 
 -   **Projekt betreffend** → `_context/` ergänzen.
--   **Prozess betreffend** → als Vorschlag fürs Prozess-Repo notieren (nichts unter `_agent-process/` im Projekt ändern).
+-   **Prozess betreffend** → als Vorschlag fürs Prozess-Repo notieren (nichts unter `_agent-process/` im Projekt ändern); steht der Fehler schon in einem früheren Rückblick, als Zeile für „Bekannte Fehler“ in `_agent-process/AGENTS.md` vorschlagen.

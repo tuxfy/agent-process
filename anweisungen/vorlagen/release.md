@@ -1,10 +1,10 @@
 -   **Version** <version>
 
-*Fertig mit dem Release-Pull-Request (8b); danach unverändert. Ob das Release live ist, zeigt der Tag `v<version>`.*
+*Fertig mit dem Release-Pull-Request (8b); bei erneutem 8b wird `# Gesamtprüfung` ersetzt; ab dem Zusammenführen nach `main` unverändert. Ob das Release live ist, zeigt der Tag `v<version>`.*
 
 # Version
 
-*Vom Agenten in 8a nach den Regeln in `08-release.md` festgelegt.*
+*Vom Agenten in 8a nach den Regeln in `_agent-process/skills/ap-release/inhalt-version.md` festgelegt.*
 
 -   **Vorher:** `v<letzte version>` · **Neu:** `v<version>` · **Stufe:** Major | Minor | Patch
 -   **Ausschlaggebend:** Commits bzw. Pull Requests (`#<Nummer>`), die die Stufe bestimmen
@@ -18,7 +18,7 @@
 
 # Gesamtprüfung
 
-*Vom Agenten in 8b ergänzt.*
+*Vom Agenten in 8b ausgefüllt, bei erneutem 8b ersetzt.*
 
 -   **Tests und Prüflauf:** `<Befehl>` — <Ergebnis>
 -   **Automatische Prüfungen:** <Ergebnis>
