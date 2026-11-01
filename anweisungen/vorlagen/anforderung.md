@@ -1,10 +1,11 @@
--   **Title** Kurzer Titel
--   **Status** idea | bug | new | refined | in progress | qa | review | accepted
+-   **Titel** Kurzer Titel
+-   **Issue** #<n>
+-   **Status** new | refined | in progress | qa | review | accepted
 -   **Track** quick | complete
 
-# Idee
+# Anliegen
 
-*(unverändert aus der Idee übernommen)*
+*(Text aus Issue #<n>, unverändert übernommen)*
 
 # Hintergrund
 

@@ -10,7 +10,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 |---|---|
 | `ap-project-setup` | Stufe 0, einmal je Projekt |
 | `ap-requirement-capture` | der Nutzer meldet einen Fehler oder Wunsch — **zuerst festhalten, nicht sofort beheben** |
-| `ap-requirement-refine` | Status `idea`, `bug`, `new`: Klärung, Design, Refinement |
+| `ap-requirement-refine` | der Nutzer greift ein Issue auf, oder Status `new`: Klärung, Design, Refinement |
 | `ap-requirement-build` | Status `refined`, `in progress`, `qa`: Plan, Umsetzung, QA |
 | `ap-requirement-accept` | Status `review` |
 | `ap-release` | der Nutzer sagt „release“, oder ein Release ist offen |
@@ -26,18 +26,19 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 ## Ordner und Branches
 
 -   **Nie ändern:** `_agent-process/`, `.claude/agents`, `.claude/skills/ap-*`, `_design-system/` und kopierte Dateien des Design-Systems (nur über den Kopierbefehl aus `_context/projekt.md` erneuern). Änderungen am Prozess nur als Vorschlag fürs Prozess-Repo. Bauen, Prüfen und Ausliefern nutzen nie Dateien aus `_agent-process/`.
--   Anforderungen liegen in `_requirements/` (bis zum Refinement in `backlog/`, abgenommen in `done/`), bewusst Zurückgestelltes in `_requirements/deferred/` (eine Datei je Eintrag, Regeln in der `README.md` dort), Releases in `_releases/`.
--   `main` nur per Pull Request. Ideen und Bugs auf `backlog`, je Anforderung `feature/<kurzer-name>` bzw. `fix/<kurzer-name>`; deren Pull Request geht nach `release-candidate` — **heißt: kommt ins nächste Release** (ohne `release-candidate`: Abkürzung in `ap-release`).
+-   Ideen und Bugs sind Issues beim Hoster. Anforderungen liegen ab Stufe 2 in `_requirements/` (abgenommen in `done/`), bewusst Zurückgestelltes in `_requirements/deferred/` (eine Datei je Eintrag, Regeln in der `README.md` dort), Releases in `_releases/`.
+-   `main` nur per Pull Request. Je Anforderung `feature/<kurzer-name>` bzw. `fix/<kurzer-name>`; deren Pull Request geht nach `release-candidate` — **heißt: kommt ins nächste Release** (ohne `release-candidate`: Abkürzung in `ap-release`).
 
 ## Git
 
 -   **Commit-Format:** `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. Titel von Pull Requests ebenso — beim Squash wird der Titel zur Commit-Nachricht und zählt für die Version.
 -   **Committen nur, wo ein Skill oder diese Datei es sagt,** dann sofort pushen. Den Git-Hook nie umgehen. Pull Requests eröffnet der Agent, mit Verweis auf das Anforderungs- bzw. Release-Dokument.
 -   **Zusammenführen und Tags nie durch den Agenten;** auf `main` wird nie committet.
--   **Aktueller Stand:** CI und Nutzer führen auf dem Hoster zusammen, ohne dass der Agent es mitbekommt. Deshalb vor jeder Arbeit auf einem gemeinsamen Branch (`main`, `backlog`, `release-candidate`, wenn es ihn im Projekt gibt) und vor jedem neuen Branch davon:
+-   **Issues:** Der Agent legt Issues an, liest und kommentiert sie (`gh issue` bzw. `glab issue` — welcher, zeigt die Adresse von `origin`); schließen, wieder öffnen, löschen und Labels nachträglich ändern nie.
+-   **Aktueller Stand:** CI und Nutzer führen auf dem Hoster zusammen, ohne dass der Agent es mitbekommt. Deshalb vor jeder Arbeit auf einem gemeinsamen Branch (`main`, `release-candidate`, wenn es ihn im Projekt gibt) und vor jedem neuen Branch davon:
     1.  `git fetch --prune --tags`.
     2.  Gibt es `origin/<Branch>`: `git switch <Branch>`, `git pull --ff-only`. Gibt es ihn nur lokal (vom Hoster nach dem Zusammenführen gelöscht): `git switch <Branch>`, `git pull --ff-only origin main`, `git push -u origin <Branch>` — scheitert das, anhalten und den Nutzer fragen. Gibt es ihn gar nicht: `git switch main`, `git pull --ff-only`, `git switch -c <Branch>`, `git push -u origin <Branch>`.
-    3.  `backlog` und `release-candidate` zusätzlich auf `main` vorspulen: `git pull --ff-only origin main` (nur Fast-Forward, erlaubt), danach pushen. Scheitert das, hat der Branch eigene Commits — dann weiterarbeiten; nie rebasen oder mergen, Vorschläge von Git dazu ignorieren. **Ausnahme:** Unterscheidet sich `_agent-process` zwischen `release-candidate` und `origin/main` (`git diff --quiet HEAD origin/main -- _agent-process` scheitert), anhalten und dem Nutzer die Befehle zum Zusammenführen geben (README des Prozess-Repos, „Aktualisieren“).
+    3.  `release-candidate` zusätzlich auf `main` vorspulen: `git pull --ff-only origin main` (nur Fast-Forward, erlaubt), danach pushen. Scheitert das, hat der Branch eigene Commits — dann weiterarbeiten; nie rebasen oder mergen, Vorschläge von Git dazu ignorieren. **Ausnahme:** Unterscheidet sich `_agent-process` zwischen `release-candidate` und `origin/main` (`git diff --quiet HEAD origin/main -- _agent-process` scheitert), anhalten und dem Nutzer die Befehle zum Zusammenführen geben (README des Prozess-Repos, „Aktualisieren“).
     4.  Ein neuer Feature- oder Fix-Branch zweigt erst danach von diesem Stand ab: `git switch -c <neu>`, `git push -u origin <neu>`.
 -   Gepushte Commits nie umschreiben; vorher lokal aufräumen ist erlaubt (`--amend`, `rebase`, `reset` ohne `--hard`, `stash`). Branches mit `git switch`, Dateien mit `git restore`. Gesperrt, also nicht versuchen: `checkout`, `merge`, `reset --hard`, `--force`, `--delete`, `--no-verify`, `git -c`, `git config` schreiben, Tags pushen.
 -   **Grün heißt grün in der CI** auf dem gepushten Branch; ein lokales Grün reicht nicht für Abnahme oder Release.
@@ -47,7 +48,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 -   **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
 -   **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
 -   **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
--   **Dokumente:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. Verweise relativ; Pull Requests nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
+-   **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
 
 ## Bekannte Fehler
 

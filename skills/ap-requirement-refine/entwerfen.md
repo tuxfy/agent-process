@@ -16,9 +16,9 @@ Was ins Design-System gehört und wie mit Tokens, Komponenten und Lücken umzuge
 
 ## 3a: Ausgangslage
 
-Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus Idee und Klärung, so, dass er ohne Wissen über das Projekt verständlich ist:
+Der Agent gibt dem Nutzer einen **kurzen Text zum Kopieren** — nur Fakten aus Anliegen und Klärung, so, dass er ohne Wissen über das Projekt verständlich ist:
 
-1.  **Ziel** — was der Nutzer danach tun kann (aus der Idee).
+1.  **Ziel** — was der Nutzer danach tun kann (aus dem Anliegen).
 2.  **Ist-Stand** — was es heute gibt (ein, zwei Sätze).
 3.  **Spielraum** — was sich ändern darf, was unverändert bleibt (aus der Klärung).
 4.  **Feste Grenzen** — Daten bzw. Felder, Wertebereiche, Zustände, vorgegebene Texte.

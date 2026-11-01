@@ -1,14 +1,17 @@
 # Stufe 2: Klärung
 
-**Beginn:** Greift der Nutzer einen Eintrag auf, legt der Agent den Branch `feature/<kurzer-name>` (bei Bugs `fix/<kurzer-name>`) vom aktuellen `main` an (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand"); alle weiteren Stufen dieser Anforderung bis zur Abnahme laufen dort. Voraussetzung: Der Eintrag ist schon auf `main` (Backlog-Pull-Request zusammengeführt). **Ausnahme:** Fix aus der Gesamtprüfung (8b) — Branch vom aktuellen `release-candidate`, der Bug-Eintrag entsteht dort (`_agent-process/skills/ap-release/gesamtpruefung.md`).
+**Beginn:** Der Nutzer greift ein Issue ausdrücklich auf (Branch finden: `_agent-process/skills/ap-requirement-refine/SKILL.md`); bei einem Fix aus der Gesamtprüfung (8b) gilt der blockierende Befund als Aufgreifen. Alle Stufen dieser Anforderung bis zur Abnahme laufen auf ihrem Branch. **Hat das Issue schon einen Branch** (Kommentar im Issue): dessen kurzer Name gilt, Branch und Kommentar entfallen — weiter mit „Dokument".
 
-Der Nutzer greift eine Idee auf. Bevor über Lösungen nachgedacht wird, klärt der Agent den **Rahmen**.
+-   **Kurzer Name** aus dem Titel — wenige Wörter, nur `a–z`, `0–9` und Bindestrich (ä → ae, ö → oe, ü → ue, ß → ss), z. B. `timer-ton`; noch nicht vergeben als Branch (`feature/` oder `fix/`, lokal oder beim Hoster nach `git fetch`), unter `_requirements/` (auch `done/`, dort mit Nummer davor) oder `_requirements/mockups/`. Gibt es schon einen Branch mit diesem Namen, aber keinen Kommentar im Issue: fragen. Er ist die Kennung der Anforderung (Branch, Commits, Dateiname); der Agent nennt ihn dem Nutzer gleich zu Beginn.
+-   **Branch:** `fix/<kurzer-name>` bei Label `bug`, sonst `feature/<kurzer-name>`; ohne Label fragen. Die Art („Was der Agent macht", Schritt 2) ändert ihn nicht. Angelegt vom aktuellen `main` (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand"), bei einem Fix aus 8b vom aktuellen `release-candidate`. **Direkt nach dem Push** ins Issue kommentieren: „Aufgegriffen auf `<Branch>`".
+-   **Dokument** `_requirements/<kurzer-name>.md` (nur, wenn es fehlt), neu nach `_agent-process/anweisungen/vorlagen/anforderung.md`: Titel aus dem Issue-Titel, `Issue #<Nummer>`, Status `new`; im Abschnitt „Anliegen" der Text des Issues, unverändert — nur Sicherheitsdetails abstrakt fassen und Adressen beim Hoster durch `#<Nummer>` ersetzen (`_agent-process/AGENTS.md`, Abschnitt „Grundsätze"). Inhaltlich Neues aus den Kommentaren unter „Hintergrund", mit Verweis auf das Issue.
+
+Geht Lesen oder Kommentieren nicht (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Der Nutzer gibt Nummer, Titel, Label, Text und ggf. Kommentare; den Kommentar gibt der Agent zum Kopieren aus und arbeitet weiter.
+
+Bevor über Lösungen nachgedacht wird, klärt der Agent den **Rahmen**.
 
 ## Start
 
--   Auslöser: Der Nutzer greift eine Idee ausdrücklich auf.
--   Status `idea` bzw. `bug` → `new`. Das Dokument bleibt in `_requirements/backlog/`.
--   Das Dokument wird nach `_agent-process/anweisungen/vorlagen/anforderung.md` erweitert; der Abschnitt „Idee" bleibt unverändert erhalten.
 -   **Zurückgestelltes durchsehen** — nur lesen, wie in `_requirements/deferred/README.md` beschrieben: passende Einträge dem Nutzer nennen; er entscheidet, ob die Anforderung einen übernimmt (dann mit Dateinamen im Dokument).
 
 ## Was der Agent macht
@@ -25,7 +28,7 @@ Der Nutzer greift eine Idee auf. Bevor über Lösungen nachgedacht wird, klärt 
 
     **So fragen:** nicht abstrakt („Welcher Spielraum?"), sondern
     1.  in ein, zwei Sätzen erklären, wofür der Spielraum da ist — er legt fest, was sich durch die Anforderung ändern darf, und schützt alles andere vor ungewollten Änderungen (z. B. dass ein Redesign nicht still das Verhalten ändert),
-    2.  einen **konkreten Vorschlag** für genau diese Idee machen, je Bereich mit kurzer Begründung (z. B. „Verhalten: ja — die Funktion ist neu"; „Schnittstellen/Daten: ja — es wird lokal gespeichert"),
+    2.  einen **konkreten Vorschlag** für genau dieses Anliegen machen, je Bereich mit kurzer Begründung (z. B. „Verhalten: ja — die Funktion ist neu"; „Schnittstellen/Daten: ja — es wird lokal gespeichert"),
     3.  dann um Bestätigung oder Korrektur bitten.
 
     Bei einem **neuen Projekt** ohne bestehenden Stand gilt meist alles als änderbar — dann das kurz sagen statt vier Einzelfragen zu stellen, und alle Bereiche ankreuzen.

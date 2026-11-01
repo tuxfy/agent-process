@@ -37,9 +37,8 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 |---|---|---|---|---|
 | **0 Einrichten** *(einmal je Projekt)* | Agent schlägt vor | Stack, Prüfungen, Auslieferung, Abnahme in `_context/`; erste Anforderung `grundgeruest` · **ZF:** Einstellungen beim Hoster, soweit Init sie nicht gesetzt hat, ggf. Befehle für das Design-System-Submodul | **GO**, **DU** | — |
 | | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
-| **1 Idee oder Bug** | Agent | Eintrag im Backlog | **C+P**, **PR** nach `main` | `backlog` |
-| | CI | Backlog-PR bei grüner Prüfung zusammenführen | **CI** | — |
-| **2 Klärung** | Agent | Branch vom aktuellen `main` anlegen, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
+| **1 Idee oder Bug** | Agent oder du | Issue beim Hoster, Label `idee` bzw. `bug` · **ZF:** Nummer | — | — |
+| **2 Klärung** | Agent | Issue lesen, Branch vom aktuellen `main` anlegen, ins Issue kommentieren, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
 | | du | Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
 | | Agent | Anforderungsdokument | **C+P** | Feature-Branch |
 | **3a Ausgangslage** *(nur bei Design)* | Agent | Fakten, keine Gestaltung · **ZF:** Ausgangslage als Text zum Kopieren | — | |
@@ -67,7 +66,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `release-candidate` |
 | **8c Ausliefern** | du | PR nach `main` **als Merge-Commit** zusammenführen — das ist die Freigabe | **DU** | `main` |
 | | CI | Tag setzen, Auslieferung startet (ohne CI: **ZF** Befehle für den Tag, mit Version) | **CI** | `main` |
-| **8d Nachprüfen** | CI + Agent + du | ausgelieferte App testen, Gerät durch dich; sonst zurückrollen, Bug ins Backlog · **ZF:** Ergebnis | **CI** | — |
+| **8d Nachprüfen** | CI + Agent + du | ausgelieferte App testen, Gerät durch dich; sonst zurückrollen, Bug als Issue · **ZF:** Ergebnis | **CI** | — |
 
 Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
 
@@ -78,15 +77,13 @@ Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
 | Ordner | Inhalt |
 |---|---|
 | `_context/` | was man über das Projekt wissen muss (Stack, Befehle, …) |
-| `_requirements/backlog/` | Ideen und Anforderungen bis zum Refinement, ohne Nummer |
-| `_requirements/` | ab `refined`; Nummer ab dem Start der Umsetzung |
+| `_requirements/` | ab Stufe 2 (Klärung); Nummer ab dem Start der Umsetzung |
 | `_requirements/done/` | abgenommen (ab 7c), eingefroren |
 | `_requirements/deferred/` | bewusst Zurückgestelltes (Befunde, abgetrennte Ziele), eine Datei je Eintrag; Regeln in der `README.md` dort |
 | `_releases/` | ein Dokument je Release |
 
 | Branch | Zweck | Weg nach `main` |
 |---|---|---|
-| `backlog` | Ideen und Bugs (Stufe 1) | Pull Request |
 | `feature/<kurzer-name>` bzw. `fix/<kurzer-name>` | eine Anforderung von Stufe 2 bis zur Abnahme | Pull Request nach `release-candidate` (6d) |
 | `release-candidate` | Sammel-Branch bis zum nächsten Release, mit Release-Dokument | Pull Request nach `main` (8b), dann Tag |
 

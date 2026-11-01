@@ -1,20 +1,22 @@
 ---
 name: ap-requirement-capture
-description: Stufe 1 des Agent-Prozesses (`_agent-process`) – hält eine neue Idee oder einen Bug kurz im Backlog fest, ohne sie zu lösen. Nutzen, wenn der Nutzer einen Fehler oder Wunsch meldet oder im Gespräch etwas Neues aufkommt. Nicht für Fehler einer Anforderung, die noch in Arbeit ist (zurück in deren Umsetzung), und nicht zum Ausarbeiten eines Eintrags (Skill ap-requirement-refine).
+description: Stufe 1 des Agent-Prozesses (`_agent-process`) – hält eine neue Idee oder einen Bug kurz als Issue beim Hoster fest, ohne sie zu lösen. Nutzen, wenn der Nutzer einen Fehler oder Wunsch meldet oder im Gespräch etwas Neues aufkommt. Nicht für Fehler einer Anforderung, die noch in Arbeit ist (zurück in deren Umsetzung), und nicht zum Ausarbeiten eines Issues (Skill ap-requirement-refine).
 ---
 
 # Stufe 1: Idee oder Bug
 
-Festhalten, nicht lösen. Ein Eintrag ist bewusst kurz — er dient dem **Festhalten**, nicht dem Refinement.
+Festhalten, nicht lösen. Ein Issue ist bewusst kurz — es dient dem **Festhalten**, nicht dem Refinement.
 
-| Art | Vorlage | Status | Inhalt |
+| Art | Label | Text nach | Inhalt |
 |---|---|---|---|
-| **Idee** — etwas Neues oder anders | `_agent-process/anweisungen/vorlagen/idee.md` | `idea` | was stört oder fehlt · was danach anders sein soll |
-| **Bug** — etwas funktioniert nicht wie festgelegt | `_agent-process/anweisungen/vorlagen/bug.md` | `bug` | was passiert · was erwartet war · wie es auftritt · Stand |
+| **Idee** — etwas Neues oder anders | `idee` | `_agent-process/anweisungen/vorlagen/idee.md` | was stört oder fehlt · was danach anders sein soll |
+| **Bug** — etwas funktioniert nicht wie festgelegt | `bug` | `_agent-process/anweisungen/vorlagen/bug.md` | was passiert · was erwartet war · wie es auftritt · Stand |
 
--   Ablage: `_requirements/backlog/<kurzer-name>.md` auf dem Branch `backlog`, vorher auf aktuellem Stand und auf `main` vorgespult (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand") — der kurze Name ist die Kennung der Anforderung; der Agent committet, pusht und eröffnet einen Pull Request bzw. ergänzt den offenen. Zusammengeführt wird er von der CI, wenn eingerichtet (Stufe 0), sonst vom Nutzer, wann es passt.
--   Festhalten darf **jeder** — auch der Agent mitten im Gespräch. Aus laufender Arbeit auf einem anderen Branch: nicht Committetes mit `git stash -u` sichern (auch neue Dateien), auf `backlog` wechseln, festhalten, zurückwechseln, `git stash pop`.
--   Der Agent schärft einen Eintrag **nicht von sich aus** aus; das passiert erst, wenn der Nutzer ihn aufgreift (→ Stufe 2).
+-   **Vorher suchen:** offene und geschlossene Issues nach dem Thema durchsuchen (`gh issue list --state all --search …` bzw. `glab issue list --all --search …`). Dasselbe Anliegen, Issue offen: dem Nutzer die Nummer nennen, Neues als Kommentar dazu (ist es schon aufgegriffen, auch den Branch nennen — der Kommentar erreicht das Dokument nicht von selbst); Issue geschlossen: neues Issue mit Verweis `#<alt>`; unklar, ob es dasselbe ist: fragen.
+-   **Anlegen:** ein Issue beim Hoster des Projekts (`gh issue create` bzw. `glab issue create`) — Titel kurz und sprechend, Label laut Tabelle, Text nach der Vorlage mit ersetzten Platzhaltern. Kein Branch, kein Commit. Dem Nutzer die Nummer nennen (`#<Nummer>`).
+-   **Geht das nicht** (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Titel, Label und Text zum Kopieren ausgeben; der Nutzer legt das Issue an, der Agent arbeitet weiter. Fehlt nur das Label: ohne Label anlegen und es dem Nutzer sagen.
+-   Festhalten darf **jeder** — der Nutzer auch direkt beim Hoster, der Agent auch mitten im Gespräch; laufende Arbeit bleibt dabei, wie sie ist.
+-   Der Agent schärft ein Issue **nicht von sich aus** aus; das passiert erst, wenn der Nutzer es aufgreift (→ Stufe 2).
 -   **Meldet der Nutzer einen Fehler oder Wunsch** oder kommt im Gespräch etwas Neues auf: **zuerst** festhalten — nicht sofort beheben, planen oder Code schreiben. Auch nicht „schnell nebenbei".
 -   Gehört ein Fehler zu einer Anforderung, die noch in Arbeit ist (vor der Abnahme): kein eigener Bug — zurück in deren Stufe 5. Gehört er zu etwas Abgenommenem oder Ausgeliefertem: eigener Bug.
 
