@@ -63,6 +63,6 @@ Im Grundgerüst werden Werkzeuge in aktuellen Versionen eingerichtet; Warnungen 
 ## Ergebnis
 
 -   `_context/projekt.md` (und `_context/design.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
--   **Branch:** Der Agent legt `feature/grundgeruest` von `main` an, committet `_context/` und die erste Anforderung dort und pusht. Stufe 4 läuft auf diesem Branch weiter.
+-   **Branch:** Der Agent legt `feature/grundgeruest` vom aktuellen `main` an, committet `_context/` und die erste Anforderung dort und pusht. Stufe 4 läuft auf diesem Branch weiter.
 -   **Erste Anforderung** `_requirements/backlog/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, Status `new`, Track `complete`): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
 -   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`).

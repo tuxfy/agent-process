@@ -33,7 +33,12 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 
 -   **Commit-Format:** `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. Titel von Pull Requests ebenso — beim Squash wird der Titel zur Commit-Nachricht und zählt für die Version.
 -   **Committen nur, wo ein Skill oder diese Datei es sagt,** dann sofort pushen. Den Git-Hook nie umgehen. Pull Requests eröffnet der Agent, mit Verweis auf das Anforderungs- bzw. Release-Dokument.
--   **Zusammenführen und Tags nie durch den Agenten.** Nach jedem zusammengeführten Pull Request: `git switch main`, `git pull --ff-only`; auf `main` wird nie committet.
+-   **Zusammenführen und Tags nie durch den Agenten;** auf `main` wird nie committet.
+-   **Aktueller Stand:** CI und Nutzer führen auf dem Hoster zusammen, ohne dass der Agent es mitbekommt. Deshalb vor jeder Arbeit auf einem gemeinsamen Branch (`main`, `backlog`, `release-candidate`, wenn es ihn im Projekt gibt) und vor jedem neuen Branch davon:
+    1.  `git fetch --prune --tags`.
+    2.  Gibt es `origin/<Branch>`: `git switch <Branch>`, `git pull --ff-only`. Gibt es ihn nur lokal (vom Hoster nach dem Zusammenführen gelöscht): `git switch <Branch>`, `git pull --ff-only origin main`, `git push -u origin <Branch>` — scheitert das, anhalten und den Nutzer fragen. Gibt es ihn gar nicht: `git switch main`, `git pull --ff-only`, `git switch -c <Branch>`, `git push -u origin <Branch>`.
+    3.  `backlog` und `release-candidate` zusätzlich auf `main` vorspulen: `git pull --ff-only origin main` (nur Fast-Forward, erlaubt), danach pushen. Scheitert das, hat der Branch eigene Commits — dann weiterarbeiten; nie rebasen oder mergen, Vorschläge von Git dazu ignorieren. **Ausnahme:** Unterscheidet sich `_agent-process` zwischen `release-candidate` und `origin/main` (`git diff --quiet HEAD origin/main -- _agent-process` scheitert), anhalten und dem Nutzer die Befehle zum Zusammenführen geben (README des Prozess-Repos, „Aktualisieren“).
+    4.  Ein neuer Feature- oder Fix-Branch zweigt erst danach von diesem Stand ab: `git switch -c <neu>`, `git push -u origin <neu>`.
 -   Gepushte Commits nie umschreiben; vorher lokal aufräumen ist erlaubt (`--amend`, `rebase`, `reset` ohne `--hard`, `stash`). Branches mit `git switch`, Dateien mit `git restore`. Gesperrt, also nicht versuchen: `checkout`, `merge`, `reset --hard`, `--force`, `--delete`, `--no-verify`, `git -c`, `git config` schreiben, Tags pushen.
 -   **Grün heißt grün in der CI** auf dem gepushten Branch; ein lokales Grün reicht nicht für Abnahme oder Release.
 

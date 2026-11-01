@@ -1,6 +1,6 @@
 # Stufe 2: Klärung
 
-**Beginn:** Greift der Nutzer einen Eintrag auf, legt der Agent den Branch `feature/<kurzer-name>` (bei Bugs `fix/<kurzer-name>`) von `main` an; alle weiteren Stufen dieser Anforderung bis zur Abnahme laufen dort. Voraussetzung: Der Eintrag ist schon auf `main` (Backlog-Pull-Request zusammengeführt).
+**Beginn:** Greift der Nutzer einen Eintrag auf, legt der Agent den Branch `feature/<kurzer-name>` (bei Bugs `fix/<kurzer-name>`) vom aktuellen `main` an (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand"); alle weiteren Stufen dieser Anforderung bis zur Abnahme laufen dort. Voraussetzung: Der Eintrag ist schon auf `main` (Backlog-Pull-Request zusammengeführt). **Ausnahme:** Fix aus der Gesamtprüfung (8b) — Branch vom aktuellen `release-candidate`, der Bug-Eintrag entsteht dort (`_agent-process/skills/ap-release/gesamtpruefung.md`).
 
 Der Nutzer greift eine Idee auf. Bevor über Lösungen nachgedacht wird, klärt der Agent den **Rahmen**.
 

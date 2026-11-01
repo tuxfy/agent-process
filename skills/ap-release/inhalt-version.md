@@ -1,6 +1,6 @@
 # Stufe 8a: Inhalt und Version
 
--   **Start:** Der Nutzer sagt „release" — wann, entscheidet er.
+-   **Start:** Der Nutzer sagt „release" — wann, entscheidet er. Zuerst `release-candidate` auf aktuellen Stand bringen (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand"; holt auch die Tags — die setzen Nutzer bzw. CI, die Version zählt ab dem letzten).
 -   **Inhalt:** alle Anforderungen, die seit dem letzten Tag nach `release-candidate` zusammengeführt wurden (laut Git-Verlauf; ihre Dokumente liegen in `_requirements/done/`).
 -   **Ausnahme — soll eine davon doch nicht mit:** der Agent nimmt sie per Revert-Commit auf `release-candidate` wieder heraus (nach Rückfrage); sie kommt mit einem späteren Release. Der Regelfall ist, sie gar nicht erst zusammenzuführen.
 -   **Version bestimmen** — Grundlage sind die Commits auf `release-candidate` seit dem letzten Tag `v<x.y.z>` (bei Zusammenführen per „Squash": die Titel der Pull Requests):

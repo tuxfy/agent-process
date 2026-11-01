@@ -39,7 +39,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
 | **1 Idee oder Bug** | Agent | Eintrag im Backlog | **C+P**, **PR** nach `main` | `backlog` |
 | | CI | Backlog-PR bei grüner Prüfung zusammenführen | **CI** | — |
-| **2 Klärung** | Agent | Branch von `main` anlegen, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
+| **2 Klärung** | Agent | Branch vom aktuellen `main` anlegen, Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | `feature/…` bzw. `fix/…` |
 | | du | Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
 | | Agent | Anforderungsdokument | **C+P** | Feature-Branch |
 | **3a Ausgangslage** *(nur bei Design)* | Agent | Fakten, keine Gestaltung · **ZF:** Ausgangslage als Text zum Kopieren | — | |
@@ -62,7 +62,6 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **7c Abgenommen** | du | Abnahme aussprechen | **GO** | |
 | | Agent | Status `accepted`, Abnahme, Rückblick, Dokument nach `_requirements/done/`, ggf. Zurückgestelltes — ein Commit; CI abwarten · **ZF:** „bereit zum Zusammenführen“ | **C+P** | Feature-Branch |
 | | du | erst danach: PR nach `release-candidate` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
-| | Agent | `git switch main`, `git pull --ff-only` | — | `main` |
 | **8a Inhalt und Version** | du | „release" — wann, entscheidest du | **GO** | |
 | | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `release-candidate` |
 | **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `release-candidate` |
@@ -129,7 +128,7 @@ git push -u origin feature/prozess-aktualisieren
 
 1.  Ausgabe von Init prüfen (Hinweise, z. B. neuer Stand der Prüf-Konfiguration; neue oder entfernte Skill-Links). Verweise in eingefrorenen Dokumenten (`_requirements/done/`, Release-Dokumente) auf umbenannte Dateien des Prozesses bleiben, wie sie sind.
 2.  Pull Request **nach `main`** eröffnen, bei grüner CI zusammenführen.
-3.  `main` in `release-candidate` übernehmen, damit beide gleich bleiben:
+3.  `main` in `release-candidate` übernehmen, damit beide denselben Prozess-Stand haben (der Agent hält sonst vor der Arbeit auf `release-candidate` an; geht es per Fast-Forward, spult er selbst vor):
 
     ```
     git switch main
