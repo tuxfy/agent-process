@@ -36,7 +36,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | Schritt | Wer | Was passiert | Markierung | Branch |
 |---|---|---|---|---|
 | **0 Einrichten** *(einmal je Projekt)* | Agent schlägt vor | Stack, Prüfungen, Auslieferung, Abnahme in `_context/`; erste Anforderung `grundgeruest` · **ZF:** Einstellungen beim Hoster, soweit Init sie nicht gesetzt hat, ggf. Befehle für das Design-System-Submodul | **GO**, **DU** | — |
-| | Agent | `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
+| | Agent | Issue für die erste Anforderung; `_context/`, erste Anforderung | **C+P** | `feature/grundgeruest` |
 | **1 Idee oder Bug** | Agent oder du | Issue beim Hoster, Label `idee` bzw. `bug` · **ZF:** Nummer | — | — |
 | **2 Klärung** | Agent | Issue lesen, Branch vom aktuellen `main` anlegen, ins Issue kommentieren | — | `feature/…` bzw. `fix/…` |
 | | Agent | Dokument mit Anliegen aus dem Issue | **C+P** | Feature-Branch |
@@ -79,7 +79,7 @@ Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
 | Ordner | Inhalt |
 |---|---|
 | `_context/` | was man über das Projekt wissen muss (Stack, Befehle, …) |
-| `_requirements/` | ab Stufe 2 (Klärung); Nummer ab dem Start der Umsetzung |
+| `_requirements/` | ab Stufe 2 (Klärung), `grundgeruest` ab Stufe 0; Nummer ab dem Start der Umsetzung |
 | `_requirements/done/` | abgenommen (ab 7c), eingefroren |
 | `_requirements/deferred/` | bewusst Zurückgestelltes (Befunde, abgetrennte Ziele), eine Datei je Eintrag; Regeln in der `README.md` dort |
 | `_releases/` | ein Dokument je Release |

@@ -26,7 +26,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 ## Ordner und Branches
 
 -   **Nie ändern:** `_agent-process/`, `.claude/agents`, `.claude/skills/ap-*`, `_design-system/` und kopierte Dateien des Design-Systems (nur über den Kopierbefehl aus `_context/projekt.md` erneuern). Änderungen am Prozess nur als Vorschlag fürs Prozess-Repo. Bauen, Prüfen und Ausliefern nutzen nie Dateien aus `_agent-process/`.
--   Ideen und Bugs sind Issues beim Hoster. Anforderungen liegen ab Stufe 2 in `_requirements/` (abgenommen in `done/`), bewusst Zurückgestelltes in `_requirements/deferred/` (eine Datei je Eintrag, Regeln in der `README.md` dort), Releases in `_releases/`.
+-   Ideen und Bugs sind Issues beim Hoster. Anforderungen liegen ab Stufe 2 (`grundgeruest` ab Stufe 0) in `_requirements/` (abgenommen in `done/`), bewusst Zurückgestelltes in `_requirements/deferred/` (eine Datei je Eintrag, Regeln in der `README.md` dort), Releases in `_releases/`.
 -   `main` nur per Pull Request. Je Anforderung `feature/<kurzer-name>` bzw. `fix/<kurzer-name>`; deren Pull Request geht nach `release-candidate` — **heißt: kommt ins nächste Release** (ohne `release-candidate`: Abkürzung in `ap-release`).
 
 ## Git

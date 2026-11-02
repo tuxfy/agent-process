@@ -29,13 +29,13 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
 8.  **Auslieferung und Release** — wohin ausgeliefert wird (Rolle „Hoster", How-to in `_context/`), Release-Modell (Sammel-Branch `release-candidate` oder „Zusammenführen nach `main` = Ausliefern", siehe `_agent-process/skills/ap-release/SKILL.md`), Zurückrollen. Standard für die CI:
     -   **Tag automatisch:** Nach dem Zusammenführen des Release-Pull-Requests setzt die CI den Tag `v<version>` aus dem Release-Dokument; die Auslieferung startet mit dem Tag.
     -   **Nachprüfung automatisch:** Nach der Auslieferung prüft die CI die ausgelieferte App (startet sie, Hauptwege); Geräteprüfung bleibt beim Nutzer.
-    -   **Backlog automatisch zusammenführen:** Pull Requests von `backlog`, die nur `_requirements/backlog/` ändern, führt die CI bei grüner Prüfung selbst zusammen.
     -   **Einstellungen beim Hoster** — setzt `sh _agent-process/init.sh --hoster`, soweit möglich (meldet, was fehlt); sonst gibt der Agent dem Nutzer diese Liste zum Abhaken; im How-to festgehalten:
         -   [ ] `main`: Änderungen nur per Pull Request, Prüfung der CI muss grün sein, nur Merge-Commits, kein Force-Push, nicht löschbar
         -   [ ] `release-candidate`: nicht löschbar
         -   [ ] Tags `v*`: nicht änderbar und nicht löschbar
         -   [ ] Auslieferung (z. B. Umgebung beim Hoster) für Tags `v*` freigegeben
         -   [ ] Automatisches Zusammenführen erlaubt; Branches nach dem Zusammenführen automatisch löschen (erst wenn `release-candidate` geschützt ist)
+        -   [ ] Issues eingeschaltet; Labels `idee` und `bug` angelegt
 9.  **Abnahme** — wo und wie der Nutzer abnimmt (lokal, Befehl) und was nur am echten Gerät geprüft werden kann (dann beim Nachprüfen nach dem Release).
 
 ## Standardprüfungen
@@ -63,6 +63,7 @@ Im Grundgerüst werden Werkzeuge in aktuellen Versionen eingerichtet; Warnungen 
 ## Ergebnis
 
 -   `_context/projekt.md` (und `_context/design.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
--   **Branch:** Der Agent legt `feature/grundgeruest` vom aktuellen `main` an, committet `_context/` und die erste Anforderung dort und pusht. Stufe 4 läuft auf diesem Branch weiter.
--   **Erste Anforderung** `_requirements/backlog/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, Status `new`, Track `complete`): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
--   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`).
+-   **Issue:** erst, wenn Issues eingeschaltet und die Labels angelegt sind (Checkliste oben bzw. `init.sh --hoster`). Dann legt der Agent es an (Stufe 1, `_agent-process/skills/ap-requirement-capture/SKILL.md`; Label `idee`, Titel „Grundgerüst einrichten"; was fehlt: Einrichten von allem, was Stufe 0 festgelegt hat; danach: gebaut, geprüft und ausgeliefert wird wie in `_context/projekt.md`). Die Freigabe von Stufe 0 gilt als Aufgreifen. Geht das Anlegen nicht: Text zum Kopieren ausgeben und auf die Nummer warten (Handgriff des Nutzers).
+-   **Branch:** Der Agent legt `feature/grundgeruest` vom aktuellen `main` an (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand") und kommentiert direkt nach dem Push ins Issue: „Aufgegriffen auf `feature/grundgeruest`" (geht das nicht: Kommentar zum Kopieren ausgeben). Dann committet er dort `_context/` und die erste Anforderung (`chore(grundgeruest): Einrichtung, Anliegen aus Issue #<Nummer>`) und pusht. Stufe 4 läuft auf diesem Branch weiter.
+-   **Erste Anforderung** `_requirements/grundgeruest.md` (Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, `Issue #<Nummer>`, Status `new`, Track `complete`; im Abschnitt „Anliegen" der Text des Issues): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
+-   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`), ebenso bei einem erneuten Durchlauf für die Umstellung — Issue wie oben, Titel und Text beschreiben die Lücke bzw. Umstellung; dann Klärung wie üblich (Stufe 2, `_agent-process/skills/ap-requirement-refine/klaeren.md`, kurzer Name nach den Regeln dort).
