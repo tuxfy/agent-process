@@ -32,7 +32,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 ## Git
 
 -   **Commit-Format:** `<typ>(<kurzer-name>): <details>`, `typ` ∈ `feat`, `fix`, `test`, `refactor`, `chore`, `design`; `!` nach dem Scope, wenn Bestehendes bricht; Prozess-Dokumente ohne Code: `chore(<kurzer-name>): …`. Titel von Pull Requests ebenso — beim Squash wird der Titel zur Commit-Nachricht und zählt für die Version.
--   **Committen nur, wo ein Skill oder diese Datei es sagt,** dann sofort pushen; Dateien nur namentlich hinzufügen (`git add <Pfad>`), nie `git add -A` oder `.`. Den Git-Hook nie umgehen. Pull Requests eröffnet der Agent, mit Verweis auf das Anforderungs- bzw. Release-Dokument.
+-   **Committen nur, wo ein Skill oder diese Datei es sagt,** dann sofort pushen; Dateien nur namentlich hinzufügen (`git add <Pfad>`), nie `git add -A` oder `.`; Verschieben mit `git mv`, Löschen mit `git rm`. Den Git-Hook nie umgehen. Pull Requests eröffnet der Agent, mit Verweis auf das Anforderungs- bzw. Release-Dokument.
 -   **Zusammenführen und Tags nie durch den Agenten;** auf `main` wird nie committet.
 -   **Issues:** Der Agent legt Issues an, liest und kommentiert sie (`gh issue` bzw. `glab issue` — welcher, zeigt die Adresse von `origin`); schließen, wieder öffnen, löschen und Labels nachträglich ändern nie.
 -   **Aktueller Stand:** CI und Nutzer führen auf dem Hoster zusammen, ohne dass der Agent es mitbekommt. Deshalb vor jeder Arbeit auf einem gemeinsamen Branch (`main`, `release-candidate`, wenn es ihn im Projekt gibt) und vor jedem neuen Branch davon:

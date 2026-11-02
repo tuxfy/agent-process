@@ -2,7 +2,7 @@
 
 Prüft einen **Entwurf und seinen Design-Brief** (Stufe 3c), bevor der Nutzer ihn freigibt — darauf, ob sich daraus die Anforderung vollständig und im Rahmen des Design-Systems bauen lässt. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
-Grundlage: Entwurf unter `_requirements/mockups/<kurzer-name>/`, Design-Brief, Anforderung (Idee, Klärung, Spielraum, feste Grenzen), `_context/projekt.md` (Rahmen) und `_context/design.md`, das Design-System, `_agent-process/skills/ap-guideline-ui/SKILL.md`.
+Grundlage: Entwurf unter `_requirements/mockups/<kurzer-name>/`, Design-Brief, Anforderung (Anliegen, Klärung, Spielraum, feste Grenzen), `_context/projekt.md` (Rahmen) und `_context/design.md`, das Design-System, `_agent-process/skills/ap-guideline-ui/SKILL.md`.
 
 Die Rolle beurteilt nicht Geschmack, sondern Vollständigkeit, Stimmigkeit und Umsetzbarkeit. Barrierefreiheit prüft eine eigene Rolle.
 

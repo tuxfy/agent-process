@@ -1,6 +1,6 @@
 # Stufe 5a: Plan
 
-Voraussetzung: Status `refined` — bzw. `in progress` nach Abbruch des kurzen Wegs (Commit `chore(<kurzer-name>): Track complete`) — Dokument liegt in `_requirements/`, auf dem Branch der Anforderung (angelegt in Stufe 2). Konkrete Befehle (Tests, Start, Deploy) stehen in `_context/projekt.md`.
+Voraussetzung: Status `refined` — bzw. `in progress` nach Abbruch des kurzen Wegs (Commit `chore(<kurzer-name>): Track complete`) — Dokument liegt in `_requirements/`, auf dem Branch der Anforderung (angelegt in Stufe 2, bei `grundgeruest` in Stufe 0). Konkrete Befehle (Tests, Start, Deploy) stehen in `_context/projekt.md`.
 
 Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments (Gliederung dort) — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht. Dabei: Schritte in Reihenfolge, jeder klein genug für einen Testlauf; betroffene Dateien, bestehende und neue; Testfälle je Akzeptanzkriterium mit Name und erwartetem Ergebnis; bei Design, welches Entwurfselement zu welcher Komponente bzw. Code-Stelle wird; je externer Abhängigkeit (Schnittstellen, Dienste, Bibliotheken, Hosting), wo das **How-to** steht (siehe unten); „Nicht angefasst" aus Spielraum und Abgrenzung.
 

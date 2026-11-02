@@ -9,7 +9,6 @@
 # Erst nach dem ersten Push sinnvoll (vorher ist das Repo beim Hoster leer).
 # GitHub: Rulesets main-schutz (nur PR, nur Merge-Commit, kein Force-Push, nicht löschbar),
 #   release-candidate-schutz, tag-schutz (v*). Optional CI_PRUEFUNG=<Name des CI-Jobs>: CI-Prüfung für main als Pflicht.
-#   Repo-Einstellung: automatisches Zusammenführen erlaubt (bei jedem Lauf gesetzt).
 #   Im kostenlosen Plan setzt GitHub Regeln nur in öffentlichen Repos durch.
 # GitLab: geschützte Branches main (Push niemand) und release-candidate (Push Developer), geschützte Tags v*,
 #   Merge-Commits und „nur bei erfolgreicher Pipeline“ (Projekt-Einstellung, bei jedem Lauf gesetzt); Squash bleibt wählbar — Release-MR
@@ -56,12 +55,6 @@ github() {
 
   if [ -z "${CI_PRUEFUNG:-}" ] && ! echo "$vorhanden" | grep -qxF main-schutz; then
     hinweis "CI-Prüfung für main nicht als Pflicht gesetzt — in main-schutz ergänzen oder vorher mit CI_PRUEFUNG=<Job> aufrufen"
-  fi
-
-  if gh api -X PATCH "repos/$R" -F allow_auto_merge=true >/dev/null 2>&1; then
-    echo "gesetzt:  automatisches Zusammenführen erlaubt"
-  else
-    hinweis "Repo-Einstellungen nicht gesetzt — von Hand nach Checkliste Stufe 0"
   fi
 }
 
