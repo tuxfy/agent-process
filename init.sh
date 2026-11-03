@@ -90,7 +90,7 @@ grep -q '^## UI-Pfade' _context/projekt.md || \
   hinweis "_context/projekt.md hat keinen Abschnitt „## UI-Pfade“ (Vorlage: $SRC/context/projekt.md)"
 
 # Ordner für Anforderungen und Releases (.gitkeep, damit Git sie kennt)
-for d in _requirements/backlog _requirements/done _releases; do
+for d in _requirements/done _releases; do
   if [ ! -d "$d" ]; then
     mkdir -p "$d"
     touch "$d/.gitkeep"
@@ -98,6 +98,16 @@ for d in _requirements/backlog _requirements/done _releases; do
   fi
 done
 kopiere "$SRC/requirements/deferred/README.md" _requirements/deferred/README.md || true
+
+# Alter Backlog-Ordner: Ideen und Bugs sind jetzt Issues (Stufe 1)
+if [ -d _requirements/backlog ]; then
+  eintraege=$(find _requirements/backlog -type f ! -name .gitkeep | wc -l | tr -d ' ')
+  if [ "$eintraege" -gt 0 ]; then
+    hinweis "_requirements/backlog/ enthält noch $eintraege Eintrag/Einträge — je Eintrag ein Issue anlegen (Stufe 1), dann den Ordner entfernen"
+  else
+    hinweis "_requirements/backlog/ wird nicht mehr gebraucht (Ideen und Bugs sind Issues) — Ordner entfernen"
+  fi
+fi
 
 # Prüf-Konfiguration der UI-Richtlinie
 if ! kopiere "$SRC/pruefung/stylelint.json" .stylelintrc.json; then

@@ -1,11 +1,11 @@
 -   **Titel** Kurzer Titel
--   **Issue** #<n>
+-   **Issue** #<Nummer>
 -   **Status** new | refined | in progress | qa | review | accepted
 -   **Track** quick | complete
 
 # Anliegen
 
-*(Text aus Issue #<n>, unverändert übernommen)*
+*(Text aus Issue #<Nummer>, unverändert übernommen)*
 
 # Hintergrund
 

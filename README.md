@@ -149,11 +149,12 @@ git push -u origin feature/prozess-aktualisieren
 | `.claude/agents/` | `.claude/agents` als Link | ist es ein Ordner statt Link: melden |
 | `skills/ap-*/` | je Skill ein Link `.claude/skills/ap-*` | Link unverändert, zeigt er woandershin oder ist es ein Ordner: melden; ein `ap-`-Link ohne Ziel, der auf `../../_agent-process/skills/` zeigt (Skill entfallen) wird entfernt; ist `.claude/skills` selbst ein Link: melden, nichts anlegen; Einträge ohne Präfix `ap-` (eigene Skills) bleiben unberührt |
 | `init/context/*` | `_context/` | unverändert; fehlt in `projekt.md` der Abschnitt `## UI-Pfade`: Hinweis |
-| — | `_requirements/backlog/`, `_requirements/done/`, `_releases/` | nichts tun |
+| — | `_requirements/done/`, `_releases/` | nichts tun |
+| — | `_requirements/backlog/` (alter Stand) | nicht mehr angelegt; ist er da: melden, mit Einträgen „je Eintrag ein Issue anlegen“ |
 | `init/requirements/deferred/README.md` | `_requirements/deferred/README.md` | unverändert |
 | `init/pruefung/stylelint.json` | `.stylelintrc.json` | unverändert; weicht die Vorlage ab: melden |
 | `init/gitignore` | `.gitignore` | fehlende Zeilen ergänzen |
-| `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster laut Checkliste in Stufe 0 (GitHub per `gh`, GitLab per `glab`); Einzelheiten und Grenzen im Kopf des Skripts | vorhandene Regeln unverändert, außer einem zu schwachen Schutz von `main`; was fehlt: melden |
+| `init/hoster-schutz.sh` *(nur mit `--hoster`)* | Regeln beim Hoster laut Checkliste in Stufe 0 (GitHub per `gh`, GitLab per `glab`), Labels `idee` und `bug`; Einzelheiten und Grenzen im Kopf des Skripts | vorhandene Regeln und Labels unverändert, außer einem zu schwachen Schutz von `main`; was fehlt: melden (auch ausgeschaltete Issues) |
 
 ## Änderungen am Prozess
 

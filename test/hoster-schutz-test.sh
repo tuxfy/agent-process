@@ -74,13 +74,17 @@ git push -q -u origin main 2>/dev/null || { fehler "erster Push nach main"; exit
 
 echo "== 2. Lauf nach dem ersten Push"
 AUSGABE=$(sh "$SKRIPT"); echo "$AUSGABE" | sed 's/^/   /'
-enthaelt_nicht "keine Regel abgelehnt" "nicht angelegt"
-enthaelt_nicht "Einstellungen gesetzt" "nicht gesetzt"
+enthaelt_nicht "keine Regel und kein Label abgelehnt" "nicht angelegt"
+[ "$HOSTER" = gitlab ] && enthaelt_nicht "Einstellungen gesetzt" "nicht gesetzt"
+enthaelt "Label idee angelegt" "angelegt: Label idee"
+enthaelt "Label bug angelegt oder vorhanden" "Label bug"
+enthaelt_nicht "Issues eingeschaltet" "Issues sind ausgeschaltet"
 
 echo "== 3. Lauf erneut (darf nichts ändern)"
 AUSGABE=$(sh "$SKRIPT"); echo "$AUSGABE" | sed 's/^/   /'
 enthaelt_nicht "nichts neu angelegt" "^angelegt"
 enthaelt "meldet Vorhandenes" "vorhanden"
+enthaelt "Label idee vorhanden" "vorhanden: Label idee"
 
 echo "== 4. Regeln wirken"
 git commit -q --allow-empty -m "test: direkt"
@@ -115,6 +119,15 @@ else
   [ "$(feld "$P" only_allow_merge_if_pipeline_succeeds)" = true ] && ok "nur bei erfolgreicher Pipeline" || fehler "nur bei erfolgreicher Pipeline"
   echo "   (Zusammenführen selbst nicht getestet: ohne CI blockiert die Pipeline-Pflicht)"
 fi
+
+echo "== 6. Issues ausgeschaltet wird gemeldet"
+if [ "$HOSTER" = github ]; then
+  gh api -X PATCH "repos/$R" -F has_issues=false >/dev/null 2>&1 || fehler "Issues ausschalten"
+else
+  glab api -X PUT "projects/:id" -f issues_access_level=disabled >/dev/null 2>&1 || fehler "Issues ausschalten"
+fi
+AUSGABE=$(sh "$SKRIPT"); echo "$AUSGABE" | sed 's/^/   /'
+enthaelt "meldet ausgeschaltete Issues" "Issues sind ausgeschaltet"
 
 echo
 [ "$F" -eq 0 ] && echo "Ergebnis: alles OK" || echo "Ergebnis: $F Fehler"

@@ -13,11 +13,13 @@
 # GitLab: geschützte Branches main (Push niemand) und release-candidate (Push Developer), geschützte Tags v*,
 #   Merge-Commits und „nur bei erfolgreicher Pipeline“ (Projekt-Einstellung, bei jedem Lauf gesetzt); Squash bleibt wählbar — Release-MR
 #   nach main von Hand ohne Squash.
+# Beide: Labels idee und bug anlegen, wenn sie fehlen (vorhandene bleiben unverändert); ausgeschaltete Issues nur melden.
 # Branches nach dem Zusammenführen löschen und Auslieferung für Tags freigeben: Handgriffe laut Checkliste.
 
 set -eu
 
 hinweis(){ echo "Hinweis:  Hoster: $1"; }
+farbe()  { [ "$1" = bug ] && echo d73a4a || echo 1d76db; }
 leer()   { hinweis "Repo noch leer — erst den ersten Commit pushen, dann sh _agent-process/init.sh --hoster erneut ausführen"; }
 
 # ---------- GitHub ----------
@@ -56,6 +58,19 @@ github() {
   if [ -z "${CI_PRUEFUNG:-}" ] && ! echo "$vorhanden" | grep -qxF main-schutz; then
     hinweis "CI-Prüfung für main nicht als Pflicht gesetzt — in main-schutz ergänzen oder vorher mit CI_PRUEFUNG=<Job> aufrufen"
   fi
+
+  [ "$(gh api "repos/$R" --jq .has_issues 2>/dev/null)" = false ] && \
+    hinweis "Issues sind ausgeschaltet — in den Repo-Einstellungen einschalten (Checkliste Stufe 0)"
+  labels=$(gh api "repos/$R/labels" --paginate --jq '.[].name' 2>/dev/null || true)
+  for l in idee bug; do
+    if echo "$labels" | grep -qixF "$l"; then
+      echo "vorhanden: Label $l (unverändert)"
+    elif gh api -X POST "repos/$R/labels" -f name="$l" -f color="$(farbe "$l")" >/dev/null 2>&1; then
+      echo "angelegt: Label $l"
+    else
+      hinweis "Label $l nicht angelegt (Rechte? in anderer Schreibweise vorhanden?) — von Hand nach Checkliste Stufe 0"
+    fi
+  done
 }
 
 # ---------- GitLab ----------
@@ -107,6 +122,19 @@ gitlab() {
   else
     hinweis "Projekt-Einstellungen nicht gesetzt — von Hand nach Checkliste Stufe 0"
   fi
+
+  glab api "projects/:id" 2>/dev/null | grep -Eq '"issues_access_level": *"disabled"|"issues_enabled": *false' && \
+    hinweis "Issues sind ausgeschaltet — in den Projekt-Einstellungen einschalten (Checkliste Stufe 0)"
+  labels=$(glab api --paginate "projects/:id/labels?per_page=100" 2>/dev/null || true)
+  for l in idee bug; do
+    if echo "$labels" | grep -Eiq "\"name\": *\"$l\""; then
+      echo "vorhanden: Label $l (unverändert)"
+    elif glab api -X POST "projects/:id/labels" -f name="$l" -f color="#$(farbe "$l")" >/dev/null 2>&1; then
+      echo "angelegt: Label $l"
+    else
+      hinweis "Label $l nicht angelegt (Rechte? in anderer Schreibweise vorhanden?) — von Hand nach Checkliste Stufe 0"
+    fi
+  done
 }
 
 # ---------- Hoster erkennen ----------

@@ -39,6 +39,10 @@ enthaelt "Entfernen gemeldet" "entfernt: .claude/skills/ap-entfallen"
 pruefe "eigener Skill bleibt" [ -f .claude/skills/mein-skill/SKILL.md ]
 pruefe "toter Link ohne Präfix bleibt" [ -L .claude/skills/fremd ]
 pruefe "deferred/README.md angelegt" [ -f _requirements/deferred/README.md ]
+pruefe "done/ angelegt" [ -f _requirements/done/.gitkeep ]
+pruefe "_releases/ angelegt" [ -f _releases/.gitkeep ]
+pruefe "kein backlog/ angelegt" [ ! -e _requirements/backlog ]
+enthaelt_nicht "kein Hinweis zu backlog/" "_requirements/backlog/"
 pruefe "toter ap-Link mit fremdem Ziel bleibt" [ -L .claude/skills/ap-fremdziel ]
 enthaelt_nicht "fremdes Ziel nicht als entfernt gemeldet" "entfernt: .claude/skills/ap-fremdziel"
 
@@ -55,6 +59,18 @@ mkdir .claude/skills/ap-requirement-capture
 AUSGABE=$(sh _agent-process/init.sh 2>&1)
 enthaelt "Ordner gemeldet" ".claude/skills/ap-requirement-capture ist ein Ordner"
 pruefe "Ordner bleibt" test -d .claude/skills/ap-requirement-capture -a ! -L .claude/skills/ap-requirement-capture
+
+echo "== alter backlog-Ordner, leer"
+mkdir -p _requirements/backlog && touch _requirements/backlog/.gitkeep
+AUSGABE=$(sh _agent-process/init.sh 2>&1)
+enthaelt "leerer backlog/ gemeldet" "_requirements/backlog/ wird nicht mehr gebraucht"
+pruefe "backlog/ bleibt" [ -d _requirements/backlog ]
+
+echo "== alter backlog-Ordner mit Einträgen"
+echo "alt" > _requirements/backlog/alte-idee.md
+AUSGABE=$(sh _agent-process/init.sh 2>&1)
+enthaelt "Einträge gemeldet" "_requirements/backlog/ enthält noch 1 Eintrag"
+pruefe "Eintrag bleibt" [ -f _requirements/backlog/alte-idee.md ]
 
 echo "== .claude/skills als Link"
 rm -rf .claude/skills
