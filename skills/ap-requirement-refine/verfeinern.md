@@ -41,4 +41,3 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 ## Übergang
 
 -   **Dann committet und pusht der Agent** auf dem Feature-Branch (`chore(<kurzer-name>): Refinement, Status refined`), ohne Rückfrage — Statuswechsel und ggf. Einträge in `_requirements/deferred/` in einem Commit.
--   Der Dateiname bleibt `<kurzer-name>.md`; die Nummer wird erst beim **Start der Umsetzung** vergeben (5b bzw. kurzer Weg).

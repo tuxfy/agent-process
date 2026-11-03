@@ -22,7 +22,7 @@ Rote CI (6d), blockierende QA-Befunde (6c) und Befunde aus der Abnahme (7b) füh
 | Schritt | Wer | Ergebnis |
 |---|---|---|
 | 5a Plan | Agent schreibt, Rollen prüfen, Nutzer gibt frei | Abschnitt `# Umsetzungsplan`, Zusammenfassung für den Nutzer, **Commit und Push** |
-| 5b Start | Agent | direkt nach der Plan-Freigabe (nach „später": auf das Wort des Nutzers): Nummer vergeben, Status `in progress`, **Commit** |
+| 5b Start | Agent | direkt nach der Plan-Freigabe (nach „später": auf das Wort des Nutzers): Status `in progress`, **Commit** |
 | 5c Test zuerst | Agent | roter Test, Testnachweis „Rot" |
 | 5d Umsetzen | Agent | Änderung nach Plan, Entscheidungen und UI-Richtlinie |
 | 5e Grün | Agent | alle Tests und Prüflauf grün, Testnachweis „Grün", Status `qa` |

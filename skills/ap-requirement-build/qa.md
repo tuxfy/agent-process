@@ -47,7 +47,7 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 
 -   Nach den Befunden: sauberer Lauf grün; **QA-Abschnitt fertig schreiben, Status `review` setzen, committen (samt Einträgen in `_requirements/deferred/`) und pushen** — danach ändert sich am Dokument in Stufe 6 nichts mehr.
 -   Dann einen **Pull Request nach `release-candidate`** eröffnen, in der Beschreibung `Refs #<n>` mit der Nummer aus der Zeile `Issue` im Kopf des Dokuments (fehlt sie: weglassen); der CI-Lauf läuft dort.
-    -   Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): Pull Request direkt nach `main`.
+    -   Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): Pull Request direkt nach `main`, mit `Closes #<n>` statt `Refs #<n>`.
     -   Sonst vorher `release-candidate` auf aktuellen Stand bringen bzw. vom aktuellen `main` anlegen, wenn es ihn noch nicht gibt (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand").
 -   **CI-Lauf abwarten** (im Pull Request).
 -   **Rot in der CI:** zurück zu Stufe 5, die Korrektur als eigener Commit wie ein Befund (`umsetzen.md`, Abschnitt „Commits") — zuerst klären, warum lokal grün war (was hat lokal anders gelegen?), und das als Test bzw. im sauberen Lauf absichern.

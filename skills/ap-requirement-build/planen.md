@@ -34,4 +34,4 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 
 Abschluss: Der **Nutzer gibt den Plan frei** — und bestätigt damit auch das Refinement (Stufe 4) — er beurteilt Umfang, Entscheidungen und Risiken; die technische Güte sichern Selbstprüfung und Rollen. **Der Agent committet den freigegebenen Plan sofort und pusht den Branch** (`chore(<kurzer-name>): Umsetzungsplan`); Status bleibt bis zum Start `refined`. Ein eigenes „Go" gibt es nicht: Weiter direkt mit 5b (`_agent-process/skills/ap-requirement-build/umsetzen.md`) — außer der Nutzer hat „später" gesagt (`_agent-process/AGENTS.md`, Abschnitt „Halten").
 
-**Nach Abbruch des kurzen Wegs:** Status bleibt `in progress`, die Nummer ist vergeben — 5b entfällt. Nach der Freigabe weiter mit `_agent-process/skills/ap-requirement-build/umsetzen.md` ab dem ersten offenen Schritt.
+**Nach Abbruch des kurzen Wegs:** Status bleibt `in progress` — 5b entfällt. Nach der Freigabe weiter mit `_agent-process/skills/ap-requirement-build/umsetzen.md` ab dem ersten offenen Schritt.

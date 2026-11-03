@@ -5,8 +5,8 @@ Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem k
 ## 5b: Start
 
 -   Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „später" (`_agent-process/AGENTS.md`, Abschnitt „Halten"). Vorher kein Code.
--   **Nummer vergeben:** höchste vergebene Nummer in `_requirements/` und `_requirements/done/` + 1. Datei umbenennen in `<Nr>-<kurzer-name>.md`, Nummer **dreistellig mit führenden Nullen** (z. B. `007-boulder-log.md`), damit die Dateien richtig sortiert werden; Nummern werden nie wiederverwendet. Die Nummer steht nur im Dateinamen: Branch und Ordner eines Entwurfs (`mockups/<kurzer-name>/`) behalten den kurzen Namen.
--   Status `in progress`; der Agent committet Umbenennung und Status (`chore(<kurzer-name>): Start, Nummer <Nr>`), dann folgt 5c.
+-   Status `in progress`; der Agent committet (`chore(<kurzer-name>): Start`), dann folgt 5c.
+-   Heißt das Dokument noch `<kurzer-name>.md` ohne Nummer (älterer Stand): im selben Commit mit `git mv` in `<Nr>-<kurzer-name>.md` umbenennen (Nummer wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Dokument"); hat es kein Issue: den Nutzer fragen. Nummern älterer Dokumente (z. B. `007-…` in `done/`) sind keine Issue-Nummern; gleiche Nummern sind möglich, eindeutig bleibt der kurze Name, maßgeblich die Zeile `Issue`.
 
 ## 5c: Test zuerst (rot)
 

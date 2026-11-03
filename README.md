@@ -48,11 +48,11 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **3c Übergabe** | du stellst bereit, Agent + Rollen prüfen | Befunde der Rollen Entwurf und Barrierefreiheit, Lücken, Fragen · **ZF:** Prüfbericht | **GO** Entwurf freigeben | |
 | | Agent | Entwurf, Brief, Lücken | **C+P** | Feature-Branch |
 | **4 Refinement** | Agent | Entscheidungen, Verhalten, Akzeptanzkriterien, Abgrenzung; setzt `refined` | **C+P** | Feature-Branch |
-| **5 kurzer Weg** *(nur Track `quick`, statt 5a/5b)* | Agent | Nummer, Plan als Notiz, Start ohne Freigabe (hast du „später" gesagt: auf dein Wort) · **ZF:** was umgesetzt wird, Akzeptanzkriterien · Abbruch → Track `complete`, zurück zu 5a | **C+P** | Feature-Branch |
+| **5 kurzer Weg** *(nur Track `quick`, statt 5a/5b)* | Agent | Plan als Notiz, Start ohne Freigabe (hast du „später" gesagt: auf dein Wort) · **ZF:** was umgesetzt wird, Akzeptanzkriterien · Abbruch → Track `complete`, zurück zu 5a | **C+P** | Feature-Branch |
 | **5a Plan** | Agent + Rollen | Plan schreiben, prüfen lassen · **ZF:** was passiert, was du entscheidest, Risiken, wer geprüft hat | — | |
 | | du | Plan freigeben — bestätigt auch das Refinement | **GO** | |
 | | Agent | Plan | **C+P** | Feature-Branch |
-| **5b Start** | Agent | direkt nach der Plan-Freigabe (hast du „später" gesagt: auf dein Wort): Nummer vergeben, Status `in progress` | **C+P** | Feature-Branch |
+| **5b Start** | Agent | direkt nach der Plan-Freigabe (hast du „später" gesagt: auf dein Wort): Status `in progress` | **C+P** | Feature-Branch |
 | **5c Test zuerst** | Agent | roter Test nachgewiesen — kein Commit mit rotem Test | — | |
 | **5d/5e Umsetzen, grün** | Agent | ein oder mehrere grüne Commits; am Ende Status `qa` | **C+P** | Feature-Branch |
 | **6a–6c QA** | Agent + Rollen | Prüfungen, Befunde; je umgesetztem Befund ein Korrektur-Commit | **C+P** je Befund | Feature-Branch |
@@ -65,7 +65,7 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | | du | erst danach: PR nach `release-candidate` zusammenführen (Squash erlaubt) — heißt: kommt ins nächste Release | **DU** | — |
 | **8a Inhalt und Version** | du | „release" — wann, entscheidest du | **GO** | |
 | | Agent | Inhalt und Version nach den Regeln; fragt nur bei Widerspruch, 1.0.0 oder nur `chore` · **ZF:** Inhalt und Version mit Begründung | **C+P** | `release-candidate` |
-| **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `release-candidate` |
+| **8b Gesamtprüfung** | Agent | alle Prüfungen, Klicktest; Release-Dokument fertig, dann PR mit `Closes #…` für die Issues des Releases · **ZF:** PR-Nummer, CI grün | **C+P**, **PR** nach `main` | `release-candidate` |
 | **8c Ausliefern** | du | PR nach `main` **als Merge-Commit** zusammenführen — das ist die Freigabe | **DU** | `main` |
 | | CI | Tag setzen, Auslieferung startet (ohne CI: **ZF** Befehle für den Tag, mit Version) | **CI** | `main` |
 | **8d Nachprüfen** | CI + Agent + du | ausgelieferte App testen, Gerät durch dich; sonst zurückrollen, Bug als Issue · **ZF:** Ergebnis | **CI** | — |
@@ -79,7 +79,7 @@ Nach 8d ist nichts mehr zu committen: Was live ist, zeigt der Tag.
 | Ordner | Inhalt |
 |---|---|
 | `_context/` | was man über das Projekt wissen muss (Stack, Befehle, …) |
-| `_requirements/` | ab Stufe 2 (Klärung), `grundgeruest` ab Stufe 0; Nummer ab dem Start der Umsetzung |
+| `_requirements/` | ab Stufe 2 (Klärung), `grundgeruest` ab Stufe 0; Dateiname `<Nr>-<kurzer-name>.md` mit der Issue-Nummer |
 | `_requirements/done/` | abgenommen (ab 7c), eingefroren |
 | `_requirements/deferred/` | bewusst Zurückgestelltes (Befunde, abgetrennte Ziele), eine Datei je Eintrag; Regeln in der `README.md` dort |
 | `_releases/` | ein Dokument je Release |
