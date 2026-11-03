@@ -22,7 +22,7 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 ## 7b: Befunde
 
 -   Befunde des Nutzers zuerst unter `# Abnahme → Befunde` ins Dokument (je Befund ein Punkt), dann zurück zu Stufe 5 (mit Test, wo möglich), je umgesetztem Befund ein eigener Commit (`_agent-process/skills/ap-requirement-build/umsetzen.md`, Abschnitt „Commits"); danach Stufe 6 für die betroffenen Teile erneut, der Reviewer immer. Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
--   Neue Wünsche, die über die Anforderung hinausgehen: als Idee ins Backlog, nicht in diese Anforderung. Ein Befund, den der Nutzer bewusst verschiebt: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem Commit aus 7c.
+-   Neue Wünsche, die über die Anforderung hinausgehen: als Issue festhalten (Stufe 1), nicht in diese Anforderung. Ein Befund, den der Nutzer bewusst verschiebt: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem Commit aus 7c.
 
 ## 7c: Abgenommen
 

@@ -26,7 +26,7 @@ Der Agent hört auf und plant neu, sobald
 2.  ein Schritt sich nicht rückgängig machen lässt (gespeicherte Daten, Schnittstellen, Auslieferung), oder
 3.  die Änderung größer wird als in der Notiz geplant (z. B. ein neues Paket).
 
-Dann: nicht Committetes zurücksetzen (`git restore`, neue Dateien entfernen); Grund unter `# Umsetzungsplan → Annahmen und Risiken`, Track auf `complete`, Status `in progress` (aus `qa` bzw. `review` zurück), Commit `chore(<kurzer-name>): Track complete`, dem Nutzer sagen. Weiter mit 5a (`_agent-process/skills/ap-requirement-build/planen.md`) — Prüfung durch Rollen laut 5a, Freigabe des Plans. Die Nummer bleibt; grün committeter Code bleibt.
+Dann: nicht Committetes dieser Anforderung zurücksetzen — nur Dateien, die der Agent dafür geändert oder angelegt hat (`git restore <Pfad>`, eigene neue Dateien entfernen); alles andere, z. B. Dateien des Nutzers, bleibt (`_agent-process/AGENTS.md`, Abschnitt „Git"); hatte eine solche Datei schon vorher nicht Committetes: nicht zurücksetzen, anhalten und fragen; Grund unter `# Umsetzungsplan → Annahmen und Risiken`, Track auf `complete`, Status `in progress` (aus `qa` bzw. `review` zurück), Commit `chore(<kurzer-name>): Track complete`, dem Nutzer sagen. Weiter mit 5a (`_agent-process/skills/ap-requirement-build/planen.md`) — Prüfung durch Rollen laut 5a, Freigabe des Plans. Die Nummer bleibt; grün committeter Code bleibt.
 
 Zurück auf `quick` nie still — nur auf ausdrückliches Wort des Nutzers.
 

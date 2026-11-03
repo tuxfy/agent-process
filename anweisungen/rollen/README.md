@@ -28,7 +28,7 @@ Der Agent, der die Prüfer startet, stuft jeden Befund ein — Befunde mehrerer 
 
 -   **Blockierend** — so darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request). Immer blockierend:
     -   abgeschwächte Tests;
-    -   ein neuer oder geänderter Test, der nie scheitern kann (z. B. eine Prüfung auf Abwesenheit ohne Gegenprobe); bei alten Tests: empfohlen bzw. als Bug ins Backlog;
+    -   ein neuer oder geänderter Test, der nie scheitern kann (z. B. eine Prüfung auf Abwesenheit ohne Gegenprobe); bei alten Tests: empfohlen bzw. als Bug-Issue festhalten (Stufe 1);
     -   Tests, die der Plan erst nach ihrem Code vorsieht;
     -   eine Entscheidung der Anforderung, die nicht hält;
     -   eine App, die sich nicht starten oder bedienen lässt;

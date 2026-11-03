@@ -27,7 +27,7 @@ Die Rollen laufen als Prüfer-Rollen (siehe `_agent-process/anweisungen/rollen/R
 
 -   Alle Prüfungen aus `_context/projekt.md` → „Prüfungen" (in Stufe 0 festgelegt).
 -   Was dort festgelegt, aber (noch) nicht eingerichtet ist oder nicht lief: im QA-Abschnitt ausdrücklich nennen, nicht still weglassen.
--   **Warnungen, die nicht blockieren** (z. B. Schwachstellen in Entwicklungswerkzeugen): als Hinweis unter `# QA`; ist eine neu und nicht schon erfasst: als Idee im Backlog (z. B. `werkzeuge-aktualisieren`), wenn sie jemand angehen will, sonst als Eintrag in `_requirements/deferred/`.
+-   **Warnungen, die nicht blockieren** (z. B. Schwachstellen in Entwicklungswerkzeugen): als Hinweis unter `# QA`; ist eine neu und nicht schon erfasst: als Issue festhalten (Stufe 1, z. B. „Werkzeuge aktualisieren"), wenn sie jemand angehen will, sonst als Eintrag in `_requirements/deferred/`.
 -   Ergebnis unter `# QA → Automatisch`: je Prüfung Befehl und Ergebnis.
 
 ## 6b: Prüfung durch Rollen
@@ -37,7 +37,7 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 ## 6c: Befunde bearbeiten
 
 -   **Blockierend:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
--   **Empfohlen:** umsetzen, mit Grund ablehnen oder bewusst verschieben — dann Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d); was jemand umsetzen will, als Idee bzw. Bug ins Backlog.
+-   **Empfohlen:** umsetzen, mit Grund ablehnen oder bewusst verschieben — dann Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d); was jemand umsetzen will, als Issue festhalten (Stufe 1).
 -   **Hinweis:** nach Ermessen; nichts muss. Kandidaten für später ebenfalls nach `_requirements/deferred/`.
 -   **Ändert der Agent in der QA etwas:** wie in Stufe 5 — Test, wo möglich (erst rot, dann grün), danach alle Prüfungen erneut; Eintrag im Testnachweis. Unter `# QA → Befunde` steht **je Änderung** der Test (Name) oder, warum es keinen gibt — ohne eins von beiden gilt die Änderung als nicht abgeschlossen. Je umgesetztem Befund ein eigener Commit (`umsetzen.md`, Abschnitt „Commits"). **Danach läuft der Reviewer immer erneut** — auch wenn er den Befund nicht gemeldet hat —, die übrigen Rollen für die betroffenen Teile.
 -   Berührt ein Befund eine Entscheidung der Anforderung: nicht selbst entscheiden — dem Nutzer vorlegen.
@@ -46,7 +46,7 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 ## 6d: CI
 
 -   Nach den Befunden: sauberer Lauf grün; **QA-Abschnitt fertig schreiben, Status `review` setzen, committen (samt Einträgen in `_requirements/deferred/`) und pushen** — danach ändert sich am Dokument in Stufe 6 nichts mehr.
--   Dann einen **Pull Request nach `release-candidate`** eröffnen; der CI-Lauf läuft dort.
+-   Dann einen **Pull Request nach `release-candidate`** eröffnen, in der Beschreibung `Refs #<n>` mit der Nummer aus der Zeile `Issue` im Kopf des Dokuments (fehlt sie: weglassen); der CI-Lauf läuft dort.
     -   Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): Pull Request direkt nach `main`.
     -   Sonst vorher `release-candidate` auf aktuellen Stand bringen bzw. vom aktuellen `main` anlegen, wenn es ihn noch nicht gibt (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand").
 -   **CI-Lauf abwarten** (im Pull Request).
