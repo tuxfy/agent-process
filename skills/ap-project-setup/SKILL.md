@@ -19,7 +19,10 @@ Legt **einmal** fest, wie im Projekt gebaut, geprüft, abgenommen und ausgeliefe
 
 Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`.
 
-1.  **Zweck** — wofür das Projekt da ist, in zwei, drei Sätzen.
+1.  **Zweck und Anspruch** — wofür das Projekt da ist, in zwei, drei Sätzen; dazu der **Anspruch**, an dem Prüfer-Befunde und Bugs gemessen werden (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"), mit kurzer Begründung aus Nutzerkreis, Art der Daten und Folgen eines Ausfalls:
+    -   **einfach** — nur der Nutzer selbst oder wenige Bekannte, keine fremden persönlichen Daten, ein Ausfall ist ärgerlich, aber folgenlos (z. B. ein eigener Server);
+    -   **normal** — weitere Nutzer oder persönliche Daten, ein Ausfall ist spürbar;
+    -   **hoch** — viele Nutzer, sensible Daten oder Geld, ein Ausfall ist teuer.
 2.  **Stack** — Sprache, Framework, Build (oder keiner), Laufzeit-Abhängigkeiten.
 3.  **Zielformat** — Geräte, Bildschirmgrößen, Ausrichtung, hell/dunkel, Sprache, Barrierefreiheit. Gilt für Entwurf, Tests und Klicktest.
 4.  **Design-System** — welches, und wie es zur Laufzeit in die App kommt (z. B. welche Dateien, ob kopiert wird; dann Kopierbefehl). Soll es als Submodul `_design-system/` eingebunden werden, gibt der Agent dem Nutzer die Befehle fertig aus (`git submodule add <design-system> _design-system` und Commit) und wartet — er bindet es nicht selbst ein. Dazu die **UI-Pfade** (in `_context/projekt.md`): wo UI-Code liegt, damit UI-Arbeit erkennbar ist.
@@ -47,7 +50,7 @@ Kategorien, unabhängig vom Stack. Welches Werkzeug, entscheidet der Stack; Konf
 | Code-Linter | immer | Fehler und Stil im Code (z. B. ESLint bei JavaScript) |
 | Formatierer | immer | mit Standardeinstellungen, keine eigene Konfiguration (z. B. Prettier) |
 | Prüflauf UI-Richtlinie | bei UI | Konfiguration `.stylelintrc.json` (von Init angelegt, Erklärung in `_agent-process/init/pruefung/README.md`) |
-| Unit-Tests | immer | Logik ohne Oberfläche |
+| Unit-Tests | für Logik (sobald es welche gibt) | eigene Logik ohne Oberfläche; Code, der nur ein externes Werkzeug aufruft, prüft der echte Lauf bzw. die Abnahme |
 | E2E-Tests | bei UI | im Zielformat |
 | Schwachstellen in Abhängigkeiten | immer | **ausgelieferte** Abhängigkeiten blockieren (z. B. `npm audit --omit=dev`); **Entwicklungswerkzeuge** nur als Warnung (voller Audit, blockiert nicht) |
 | Geheimnisse im Code | immer | Suche nach Zugangsdaten, Schlüsseln, Tokens |

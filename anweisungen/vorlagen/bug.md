@@ -2,3 +2,4 @@
 -   **Was erwartet war:** (1 Satz)
 -   **So tritt es auf:** (Schritte bzw. Situation, soweit bekannt)
 -   **Stand:** (Version bzw. Commit, Umgebung, z. B. Gerät, CI)
+-   **Schwere:** niedrig | mittel | hoch — (Vorschlag mit Halbsatz Begründung, gemessen am Anspruch in `_context/projekt.md`)

@@ -14,24 +14,44 @@ Datei je Rolle: `<rolle>.md` in diesem Ordner.
 
 -   **Lesen:** die Anforderung (inkl. `# Umsetzungsplan`), `_context/`, `AGENTS.md` des Projekts und `_agent-process/AGENTS.md`, die betroffenen `_agent-process/anweisungen/`; bei UI-Arbeit `_agent-process/skills/ap-guideline-ui/SKILL.md`; bei Design den Entwurf unter `_requirements/mockups/<kurzer-name>/`; vorhandenen Code nach Bedarf.
 -   **Nichts ändern** — keine Dateien, keine Befehle mit Wirkung. Ausnahme: Der Klicktester startet die App und legt Screenshots unter `.qa/` ab (wird nicht committet).
--   **Nur im eigenen Blick prüfen;** was zu einer anderen Rolle gehört, höchstens als Hinweis.
+-   **Nur im eigenen Blick prüfen;** was zu einer anderen Rolle gehört, höchstens kurz erwähnen.
 -   **Keine Entscheidungen der Anforderung neu verhandeln** (Stack, Verhalten, Umfang). Hält eine Entscheidung nicht: als Befund mit Begründung melden — sie geht dann zurück ins Refinement (beim Entwurf: in die Klärung).
 -   **Vertraulichkeit:** keine Namen, Links, Zugangsdaten in Befunden.
 
 ## Ergebnis
 
-Eine Liste von Befunden, **ohne Schweregrad** — die Einstufung macht der Agent (unten). Je Befund: **was** (ein Satz), **warum** (Folge, wenn es so bleibt), **Vorschlag** (konkrete Änderung am Entwurf, am Plan bzw. an der Umsetzung). Was sich nicht prüfen ließ, als **offene Frage** dazu. Ohne Befund: ausdrücklich „keine Befunde" — nicht künstlich etwas finden.
+Eine Liste von Befunden, **ohne Schweregrad** — die Einstufung macht der Agent (unten). Je Befund: **was** (ein Satz), **warum** (Folge, wenn es so bleibt — und ob sie durch diese Änderung entsteht oder schon vorher bestand), **Vorschlag** (konkrete Änderung am Entwurf, am Plan bzw. an der Umsetzung). Was sich nicht prüfen ließ, als **offene Frage** dazu. Ohne Befund: ausdrücklich „keine Befunde" — nicht künstlich etwas finden.
 
 ## Einstufung durch den Agenten
 
-Der Agent, der die Prüfer startet, stuft jeden Befund ein — Befunde mehrerer Rollen zur selben Sache als einen, mit Nennung aller Rollen:
+Der Agent, der die Prüfer startet, ordnet jeden Befund ein — Befunde mehrerer Rollen zur selben Sache als einen, mit Nennung aller Rollen.
 
--   **Blockierend** — so darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request). Immer blockierend:
-    -   abgeschwächte Tests;
-    -   ein neuer oder geänderter Test, der nie scheitern kann (z. B. eine Prüfung auf Abwesenheit ohne Gegenprobe); bei alten Tests: empfohlen bzw. als Bug-Issue festhalten (Stufe 1);
-    -   Tests, die der Plan erst nach ihrem Code vorsieht;
-    -   eine Entscheidung der Anforderung, die nicht hält;
-    -   eine App, die sich nicht starten oder bedienen lässt;
-    -   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht (sonst empfohlen).
--   **Empfohlen** — verbessert Entwurf, Plan bzw. Umsetzung deutlich, ist aber kein Muss.
--   **Hinweis** — kleiner Punkt oder Kandidat für später.
+**Schwere** aus der Folge:
+
+-   **hoch** — ein Akzeptanzkriterium oder eine Entscheidung wird verfehlt, Daten gehen verloren, die App lässt sich nicht starten oder bedienen, oder eine Lücke ist tatsächlich ausnutzbar — unabhängig vom Anspruch;
+-   **mittel** oder **niedrig** — gemessen am Anspruch (Zeile `Anspruch` der Anforderung, sonst `_context/projekt.md`, fehlt beides: `normal`): mittel ist ein spürbarer Fehler oder Mehraufwand im Betrieb, niedrig eine Kleinigkeit oder ein Fall, der bei diesem Anspruch kaum eintritt.
+
+**Durch die Änderung verursacht** ist, was sie neu einführt — auch ein bestehender Fehler, den sie neu erreichbar oder schlimmer macht.
+
+**Gruppe** — die erste passende:
+
+1.  **verwerfen** — der Befund hält am Entwurf, am Plan bzw. am Code nicht. Unbelegtes und offene Fragen der Rollen prüft der Agent selbst nach; bleibt es offen, geht es weiter mit Punkt 2, mit der Schwere, die es hätte, wenn es zutrifft, und als „keine klare Lösung".
+2.  **Prüfung auf blockierend** (Liste unten): hält eine Entscheidung der Anforderung nicht → **entscheiden**, mit nur zwei Wegen (den Vorschlag der Rolle innerhalb der Entscheidung umsetzen oder die Entscheidung im Refinement ändern, beim Entwurf: in der Klärung); ohne klaren Weg → **entscheiden**; sonst → **umsetzen**.
+3.  **zurückstellen** — nicht durch die Änderung verursacht: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort) oder, wenn jemand es angehen will, Issue (Stufe 1). Bei Schwere hoch fragt der Agent den Nutzer (siehe unten).
+4.  **vermerken** — Schwere niedrig: nicht umsetzen, nur festhalten.
+5.  **entscheiden** — mehrere sinnvolle Wege, keine klare Lösung, die Lösung würde Anliegen, Abgrenzung oder eine Entscheidung ausweiten, oder Rollen widersprechen sich. Der Nutzer entscheidet, mit Empfehlung des Agenten.
+6.  **umsetzen** — alles Übrige: durch die Änderung verursacht, Schwere mittel oder hoch, eine klare Lösung.
+
+**Blockierend** heißt: so darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request) — auch wenn es schon vorher so war. Immer blockierend:
+
+-   abgeschwächte Tests;
+-   ein neuer oder geänderter Test, der nie scheitern kann (z. B. eine Prüfung auf Abwesenheit ohne Gegenprobe); bei alten Tests: zurückstellen als Bug-Issue (Stufe 1);
+-   Tests, die der Plan erst nach ihrem Code vorsieht;
+-   eine Entscheidung der Anforderung, die nicht hält;
+-   eine App, die sich nicht starten oder bedienen lässt;
+-   Schwere hoch und durch die Änderung verursacht (z. B. Datenverlust, ausnutzbare Lücke);
+-   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht (sonst nach Schwere).
+
+**Behelf:** Ist eine Änderung nur vorübergehend nötig (z. B. bis ein anderes Issue erledigt ist), steht an der Stelle selbst „bleibt bis #<Nummer>", und der Agent kommentiert im Issue #<Nummer>, welcher Behelf danach wegfällt.
+
+**Dem Nutzer** legt der Agent einzeln vor: „entscheiden" (je Befund ein Satz, die Wege, seine Empfehlung) und Zurückgestelltes mit Schwere hoch (Frage: Issue oder Eintrag in `_requirements/deferred/`; in dieser Anforderung nur als Ausweitung nach `_agent-process/AGENTS.md`, Abschnitt „Halten"). Die übrigen nennt er in einem Satz mit ihrer Zahl je Gruppe. Wo alle stehen, sagt die jeweilige Stufe.

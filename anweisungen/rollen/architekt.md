@@ -10,4 +10,5 @@ Prüft den Umsetzungsplan auf **Aufbau und Schnitt**. Allgemeine Regeln und Form
 -   **Schwer änderbar:** Was legt der Plan fest, das später teuer zu ändern ist (Datenformat, Speicherort, Ordnerstruktur, Schnittstellen)? Ist das bewusst entschieden?
 -   **Größe:** Passt der Plan in einen Umsetzungsdurchgang? Wenn nicht: welcher Teil wäre eine eigene Anforderung?
 -   **Umfang:** Bleibt der Plan in Spielraum und Abgrenzung? Nichts, was keiner bestellt hat.
+-   **Was kann weg?** Welche Schritte, Absicherungen oder Tests (nur solche, die ein externes Werkzeug nachbauen oder Einmaliges festschreiben — Tests eigener Logik sind kein Kandidat) braucht dieses Anliegen beim Anspruch (Zeile `Anspruch` der Anforderung, sonst `_context/projekt.md`) nicht? Je Kandidat: was, und was ohne ihn passieren würde.
 -   **Wiederverwendung:** Wird etwas gebaut, das das Design-System oder vorhandener Code schon hat?

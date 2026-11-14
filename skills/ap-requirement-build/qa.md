@@ -5,8 +5,8 @@ Prüft eine umgesetzte Anforderung über die Tests hinaus, bevor der Nutzer sie 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
 | 6a Automatische Prüfungen | Agent | Ergebnis unter `# QA → Automatisch` |
-| 6b Prüfung durch Rollen | Prüfer (nur lesend) | Befunde, vom Agenten eingestuft |
-| 6c Befunde bearbeiten | Agent | blockierende behoben, Rest entschieden |
+| 6b Prüfung durch Rollen | Prüfer (nur lesend) | Befunde, vom Agenten eingeordnet |
+| 6c Befunde bearbeiten | Agent; Nutzer bei „entscheiden" | jeder Befund umgesetzt, zurückgestellt, verworfen oder vermerkt |
 | 6d CI | Agent | QA-Abschnitt und Status `review` committet, Pull Request eröffnet, CI grün |
 | 6e Abnahmepaket | Agent | Paket für den Nutzer (im Gespräch) |
 
@@ -27,20 +27,22 @@ Die Rollen laufen als Prüfer-Rollen (siehe `_agent-process/anweisungen/rollen/R
 
 -   Alle Prüfungen aus `_context/projekt.md` → „Prüfungen" (in Stufe 0 festgelegt).
 -   Was dort festgelegt, aber (noch) nicht eingerichtet ist oder nicht lief: im QA-Abschnitt ausdrücklich nennen, nicht still weglassen.
--   **Warnungen, die nicht blockieren** (z. B. Schwachstellen in Entwicklungswerkzeugen): als Hinweis unter `# QA`; ist eine neu und nicht schon erfasst: als Issue festhalten (Stufe 1, z. B. „Werkzeuge aktualisieren"), wenn sie jemand angehen will, sonst als Eintrag in `_requirements/deferred/`.
+-   **Warnungen, die nicht blockieren** (z. B. Schwachstellen in Entwicklungswerkzeugen): unter `# QA` vermerken; ist eine neu und nicht schon erfasst: als Issue festhalten (Stufe 1, z. B. „Werkzeuge aktualisieren"), wenn sie jemand angehen will, sonst als Eintrag in `_requirements/deferred/`.
 -   Ergebnis unter `# QA → Automatisch`: je Prüfung Befehl und Ergebnis.
 
 ## 6b: Prüfung durch Rollen
 
-Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem Lauf (auch bei erneuter QA) schreibt der Agent den Diff neu nach `.qa/diff.txt` (wie, steht in `_agent-process/anweisungen/rollen/README.md`). Danach stuft er die Befunde ein (blockierend, empfohlen, Hinweis — `_agent-process/anweisungen/rollen/README.md`). Der Klicktester legt Screenshots der wichtigen Zustände unter `.qa/` ab (nicht committet), neben dem Entwurf — für das Abnahmepaket (6e).
+Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem Lauf (auch bei erneuter QA) schreibt der Agent den Diff neu nach `.qa/diff.txt` (wie, steht in `_agent-process/anweisungen/rollen/README.md`). Danach ordnet er die Befunde ein (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"). Der Klicktester legt Screenshots der wichtigen Zustände unter `.qa/` ab (nicht committet), neben dem Entwurf — für das Abnahmepaket (6e).
 
 ## 6c: Befunde bearbeiten
 
--   **Blockierend:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
--   **Empfohlen:** umsetzen, mit Grund ablehnen oder bewusst verschieben — dann Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d); was jemand umsetzen will, als Issue festhalten (Stufe 1).
--   **Hinweis:** nach Ermessen; nichts muss. Kandidaten für später ebenfalls nach `_requirements/deferred/`.
+-   **Reihenfolge:** zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht; nach seiner Antwort alles Umzusetzende zusammen, dann einmal QA erneut. Bis zur Antwort nicht weiter.
+-   **Entscheiden:** Was er umgesetzt haben will, wie „umsetzen"; weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. Sonst zurückstellen oder verwerfen, wie er sagt — bei Blockierendem nur umsetzen oder die Entscheidung im Refinement ändern.
+-   **Umsetzen:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
+-   **Zurückstellen:** Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d), bzw. Issue (Stufe 1).
+-   **Verwerfen, vermerken, Behelf:** unter `# QA → Befunde`, mit Grund bzw. „bleibt bis #<Nummer>".
 -   **Ändert der Agent in der QA etwas:** wie in Stufe 5 — Test, wo möglich (erst rot, dann grün), danach alle Prüfungen erneut; Eintrag im Testnachweis. Unter `# QA → Befunde` steht **je Änderung** der Test (Name) oder, warum es keinen gibt — ohne eins von beiden gilt die Änderung als nicht abgeschlossen. Je umgesetztem Befund ein eigener Commit (`umsetzen.md`, Abschnitt „Commits"). **Danach läuft der Reviewer immer erneut** — auch wenn er den Befund nicht gemeldet hat —, die übrigen Rollen für die betroffenen Teile.
--   Berührt ein Befund eine Entscheidung der Anforderung: nicht selbst entscheiden — dem Nutzer vorlegen.
+-   **Prüft der Agent nur, ob ein Befund zutrifft** (ohne Code-Änderung, z. B. ob gemeldete Schwachstellen hier wirken): Ergebnis unter `# QA → Befunde` — kein dauerhafter Test, kein Eintrag in der README.
 -   Ergebnis unter `# QA → Befunde`: je Befund kurz, was damit passiert ist.
 
 ## 6d: CI
@@ -59,7 +61,7 @@ Für den Nutzer, kurz und in Alltagssprache, im Gespräch:
 
 -   **Was umgesetzt ist** — drei bis fünf Sätze.
 -   **Screenshots** der wichtigen Zustände aus `.qa/`, neben dem Entwurf (bei UI).
--   **Was die QA gefunden hat** und was damit passiert ist.
+-   **Was die QA gefunden hat:** Entschiedenes mit Ergebnis, Zurückgestelltes mit Schwere hoch einzeln, die übrigen je Gruppe mit Zahl; Einzelheiten unter `# QA → Befunde`.
 -   **Was die automatische Prüfung nicht abdecken konnte** — ausdrücklich, damit der Nutzer gezielt danach schaut (z. B. andere Browser-Engine als auf dem Zielgerät, Installation, Funktionen, die nur am echten Gerät laufen).
 -   **Checkliste für die Abnahme** — die Kriterien mit Prüfung „manuell", als konkrete Handgriffe (z. B. „am iPhone: Kopieren, in Notizen einfügen, Text vergleichen").
 -   **Wie die Abnahme lokal startet** (Befehl aus `_context/projekt.md`).

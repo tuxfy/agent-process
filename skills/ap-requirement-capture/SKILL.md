@@ -10,7 +10,7 @@ Festhalten, nicht lösen. Ein Issue ist bewusst kurz — es dient dem **Festhalt
 | Art | Label | Text nach | Inhalt |
 |---|---|---|---|
 | **Idee** — etwas Neues oder anders | `idee` | `_agent-process/anweisungen/vorlagen/idee.md` | was stört oder fehlt · was danach anders sein soll |
-| **Bug** — etwas funktioniert nicht wie festgelegt | `bug` | `_agent-process/anweisungen/vorlagen/bug.md` | was passiert · was erwartet war · wie es auftritt · Stand |
+| **Bug** — etwas funktioniert nicht wie festgelegt | `bug` | `_agent-process/anweisungen/vorlagen/bug.md` | was passiert · was erwartet war · wie es auftritt · Stand · Schwere |
 
 -   **Vorher suchen:** offene und geschlossene Issues nach dem Thema durchsuchen (`gh issue list --state all --search …` bzw. `glab issue list --all --search …`). Dasselbe Anliegen, Issue offen: dem Nutzer die Nummer nennen, Neues als Kommentar dazu (ist es schon aufgegriffen, auch den Branch nennen — der Kommentar erreicht das Dokument nicht von selbst); Issue geschlossen: neues Issue mit Verweis `#<alt>`; unklar, ob es dasselbe ist: fragen.
 -   **Anlegen:** ein Issue beim Hoster des Projekts (`gh issue create` bzw. `glab issue create`) — Titel kurz und sprechend, Label laut Tabelle, Text nach der Vorlage mit ersetzten Platzhaltern. Kein Branch, kein Commit. Dem Nutzer die Nummer nennen (`#<Nummer>`).
