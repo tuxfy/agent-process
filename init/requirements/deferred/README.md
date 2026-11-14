@@ -1,6 +1,6 @@
 # Zurückgestellt
 
-Was bei der Arbeit gesehen und **bewusst verschoben** wurde — ein Befund, der nicht blockiert, oder ein Ziel, das aus einer Anforderung herausgetrennt wurde. Will es jemand umsetzen, ist es ein Issue (Stufe 1, `ap-requirement-capture`), kein Eintrag hier.
+Was bei der Arbeit gesehen und **bewusst verschoben** wurde — ein Befund, der nicht in dieser Anforderung behoben wird, oder ein Ziel, das aus einer Anforderung herausgetrennt wurde. Will es jemand umsetzen, ist es ein Issue (Stufe 1, `ap-requirement-capture`), kein Eintrag hier.
 
 ## Eintragen
 

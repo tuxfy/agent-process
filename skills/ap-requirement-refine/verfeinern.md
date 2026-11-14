@@ -18,7 +18,7 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
     Der Agent schlägt vor, **der Nutzer entscheidet**. Ergebnis in „Entscheidungen".
 3.  **Verhalten beschreiben** — was der Nutzer sieht und tut, aus seiner Sicht. Bei Design aus dem Entwurf.
 4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar. Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen; fehlt eine, aus der Vorlage ergänzen; trifft eine nicht zu, mit „entfällt" und Grund markieren.
-5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät).
+5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät). Was nur mit dem echten Werkzeug, Dienst oder Gerät sinnvoll prüfbar ist (z. B. ein Skript, das vor allem ein externes Werkzeug aufruft): manuell — durch den Nutzer in der Abnahme bzw. beim Nachprüfen, nicht über eine nachgebaute Attrappe. Ist kein Kriterium automatisch testbar: Standardzeile „Test … ohne die Änderung rot" mit „entfällt" und Grund.
 6.  **Abgrenzung** — was ausdrücklich **nicht** dazugehört (ggf. mit Verweis auf eigene Issues; ein bewusst abgetrenntes Ziel, das niemand gerade will, als Eintrag in `_requirements/deferred/` — Regeln in der `README.md` dort, committet mit dem Refinement).
 7.  **Technische Notizen** — erlaubt, aber nicht bindend (z. B. betroffene Dateien, Hinweise für die Umsetzung).
 8.  **Größe prüfen** — passt die Anforderung in einen Umsetzungsdurchgang? Wenn nicht: aufteilen, Teile als eigene Issues festhalten (Stufe 1).

@@ -5,7 +5,7 @@ Prüft den Umsetzungsplan auf **Code, Tests und Reihenfolge**. Allgemeine Regeln
 ## Prüfpunkte
 
 -   **Prüfungen zuerst:** Werden Tests und Prüflauf der UI-Richtlinie eingerichtet, bevor der erste Code entsteht, den sie prüfen sollen?
--   **Testfälle:** Hat jedes Akzeptanzkriterium einen konkreten Test oder eine begründete manuelle Prüfung? Sind die erwarteten Ergebnisse eindeutig? Fehlen Grenzfälle (leer, ungültig, sehr viel)?
+-   **Testfälle:** Hat jedes Akzeptanzkriterium einen konkreten Test oder eine begründete manuelle Prüfung? Sind die erwarteten Ergebnisse eindeutig? Fehlen Grenzfälle (leer, ungültig, sehr viel)? Baut der Plan ein externes Werkzeug als Attrappe nach, statt eigene Logik vom Aufruf zu trennen?
 -   **Rot vor Grün:** Jeder Test — auch ein E2E-Test — wird vor dem Code geschrieben, den er prüft, und muss ohne diesen Code rot sein. Stehen Tests im Plan erst nach der Umsetzung ihres Teils?
 -   **Rot aus dem richtigen Grund:** Ein roter Test muss an seiner Erwartung scheitern (falscher Inhalt, fehlendes Verhalten), nicht an der Infrastruktur (Server startet nicht, Datei fehlt, Zeitüberschreitung). Plant der Plan ein Rot gegen „nichts da": Platzhalter vorsehen, gegen den die Erwartung scheitert.
 -   **Schritte:** Ist jeder Schritt klein genug für einen Testlauf? Baut jeder auf dem vorherigen auf, ohne Vorgriffe?

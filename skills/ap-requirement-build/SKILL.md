@@ -17,7 +17,7 @@ Welche Datei dran ist, zeigen das Anforderungsdokument und der Git-Verlauf des B
 | `qa` | `qa.md` |
 | `review` | `_agent-process/skills/ap-requirement-accept/SKILL.md` — fehlt dort die Voraussetzung (CI grün, Abnahmepaket gegeben), zuerst `qa.md` ab 6d |
 
-Rote CI (6d), blockierende QA-Befunde (6c) und Befunde aus der Abnahme (7b) führen zurück zu `umsetzen.md` (5c/5d) — wie in `qa.md` bzw. `_agent-process/skills/ap-requirement-accept/SKILL.md` beschrieben.
+Rote CI (6d), QA-Befunde der Gruppe „umsetzen" (6c, auch aus „entscheiden") und Befunde aus der Abnahme (7b) führen zurück zu `umsetzen.md` (5c/5d) — wie in `qa.md` bzw. `_agent-process/skills/ap-requirement-accept/SKILL.md` beschrieben.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|

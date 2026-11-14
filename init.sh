@@ -88,6 +88,8 @@ for f in "$SRC"/context/*; do
 done
 grep -q '^## UI-Pfade' _context/projekt.md || \
   hinweis "_context/projekt.md hat keinen Abschnitt „## UI-Pfade“ (Vorlage: $SRC/context/projekt.md)"
+grep -q '^## Anspruch' _context/projekt.md || \
+  hinweis "_context/projekt.md hat keinen Abschnitt „## Anspruch“ — der Agent schlägt ihn bei der nächsten Klärung vor (Vorlage: $SRC/context/projekt.md)"
 
 # Ordner für Anforderungen und Releases (.gitkeep, damit Git sie kennt)
 for d in _requirements/done _releases; do

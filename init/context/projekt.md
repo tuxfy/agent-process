@@ -4,6 +4,10 @@
 
 ## Zweck
 
+## Anspruch
+
+*einfach | normal | hoch — mit kurzer Begründung (Nutzerkreis, Daten, Folgen eines Ausfalls); Bedeutung: `_agent-process/skills/ap-project-setup/SKILL.md`, „Was festgelegt wird", Punkt 1.*
+
 ## Stack
 
 *Sprache, Framework, Build, Laufzeit-Abhängigkeiten.*

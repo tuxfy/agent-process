@@ -14,6 +14,7 @@ Ist-Stand: Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fe
 # Einordnung
 
 -   **Art:** Feature | Bug | Design | technisch
+-   **Anspruch:** einfach | normal | hoch *(aus `_context/projekt.md`; Abweichung mit Grund)*
 -   **Spielraum** (nur Angekreuztes darf sich ändern):
     -   [ ] Darstellung
     -   [ ] Verhalten
