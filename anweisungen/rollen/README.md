@@ -7,7 +7,7 @@ Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann wel
 -   **Design (3c):** Entwurf (Abläufe, Zustände, Design-System, Brief, Umsetzbarkeit) · Barrierefreiheit (Kontrast, Namen, Fokus, Tippflächen)
 -   **Plan:** Architekt (Aufbau, Schnitt, Abhängigkeiten, Größe) · Senior Dev (Code, Tests, Reihenfolge, Fehlerfälle, Umgebung und Container) · DevOps (alles ab dem Commit: CI, Hosting, Release, Betrieb)
 -   **Umsetzung:** Reviewer (Code gegen Anforderung, Plan und Entscheidungen) · Security (Sicherheit nach Checkliste) · Testwirkung (würden die Tests Fehler finden?) · Klicktester (die laufende App wie ein Mensch)
--   **Planung** (`ap-planning`, kein Prüfer): Vorschlag zu Reihenfolge und Verbindungen der offenen Issues — eigene Grundlage und Form in `planung.md`.
+-   **Planung** (`ap-planning`, kein Prüfer): Vorschlag zu Ziel, Reihenfolge und Verbindungen der offenen Issues — eigene Grundlage und Form in `planung.md`.
 
 Datei je Rolle: `<rolle>.md` in diesem Ordner.
 
