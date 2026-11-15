@@ -53,4 +53,6 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 
 ## Bekannte Fehler
 
-*Eine Zeile je Fehler, den Agenten zum zweiten Mal gemacht haben — eingetragen hier im Prozess-Repo, aus den Vorschlägen der Rückblicke (Stufe 7d). Leer, solange es keinen gibt.*
+*Eine Zeile je Fehler, den Agenten zum zweiten Mal gemacht haben — eingetragen hier im Prozess-Repo, aus den Vorschlägen der Rückblicke (Stufe 7d).*
+
+-   **Befehle für den Nutzer** (Tag auf falschem Commit, 15.11.): Vorher prüft der Agent Branch und `git status` im Arbeitsverzeichnis, in dem der Nutzer sie ausführt; hat er dort nicht Committetes, das sie stören würde, nennt er es vorher. Die Befehle legen ihr Ziel selbst fest (Tag z. B. wie in `ap-release`, `ausliefern.md`) und sind mit `&&` verkettet, damit nach einem Fehler nichts weiterläuft.

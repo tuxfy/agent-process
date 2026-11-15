@@ -3,12 +3,11 @@
 ## 8c: Ausliefern
 
 -   **Der Nutzer führt den Pull Request** nach `main` zusammen — **als Merge-Commit, nicht per „Squash"**, damit `release-candidate` und `main` denselben Verlauf behalten. Das Zusammenführen ist die Freigabe des Releases; eine eigene Freigabe davor gibt es nicht.
--   **Tag:** Hat das Projekt den automatischen Tag eingerichtet (Stufe 0), setzt die CI danach `v<version>` und die Auslieferung startet. Sonst gibt der Agent dem Nutzer die Befehle fertig aus (mit der Version eingesetzt) — Tags lassen sich beim Hoster nicht über die Oberfläche setzen:
+-   **Tag:** Hat das Projekt den automatischen Tag eingerichtet (Stufe 0), setzt die CI danach `v<version>` und die Auslieferung startet. Sonst gibt der Agent dem Nutzer die Befehle fertig aus (mit der Version eingesetzt), direkt nach dem Zusammenführen auszuführen — Tags lassen sich beim Hoster nicht über die Oberfläche setzen:
 
     ```
-    git switch main
-    git pull --ff-only
-    git tag -a v<version> -m "Release v<version>"
+    git fetch origin &&
+    git tag -a v<version> -m "Release v<version>" origin/main &&
     git push origin v<version>
     ```
 -   Ausgeliefert wird nach `_context/projekt.md` bzw. dem How-to in `_context/` (z. B. automatisch beim Tag).

@@ -115,13 +115,13 @@ Der Stand des Prozesses hängt am Branch (das Projekt speichert nur einen Verwei
 Im Projekt-Hauptordner:
 
 ```
-git switch main
-git pull --ff-only
-git switch -c feature/prozess-aktualisieren
-git submodule update --remote _agent-process
-sh _agent-process/init.sh
-git add -A
-git commit -m "chore(prozess-aktualisieren): Prozess-Repo auf neuen Stand"
+git switch main &&
+git pull --ff-only &&
+git switch -c feature/prozess-aktualisieren &&
+git submodule update --remote _agent-process &&
+sh _agent-process/init.sh &&
+git add -A &&
+git commit -m "chore(prozess-aktualisieren): Prozess-Repo auf neuen Stand" &&
 git push -u origin feature/prozess-aktualisieren
 ```
 
@@ -130,12 +130,12 @@ git push -u origin feature/prozess-aktualisieren
 3.  `main` in `release-candidate` übernehmen, damit beide denselben Prozess-Stand haben (der Agent hält sonst vor der Arbeit auf `release-candidate` an; geht es per Fast-Forward, spult er selbst vor):
 
     ```
-    git switch main
-    git pull --ff-only
-    git switch release-candidate
-    git pull --ff-only
-    git merge main -m "chore(prozess-aktualisieren): main in release-candidate"
-    git push origin release-candidate
+    git switch main &&
+    git pull --ff-only &&
+    git switch release-candidate &&
+    git pull --ff-only &&
+    git merge main -m "chore(prozess-aktualisieren): main in release-candidate" &&
+    git push origin release-candidate &&
     git switch main
     ```
 4.  Claude neu starten — Unteragenten (`.claude/agents`), Skills (`.claude/skills`) und `CLAUDE.md` werden nur beim Start gelesen.
