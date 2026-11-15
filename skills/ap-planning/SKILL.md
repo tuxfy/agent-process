@@ -9,7 +9,13 @@ Ein Arbeitsdokument für den Nutzer, keine Quelle für Entscheidungen: Es zeigt,
 
 ## Wo die Seite liegt
 
-Gibt es `planung.md` im Hauptordner des Projekts (von Git ignoriert, Init trägt sie in `.gitignore` ein), liegt sie dort. Sonst fragt der Agent: Liegt sie als Wiki-Seite „Planung" beim Hoster — dann gibt der Nutzer den Inhalt, und der Agent gibt den neuen Text zum Einfügen aus; das Wiki schreibt er nie selbst —, oder soll sie als `planung.md` neu entstehen? Vorher prüft er mit `git check-ignore -q planung.md`, ob Git sie ignoriert; wenn nicht, bittet er den Nutzer, Init erneut laufen zu lassen. Nie unter `_context/` und nie committet.
+Gibt es `planung.md` im Hauptordner des Projekts (von Git ignoriert, Init trägt sie in `.gitignore` ein), liegt sie dort. Sonst fragt der Agent, ob sie als Wiki-Seite „Planung" beim Hoster liegt oder als `planung.md` neu entstehen soll.
+
+-   **Wiki bei GitLab:** Der Agent liest und schreibt nur diese Seite, über `glab api` (Endpunkt für Wiki-Seiten); vor dem Schreiben liest er sie erneut und hält an, wenn sie sich seit Schritt 1 geändert hat.
+-   **Wiki bei GitHub, oder wenn das nicht geht:** Der Nutzer gibt den Inhalt, der Agent gibt den neuen Text zum Einfügen aus.
+-   **`planung.md` neu:** Vorher prüft der Agent mit `git check-ignore -q planung.md`, ob Git sie ignoriert; wenn nicht, bittet er den Nutzer, Init erneut laufen zu lassen.
+
+Nie unter `_context/` und nie committet.
 
 ## Inhalt
 
