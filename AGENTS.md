@@ -4,7 +4,7 @@ Gilt in jedem Projekt, das dieses Prozess-Repo als Submodul `_agent-process/` ei
 
 ## Skills
 
-Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/design.md`; ist `projekt.md` noch nicht ausgefüllt: zuerst `ap-project-setup` (fehlt nur der Abschnitt „Anspruch": den schlägt die Klärung vor). Je Stufe gilt ein Skill unter `_agent-process/skills/`. Eine Stufe beginnt erst, wenn die vorherige abgeschlossen ist; Code entsteht nur für eine Anforderung nach dem Start ihrer Umsetzung.
+Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/design.md`, gibt es `_context/architektur.md`, immer auch diese; ist `projekt.md` noch nicht ausgefüllt: zuerst `ap-project-setup` (fehlt nur der Abschnitt „Anspruch": den schlägt die Klärung vor). Je Stufe gilt ein Skill unter `_agent-process/skills/`. Eine Stufe beginnt erst, wenn die vorherige abgeschlossen ist; Code entsteht nur für eine Anforderung nach dem Start ihrer Umsetzung.
 
 | Skill | wann |
 |---|---|
@@ -49,7 +49,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 -   **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
 -   **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
 -   **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
--   **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
+-   **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. In `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen — sie soll Angreifern keine fertige Übersicht liefern. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
 
 ## Bekannte Fehler
 

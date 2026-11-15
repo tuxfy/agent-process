@@ -8,6 +8,7 @@
 
 -   [Projekt](_context/projekt.md) — Zweck, Stack, Prüfungen, Befehle, Auslieferung, Abnahme
 -   [Design](_context/design.md) — Design-System, Zuordnungen, Lücken
+-   *(nur wenn angelegt)* [Architektur](_context/architektur.md) — Bausteine, Erreichbarkeit, Vertrauensgrenzen, Daten, Entscheidungen
 
 ## Projektspezifische Regeln
 

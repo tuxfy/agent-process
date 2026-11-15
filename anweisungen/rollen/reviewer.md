@@ -15,5 +15,5 @@ Grundlage: Diff aus `.qa/diff.txt`, dazu Anforderung, Umsetzungsplan, Entscheidu
 -   **UI-Richtlinie:** Was der Prüflauf nicht erkennt — z. B. eigene Komponenten, wo das Design-System eine hat; Inline-Styles; Ausnahmen ohne Eintrag in `_context/design.md`.
 -   **Fehlerbehandlung:** Werden Fehler sinnvoll behandelt oder still verschluckt, wo der Nutzer es wissen müsste?
 -   **Lesbarkeit:** unklare Namen, doppelte Logik, toter Code, auskommentierte Reste, Debug-Ausgaben.
--   **Kontext:** Sind `_context/` und `README.md` nachgezogen, wo sich Befehle, Setup oder Bedienung geändert haben?
+-   **Kontext:** Sind `_context/` und `README.md` nachgezogen, wo sich Befehle, Setup oder Bedienung geändert haben — und, wenn es `_context/architektur.md` gibt, Bausteine, Erreichbarkeit, Vertrauensgrenzen oder Daten? Verstößt sie gegen `_agent-process/AGENTS.md`, „Grundsätze", „Dokumente und Issues", ist das ein Befund.
 -   **Einmalig oder dauerhaft:** Schreiben Tests oder README fest, was sich ständig ändert (z. B. Listen von Kennungen, Versionen) oder nur für diesen einen Fall gilt? Das gehört als Nachweis unter `# QA` der Anforderung, nicht in dauerhafte Tests oder die Betriebsanleitung.

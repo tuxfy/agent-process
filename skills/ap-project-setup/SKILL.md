@@ -1,6 +1,6 @@
 ---
 name: ap-project-setup
-description: Stufe 0 des Agent-Prozesses (`_agent-process`) – legt Stack, Prüfungen, Auslieferung und Abnahme eines Projekts in `_context/` fest und legt die erste Anforderung an. Nutzen, wenn `_context/projekt.md` noch nicht ausgefüllt ist oder Stack, Prüfungen oder Auslieferung neu festgelegt werden. Nicht für einzelne Befehle oder kleine Korrekturen an `_context/`.
+description: Stufe 0 des Agent-Prozesses (`_agent-process`) – legt Stack, Prüfungen, Auslieferung, Abnahme und optional die Architektur eines Projekts in `_context/` fest und legt die erste Anforderung an. Nutzen, wenn `_context/projekt.md` noch nicht ausgefüllt ist oder Stack, Prüfungen oder Auslieferung neu festgelegt werden. Nicht für einzelne Befehle oder kleine Korrekturen an `_context/`.
 ---
 
 # Stufe 0: Projekt einrichten
@@ -17,7 +17,7 @@ Legt **einmal** fest, wie im Projekt gebaut, geprüft, abgenommen und ausgeliefe
 
 ## Was festgelegt wird
 
-Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`.
+Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`, Architektur (optional) in `_context/architektur.md`.
 
 1.  **Zweck und Anspruch** — wofür das Projekt da ist, in zwei, drei Sätzen; dazu der **Anspruch**, an dem Prüfer-Befunde und Bugs gemessen werden (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"), mit kurzer Begründung aus Nutzerkreis, Art der Daten und Folgen eines Ausfalls:
     -   **einfach** — nur der Nutzer selbst oder wenige Bekannte, keine fremden persönlichen Daten, ein Ausfall ist ärgerlich, aber folgenlos (z. B. ein eigener Server);
@@ -40,6 +40,7 @@ Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so f
         -   [ ] Branches nach dem Zusammenführen automatisch löschen (erst wenn `release-candidate` geschützt ist)
         -   [ ] Issues eingeschaltet; Labels `idee` und `bug` angelegt
 9.  **Abnahme** — wo und wie der Nutzer abnimmt (lokal, Befehl) und was nur am echten Gerät geprüft werden kann (dann beim Nachprüfen nach dem Release).
+10. **Architektur** *(optional)* — vorschlagen, wenn das Projekt aus mehreren Diensten besteht, mehrere Netze hat oder der Anspruch „hoch" ist; sonst entfällt sie. Dann `_context/architektur.md` nach `_agent-process/anweisungen/vorlagen/architektur.md`, nur mit dem, was der Nutzer bestätigt, und in `AGENTS.md` des Projekts unter „Festlegungen" verlinken. Sie beschreibt, was wie zusammenhängt (Bausteine, Erreichbarkeit, Vertrauensgrenzen, Daten, Entscheidungen über eine Anforderung hinaus); wie gearbeitet wird (Prüfungen und wo sie laufen, Auslieferung, Sicherung, Wiederaufbau), bleibt in `_context/projekt.md`.
 
 ## Standardprüfungen
 
@@ -65,8 +66,8 @@ Im Grundgerüst werden Werkzeuge in aktuellen Versionen eingerichtet; Warnungen 
 
 ## Ergebnis
 
--   `_context/projekt.md` (und `_context/design.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
+-   `_context/projekt.md` (und `_context/design.md`, ggf. `_context/architektur.md`) ausgefüllt; offene Punkte ausdrücklich als offen markiert.
 -   **Issue:** erst, wenn Issues eingeschaltet und die Labels angelegt sind (Checkliste oben bzw. `init.sh --hoster`; prüfen mit `gh label list` bzw. `glab label list`) — abweichend von Stufe 1, die ohne Label anlegt. Dann legt der Agent es an (Stufe 1, `_agent-process/skills/ap-requirement-capture/SKILL.md`; Label `idee`, Titel „Grundgerüst einrichten"; was fehlt: Einrichten von allem, was Stufe 0 festgelegt hat; danach: gebaut, geprüft und ausgeliefert wird wie in `_context/projekt.md`). Die Freigabe von Stufe 0 gilt als Aufgreifen. Geht das Anlegen nicht: Text zum Kopieren ausgeben und auf die Nummer warten (Handgriff des Nutzers).
--   **Branch:** Der Agent legt `feature/grundgeruest` vom aktuellen `main` an (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand") und kommentiert direkt nach dem Push ins Issue: „Aufgegriffen auf `feature/grundgeruest`" (geht das nicht: Kommentar zum Kopieren ausgeben). Dann committet er dort `_context/` und die erste Anforderung (`chore(grundgeruest): Einrichtung, Anliegen aus Issue #<Nummer>`) und pusht. Stufe 4 läuft auf diesem Branch weiter.
+-   **Branch:** Der Agent legt `feature/grundgeruest` vom aktuellen `main` an (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand") und kommentiert direkt nach dem Push ins Issue: „Aufgegriffen auf `feature/grundgeruest`" (geht das nicht: Kommentar zum Kopieren ausgeben). Dann committet er dort `_context/` (ggf. mit `AGENTS.md` des Projekts für den Verweis auf die Architektur) und die erste Anforderung (`chore(grundgeruest): Einrichtung, Anliegen aus Issue #<Nummer>`) und pusht. Stufe 4 läuft auf diesem Branch weiter.
 -   **Erste Anforderung** `_requirements/<Nr>-grundgeruest.md` (`<Nr>` = Issue-Nummer wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Dokument"; Vorlage `_agent-process/anweisungen/vorlagen/anforderung.md`, `Issue #<Nummer>`, Status `new`, Track `complete`; im Abschnitt „Anliegen" der Text des Issues): Einrichten von allem, was Stufe 0 festgelegt hat. Die Entscheidungen verweisen auf `_context/projekt.md`; weiter mit Stufe 4 (Refinement) — Klärung und Design entfallen in der Regel.
 -   Bei einem bestehenden Projekt: nur für die Lücken eine Anforderung (z. B. `pruefungen-ergaenzen`), ebenso bei einem erneuten Durchlauf für die Umstellung — Issue wie oben, Titel und Text beschreiben die Lücke bzw. Umstellung; dann Klärung wie üblich (Stufe 2, `_agent-process/skills/ap-requirement-refine/klaeren.md`, kurzer Name nach den Regeln dort). Die Änderungen an `_context/` kommen mit dem ersten Commit dort.

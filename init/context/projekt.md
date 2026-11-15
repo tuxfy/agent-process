@@ -38,6 +38,8 @@
 
 **Alle Prüfungen:** `<ein Befehl>` — lokal und in der CI gleich. Bewusst weggelassen: *(Kategorie, Grund)*
 
+**Wo was läuft:** *(nur, wenn nicht alles überall gleich läuft — je Prüfung: Git-Hook, lokal, CI im Pull Request, geplanter Lauf, Update-Werkzeug; wer was abdeckt)*
+
 ## Befehle
 
 *Lokal starten (Abnahme), Design-System kopieren (falls nötig), weitere.*
@@ -48,7 +50,7 @@
 
 ## Auslieferung und Release
 
-*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `release-candidate`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/skills/ap-release/SKILL.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen.*
+*Wohin (Rolle „Hoster", How-to in `_context/`), Release-Modell — Standard: Sammel-Branch `release-candidate`, Release = Pull Request nach `main` mit Tag, Version aus dem Inhalt (`_agent-process/skills/ap-release/SKILL.md`); Abkürzung: „Zusammenführen nach `main` = Ausliefern". Zurückrollen. Gibt es Server oder gespeicherte Daten: Sicherung und Wiederaufbau.*
 
 ## Abnahme
 
