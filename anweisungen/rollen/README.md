@@ -1,12 +1,13 @@
 # Rollen für Prüfungen
 
-Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann welche Rolle prüft, steht in der jeweiligen Stufe (3c, 5a, 6, 8b). In Claude Code laufen sie als Unteragenten (`.claude/agents/`), sonst als eigene Sitzung je Rolle. Mehrere laufen parallel; der Agent führt die Ergebnisse zusammen. Reviewer, Security und Testwirkung (6b) bekommen den Diff als Datei: Der Agent schreibt ihn vor jedem Lauf neu nach `.qa/diff.txt`, wenn alles committet ist: `git fetch`, dann `git diff origin/<Ziel>...HEAD` — Ziel ist das Ziel des Pull Requests (`release-candidate`; bei der Abkürzung oder solange es `release-candidate` noch nicht gibt: `main`).
+Unabhängige Prüfer mit frischem Blick. Sie ändern nichts am Projekt. Wann welche Rolle prüft, steht in der jeweiligen Stufe (3c, 5a, 6, 8b) bzw. im Skill. In Claude Code laufen sie als Unteragenten (`.claude/agents/`), sonst als eigene Sitzung je Rolle. Mehrere laufen parallel; der Agent führt die Ergebnisse zusammen. Reviewer, Security und Testwirkung (6b) bekommen den Diff als Datei: Der Agent schreibt ihn vor jedem Lauf neu nach `.qa/diff.txt`, wenn alles committet ist: `git fetch`, dann `git diff origin/<Ziel>...HEAD` — Ziel ist das Ziel des Pull Requests (`release-candidate`; bei der Abkürzung oder solange es `release-candidate` noch nicht gibt: `main`).
 
 **Blick je Rolle:**
 
 -   **Design (3c):** Entwurf (Abläufe, Zustände, Design-System, Brief, Umsetzbarkeit) · Barrierefreiheit (Kontrast, Namen, Fokus, Tippflächen)
 -   **Plan:** Architekt (Aufbau, Schnitt, Abhängigkeiten, Größe) · Senior Dev (Code, Tests, Reihenfolge, Fehlerfälle, Umgebung und Container) · DevOps (alles ab dem Commit: CI, Hosting, Release, Betrieb)
 -   **Umsetzung:** Reviewer (Code gegen Anforderung, Plan und Entscheidungen) · Security (Sicherheit nach Checkliste) · Testwirkung (würden die Tests Fehler finden?) · Klicktester (die laufende App wie ein Mensch)
+-   **Planung** (`ap-planning`, kein Prüfer): Vorschlag zu Reihenfolge und Verbindungen der offenen Issues — eigene Grundlage und Form in `planung.md`.
 
 Datei je Rolle: `<rolle>.md` in diesem Ordner.
 

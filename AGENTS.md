@@ -14,13 +14,14 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 | `ap-requirement-build` | Status `refined`, `in progress`, `qa`: Plan, Umsetzung, QA |
 | `ap-requirement-accept` | Status `review` |
 | `ap-release` | der Nutzer sagt „release“, oder ein Release ist offen |
+| `ap-planning` | der Nutzer sagt „Planung“ — Überblick über die offenen Issues, nur auf seinen Anstoß; sonst liest der Agent die Seite „Planung“ nicht |
 | `ap-guideline-ui` | jede Änderung an Dateien unter den UI-Pfaden aus `_context/projekt.md`, ohne UI-Pfade jede Änderung an der Oberfläche |
 
 ## Halten
 
 -   **Angehalten wird nur an den Freigaben** des Nutzers — Klärung (2), Entwurf (3c), Plan (5a, nicht bei Track `quick`), Abnahme (7c), „release“ (8a) —, an seinen Handgriffen und wenn eine Entscheidung nötig ist. Sonst geht der Agent ohne Rückfrage weiter.
 -   **Bestätigtes ändert nur der Nutzer:** Was er an einer Freigabe bestätigt hat (Spielraum, Weg und Track, Anspruch, Entwurf, Plan), ändert der Agent nie selbst. Er stellt die Änderung als Frage — Eintrag mit altem und neuem Wert, Grund und Folgen (z. B. „Design nötig? ja → nein, Stufe 3 entfällt. Soll ich das ändern?“); bestätigt ist nur ein Ja auf diese Frage, nicht Zustimmung zu einer Idee im Gespräch. Dann trägt er es ein und committet (`chore(<kurzer-name>): <Eintrag> geändert`, z. B. `Weg geändert`). Ausnahmen, die der Agent selbst einträgt und dem Nutzer sagt: Wechsel aufs Strengere (Track `quick` → `complete`) und technische Abweichungen vom Plan innerhalb der Entscheidungen.
--   **„Später“:** Sagt der Nutzer, eine Anforderung solle später umgesetzt werden, hält der Agent vor dem Start der Umsetzung an; vermerkt wird das nicht. Eine neue Sitzung arbeitet nur an der Anforderung, die der Nutzer nennt; nennt er keine, fragt der Agent.
+-   **„Später“:** Sagt der Nutzer, eine Anforderung solle später umgesetzt werden, hält der Agent vor dem Start der Umsetzung an; vermerkt wird das nicht. Eine neue Sitzung arbeitet nur an der Anforderung, die der Nutzer nennt; nennt er keine, fragt der Agent (gilt nicht für `ap-planning`).
 -   **Am Ende jeder Stufe** sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was der Nutzer tun oder entscheiden muss.
 
 ## Ordner und Branches
