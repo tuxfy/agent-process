@@ -13,6 +13,7 @@ Ist-Stand: Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fe
 
 # Einordnung
 
+-   **Ziel:** *(ein Satz — was danach anders ist, prüfbar, ohne festgelegte Lösung; aus dem Issue, in der Klärung bestätigt)*
 -   **Art:** Feature | Bug | Design | technisch
 -   **Anspruch:** einfach | normal | hoch *(aus `_context/projekt.md`; Abweichung mit Grund)*
 -   **Spielraum** (nur Angekreuztes darf sich ändern):

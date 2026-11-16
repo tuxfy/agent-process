@@ -9,10 +9,11 @@ Festhalten, nicht lösen. Ein Issue ist bewusst kurz — es dient dem **Festhalt
 
 | Art | Label | Text nach | Inhalt |
 |---|---|---|---|
-| **Idee** — etwas Neues oder anders | `idee` | `_agent-process/anweisungen/vorlagen/idee.md` | was stört oder fehlt · was danach anders sein soll |
+| **Idee** — etwas Neues oder anders | `idee` | `_agent-process/anweisungen/vorlagen/idee.md` | was stört oder fehlt · Ziel · ggf. Idee zur Lösung |
 | **Bug** — etwas funktioniert nicht wie festgelegt | `bug` | `_agent-process/anweisungen/vorlagen/bug.md` | was passiert · was erwartet war · wie es auftritt · Stand · Schwere |
 
 -   **Vorher suchen:** offene und geschlossene Issues nach dem Thema durchsuchen (`gh issue list --state all --search …` bzw. `glab issue list --all --search …`). Dasselbe Anliegen, Issue offen: dem Nutzer die Nummer nennen, Neues als Kommentar dazu (ist es schon aufgegriffen, auch den Branch nennen — der Kommentar erreicht das Dokument nicht von selbst); Issue geschlossen: neues Issue mit Verweis `#<alt>`; unklar, ob es dasselbe ist: fragen.
+-   **Ziel statt Lösung** (nur Idee): Das Ziel bestimmt der Nutzer; eine genannte Lösung (z. B. eine Technik oder ein Format) kommt unter „Idee zur Lösung" — sonst wird sie gebaut, ohne dass jemand die übliche Lösung prüft. Fehlt das Ziel, fragt der Agent beim Festhalten einmal, was danach anders sein soll; weiß der Nutzer es nicht, steht dort `offen` — die Klärung holt es nach.
 -   **Anlegen:** ein Issue beim Hoster des Projekts (`gh issue create` bzw. `glab issue create`) — Titel kurz und sprechend, Label laut Tabelle, Text nach der Vorlage mit ersetzten Platzhaltern. Kein Branch, kein Commit. Dem Nutzer die Nummer nennen (`#<Nummer>`).
 -   **Geht das nicht** (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Titel, Label und Text zum Kopieren ausgeben; der Nutzer legt das Issue an, der Agent arbeitet weiter. Fehlt nur das Label: ohne Label anlegen und es dem Nutzer sagen.
 -   Festhalten darf **jeder** — der Nutzer auch direkt beim Hoster, der Agent auch mitten im Gespräch; laufende Arbeit bleibt dabei, wie sie ist.

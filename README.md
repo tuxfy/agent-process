@@ -40,8 +40,8 @@ Am Ende **jeder** Stufe sagt der Agent kurz: was erledigt ist, was als Nächstes
 | **1 Idee oder Bug** | Agent oder du | Issue beim Hoster, Label `idee` bzw. `bug` · **ZF:** Nummer | — | — |
 | **2 Klärung** | Agent | Issue lesen, Branch vom aktuellen `main` anlegen, ins Issue kommentieren | — | `feature/…` bzw. `fix/…` |
 | | Agent | Dokument mit Anliegen aus dem Issue | **C+P** | Feature-Branch |
-| | Agent | Fragen stellen, Art, Weg und Track vorschlagen · **ZF:** Spielraum, Weg und Track | — | |
-| | du | Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
+| | Agent | Fragen stellen, Ziel, Art, Weg und Track vorschlagen · **ZF:** Ziel, Spielraum, Weg und Track | — | |
+| | du | Ziel, Spielraum, Weg und Track (`quick` / `complete`) bestätigen | **GO** | |
 | | Agent | Anforderungsdokument | **C+P** | Feature-Branch |
 | **3a Ausgangslage** *(nur bei Design)* | Agent | Fakten, keine Gestaltung · **ZF:** Ausgangslage als Text zum Kopieren | — | |
 | **3b Entwurf** | du, extern | Entwurf und Brief im Werkzeug deiner Wahl — **extern wird nichts committet** | **DU**, Agent wartet | |

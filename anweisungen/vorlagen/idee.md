@@ -1,2 +1,3 @@
 -   **Was stört oder fehlt:** (1–2 Sätze)
--   **Was danach anders sein soll:** (1 Satz)
+-   **Ziel:** (1 Satz — was danach anders ist, prüfbar und ohne festgelegte Lösung; z. B. „Auf dem Server liegen nach dem Ausliefern nur die Dateien, die die App zum Laufen braucht" statt „fertige Archive")
+-   **Idee zur Lösung:** (optional — ein Vorschlag, kein Auftrag)

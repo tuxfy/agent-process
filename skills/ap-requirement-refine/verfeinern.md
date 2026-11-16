@@ -8,6 +8,7 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 
 1.  **Entscheidungen bündeln** — alles, was in Klärung, Entwurf und hier festgelegt wird, in den Abschnitt „Entscheidungen" (je Punkt kurz: was, ggf. warum). Beantwortete Fragen wandern aus „Offene Fragen" dorthin. Dabei prüfen, ob Hintergrund und Design-Brief noch zum aktuellen Stand passen — besonders nach einer Auffrischung des Design-Systems (z. B. Verweise auf Teile, die es nicht mehr gibt).
 2.  **Technik klären** — vor `refined`, damit in der Umsetzung keine Architekturentscheidung ohne den Nutzer fällt. Grundlage sind die Festlegungen aus Stufe 0 in `_context/projekt.md` und, wenn es sie gibt, `_context/architektur.md`; hier nur, was **diese Anforderung** zusätzlich braucht oder wo sie abweicht, soweit relevant:
+    -   Welche Lösung erreicht das Ziel (Zeile „Ziel" unter „Einordnung")? Sie zu finden ist Sache des Agenten: zuerst, wie man es üblicherweise löst; eine eigene Lösung nur mit Grund. Eine im Issue oder seinen Kommentaren genannte Lösung (Anliegen, Hintergrund) wird an Ziel und üblicher Lösung gemessen; empfiehlt der Agent eine andere, sagt er das im Vorschlag mit Grund.
     -   Neue Bausteine, Bibliotheken oder Werkzeuge?
     -   Wie werden Daten gespeichert?
     -   Welche externen Abhängigkeiten gibt es (Schnittstellen, Dienste, Bibliotheken, auch Hosting und Auslieferung)? Für jede: ist das How-to bekannt oder muss es vor der Umsetzung geklärt werden?
@@ -17,7 +18,7 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 
     Der Agent schlägt vor, **der Nutzer entscheidet**. Ergebnis in „Entscheidungen".
 3.  **Verhalten beschreiben** — was der Nutzer sieht und tut, aus seiner Sicht. Bei Design aus dem Entwurf.
-4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar. Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen; fehlt eine, aus der Vorlage ergänzen; trifft eine nicht zu, mit „entfällt" und Grund markieren.
+4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar; mindestens eines zeigt, dass das Ziel (Zeile „Ziel" unter „Einordnung") erreicht ist. Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen; fehlt eine, aus der Vorlage ergänzen; trifft eine nicht zu, mit „entfällt" und Grund markieren.
 5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät). Was nur mit dem echten Werkzeug, Dienst oder Gerät sinnvoll prüfbar ist (z. B. ein Skript, das vor allem ein externes Werkzeug aufruft): manuell — durch den Nutzer in der Abnahme bzw. beim Nachprüfen, nicht über eine nachgebaute Attrappe. Ist kein Kriterium automatisch testbar: Standardzeile „Test … ohne die Änderung rot" mit „entfällt" und Grund.
 6.  **Abgrenzung** — was ausdrücklich **nicht** dazugehört (ggf. mit Verweis auf eigene Issues; ein bewusst abgetrenntes Ziel, das niemand gerade will, als Eintrag in `_requirements/deferred/` — Regeln in der `README.md` dort, committet mit dem Refinement).
 7.  **Technische Notizen** — erlaubt, aber nicht bindend (z. B. betroffene Dateien, Hinweise für die Umsetzung).
@@ -34,7 +35,7 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 -   [ ] Abgrenzung formuliert
 -   [ ] Bei Design: Entwurf freigegeben und abgelegt
 -   [ ] Größe passt
--   Sind alle Punkte erfüllt, setzt **der Agent** den Status `refined`. Fehlt der Track oder ist er nicht gesetzt: `complete` eintragen. Trifft ein Punkt für `quick` (`_agent-process/skills/ap-requirement-refine/klaeren.md`, „Was der Agent macht", Schritt 5) nicht mehr zu: Track `complete`, dem Nutzer sagen.
+-   Sind alle Punkte erfüllt, setzt **der Agent** den Status `refined`. Fehlt der Track oder ist er nicht gesetzt: `complete` eintragen. Trifft ein Punkt für `quick` (`_agent-process/skills/ap-requirement-refine/klaeren.md`, „Was der Agent macht", Schritt 6) nicht mehr zu: Track `complete`, dem Nutzer sagen.
     -   **Track `complete`:** weiter direkt zum Plan (Stufe 5a, `_agent-process/skills/ap-requirement-build/planen.md`). Der Nutzer bestätigt das Refinement zusammen mit der Freigabe des Plans — eine Antwort statt zwei. Will er am Refinement etwas ändern, geht es von dort zurück.
     -   **Track `quick`:** weiter mit `_agent-process/skills/ap-requirement-build/kurzer-weg.md`. Eine eigene Bestätigung des Refinements gibt es nicht; der Agent nennt die Akzeptanzkriterien beim Start.
 

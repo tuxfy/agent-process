@@ -1,6 +1,6 @@
 # Kurzer Weg (Track `quick`)
 
-Plan und Umsetzung in einem, für Anforderungen mit Track `quick` (Kriterien: `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Was der Agent macht", Schritt 5). Voraussetzung: Status `refined` bzw. `in progress`, Track `quick`, auf dem Feature-Branch. Eine Freigabe des Plans gibt es nicht — die nächste Freigabe des Nutzers ist die Abnahme.
+Plan und Umsetzung in einem, für Anforderungen mit Track `quick` (Kriterien: `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Was der Agent macht", Schritt 6). Voraussetzung: Status `refined` bzw. `in progress`, Track `quick`, auf dem Feature-Branch. Eine Freigabe des Plans gibt es nicht — die nächste Freigabe des Nutzers ist die Abnahme.
 
 ## Start
 
