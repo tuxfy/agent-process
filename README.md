@@ -7,7 +7,7 @@ Prozess für die Arbeit mit KI-Agenten von der Idee bis zum Release. Wird in jed
 | Eintrag | Wozu |
 |---|---|
 | `AGENTS.md` | Regeln, die immer gelten: welcher Skill wann, Halten, Ordner und Branches, Git, Grundsätze |
-| `skills/` | je Stufe ein Skill (`ap-project-setup`, `ap-requirement-capture`, `ap-requirement-refine`, `ap-requirement-build`, `ap-requirement-accept`, `ap-release`), dazu `ap-guideline-ui` für jede UI-Arbeit und `ap-planning` für den Überblick über die offenen Issues — `SKILL.md` als Einstieg, Schritt-Dateien daneben |
+| `skills/` | je Stufe ein Skill (`ap-project-setup`, `ap-requirement-capture`, `ap-requirement-refine`, `ap-requirement-build`, `ap-requirement-accept`, `ap-release`), dazu `ap-guideline-ui` für jede UI-Arbeit, `ap-guideline-docs` für jeden Text, den ein Mensch liest, und `ap-planning` für den Überblick über die offenen Issues — `SKILL.md` als Einstieg, Schritt-Dateien daneben |
 | `anweisungen/` | `rollen/` (Prüfer), `vorlagen/` (Idee, Bug, Anforderung, Release, Architektur) |
 | `.claude/agents/` | Prüfer-Rollen und die Rolle Planung als Unteragenten für Claude Code; verweisen auf `anweisungen/rollen/` |
 | `init/` | Vorlagen, die Init ins Projekt schreibt |

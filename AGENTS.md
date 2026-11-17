@@ -16,6 +16,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 | `ap-release` | der Nutzer sagt „release“, oder ein Release ist offen |
 | `ap-planning` | der Nutzer sagt „Planung“ — Überblick über die offenen Issues, nur auf seinen Anstoß; sonst liest der Agent die Seite „Planung“ nicht |
 | `ap-guideline-ui` | jede Änderung an Dateien unter den UI-Pfaden aus `_context/projekt.md`, ohne UI-Pfade jede Änderung an der Oberfläche |
+| `ap-guideline-docs` | jeder Text, den ein Mensch liest, außer Code, Code-Kommentaren und Commit-Nachrichten; auch beim Schreiben von Skills und Rollen-Dateien |
 
 ## Halten
 
