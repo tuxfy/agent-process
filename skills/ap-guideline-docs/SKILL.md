@@ -27,7 +27,18 @@ Gilt für jeden Text, den ein Mensch liest, und mit dem Vorrang im Abschnitt „
 | Werte, Zustände oder Optionen mit mehreren gleichen Angaben | Tabelle |
 | gleichrangige Punkte ohne Reihenfolge | Aufzählung |
 | Begründung, Zusammenhang, Abwägung | kurzer Fließtext — keine Liste, wenn ein Punkt aus dem vorigen folgt |
-| Befehle zum Kopieren | Codeblock ohne Kommentare; Erklärung und erwartete Ausgabe außerhalb |
+| Befehle, die jemand ausführt | eigener Codeblock (außer in Tabellen), nie im Fließtext — Einzelheiten unter „Befehle“ |
+| Fehlerbehebung mit mehreren Symptomen | Tabelle mit Symptom, Ursache, Lösung; als Symptom die genaue Fehlermeldung, wenn es eine gibt |
+
+## Befehle
+
+-   **Jeder auszuführende Befehl in einem eigenen Codeblock.** Gehört er zu einem nummerierten Schritt, steht der Block in diesem Schritt.
+-   **Davor ein Satz, was der Befehl tut.** Ist aus dem Zusammenhang nicht klar, auf welchem Rechner und in welchem Verzeichnis er läuft, steht das ebenfalls davor.
+-   **Im Block nur, was kopiert wird:** keine Kommentare, keine Prompt-Zeichen (Zeichen wie `$` oder `#` vor dem Befehl).
+-   **Zeigt der Text eine Ausgabe,** steht sie in einem eigenen Block nach dem Befehl.
+-   **Platzhalter in spitzen Klammern,** auch im Block; was einzusetzen ist, steht beim ersten Vorkommen dabei.
+-   **In Tabellenzellen** stehen Befehle als Inline-Code, weil dort kein Block möglich ist.
+-   **Inline-Code sonst nur für Namen, die der Text nur nennt:** Dateien, Pfade, Befehle und Optionen, Variablen, Werte.
 
 ## Sprache
 
@@ -50,6 +61,6 @@ Den Text einmal als Leser ohne Vorwissen durchgehen:
 1.  Bei Skills und Rollen-Dateien: Versteht ein Agent jede Bedingung eindeutig?
 2.  Steht das Ergebnis im ersten Satz?
 3.  Ist jede Frage und jede Aufgabe für den Leser einzeln sichtbar?
-4.  Passt jedes Format zur Art des Inhalts?
+4.  Passt jedes Format zur Art des Inhalts? Steht ein auszuführender Befehl außerhalb von Codeblock und Tabelle?
 5.  Sind die Sätze kurz, die Begriffe einheitlich, Fachbegriffe erklärt, Kennungen mit Inhalt?
 6.  Steht etwas da, das der Leser für seine Aufgabe nicht braucht?
