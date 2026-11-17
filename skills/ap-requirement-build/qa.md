@@ -37,7 +37,7 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 ## 6c: Befunde bearbeiten
 
 -   **Reihenfolge:** zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht; nach seiner Antwort alles Umzusetzende zusammen, dann einmal QA erneut. Bis zur Antwort nicht weiter.
--   **Entscheiden:** Was er umgesetzt haben will, wie „umsetzen"; weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. Sonst zurückstellen oder verwerfen, wie er sagt — bei Blockierendem nur umsetzen oder die Entscheidung im Refinement ändern.
+-   **Entscheiden:** Was er umgesetzt haben will, wie „umsetzen"; weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. Blockierendes wird nicht zurückgestellt, nur umgesetzt oder die Entscheidung im Refinement geändert.
 -   **Umsetzen:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
 -   **Zurückstellen:** Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d), bzw. Issue (Stufe 1).
 -   **Verwerfen, vermerken, Behelf:** unter `# QA → Befunde`, mit Grund bzw. „bleibt bis #<Nummer>".

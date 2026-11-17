@@ -25,37 +25,29 @@ Eine Liste von Befunden, **ohne Schweregrad** — die Einstufung macht der Agent
 
 ## Einstufung durch den Agenten
 
-Der Agent, der die Prüfer startet, ordnet jeden Befund ein — Befunde mehrerer Rollen zur selben Sache als einen, mit Nennung aller Rollen.
-
-**Schwere** aus der Folge (dieselbe Skala gilt für Bugs, `_agent-process/anweisungen/vorlagen/bug.md`):
-
--   **hoch** — ein Akzeptanzkriterium oder eine Entscheidung wird verfehlt, Daten gehen verloren, die App lässt sich nicht starten oder bedienen, oder eine Lücke ist tatsächlich ausnutzbar — unabhängig vom Anspruch;
--   **mittel** oder **niedrig** — gemessen am Anspruch (Zeile `Anspruch` der Anforderung, sonst `_context/projekt.md`, fehlt beides: `normal`): mittel ist ein spürbarer Fehler oder Mehraufwand im Betrieb, niedrig eine Kleinigkeit oder ein Fall, der bei diesem Anspruch kaum eintritt.
-
-**Durch die Änderung verursacht** ist, was sie neu einführt — auch ein bestehender Fehler, den sie neu erreichbar oder schlimmer macht.
-
-**Maßstab** (nach Googles Standard für Code-Reviews): Ein Schritt ist fertig, wenn er das Ziel erreicht und den Stand eindeutig verbessert — nicht, wenn er perfekt ist. Deshalb wird nur Blockierendes umgesetzt; alles andere wird festgehalten, nicht gebaut. Grund: Sonst wird fast jeder Befund umgesetzt, und jede Umsetzung erzeugt neue Befunde.
+Der Agent, der die Prüfer startet, ordnet jeden Befund ein; Befunde mehrerer Rollen zur selben Sache als einen. Maßstab: Ein Schritt ist fertig, wenn er das Ziel erreicht und den Stand eindeutig verbessert, nicht wenn er perfekt ist. Deshalb wird nur Blockierendes umgesetzt.
 
 **Gruppe** — die erste passende:
 
-1.  **verwerfen** — der Befund hält am Entwurf, am Plan bzw. am Code nicht. Unbelegtes und offene Fragen der Rollen prüft der Agent selbst nach; bleibt es offen, geht es weiter mit Punkt 2, mit der Schwere, die es hätte, wenn es zutrifft, und als „keine klare Lösung".
-2.  **blockierend** (Liste unten) — dann eine von zwei Gruppen:
-    -   **entscheiden** — hält eine Entscheidung der Anforderung nicht: mit nur zwei Wegen (den Vorschlag der Rolle innerhalb der Entscheidung umsetzen oder die Entscheidung im Refinement ändern, beim Entwurf: in der Klärung). Ebenso bei mehreren sinnvollen Wegen, ohne klare Lösung, wenn die Lösung Anliegen, Abgrenzung oder eine Entscheidung ausweiten würde oder wenn Rollen sich widersprechen. Der Nutzer entscheidet, mit Empfehlung des Agenten.
-    -   **umsetzen** — sonst: eine klare Lösung innerhalb des Anliegens.
-3.  **zurückstellen** — nicht durch die Änderung verursacht: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort) oder, wenn jemand es angehen will, Issue (Stufe 1). Bei Schwere hoch fragt der Agent den Nutzer (siehe unten).
+1.  **verwerfen** — hält am Entwurf, Plan bzw. Code nicht. Unbelegtes prüft der Agent selbst nach; bleibt es offen, weiter mit Punkt 2, als träfe es zu und ohne klare Lösung.
+2.  **blockierend** (Liste unten): **entscheiden** (der Nutzer, mit Empfehlung des Agenten), wenn eine Entscheidung der Anforderung nicht hält — dann nur zwei Wege: innerhalb der Entscheidung beheben oder sie im Refinement (beim Entwurf: in der Klärung) ändern —, bei mehreren sinnvollen Wegen, ohne klare Lösung, wenn Rollen sich widersprechen oder die Lösung Anliegen, Abgrenzung oder eine Entscheidung ausweiten würde; sonst **umsetzen**.
+3.  **zurückstellen** — nicht durch die Änderung verursacht: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort) oder Issue (Stufe 1), wenn jemand es angehen will.
 4.  **vermerken** — alles Übrige: nicht umsetzen, nur festhalten (wo, sagt die jeweilige Stufe).
 
-**Blockierend** heißt: so darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request) — auch wenn es schon vorher so war. Immer blockierend:
+**Durch die Änderung verursacht** ist, was sie neu einführt — auch ein bestehender Fehler, den sie neu erreichbar oder schlimmer macht.
 
--   abgeschwächte Tests;
--   ein neuer oder geänderter Test, der nie scheitern kann (z. B. eine Prüfung auf Abwesenheit ohne Gegenprobe); bei alten Tests: zurückstellen als Bug-Issue (Stufe 1);
+**Blockierend** heißt: So darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request), auch wenn es schon vorher so war:
+
+-   abgeschwächte Tests oder ein neuer bzw. geänderter Test, der nie scheitern kann (z. B. Prüfung auf Abwesenheit ohne Gegenprobe); alte Tests dieser Art: zurückstellen als Bug-Issue;
 -   Tests, die der Plan erst nach ihrem Code vorsieht;
 -   eine Entscheidung der Anforderung, die nicht hält;
 -   eine App, die sich nicht starten oder bedienen lässt;
--   Schwere hoch und durch die Änderung verursacht (z. B. Datenverlust, ausnutzbare Lücke);
--   ein Fehler, den die Änderung verursacht: In einem Fall, der beim Anspruch eintreten kann, endet sie falsch (z. B. Absturz, falsches Ergebnis, verschluckter Fehler) oder verhält sich anders, als die Anforderung festlegt;
--   Overengineering: ein Teil, der über die gewählte Lösung der Anforderung hinausgeht, für den sie keinen Grund nennt und ohne den kein anderer Punkt dieser Liste einträte (Tests eigener Logik zählen nicht dazu) — die Lösung ist, ihn wegzulassen;
--   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht (sonst vermerken).
+-   Datenverlust oder eine ausnutzbare Lücke, durch die Änderung verursacht — unabhängig vom Anspruch;
+-   ein anderer Fehler, den die Änderung verursacht, in einem Fall, der beim Anspruch eintreten kann: Absturz, falsches Ergebnis, verschluckter Fehler, Abweichung von der Anforderung;
+-   Overengineering: ein Teil über die gewählte Lösung hinaus, für den die Anforderung keinen Grund nennt und ohne den kein anderer Punkt dieser Liste einträte (Tests eigener Logik ausgenommen) — Lösung: weglassen;
+-   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht.
+
+**Schwere** (für Zurückgestelltes und für Bugs, `_agent-process/anweisungen/vorlagen/bug.md`): **hoch**, wenn ein Akzeptanzkriterium oder eine Entscheidung verfehlt wird, Daten verloren gehen, die App nicht startet oder nicht bedienbar ist oder eine Lücke ausnutzbar ist; sonst gemessen am Anspruch (Zeile `Anspruch` der Anforderung, sonst `_context/projekt.md`, fehlt beides: `normal`) **mittel** (spürbarer Fehler oder Mehraufwand im Betrieb) oder **niedrig**.
 
 **Behelf:** Ist eine Änderung nur vorübergehend nötig (z. B. bis ein anderes Issue erledigt ist), steht an der Stelle selbst „bleibt bis #<Nummer>", und der Agent kommentiert im Issue #<Nummer>, welcher Behelf danach wegfällt.
 
