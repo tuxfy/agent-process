@@ -27,21 +27,23 @@ Eine Liste von Befunden, **ohne Schweregrad** — die Einstufung macht der Agent
 
 Der Agent, der die Prüfer startet, ordnet jeden Befund ein — Befunde mehrerer Rollen zur selben Sache als einen, mit Nennung aller Rollen.
 
-**Schwere** aus der Folge:
+**Schwere** aus der Folge (dieselbe Skala gilt für Bugs, `_agent-process/anweisungen/vorlagen/bug.md`):
 
 -   **hoch** — ein Akzeptanzkriterium oder eine Entscheidung wird verfehlt, Daten gehen verloren, die App lässt sich nicht starten oder bedienen, oder eine Lücke ist tatsächlich ausnutzbar — unabhängig vom Anspruch;
 -   **mittel** oder **niedrig** — gemessen am Anspruch (Zeile `Anspruch` der Anforderung, sonst `_context/projekt.md`, fehlt beides: `normal`): mittel ist ein spürbarer Fehler oder Mehraufwand im Betrieb, niedrig eine Kleinigkeit oder ein Fall, der bei diesem Anspruch kaum eintritt.
 
 **Durch die Änderung verursacht** ist, was sie neu einführt — auch ein bestehender Fehler, den sie neu erreichbar oder schlimmer macht.
 
+**Maßstab** (nach Googles Standard für Code-Reviews): Ein Schritt ist fertig, wenn er das Ziel erreicht und den Stand eindeutig verbessert — nicht, wenn er perfekt ist. Deshalb wird nur Blockierendes umgesetzt; alles andere wird festgehalten, nicht gebaut. Grund: Sonst wird fast jeder Befund umgesetzt, und jede Umsetzung erzeugt neue Befunde.
+
 **Gruppe** — die erste passende:
 
 1.  **verwerfen** — der Befund hält am Entwurf, am Plan bzw. am Code nicht. Unbelegtes und offene Fragen der Rollen prüft der Agent selbst nach; bleibt es offen, geht es weiter mit Punkt 2, mit der Schwere, die es hätte, wenn es zutrifft, und als „keine klare Lösung".
-2.  **Prüfung auf blockierend** (Liste unten): hält eine Entscheidung der Anforderung nicht → **entscheiden**, mit nur zwei Wegen (den Vorschlag der Rolle innerhalb der Entscheidung umsetzen oder die Entscheidung im Refinement ändern, beim Entwurf: in der Klärung); ohne klaren Weg → **entscheiden**; sonst → **umsetzen**.
+2.  **blockierend** (Liste unten) — dann eine von zwei Gruppen:
+    -   **entscheiden** — hält eine Entscheidung der Anforderung nicht: mit nur zwei Wegen (den Vorschlag der Rolle innerhalb der Entscheidung umsetzen oder die Entscheidung im Refinement ändern, beim Entwurf: in der Klärung). Ebenso bei mehreren sinnvollen Wegen, ohne klare Lösung, wenn die Lösung Anliegen, Abgrenzung oder eine Entscheidung ausweiten würde oder wenn Rollen sich widersprechen. Der Nutzer entscheidet, mit Empfehlung des Agenten.
+    -   **umsetzen** — sonst: eine klare Lösung innerhalb des Anliegens.
 3.  **zurückstellen** — nicht durch die Änderung verursacht: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort) oder, wenn jemand es angehen will, Issue (Stufe 1). Bei Schwere hoch fragt der Agent den Nutzer (siehe unten).
-4.  **vermerken** — Schwere niedrig: nicht umsetzen, nur festhalten.
-5.  **entscheiden** — mehrere sinnvolle Wege, keine klare Lösung, die Lösung würde Anliegen, Abgrenzung oder eine Entscheidung ausweiten, oder Rollen widersprechen sich. Der Nutzer entscheidet, mit Empfehlung des Agenten.
-6.  **umsetzen** — alles Übrige: durch die Änderung verursacht, Schwere mittel oder hoch, eine klare Lösung.
+4.  **vermerken** — alles Übrige: nicht umsetzen, nur festhalten (wo, sagt die jeweilige Stufe).
 
 **Blockierend** heißt: so darf der Schritt nicht abgeschlossen werden (Entwurf bzw. Plan nicht freigeben, nicht zur Abnahme, kein Release-Pull-Request) — auch wenn es schon vorher so war. Immer blockierend:
 
@@ -51,7 +53,9 @@ Der Agent, der die Prüfer startet, ordnet jeden Befund ein — Befunde mehrerer
 -   eine Entscheidung der Anforderung, die nicht hält;
 -   eine App, die sich nicht starten oder bedienen lässt;
 -   Schwere hoch und durch die Änderung verursacht (z. B. Datenverlust, ausnutzbare Lücke);
--   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht (sonst nach Schwere).
+-   ein Fehler, den die Änderung verursacht: In einem Fall, der beim Anspruch eintreten kann, endet sie falsch (z. B. Absturz, falsches Ergebnis, verschluckter Fehler) oder verhält sich anders, als die Anforderung festlegt;
+-   Overengineering: ein Teil, der über die gewählte Lösung der Anforderung hinausgeht, für den sie keinen Grund nennt und ohne den kein anderer Punkt dieser Liste einträte (Tests eigener Logik zählen nicht dazu) — die Lösung ist, ihn wegzulassen;
+-   ein wiederkehrender Handgriff von Hand, wenn jeder Stand automatisch live geht (sonst vermerken).
 
 **Behelf:** Ist eine Änderung nur vorübergehend nötig (z. B. bis ein anderes Issue erledigt ist), steht an der Stelle selbst „bleibt bis #<Nummer>", und der Agent kommentiert im Issue #<Nummer>, welcher Behelf danach wegfällt.
 
