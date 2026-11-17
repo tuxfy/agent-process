@@ -5,7 +5,7 @@ Plan und Umsetzung in einem, für Anforderungen mit Track `quick` (Kriterien: `_
 ## Start
 
 -   Status `in progress` (und ggf. Umbenennen) wie in `_agent-process/skills/ap-requirement-build/umsetzen.md`, 5b — nach „später" erst auf das Wort des Nutzers (`_agent-process/AGENTS.md`, Abschnitt „Halten"); Commit `chore(<kurzer-name>): Start`.
--   **Im Gespräch** in zwei, drei Sätzen, was umgesetzt wird, und die Akzeptanzkriterien — kein Halt, der Nutzer kann eingreifen.
+-   **Im Gespräch** in zwei, drei Sätzen, was umgesetzt wird, die in Stufe 4 gewählte Lösung (mit der verworfenen) und die Akzeptanzkriterien — kein Halt, der Nutzer kann eingreifen.
 
 ## Plan als Notiz
 
