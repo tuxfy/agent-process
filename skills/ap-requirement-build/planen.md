@@ -4,12 +4,20 @@ Voraussetzung: Status `refined` — bzw. `in progress` nach Abbruch des kurzen W
 
 Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments (Gliederung dort) — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht. Dabei: Schritte in Reihenfolge, jeder klein genug für einen Testlauf; betroffene Dateien, bestehende und neue; Testfälle je Akzeptanzkriterium mit Name und erwartetem Ergebnis; bei Design, welches Entwurfselement zu welcher Komponente bzw. Code-Stelle wird; je externer Abhängigkeit (Schnittstellen, Dienste, Bibliotheken, Hosting), wo das **How-to** steht (siehe unten); „Nicht angefasst" aus Spielraum und Abgrenzung.
 
-**Externe Abhängigkeiten — How-to vorher klären.** Bevor Code gegen eine externe Abhängigkeit geschrieben wird, ist geklärt und festgehalten (in `_context/` bzw. der Anforderung):
+**Oberste Prämissen:**
+- Best Practice prüfen und anwenden
+- Standards prüfen und anwenden
+- KISS
+- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+- wegräumen, was nicht meher gebraucht wird
 
--   wie sie funktioniert (Dokumentation, Formate, Beispiele),
--   wie der Zugang läuft (ohne Zugangsdaten im Dokument — nur, wo sie liegen bzw. wer sie bereitstellt),
--   wie sie geprüft wird — mit dem echten Werkzeug bzw. Dienst, einer Testumgebung des Anbieters oder manuell (Teststrategie der Anforderung); keine nachgebaute Attrappe des Werkzeugs selbst. Eigene Logik wird vom Aufruf getrennt und für sich getestet; geht das nicht, Grund unter „Annahmen und Risiken",
--   Grenzen und Fehlerfälle (z. B. Limits, Ausfälle, offline).
+
+**Externe Abhängigkeiten — How-to vorher klären.** 
+- Bevor Code gegen eine externe Abhängigkeit geschrieben wird, ist geklärt und festgehalten (in `_context/` bzw. der Anforderung):
+    -   wie sie funktioniert (Dokumentation, Formate, Beispiele),
+    -   wie der Zugang läuft (ohne Zugangsdaten im Dokument — nur, wo sie liegen bzw. wer sie bereitstellt),
+    -   wie sie geprüft wird — mit dem echten Werkzeug bzw. Dienst, einer Testumgebung des Anbieters oder manuell (Teststrategie der Anforderung); keine nachgebaute Attrappe des Werkzeugs selbst. Eigene Logik wird vom Aufruf getrennt und für sich getestet; geht das nicht, Grund unter „Annahmen und Risiken",
+    -   Grenzen und Fehlerfälle (z. B. Limits, Ausfälle, offline).
 
 Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. zurück ins Refinement. Ein kurzer, wegwerfbarer Versuch zum Klären ist erlaubt, wenn der Nutzer zustimmt.
 
@@ -17,13 +25,27 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 
 **Plan prüfen**, bevor er dem Nutzer vorgelegt wird:
 
-1.  **Selbstprüfung — immer:** Der Agent prüft den Plan mit den Prüfpunkten der Rollen (`_agent-process/anweisungen/rollen/`), soweit sie den Plan betreffen, und bessert nach.
+1.  **Selbstprüfung — immer:** 
+    - der Agent prüft den Plan mit den Prüfpunkten der Rollen (`_agent-process/anweisungen/rollen/`), soweit sie den Plan betreffen, und bessert nach:
+        - Best Practice prüfen und anwenden
+        - Standards prüfen und anwenden
+        - KISS
 2.  **Prüfung durch Rollen** (Prüfer-Rollen, siehe `_agent-process/anweisungen/rollen/README.md`):
-    -   **Architekt** und **Senior Dev:** bei neuem Projekt oder Grundgerüst, neuen externen Abhängigkeiten oder einem Plan ab etwa fünf Schritten.
-    -   **DevOps** zusätzlich, wenn der Plan CI, Hosting, Auslieferung oder das Release-Modell berührt.
+    -   **Architekt** und **Senior Dev:** bei 
+        - neuem Projekt oder Grundgerüst
+        - neuen externen Abhängigkeiten oder einem Plan ab etwa fünf Schritten
+    -   **DevOps** zusätzlich, wenn 
+        - der Plan CI, Hosting, Auslieferung oder das Release-Modell berührt
     -   Sonst genügt die Selbstprüfung.
-3.  **Befunde einordnen** (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"): „umsetzen" in den Plan einarbeiten; „zurückstellen" als Eintrag bzw. Issue, mit Dateiname bzw. Nummer, und „verwerfen" und „vermerken" mit Grund — alle drei unter „Annahmen und Risiken".
-4.  **„Entscheiden"** legt der Agent dem Nutzer mit der Zusammenfassung vor (unten), in Alltagssprache, bei widersprechenden Rollen mit beiden Sichtweisen. Seine Antwort fließt vor der Freigabe in den Plan; weitet sie Anliegen oder eine Entscheidung aus oder schränkt sie ein, gilt `_agent-process/AGENTS.md`, Abschnitt „Halten" (Bestätigtes ändert nur der Nutzer).
+3.  **Befunde einordnen** (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"): 
+    - „umsetzen" in den Plan einarbeiten; 
+    - „zurückstellen" als Eintrag bzw. Issue, mit Dateiname bzw. Nummer, und 
+    - „verwerfen" und „vermerken" mit Grund — alle drei unter „Annahmen und Risiken"
+4.  **„Entscheiden"** 
+    - legt der Agent dem Nutzer mit der Zusammenfassung vor (unten) nach den Richtlinien `guideline-docs` 
+    - Nutzer Antwort fließt vor der Freigabe in den Plan; 
+    - weitet Nutzer Anliegen oder eine Entscheidung aus oder schränkt sie ein, gilt `_agent-process/AGENTS.md`, Abschnitt „Halten"
+    - Bestätigtes ändert nur der Nutzer
 
 **Zusammenfassung für den Nutzer** — kurz, in Alltagssprache, nicht im Dokument, sondern im Gespräch:
 

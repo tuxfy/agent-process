@@ -2,6 +2,13 @@
 
 Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem kurzen Weg (`kurzer-weg.md`), Status `refined` (vor 5b) bzw. `in progress` — beim Rücksprung aus QA oder Abnahme auch `qa` bzw. `review`, dann ab 5c; Befehle in `_context/projekt.md`.
 
+**Oberste Prämissen:**
+- Best Practice prüfen und anwenden
+- Standards prüfen und anwenden
+- KISS
+- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+- wegräumen, was nicht meher gebraucht wird
+
 ## 5b: Start
 
 -   Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „später" (`_agent-process/AGENTS.md`, Abschnitt „Halten"). Vorher kein Code.

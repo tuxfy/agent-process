@@ -12,13 +12,30 @@ Bevor über Lösungen nachgedacht wird, klärt der Agent den **Rahmen**.
 
 ## Start
 
--   **Zurückgestelltes durchsehen** — nur lesen, wie in `_requirements/deferred/README.md` beschrieben: passende Einträge dem Nutzer nennen; er entscheidet, ob die Anforderung einen übernimmt (dann mit Dateinamen im Dokument).
+-   **Zurückgestelltes durchsehen**
+    - nur lesen, wie in `_requirements/deferred/README.md` beschrieben
+    - passende Einträge dem Nutzer nennen
+    - Nutzer entscheidet, ob die Anforderung mit übernommen wird
 
 ## Was der Agent macht
 
-1.  **Ist-Stand beschreiben** → Abschnitt „Hintergrund": Wie funktioniert der betroffene Teil heute? Bei Bugs: beobachtetes Fehlverhalten.
-2.  **Ziel festhalten** → Zeile „Ziel" unter „Einordnung": ein Satz, was danach anders ist, prüfbar und ohne festgelegte Lösung — aus dem Issue (ältere Issues: „Was danach anders sein soll"). Fehlt es, steht dort `offen`, ist es nicht prüfbar oder beschreibt es eine Lösung (eine Technik, ein Werkzeug, ein Format): ein Ziel vorschlagen — aus „Was stört oder fehlt" und dem Zweck einer genannten Lösung — und den Nutzer fragen. Die Wahl der Lösung ist keine offene Frage der Klärung; sie fällt in Stufe 4. Bei Label `bug` ist das Ziel „Was erwartet war" — übernehmen, nicht fragen.
-3.  **Art bestimmen**: Feature, Bug, Design oder technisch. Dazu den **Anspruch** aus `_context/projekt.md` übernehmen; nur wenn diese Anforderung mehr verlangt (z. B. berührt sie persönliche Daten oder die Auslieferung), einen höheren vorschlagen, mit Grund — nie einen niedrigeren. Fehlt der Abschnitt in `_context/projekt.md`: einmal vorschlagen (Bedeutung: `_agent-process/skills/ap-project-setup/SKILL.md`, „Was festgelegt wird", Punkt 1); nach der Bestätigung trägt der Agent ihn dort ein, committet mit der Klärung.
+1.  **Ist-Stand beschreiben**  
+    - Abschnitt „Hintergrund": 
+    - Wie funktioniert der betroffene Teil heute? 
+    - Was wären Best Practices und Standards? -> dabei KISS berücksichtigen
+    - Bei Bugs: beobachtetes Fehlverhalten
+2.  **Ziel festhalten** 
+    - Zeile „Ziel" unter „Einordnung": ein Satz, was danach anders ist, prüfbar und ohne festgelegte Lösung 
+    - aus dem Issue (ältere Issues: „Was danach anders sein soll")
+    - Fehlt es, steht dort `offen`, ist es nicht prüfbar oder beschreibt es eine Lösung (eine Technik, ein Werkzeug, ein Format): ein Ziel vorschlagen aus „Was stört oder fehlt" und dem Zweck einer genannten Lösung -> und den Nutzer fragen. 
+    - Wahl der Lösung ist keine Aufgabe der Klärung sondern Refinement (Stufe 4)
+    - Bei Label `bug` ist das Ziel „Was erwartet war" -> übernehmen, nicht fragen
+3.  **Art bestimmen**: 
+    - Feature, Bug, Design oder technisch. 
+    - **Anspruch:** 
+        - aus `_context/projekt.md` übernehmen; nur wenn diese Anforderung mehr verlangt (z. B. berührt sie persönliche Daten oder die Auslieferung), einen höheren vorschlagen, mit Grund — nie einen niedrigeren. 
+        - fehl Anspruch in `_context/projekt.md`: einmal vorschlagen (Bedeutung: `_agent-process/skills/ap-project-setup/SKILL.md`, „Was festgelegt wird", Punkt 1); 
+        - nach der Bestätigung eintragen
 4.  **Spielraum vorschlagen** — welche Bereiche dürfen sich ändern:
     -   **Darstellung** — wie es aussieht oder formuliert ist
     -   **Verhalten** — was es aus Nutzersicht tut
@@ -59,8 +76,17 @@ Vorher fasst der Agent im Gespräch zusammen: Ziel, Art, Anspruch (nur wenn abwe
 
 Derselbe Prozess, nur kürzer — Track nach den vier Punkten in Schritt 6, bei Bugs oft `quick`:
 
-1.  **Klärung (Stufe 2):** Ursache bestätigen ist Pflicht; Spielraum in der Regel nur „Verhalten" der betroffenen Stelle. Pflichtfrage: **Welche Prüfung hätte diesen Fehler finden müssen?** Diese Prüfung wird mit der Korrektur ergänzt (Test, sauberer Lauf, Prüfpunkt einer Rolle) — sonst kommt derselbe Fehler wieder. **Schwere** aus dem Issue bestätigen lassen bzw., wenn sie fehlt, vorschlagen (Skala wie in `_agent-process/anweisungen/rollen/README.md`, „Einstufung"); sie steht im Abschnitt „Hintergrund" und zeigt dem Nutzer, wie dringend der Bug ist; was zuerst behoben wird, entscheidet er.
-2.  **Design (Stufe 3):** meist nicht nötig — bei einem UI-Bug steht das erwartete Aussehen schon fest (freigegebener Entwurf, Design-System); korrigiert wird dorthin. **Nötig,** wenn die Korrektur eine neue Gestaltungsentscheidung braucht (z. B. ein Fall, den weder Entwurf noch Design-System abdecken) — dann wie in Stufe 3, Entscheidung in der Klärung.
+1.  **Klärung (Stufe 2):** 
+    - Ursache bestätigen ist Pflicht; Spielraum in der Regel nur „Verhalten" der betroffenen Stelle. Pflichtfrage: 
+    - **Welche Prüfung hätte diesen Fehler finden müssen?:** 
+        - nach Best Practice, Standards und KISS prüfen ob ein neuer Test notwendig ist und dem Nutzer vorlegen
+    - **Schwere:** 
+        - aus dem Issue bestätigen lassen bzw., wenn sie fehlt, vorschlagen (Skala wie in `_agent-process/anweisungen/rollen/README.md`, „Einstufung"); sie steht im Abschnitt „Hintergrund" und zeigt dem Nutzer, wie dringend der Bug ist; was zuerst behoben wird, entscheidet er.
+2.  **Design (Stufe 3):** 
+    - meist nicht nötig — bei einem UI-Bug steht das erwartete Aussehen schon fest (freigegebener Entwurf, Design-System); korrigiert wird dorthin. 
+    - **Nötig:** 
+        - wenn die Korrektur eine neue Gestaltungsentscheidung braucht (z. B. ein Fall, den weder Entwurf noch Design-System abdecken) 
+        - dann wie in Stufe 3, Entscheidung in der Klärung.
 3.  **Refinement (Stufe 4):** kurz — Ursache, erwartetes Verhalten, Kriterium „Test zeigt den Fehler (rot), nach der Korrektur grün".
 4.  **Umsetzung (Stufe 5):** auf dem Branch `fix/<kurzer-name>` (ab Stufe 2); zuerst der Test, der den Fehler zeigt.
 5.  **QA (Stufe 6):** Umfang laut Tabelle in `_agent-process/skills/ap-requirement-build/qa.md`.

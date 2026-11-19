@@ -2,6 +2,14 @@
 
 Prüft den Umsetzungsplan auf **Code, Tests und Reihenfolge**. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
+**Oberste Prämissen:**
+- Best Practice prüfen und anwenden
+- Standards prüfen und anwenden
+- KISS
+- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+- wegräumen, was nicht meher gebraucht wird
+
+
 ## Prüfpunkte
 
 -   **Prüfungen zuerst:** Werden Tests und Prüflauf der UI-Richtlinie eingerichtet, bevor der erste Code entsteht, den sie prüfen sollen?

@@ -2,9 +2,18 @@
 
 Prüft den Umsetzungsplan auf **alles ab dem Commit**: CI, Hosting, Release und Betrieb. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
+**Oberste Prämissen:**
+- Best Practice prüfen und anwenden
+- Standards prüfen und anwenden
+- KISS
+- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+- wegräumen, was nicht meher gebraucht wird
+
 ## Prüfpunkte
 
--   **How-to beim Hoster:** Ist es in `_context/` vollständig festgehalten und vom Nutzer bestätigt? Wenn nicht: Sind die betroffenen Schritte als „wartet auf …" markiert?
+-   **How-to beim Hoster:** 
+    - Ist es in `_context/` vollständig festgehalten und vom Nutzer bestätigt? 
+    - Wenn nicht: Sind die betroffenen Schritte als „wartet auf …" markiert?
 -   **CI-Umgebung:** Hat die CI alles, was Tests und Prüflauf brauchen (Laufzeit, Pakete, Browser für E2E)?
 -   **Gate:** Laufen Tests und Prüflauf vor dem Ausliefern, und stoppt ein Fehler die Auslieferung?
 -   **Getrennte Berechtigungen:** Laufen Tests und Prüfungen in der CI ohne Berechtigung zum Ausliefern, und liefert erst ein getrennter Schritt nach grünem Ergebnis aus?
