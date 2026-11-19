@@ -6,33 +6,61 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 
 ## Was der Agent macht
 
-1.  **Entscheidungen bündeln** — alles, was in Klärung, Entwurf und hier festgelegt wird, in den Abschnitt „Entscheidungen" (je Punkt kurz: was, ggf. warum). Beantwortete Fragen wandern aus „Offene Fragen" dorthin. Dabei prüfen, ob Hintergrund und Design-Brief noch zum aktuellen Stand passen — besonders nach einer Auffrischung des Design-Systems (z. B. Verweise auf Teile, die es nicht mehr gibt).
-2.  **Technik klären** — vor `refined`, damit in der Umsetzung keine Architekturentscheidung ohne den Nutzer fällt. Grundlage sind die Festlegungen aus Stufe 0 in `_context/projekt.md` und, wenn es sie gibt, `_context/architektur.md`; hier nur, was **diese Anforderung** zusätzlich braucht oder wo sie abweicht, soweit relevant:
-    -   Welche Lösung erreicht das Ziel (Zeile „Ziel" unter „Einordnung")? Sie zu finden ist Sache des Agenten. Führt eine Lösung neue Bausteine ein (z. B. Skript, Dienst, Paket) oder speichert sie zur Laufzeit Daten (z. B. Dateien, Zustand, Datenbank), geht der Agent in dieser Reihenfolge vor:
-        1.  **Vorhandenes nachlesen:** Was haben Code, Konfiguration und Daten des Projekts schon, das zum Ziel beiträgt? Im Repo nachsehen, nicht annehmen.
-        2.  **Übliche Praxis bzw. Standard nachschlagen,** nicht aus dem Gedächtnis: Doku des Werkzeugs oder des Standards, lokal (z. B. `man`, `--help`) oder im Web. Im Vorschlag die Quelle nennen; ohne Quelle „nicht nachgeschlagen (Annahme)".
-        3.  **Vergleich vorlegen**, je Lösung in einem Satz, was sie neu baut und speichert:
-            -   **nichts tun** — was fehlt dann am Ziel? Ist es schon erreicht oder fehlt nur eine Einstellung: dem Nutzer sagen, bevor weitergeplant wird;
-            -   **Minimum** — der kleinste Eingriff, der das Ziel beim Anspruch erreicht, möglichst mit dem Vorhandenen;
-            -   weitere Lösungen nur mit Mehrnutzen gegenüber dem Minimum, in einem Satz.
-
-            Dazu die Empfehlung; ist es nicht das Minimum, nennt der Grund den Mehrnutzen. In „Entscheidungen" stehen danach die gewählte Lösung, das Minimum, wenn es nicht gewählt ist, und die übrigen mit dem Grund, warum nicht, dazu die Quelle bzw. „nicht nachgeschlagen (Annahme)". Bei Track `quick` nimmt der Agent das Minimum ohne Rückfrage, sofern die Punkte für `quick` weiter zutreffen (`_agent-process/skills/ap-requirement-refine/klaeren.md`, „Was der Agent macht", Schritt 6), und nennt es beim Start; empfiehlt er mehr oder trifft ein Punkt nicht mehr zu, wird der Track `complete` (dem Nutzer sagen).
-
-        Eine Lösung aus dem Issue oder seinen Kommentaren wird am Minimum gemessen. Für alle übrigen Fragen gilt: das Minimum nach üblicher Praxis, Größeres oder Eigenes nur mit Grund.
+1.  **Entscheidungen bündeln** 
+    - alles, was in Klärung, Entwurf und hier festgelegt wird, in den Abschnitt „Entscheidungen" (je Punkt kurz: was, ggf. warum)
+    - Beantwortete Fragen wandern aus „Offene Fragen" dorthin
+    - wenn Design, immer prüfen, ob Hintergrund und Design-Brief noch zum aktuellen Stand passen 
+2.  **Technik klären** 
+    - vor `refined`
+    - Grundlage: `_context/projekt.md` und, wenn es sie gibt, `_context/architektur.md`
+    - Best Practices und vorhandene Standards betrachten. KISS anwenden.
+    - Best Practices und vorhandene Standards gegen den IST Zustand abwägen -> Best Practices und Standards haben Vorrang ggf. ist der Aufwand jedoch mit dem Nutzer abzustimmen, wenn der Scope des Tasks dadurch wächst
+    - hier nur, was **diese Anforderung** zusätzlich braucht oder wo sie abweicht
+    - Welche Lösung erreicht das Ziel (Zeile „Ziel" unter „Einordnung")? -> Ist Aufgabe des Agenten
+        1.  **Vorhandenes nachlesen:**  
+            - Code, 
+            - Konfiguration und 
+            - Daten des Projekts
+        2.  **Übliche Praxis bzw. Standard nachschlagen:** 
+            - Best Practices und vorhandene Standards betrachten. KISS anwenden.
+            - Nachschlagen. Nicht aus dem Gedächtnis
+            - Nichts tun abwägen. Minimaler Aufwand bei höchsten Nutzen.
+        3.  **Vergleich vorlegen:**, 
+            - je Lösung in einem Satz, was sie neu baut und speichert
+    - **Minimum nicht möglich:**
+        - Agent nennt der Grund des Mehrnutzen. 
+    - In „Entscheidungen" stehen danach 
+        - die gewählte Lösung, 
+        - das Minimum, wenn es nicht gewählt ist, und 
+        - die übrigen mit dem Grund, warum nicht, 
+        - dazu die Quellen von Best Practice und Standards bzw. „nicht nachgeschlagen (Annahme)". 
+    - Bei Track `quick` nimmt Agent immer Minimum, sofern die Punkte für `quick` weiter zutreffen (`_agent-process/skills/ap-requirement-refine/klaeren.md` -> empfiehlt Agent er mehr oder trifft ein Punkt nicht mehr zu, wird der Track `complete` und für Nutzer sichtbar.
+    - Lösungen immer messen an Best Pratices, Standards, KISS, Minimum -> Größeres oder Eigenbau immer mit Bergründung
     -   Neue Bausteine, Bibliotheken oder Werkzeuge?
     -   Wie werden Daten gespeichert?
     -   Welche externen Abhängigkeiten gibt es (Schnittstellen, Dienste, Bibliotheken, auch Hosting und Auslieferung)? Für jede: ist das How-to bekannt oder muss es vor der Umsetzung geklärt werden?
     -   Was lässt sich nur am echten Gerät prüfen?
-
-    Fehlt in `_context/projekt.md` etwas Grundlegendes (Stack, Prüfungen, Auslieferung, Abnahme): nicht in der Anforderung entscheiden, sondern Stufe 0 für diesen Teil nachholen. Ändert die Anforderung Bausteine, Erreichbarkeit, Vertrauensgrenzen oder Daten: als Entscheidung festhalten, dass die Umsetzung `_context/architektur.md` nachzieht; gibt es die Datei noch nicht und trifft dadurch erstmals ein Grund aus Stufe 0, Punkt 10, zu: sie dem Nutzer vorschlagen; bestätigt er, entsteht sie in der Umsetzung dieser Anforderung.
-
-    Der Agent schlägt vor, **der Nutzer entscheidet** (Ausnahme bei Track `quick`: das Minimum, siehe oben). Ergebnis in „Entscheidungen".
+    - Fehlt in `_context/projekt.md` etwas Grundlegendes (Stack, Prüfungen, Auslieferung, Abnahme): nicht in der Anforderung entscheiden, sondern Stufe 0 für diesen Teil nachholen. Ändert die Anforderung Bausteine, Erreichbarkeit, Vertrauensgrenzen oder Daten: als Entscheidung festhalten, dass die Umsetzung `_context/architektur.md` nachzieht; gibt es die Datei noch nicht und trifft dadurch erstmals ein Grund aus Stufe 0, Punkt 10, zu: sie dem Nutzer vorschlagen; bestätigt er, entsteht sie in der Umsetzung dieser Anforderung.
+    - Der Agent schlägt vor, **der Nutzer entscheidet** (Ausnahme bei Track `quick`: das Minimum, siehe oben). Ergebnis in „Entscheidungen".
 3.  **Verhalten beschreiben** — was der Nutzer sieht und tut, aus seiner Sicht. Bei Design aus dem Entwurf.
-4.  **Akzeptanzkriterien** — jedes prüfbar und abgrenzbar; mindestens eines zeigt, dass das Ziel (Zeile „Ziel" unter „Einordnung") erreicht ist. Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen; fehlt eine, aus der Vorlage ergänzen; trifft eine nicht zu, mit „entfällt" und Grund markieren.
-5.  **Teststrategie** — je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät). Was nur mit dem echten Werkzeug, Dienst oder Gerät sinnvoll prüfbar ist (z. B. ein Skript, das vor allem ein externes Werkzeug aufruft): manuell — durch den Nutzer in der Abnahme bzw. beim Nachprüfen, nicht über eine nachgebaute Attrappe. Ist kein Kriterium automatisch testbar: Standardzeile „Test … ohne die Änderung rot" mit „entfällt" und Grund.
-6.  **Abgrenzung** — was ausdrücklich **nicht** dazugehört (ggf. mit Verweis auf eigene Issues; ein bewusst abgetrenntes Ziel, das niemand gerade will, als Eintrag in `_requirements/deferred/` — Regeln in der `README.md` dort, committet mit dem Refinement).
-7.  **Technische Notizen** — erlaubt, aber nicht bindend (z. B. betroffene Dateien, Hinweise für die Umsetzung).
-8.  **Größe prüfen** — passt die Anforderung in einen Umsetzungsdurchgang? Wenn nicht: aufteilen, Teile als eigene Issues festhalten (Stufe 1).
+4.  **Akzeptanzkriterien** 
+    - jedes prüfbar und abgrenzbar
+    - mindestens eines zeigt, dass das Ziel (Zeile „Ziel" unter „Einordnung") erreicht ist
+    - Die Standardzeilen der Tabelle (aus der Vorlage) bleiben stehen
+    - fehlt eine, aus der Vorlage ergänzen
+    - trifft eine nicht zu, mit „entfällt" und Grund markiere
+5.  **Teststrategie** 
+    - je Kriterium, wie es geprüft wird: Unit-Test, E2E-Test oder manuell (z. B. am Gerät). 
+    - Was nur mit dem echten Werkzeug, Dienst oder Gerät sinnvoll prüfbar ist (z. B. ein Skript, das vor allem ein externes Werkzeug aufruft): manuell — durch den Nutzer in der Abnahme bzw. beim Nachprüfen, nicht über eine nachgebaute Attrappe. 
+    - Ist kein Kriterium automatisch testbar: Standardzeile „Test … ohne die Änderung rot" mit „entfällt" und Grund
+6.  **Abgrenzung**
+    - was ausdrücklich **nicht** dazugehört (ggf. mit Verweis auf eigene Issues; 
+    - ein bewusst abgetrenntes Ziel, das niemand gerade will, als Eintrag in `_requirements/deferred/` 
+    - Regeln in der `README.md` dort, committet mit dem Refinement)
+7.  **Technische Notizen** 
+    - erlaubt, aber nicht bindend (z. B. betroffene Dateien, Hinweise für die Umsetzung)
+8.  **Größe prüfen** 
+    - passt die Anforderung in einen Umsetzungsdurchgang? Wenn nicht: aufteilen, Teile als eigene Issues festhalten (Stufe 1).
 
 ## Definition of Ready
 
