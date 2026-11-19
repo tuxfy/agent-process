@@ -2,6 +2,14 @@
 
 Prüft eine umgesetzte Anforderung über die Tests hinaus, bevor der Nutzer sie abnimmt. Voraussetzung: Stufe 5 abgeschlossen, alle Tests und Prüflauf grün, Status `qa`, Arbeit auf dem Feature-Branch.
 
+**Oberste Prämissen:**
+- Best Practice wurden eingehalten
+- Standards wurden eingehalten
+- KISS wurde eingehalten
+- nichts unnötiges wurde gebaut
+- es wurden keine fertigen Tools und Lösungen nachgebaut
+- es wurden keine Tests geschrieben für Nicht-Logik
+
 | Schritt | Wer | Ergebnis |
 |---|---|---|
 | 6a Automatische Prüfungen | Agent | Ergebnis unter `# QA → Automatisch` |
@@ -19,10 +27,6 @@ Es gilt die erste passende Zeile.
 | Spielraum „Schnittstellen/Daten" angekreuzt, neue Abhängigkeiten oder externe Dienste (Umsetzungsplan → Externe Abhängigkeiten) oder Auslieferung (Plan berührt CI, Hosting oder Release) | ✓ | ✓ | ✓ wenn der Diff Code ändert | ✓ bei UI | ✓ |
 | Alles andere — Feature oder Bug, Track `quick` oder `complete` | ✓ | ✓ | ✓ wenn der Diff Code ändert | ✓ bei UI | bei Bedarf |
 
-Der Reviewer prüft immer, auch ob jede Änderung einen Test oder eine Begründung hat (etwa bei einem Bug-Fix ohne Test). Bei Track `quick` gibt es keine Prüfung des Plans; unabhängig auf den Code schauen der Reviewer und, wenn sie laufen, Testwirkung und Security. Testwirkung läuft, wenn `.qa/diff.txt` Code ändert — Programmcode, Tests oder Testdaten, auch gelöscht; nicht bei reinen Änderungen an Doku, Texten, Stil oder Konfiguration ohne Logik. Im Zweifel läuft sie — Zeilen ohne Logik lässt sie selbst aus.
-
-Die Rollen laufen als Prüfer-Rollen (siehe `_agent-process/anweisungen/rollen/README.md`); was sie prüfen, steht in ihren Dateien.
-
 ## 6a: Automatische Prüfungen
 
 -   Alle Prüfungen aus `_context/projekt.md` → „Prüfungen" (in Stufe 0 festgelegt).
@@ -36,35 +40,64 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 
 ## 6c: Befunde bearbeiten
 
--   **Reihenfolge:** zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht; nach seiner Antwort alles Umzusetzende zusammen, dann einmal QA erneut. Bis zur Antwort nicht weiter.
--   **Entscheiden:** Was er umgesetzt haben will, wie „umsetzen"; weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. Blockierendes wird nicht zurückgestellt, nur umgesetzt oder die Entscheidung im Refinement geändert.
--   **Umsetzen:** zurück zu Stufe 5 (5c/5d) — mit Test, wo möglich; danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
--   **Zurückstellen:** Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d), bzw. Issue (Stufe 1).
--   **Verwerfen, vermerken, Behelf:** unter `# QA → Befunde`, mit Grund bzw. „bleibt bis #<Nummer>".
--   **Ändert der Agent in der QA etwas:** wie in Stufe 5 — Test, wo möglich (erst rot, dann grün), danach alle Prüfungen erneut; Eintrag im Testnachweis. Unter `# QA → Befunde` steht **je Änderung** der Test (Name) oder, warum es keinen gibt — ohne eins von beiden gilt die Änderung als nicht abgeschlossen. Je umgesetztem Befund ein eigener Commit (`umsetzen.md`, Abschnitt „Commits"). **Danach läuft der Reviewer immer erneut** — auch wenn er den Befund nicht gemeldet hat —, die übrigen Rollen für die betroffenen Teile.
--   **Prüft der Agent nur, ob ein Befund zutrifft** (ohne Code-Änderung, z. B. ob gemeldete Schwachstellen hier wirken): Ergebnis unter `# QA → Befunde` — kein dauerhafter Test, kein Eintrag in der README.
--   Ergebnis unter `# QA → Befunde`: je Befund kurz, was damit passiert ist.
+- **Reihenfolge:** 
+	- zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht;
+	- nach seiner Antwort die Schweregrade blockierend und mittel zusammen mit Entscheidungen des Nutzers zur Korrektur geben
+	- Niedrige Befunde nicht automatisch korrigieren lassen
+	- Maximal 3 Durchläufe, spätestens danach Meldung an Nutzer
+- **Entscheiden:** 
+	- Was er umgesetzt haben will, wie „umsetzen"; 
+		-weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. 
+	- Blockierendes 
+		- wird nicht zurückgestellt, 
+		- nur umgesetzt oder 
+		- die Entscheidung im Refinement geändert
+- **Umsetzen:** 
+	- zurück zu Stufe 5 (5c/5d)  
+	- danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). 
+	- Bei Track `quick` gelten Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`
+- **Zurückstellen:** 
+	- Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d), bzw. Issue (Stufe 1)
+- **Verwerfen, vermerken, Behelf:** 
+	- unter `# QA → Befunde`, mit Grund bzw. bleibt bis Issue Nr
+- **Keine Änderungen in der QA:** während der QA keine Änderungen
+- **Ergebnis** unter `# QA → Befunde`: je Befund kurz, was damit passiert ist.
 
 ## 6d: CI
 
--   Nach den Befunden: sauberer Lauf grün; **QA-Abschnitt fertig schreiben, Status `review` setzen, committen (samt Einträgen in `_requirements/deferred/`) und pushen** — danach ändert sich am Dokument in Stufe 6 nichts mehr.
--   Dann einen **Pull Request nach `release-candidate`** eröffnen, in der Beschreibung `Refs #<Nummer>` mit der Nummer aus der Zeile `Issue` im Kopf des Dokuments (fehlt sie: weglassen); der CI-Lauf läuft dort.
-    -   Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): Pull Request direkt nach `main`, mit `Closes #<Nummer>` statt `Refs #<Nummer>`.
-    -   Sonst vorher `release-candidate` auf aktuellen Stand bringen bzw. vom aktuellen `main` anlegen, wenn es ihn noch nicht gibt (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand").
--   **CI-Lauf abwarten** (im Pull Request).
--   **Rot in der CI:** zurück zu Stufe 5, die Korrektur als eigener Commit wie ein Befund (`umsetzen.md`, Abschnitt „Commits") — zuerst klären, warum lokal grün war (was hat lokal anders gelegen?), und das als Test bzw. im sauberen Lauf absichern.
--   **Das Ergebnis der CI steht im Pull Request,** nicht im Dokument. Bei Rot geht der Status zurück auf `qa`, bis wieder alles grün ist; der Befund kommt dann unter `# QA → Befunde`, und der Reviewer läuft erneut.
+- Nach den Befunden: sauberer Lauf grün; 
+	- QA-Abschnitt fertig schreiben
+	- Status `review` setzen
+	- committen (samt Einträgen in `_requirements/deferred/`) und pushen
+	- danach ändert sich am Dokument in Stufe 6 nichts mehr
+- Dann  **Pull Request nach `release-candidate`**  
+	- Beschreibung: `Refs #<Nummer>` mit der Nummer aus der Zeile `Issue` im Kopf des Dokuments (fehlt sie: weglassen); der CI-Lauf läuft dort
+    - Bei der Abkürzung (`_agent-process/skills/ap-release/SKILL.md`): 
+	    - Pull Request direkt nach `main`, mit `Closes #<Nummer>` statt `Refs #<Nummer>`.
+	- Sonst vorher `release-candidate` 
+		- auf aktuellen Stand bringen 
+		- bzw. vom aktuellen `main` anlegen, wenn es ihn noch nicht gibt (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand")
+-  **CI-Lauf abwarten** (im Pull Request).
+-  **Rot in der CI:** zurück zu Stufe 5, 
+	- zuerst klären, warum lokal grün war (was hat lokal anders gelegen?)
+	- die Korrektur als eigener Commit wie ein Befund (`umsetzen.md`, Abschnitt „Commits")
+- **Das Ergebnis der CI steht im Pull Request,** nicht im Dokument. Bei Rot geht der Status zurück auf `qa`, bis wieder alles grün ist; der Befund kommt dann unter `# QA → Befunde`, und der Reviewer läuft erneut.
 
 ## 6e: Abnahmepaket
 
 Für den Nutzer, kurz und in Alltagssprache, im Gespräch:
 
--   **Was umgesetzt ist** — drei bis fünf Sätze.
--   **Screenshots** der wichtigen Zustände aus `.qa/`, neben dem Entwurf (bei UI).
--   **Was die QA gefunden hat:** Entschiedenes mit Ergebnis, Zurückgestelltes mit Schwere hoch einzeln, die übrigen je Gruppe mit Zahl; Einzelheiten unter `# QA → Befunde`.
--   **Was die automatische Prüfung nicht abdecken konnte** — ausdrücklich, damit der Nutzer gezielt danach schaut (z. B. andere Browser-Engine als auf dem Zielgerät, Installation, Funktionen, die nur am echten Gerät laufen).
--   **Checkliste für die Abnahme** — die Kriterien mit Prüfung „manuell", als konkrete Handgriffe (z. B. „am iPhone: Kopieren, in Notizen einfügen, Text vergleichen").
--   **Wie die Abnahme lokal startet** (Befehl aus `_context/projekt.md`).
--   **Pull Request** `#<Nummer>` und dass die CI dort grün ist.
+- **Was umgesetzt ist** — drei bis fünf Sätze.
+- **Screenshots** der wichtigen Zustände aus `.qa/`, neben dem Entwurf (bei UI).
+- **Was die QA gefunden hat:** 
+	- Entschiedenes mit Ergebnis, 
+	- Zurückgestelltes mit Schwere hoch einzeln, die übrigen je Gruppe mit Zahl; 
+	- Einzelheiten unter `# QA → Befunde`.
+- **Was die automatische Prüfung nicht abdecken konnte**
+	- ausdrücklich, damit der Nutzer gezielt danach schaut (z. B. andere Browser-Engine als auf dem Zielgerät, Installation, Funktionen, die nur am echten Gerät laufen).
+- **Checkliste für die Abnahme** 
+	- die Kriterien mit Prüfung „manuell", als konkrete Handgriffe (z. B. „am iPhone: Kopieren, in Notizen einfügen, Text vergleichen")
+-   **Wie die Abnahme lokal startet** (Befehl aus `_context/projekt.md`)
+-   **Pull Request** `#<Nummer>` und dass die CI dort grün ist
 
 Weiter mit `_agent-process/skills/ap-requirement-accept/SKILL.md`.

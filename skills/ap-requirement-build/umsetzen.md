@@ -11,24 +11,35 @@ Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem k
 
 ## 5b: Start
 
--   Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „später" (`_agent-process/AGENTS.md`, Abschnitt „Halten"). Vorher kein Code.
--   Status `in progress`; der Agent committet (`chore(<kurzer-name>): Start`), dann folgt 5c.
--   Heißt das Dokument noch `<kurzer-name>.md` ohne Nummer (älterer Stand): im selben Commit mit `git mv` in `<Nr>-<kurzer-name>.md` umbenennen (Nummer wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Dokument"); hat es kein Issue: den Nutzer fragen. Nummern älterer Dokumente (z. B. `007-…` in `done/`) sind keine Issue-Nummern; gleiche Nummern sind möglich, eindeutig bleibt der kurze Name, maßgeblich die Zeile `Issue`.
+Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „später" (`_agent-process/AGENTS.md`, Abschnitt „Halten"). 
+- Vorher kein Code.
+- Status `in progress`-> der Agent committet (`chore(<kurzer-name>): Start`), dann folgt 5c.
+
 
 ## 5c: Test zuerst (rot)
 
--   Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bugs: die Regression) absichert — Art laut Teststrategie der Anforderung.
--   Der Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein. Ein Commit mit rotem Test gibt es nicht — committet wird erst, wenn es grün ist.
--   Ergebnis unter `# Testnachweis → Rot`: Befehl, Anzahl bestanden/fehlgeschlagen, Namen der roten Tests.
--   Lässt sich ein Kriterium nicht sinnvoll automatisch testen: begründen, Prüfung erfolgt manuell in der Abnahme (Stufe 7).
+Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bugs: die Regression) absichert — Art laut Teststrategie der Anforderung.
+- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
+- keine Tests für Fehler, die der Agent macht und nicht Logik sind
+- Best Practices, Standards sowie KISS folgen
+- Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein
+- committet wird erst, wenn es grün ist
+- Ergebnis unter `# Testnachweis → Rot`: Befehl, Anzahl bestanden/fehlgeschlagen, Namen der roten Tests
 
 ## 5d: Umsetzen
 
--   Nach dem freigegebenen **Plan**, den **Entscheidungen** der Anforderung und der **UI-Richtlinie** (`_agent-process/skills/ap-guideline-ui/SKILL.md`).
--   **Abweichung vom Plan:** technisch und innerhalb der Entscheidungen → Plan aktualisieren und dem Nutzer sagen; berührt sie Umfang, Verhalten oder Entscheidungen → Grundsatzfrage, zurück ins Refinement.
--   **Neue Pakete** nur, wenn sie im freigegebenen Plan stehen (im kurzen Weg: Abbruchgrund). Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
--   **Bei Design:** Werte, Texte und Logik aus der abgelegten Quelle übernehmen, nicht nachempfinden.
--   **Neue Grundsatzfrage** (Architektur, Verhalten, Umfang) → nicht selbst entscheiden: zurück ins Refinement, Nutzer fragen, Entscheidung festhalten.
+Nach dem freigegebenen **Plan**, den **Entscheidungen** der Anforderung und der **UI-Richtlinie** (`_agent-process/skills/ap-guideline-ui/SKILL.md`).
+- Best Practices, Standards sowie KISS folgen
+- **Abweichung vom Plan:** 
+    - technisch und innerhalb der Entscheidungen → Plan aktualisieren und dem Nutzer sagen
+    - berührt sie Umfang, Verhalten oder Entscheidungen → Grundsatzfrage, zurück ins Refinement
+- **Neue Pakete** 
+    - nur, wenn sie im freigegebenen Plan stehen (im kurzen Weg: Abbruchgrund). 
+    - Die Lock-Datei (z. B. `package-lock.json`) ändert sich nur durch genau diese Installation; sonst wird aus ihr installiert (z. B. `npm ci`).
+- **Bei Design:** Werte, Texte und Logik aus der abgelegten Quelle übernehmen, nicht nachempfinden.
+- **Neue Grundsatzfrage** (Architektur, Verhalten, Umfang) 
+    - nicht selbst entscheiden
+    - zurück ins Refinement, Nutzer fragen, Entscheidung festhalten.
 
 ## 5e: Grün
 

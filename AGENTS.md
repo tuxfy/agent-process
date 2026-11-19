@@ -48,13 +48,24 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 
 ## Grundsätze
 
--   **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
--   **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
--   **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
--   **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. In `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen — sie soll Angreifern keine fertige Übersicht liefern. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
+- Oberste Prämissen:
+	 - Best Practice, Standards und KISS haben Vorrang
+	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+	 - wegräumen, was nicht mehr gebraucht wird
+ - Tests:
+	- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
+	- keine Tests für Fehler, die der Agent macht und nicht Logik sind
+	- **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
+- **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
+- **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
+- **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. In `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen — sie soll Angreifern keine fertige Übersicht liefern. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
 
 ## Bekannte Fehler
 
 *Eine Zeile je Fehler, den Agenten zum zweiten Mal gemacht haben — eingetragen hier im Prozess-Repo, aus den Vorschlägen der Rückblicke (Stufe 7d).*
 
 -   **Befehle für den Nutzer** (Tag auf falschem Commit, 15.11.): Vorher prüft der Agent Branch und `git status` im Arbeitsverzeichnis, in dem der Nutzer sie ausführt; hat er dort nicht Committetes, das sie stören würde, nennt er es vorher. Die Befehle legen ihr Ziel selbst fest (Tag z. B. wie in `ap-release`, `ausliefern.md`) und sind mit `&&` verkettet, damit nach einem Fehler nichts weiterläuft.
+- Agent handelte mehrmals nicht nach  Best Practice, Standards und KISS
+	- siehe Grundsätze -> Oberste Prämissen
+- Agent schrieb mehrmals unnötige Tests
+	- siehe Grundsätze -> Tests
