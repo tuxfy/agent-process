@@ -6,7 +6,7 @@ Prüft eine umgesetzte Anforderung über die Tests hinaus, bevor der Nutzer sie 
 - Best Practice wurden eingehalten
 - Standards wurden eingehalten
 - KISS wurde eingehalten
-- nichts unnötiges wurde gebaut
+- nichts Unnötiges wurde gebaut
 - es wurden keine fertigen Tools und Lösungen nachgebaut
 - es wurden keine Tests geschrieben für Nicht-Logik
 
@@ -36,7 +36,10 @@ Es gilt die erste passende Zeile.
 
 ## 6b: Prüfung durch Rollen
 
-Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem Lauf (auch bei erneuter QA) schreibt der Agent den Diff neu nach `.qa/diff.txt` (wie, steht in `_agent-process/anweisungen/rollen/README.md`). Danach ordnet er die Befunde ein (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"). Der Klicktester legt Screenshots der wichtigen Zustände unter `.qa/` ab (nicht committet), neben dem Entwurf — für das Abnahmepaket (6e).
+Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle
+- vor jedem Lauf (auch bei erneuter QA) schreibt der Agent den Diff neu nach `.qa/diff.txt` (wie, steht in `_agent-process/anweisungen/rollen/README.md`). 
+- Danach ordnet er die Befunde ein (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"). 
+- Der Klicktester legt Screenshots der wichtigen Zustände unter `.qa/` ab (nicht committet), neben dem Entwurf — für das Abnahmepaket (6e).
 
 ## 6c: Befunde bearbeiten
 
@@ -49,9 +52,8 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 	- Was er umgesetzt haben will, wie „umsetzen"; 
 		-weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. 
 	- Blockierendes 
-		- wird nicht zurückgestellt, 
-		- nur umgesetzt oder 
-		- die Entscheidung im Refinement geändert
+		- wird nicht zurückgestellt, nur umgesetzt 
+		- oder die Entscheidung im Refinement geändert
 - **Umsetzen:** 
 	- zurück zu Stufe 5 (5c/5d)  
 	- danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). 
@@ -85,7 +87,7 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle; vor jedem L
 
 ## 6e: Abnahmepaket
 
-Für den Nutzer, kurz und in Alltagssprache, im Gespräch:
+Für den Nutzer im Gespräch:
 
 - **Was umgesetzt ist** — drei bis fünf Sätze.
 - **Screenshots** der wichtigen Zustände aus `.qa/`, neben dem Entwurf (bei UI).

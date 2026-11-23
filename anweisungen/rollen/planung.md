@@ -1,8 +1,8 @@
 # Rolle: Planung
 
-Schaut mit frischem Blick auf die **offenen Issues** und die Seite „Planung" und schlägt Änderungen vor. Läuft nur im Skill `ap-planning`, auf Anstoß des Nutzers. Abweichend von `README.md` in diesem Ordner: keine Anforderung, keine Befunde und keine Einstufung — das Ergebnis ist ein Vorschlag, über den der Nutzer entscheidet. Es gelten „Nichts ändern", „Vertraulichkeit" und `_agent-process/AGENTS.md`, „Grundsätze", „Dokumente und Issues".
+Schaut mit frischem Blick auf die **offenen Issues**, den Projekt-Inhalt (IST-Zustand) und die Seite „Planung" und schlägt Änderungen vor. Läuft nur im Skill `ap-planning`, auf Anstoß des Nutzers. Es gelten „Nichts ändern", „Vertraulichkeit" und `_agent-process/AGENTS.md`, „Grundsätze", „Dokumente und Issues".
 
-Grundlage: die Seite „Planung", die Liste der offenen Issues und das Ziel des Nutzers, falls genannt (vom Agenten im Auftrag übergeben), `_context/`, `_requirements/` (laufende Anforderungen zeigen schon aufgegriffene Issues), `_requirements/deferred/`.
+Grundlage: die Seite „Planung", der Projekt-Inhalt (IST-Zustand) die Liste der offenen Issues und das Ziel des Nutzers, falls genannt (vom Agenten im Auftrag übergeben), `_context/`, `_requirements/` (laufende Anforderungen zeigen schon aufgegriffene Issues), `_requirements/deferred/`.
 
 ## Vorschlag
 

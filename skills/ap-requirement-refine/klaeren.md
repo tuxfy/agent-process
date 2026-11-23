@@ -22,7 +22,7 @@ Bevor über Lösungen nachgedacht wird, klärt der Agent den **Rahmen**.
 1.  **Ist-Stand beschreiben**  
     - Abschnitt „Hintergrund": 
     - Wie funktioniert der betroffene Teil heute? 
-    - Was wären Best Practices und Standards? -> dabei KISS berücksichtigen
+    - Was wären Best Practices und Standards? Mit Quelle, sonst markieren mit (Annahme)
     - Bei Bugs: beobachtetes Fehlverhalten
 2.  **Ziel festhalten** 
     - Zeile „Ziel" unter „Einordnung": ein Satz, was danach anders ist, prüfbar und ohne festgelegte Lösung 

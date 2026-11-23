@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AGENTS.md",
+                "file": "skills/ap-requirement-build/kurzer-weg.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AGENTS"
+              "title": "kurzer-weg"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 275.17578125
+    "width": 200
   },
   "right": {
     "id": "5f5a0b3fc6bc6173",
@@ -190,11 +190,12 @@
   },
   "active": "4eee0dacac432f1e",
   "lastOpenFiles": [
-    "skills/ap-requirement-build/umsetzen.md",
-    "skills/ap-requirement-refine/klaeren.md",
-    "skills/ap-requirement-refine/entwerfen.md",
-    "AGENTS.md",
     "skills/ap-requirement-build/planen.md",
-    "skills/ap-requirement-build/qa.md"
+    "skills/ap-requirement-build/qa.md",
+    "skills/ap-requirement-build/kurzer-weg.md",
+    "skills/ap-requirement-refine/klaeren.md",
+    "AGENTS.md",
+    "skills/ap-requirement-build/umsetzen.md",
+    "skills/ap-requirement-refine/entwerfen.md"
   ]
 }

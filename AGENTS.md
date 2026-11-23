@@ -50,7 +50,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 
 - Oberste Prämissen:
 	 - Best Practice, Standards und KISS haben Vorrang
-	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
+	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wenn ja Nutzer darüber informieren und entscheiden lassen
 	 - wegräumen, was nicht mehr gebraucht wird
  - Tests:
 	- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
@@ -58,7 +58,14 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 	- **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
 - **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
 - **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
-- **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. In `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen — sie soll Angreifern keine fertige Übersicht liefern. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
+- **Dokumente und Issues:** 
+	- Sicherheitsthemen nur abstrakt 
+	- konkrete Stelle nur im Gespräch
+	- in `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen -> sie soll Angreifern keine fertige Übersicht liefern
+	- Verweise relativ
+	- Pull Requests und Issues  als `#<Nummer>` - \<Titel\>
+	- keine Adressen beim Hoster
+	- keine CI-Ergebnisse (die stehen im Pull Request)
 
 ## Bekannte Fehler
 
