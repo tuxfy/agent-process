@@ -9,7 +9,7 @@ Prüft Vorlagen an den Nutzer (Entscheidung, Freigabe), bevor sie ihn erreichen.
 -   Challenger fortsetzen, nicht neu starten.
 -   Challenger ab Runde 2: je bestrittenem Befund „fallen gelassen" oder „bleibt", mit Antwort auf den Beleg; dazu neue Befunde. Fallen lassen nur bei belegtem Widerspruch.
 -   Schluss: „keine Befunde", spätestens nach Runde 3. Strittiges → Nutzer, mit beiden Positionen und Empfehlung des Agenten.
--   Aufrufstellen: im jeweiligen Skill.
+-   Aufrufstellen: `_agent-process/AGENTS.md`, „Halten".
 
 ## Vorlage (schreibt der Agent)
 
