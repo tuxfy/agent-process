@@ -47,7 +47,6 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle
 	- zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht;
 	- nach seiner Antwort umsetzen: die Gruppe „umsetzen" und was der Nutzer umgesetzt haben will
 	- „zurückstellen" und „vermerken" sonst nicht umsetzen
-	- Maximal 3 Durchläufe, spätestens danach Meldung an Nutzer
 - **Entscheiden:** 
 	- Was er umgesetzt haben will, wie „umsetzen"; 
 		-weitet sie das Anliegen oder eine Entscheidung aus oder schränkt sie ein: `_agent-process/AGENTS.md`, Abschnitt „Halten" — bei Track `quick` zusätzlich die Abbruchgründe. 
@@ -56,13 +55,13 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle
 		- oder die Entscheidung im Refinement geändert
 - **Umsetzen:** 
 	- zurück zu Stufe 5 (5c/5d)  
-	- danach QA erneut (siehe unten: alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). 
+	- danach QA erneut (alle Prüfungen, Reviewer immer, übrige Rollen für die betroffenen Teile). 
 	- Bei Track `quick` gelten Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`
 - **Zurückstellen:** 
 	- Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem QA-Abschnitt (6d), bzw. Issue (Stufe 1)
 - **Verwerfen, vermerken, Behelf:** 
 	- unter `# QA → Befunde`, mit Grund bzw. bleibt bis Issue Nr
-- **Keine Änderungen in der QA:** während der QA keine Änderungen
+- **Korrekturen nur über „Umsetzen":** Während der QA korrigiert der Agent nichts nebenbei; jede Korrektur geht über den Punkt „Umsetzen" in 6c.
 - **Ergebnis** unter `# QA → Befunde`: je Befund kurz, was damit passiert ist.
 
 ## 6d: CI
