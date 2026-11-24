@@ -11,14 +11,14 @@
             "id": "4eee0dacac432f1e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "skills/ap-planning/SKILL.md",
-                "bFile": "skills/ap-planning/SKILL.md",
-                "aRef": ""
+                "file": "skills/ap-prompter/SKILL.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: SKILL  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "SKILL"
             }
           }
         ]
@@ -99,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "skills/ap-prompter/SKILL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,6 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "skills/ap-prompter/SKILL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -159,6 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "skills/ap-prompter/SKILL.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -182,7 +185,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 519.765625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,6 +201,8 @@
   },
   "active": "4eee0dacac432f1e",
   "lastOpenFiles": [
+    "skills/ap-prompter/SKILL.md",
+    "skills/ap-prompter",
     "AGENTS.md",
     "skills/ap-planning/SKILL.md",
     "anweisungen/rollen/planung.md",
