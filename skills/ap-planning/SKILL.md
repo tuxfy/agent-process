@@ -27,6 +27,8 @@ Das Dokument ist kein unumstößlicher Plan nach Wasserfall und wird zusammen mi
 ## Inhalt
 
 -   **Stand:** Datum der letzten Planung.
+
+### Pro Zwischenziel:
 -   **Ziel:** ein prüfbares Ergebnis in einem Satz, kein Thema (z. B. „Ein neues Image erreicht den Server ohne Handgriff" statt „Updates"). Ein Ziel je Planung-Paket; über das Ziel hinaus wird nicht geplant. Erreicht ist es, wenn keine Zeile mit Bezug zum Ziel mehr offen ist; Zeilen `neu` zählen als offen.
 -   **Als Nächstes:** Tabelle `| # | Issue | Heute | Danach | Warum hier |`, `#` ist die laufende Nummer der Zeile. Von oben nach unten:
     1.  Bugs mit Schwere hoch (Zeile „Schwere" im Issue; fehlt sie, fragt der Agent in Schritt 3 danach), auch ohne Bezug zum Ziel, davor, was sie voraussetzen;
@@ -43,13 +45,24 @@ Issues als `#<Nummer> (<Kurztitel>)`. Nicht auf die Seite: Status der Anforderun
 
 ## Ablauf
 
-1.  **Lesen:** die Seite (Wiki: vorher klonen wie unter „Wo die Seite liegt") und alle offenen Issues mit Nummer, Titel, Label und Text (`gh issue list --state open --limit 200 --json number,title,labels,body` bzw. `glab issue list`, alle Seiten, als JSON).
-2.  **Vorschlag einholen:** Rolle Planung (`_agent-process/anweisungen/rollen/planung.md`); 
-    - Seite
-    - Liste der offenen Issues und das Ziel, das der Nutzer beim Anstoß genannt hat (sonst „kein Ziel genannt")
-übergibt der Agent im Auftrag als Text.
-3.  **Durchgehen:** Der Agent legt dem Nutzer den Vorschlag vor — Ziel und Tabelle wie auf der Seite, dann Verbindungen und was sich gegenüber der Seite ändert —, verständlich und je Issue mit Nummer und Inhalt; der Nutzer entscheidet je Punkt. Ändert er das Ziel, holt der Agent mit dem neuen Ziel einen neuen Vorschlag ein (Schritt 2).
-4.  **Anpassen:** Zeilen `neu`, die der Nutzer als Issue will, legt der Agent zuerst an (`ap-requirement-capture`) und trägt die Nummer ein. Dann schreibt er die Seite nach den Entscheidungen neu (bzw. gibt den Text zum Einfügen aus); Wiki: committen, pushen und aufräumen wie unter „Wo die Seite liegt".
-5.  **Folgen nur nach Ja des Nutzers:** Verbindungen und Schnitte als Kommentar in die betroffenen Issues; Issues zusammenlegen heißt, eines zu schließen — das übernimmt der Nutzer beim Hoster (`_agent-process/AGENTS.md`, „Git", „Issues"); etwas, das dauerhaft in `_context/` gehört, als Issue (`ap-requirement-capture`) — `_context/` ändert erst dessen Anforderung.
+1.  **Lesen:** 
+	1. die Seite (Wiki: vorher klonen wie unter „Wo die Seite liegt") 
+	2. alle offenen Issues mit Nummer, Titel, Label und Text (`gh issue list --state open --limit 200 --json number,title,labels,body` bzw. `glab issue list`, alle Seiten, als JSON).
+2.  **Vorschlag einholen:** Rolle Planung (`_agent-process/anweisungen/rollen/planung.md`)
+	- übergeben:
+	    - Seite
+	    - Liste der offenen Issues und das Ziel, das der Nutzer beim Anstoß genannt hat (sonst „kein Ziel genannt")
+3.  **Durchgehen:** 
+	1. Agent legt dem Nutzer den Vorschlag vor -> Ziel und Tabelle wie auf der Seite, dann Verbindungen und was sich gegenüber der Seite ändert 
+	2. verständlich und je Issue mit Nummer und Inhalt
+	3. Nutzer entscheidet je Punkt
+	4. Ändert Nutzer das Ziel, holt der Agent mit dem neuen Ziel einen neuen Vorschlag ein (Schritt 2).
+4.  **Anpassen:** 
+	1. Zeilen `neu`, die der Nutzer als Issue will, legt  Agent  an (`ap-requirement-capture`) und trägt die Nummer ein
+	2. dann schreibt er die Seite nach den Entscheidungen neu (bzw. gibt den Text zum Einfügen aus); Wiki: committen, pushen und aufräumen wie unter „Wo die Seite liegt"
+5.  **Folgen nur nach Ja des Nutzers:** 
+	1. Verbindungen und Schnitte als Kommentar in die betroffenen Issues
+	2. Issues zusammenlegen heißt, eines zu schließen -> übernimmt der Nutzer beim Hoster
+	3. etwas, das dauerhaft in `_context/` gehört, als Issue (`ap-requirement-capture`) — `_context/` ändert erst dessen Anforderung
 
 Kein Branch und kein Commit im Projekt-Repo; im Wiki-Repo nur der Commit aus „Wo die Seite liegt".
