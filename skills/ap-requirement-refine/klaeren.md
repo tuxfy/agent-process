@@ -79,7 +79,7 @@ Derselbe Prozess, nur kürzer — Track nach den vier Punkten in Schritt 6, bei 
 1.  **Klärung (Stufe 2):** 
     - Ursache bestätigen ist Pflicht; Spielraum in der Regel nur „Verhalten" der betroffenen Stelle. Pflichtfrage: 
     - **Welche Prüfung hätte diesen Fehler finden müssen?:** 
-        - nach Best Practice, Standards und KISS prüfen ob ein neuer Test notwendig ist und dem Nutzer vorlegen
+        - Antwort ins Dokument; daraus folgt der Test, der den Fehler zeigt (Regel und Ausnahme: `AGENTS.md`, „Tests")
     - **Schwere:** 
         - aus dem Issue bestätigen lassen bzw., wenn sie fehlt, vorschlagen (Skala wie in `_agent-process/anweisungen/rollen/README.md`, „Einstufung"); sie steht im Abschnitt „Hintergrund" und zeigt dem Nutzer, wie dringend der Bug ist; was zuerst behoben wird, entscheidet er.
 2.  **Design (Stufe 3):** 
