@@ -33,12 +33,10 @@ These categories are NEVER rewritten — they're operational responses, not new 
 
 ## Activation modes
 
-Four modes are supported.
+Two modes are supported. Neither writes to CLAUDE.md or any other file.
 
 - **Try it once:** rewrite just the next prompt, then stop. Good for seeing what prompter does before committing.
 - **This session:** rewrite prompts for the rest of this conversation. No files are modified.
-- **Add to CLAUDE.md:** add a Prompt Rewriting rule to a CLAUDE.md file so it persists across future sessions, for this project or for all projects (see "CLAUDE.md plumbing" below).
-- **Remove from CLAUDE.md:** remove that rule.
 
 The skill is invoked as `/ap-prompter`.
 
@@ -52,17 +50,12 @@ The mode menu is settings management. Show it only when the user is asking to ma
 2. **`/ap-prompter` with prompt content in the same message.** The user is saying "evaluate THIS prompt now." Do not show the menu. Evaluate the prompt content under the active mode, or, if no mode is active, as a one-off ("Try it once" behavior, including the expiration message).
 3. **A direct request to rewrite a specific prompt** (e.g., "make this prompt clearer: 'handle the edge case'", "fix the typos in this prompt: …"). Do not show the menu. Evaluate the quoted prompt as a one-off and show the result. Do not continue rewriting later prompts unless a mode is active.
 4. **You activated the skill yourself** because a prompt looked short and ambiguous. Do not show the menu. Evaluate that prompt as a one-off.
-5. **A CLAUDE.md file contains a `## Prompt Rewriting` section** and you loaded this skill to get its full rules. Do not show the menu. The user already chose the persistent mode when they added that section. Evaluate the current prompt, and keep evaluating prompts for the rest of the session.
 
 **Why this rule exists:** Conflating "set the mode" with "evaluate THIS prompt" forces the user to answer the menu when they only wanted a rewrite. Origin: 2026-05-31 session where the user invoked `/prompter` five times after writing prompts and got the menu each time despite having chosen "This session" once at the start.
 
 ### Showing the mode menu
 
-Before showing the menu, check for an existing Prompt Rewriting section in every CLAUDE.md location (see "Where the rule goes" below). Then ask with AskUserQuestion:
-
-- Always offer **Try it once** and **This session**.
-- Offer **Add to CLAUDE.md** unless the section already exists in both the project and the global file.
-- Offer **Remove from CLAUDE.md** only when a section exists somewhere. Say which file it is in.
+Ask with AskUserQuestion and offer **Try it once** and **This session**.
 
 If a mode is already active in this session:
 
@@ -75,7 +68,7 @@ If a mode is already active in this session:
 
 When the single rewrite has been evaluated (whether it produced a rewrite or a "no rewrite needed" notice), show:
 
-> **Prompter:** Done. Like it? Run `/ap-prompter` again and choose "This session" or "Add to CLAUDE.md" to keep it going.
+> **Prompter:** Done. Like it? Run `/ap-prompter` again and choose "This session" to keep it going.
 
 ## How rewriting works (when you do rewrite)
 
@@ -127,49 +120,5 @@ These are the moves that make the biggest difference. Use only the ones a prompt
 - **Resolve references from context.** "That file" or "the other endpoint" becomes the specific name, when the conversation makes it knowable. When it doesn't, ask instead of guessing.
 - **Split stacked questions.** Several questions run together become a numbered list, so none gets dropped.
 - **Preserve the user's voice.** A clear question asked casually ("why does this work") stays as it is. Don't rewrite tone, hedging, or register just to sound formal; fix only what blocks understanding.
-
-## CLAUDE.md plumbing (Add/Remove modes)
-
-### Where the rule goes
-
-Claude Code reads CLAUDE.md from more than one place. Prompter uses these:
-
-- **This project:** `CLAUDE.md` at the project root. Also check `.claude/CLAUDE.md` when looking for an existing section, since some projects keep their instructions there.
-- **All projects:** `~/.claude/CLAUDE.md`, which applies to every project for this user.
-
-### Adding to CLAUDE.md
-
-When the user chooses "Add to CLAUDE.md", ask whether the rule should apply to **this project** or **all projects**, then write to the matching file from "Where the rule goes" above. Create the file if it doesn't exist. Afterward, name the exact file you changed.
-
-Insert this minimal section. It points back at this skill instead of duplicating the skip list, so the skip list never drifts:
-
-```markdown
-## Prompt Rewriting
-
-Before acting on any user prompt, evaluate whether rewriting it for clarity, typo correction, or actionability would meaningfully improve it. **Only rewrite when there is a real improvement to make** — typos to fix, ambiguous references to resolve, or vague intent to specify. If the original prompt is already clear and actionable, proceed without rewriting and without showing a rewrite. When you do rewrite, display the rewritten version with the prefix "**Rewritten prompt:**" and wait for approval before proceeding.
-
-**Full rules** (skip categories, mode behavior, rewriting style): load the `ap-prompter` skill. This section is a persistent activation, so skip the skill's mode menu. Do NOT duplicate the skip list here; the skill file is the source of truth.
-```
-
-**Detecting an existing section.** A Prompt Rewriting section is considered to exist if the file contains a line matching `^## Prompt Rewriting\b`. The block boundary is from that line to the next `^## ` heading or end of file. If the existing block differs from the template above, do not overwrite — instead, show the user a diff and ask whether to (a) keep their version, (b) replace with the template, or (c) merge specific lines. Default to (a) and proceed without changes.
-
-Regex examples (verify intent if editing):
-- ✅ Matches: `## Prompt Rewriting`
-- ✅ Matches: `## Prompt Rewriting (project-specific)` — `\b` accepts following space + parens
-- ❌ Does not match: `### Prompt Rewriting` — wrong heading level
-- ❌ Does not match: `## prompt rewriting` — case-sensitive
-- ❌ Does not match: `## Some Prompt Rewriting Notes` — `^` anchors to start of line
-
-### Removing from CLAUDE.md
-
-When the user chooses "Remove from CLAUDE.md":
-
-1. Look for the section in every location listed in "Where the rule goes", using the detection rule above.
-2. If it exists in more than one file, list the files and ask which to remove it from.
-3. If the block matches the template verbatim, remove it cleanly: the heading line through the last line before the next `^## ` or end of file.
-4. If the block has been modified, show the user the modified content and confirm before removing.
-5. If no Prompt Rewriting section exists anywhere, say so and stop.
-6. Remove a single trailing blank line if the deletion left two consecutive blank lines.
-7. Name the exact file you changed.
 
 Features removed in earlier versions are listed in `UPGRADING.md` in the prompter repository.
