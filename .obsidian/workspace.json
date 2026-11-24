@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "skills/ap-prompter/SKILL.md",
+                "file": "anweisungen/rollen/challenger.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SKILL"
+              "title": "challenger"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 205.7421875
   },
   "right": {
     "id": "5f5a0b3fc6bc6173",
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "skills/ap-prompter/SKILL.md",
+                "file": "anweisungen/rollen/challenger.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "skills/ap-prompter/SKILL.md",
+                "file": "anweisungen/rollen/challenger.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "skills/ap-prompter/SKILL.md",
+                "file": "anweisungen/rollen/challenger.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -199,8 +199,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4eee0dacac432f1e",
+  "active": "a258b834b6aa56dd",
   "lastOpenFiles": [
+    "anweisungen/rollen/challenger.md",
     "skills/ap-prompter/SKILL.md",
     "skills/ap-prompter",
     "AGENTS.md",
