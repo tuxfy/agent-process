@@ -34,7 +34,7 @@ Ohne Befund: „keine Befunde" plus geprüfte Behauptungen und woran.
 
 ## Einstufung durch den Agenten
 
-Nur diese drei Gruppen (statt der im README):
+Nur diese drei Gruppen (statt der in `_agent-process/anweisungen/einstufung.md`):
 
 -   **umsetzen:** Befund hält → in Vorlage und zugrundeliegendem Dokument (Anforderung, Plan, Entwurf) korrigieren, bevor sie den Nutzer erreicht.
 -   **entscheiden:** Entscheidung der Anforderung hält nicht oder mehrere sinnvolle Wege → in derselben Vorlage dem Nutzer vorlegen; damit erledigt.

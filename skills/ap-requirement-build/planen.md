@@ -37,7 +37,7 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
     -   **DevOps** zusätzlich, wenn 
         - der Plan CI, Hosting, Auslieferung oder das Release-Modell berührt
     -   Sonst genügt die Selbstprüfung.
-3.  **Befunde einordnen** (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"): 
+3.  **Befunde einordnen** (`_agent-process/anweisungen/einstufung.md`): 
     - „umsetzen" in den Plan einarbeiten; 
     - „zurückstellen" als Eintrag bzw. Issue, mit Dateiname bzw. Nummer, und 
     - „verwerfen" und „vermerken" mit Grund — alle drei unter „Annahmen und Risiken"
@@ -50,7 +50,7 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 **Zusammenfassung für den Nutzer** — kurz, in Alltagssprache, nicht im Dokument, sondern im Gespräch:
 
 -   **Was passiert:** drei bis fünf Sätze.
--   **Was du entscheiden oder liefern musst** (z. B. eine Einstellung bestätigen, einmal einen Befehl ausführen) — dazu die Befunde laut „Einstufung", „Dem Nutzer".
+-   **Was du entscheiden oder liefern musst** (z. B. eine Einstellung bestätigen, einmal einen Befehl ausführen) — dazu die Befunde laut `_agent-process/anweisungen/einstufung.md`, „Dem Nutzer".
 -   **Was riskant ist** und wie damit umgegangen wird.
 -   **Wer geprüft hat** und was sich dadurch am Plan geändert hat.
 

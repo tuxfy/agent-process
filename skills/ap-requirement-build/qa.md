@@ -38,7 +38,7 @@ Es gilt die erste passende Zeile.
 
 Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle
 - vor jedem Lauf (auch bei erneuter QA) schreibt der Agent den Diff neu nach `.qa/diff.txt` (wie, steht in `_agent-process/anweisungen/rollen/README.md`). 
-- Danach ordnet er die Befunde ein (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"). 
+- Danach ordnet er die Befunde ein (`_agent-process/anweisungen/einstufung.md`). 
 - Der Klicktester legt Screenshots der wichtigen Zustände unter `.qa/` ab (nicht committet), neben dem Entwurf — für das Abnahmepaket (6e).
 
 ## 6c: Befunde bearbeiten

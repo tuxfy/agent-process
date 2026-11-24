@@ -19,7 +19,7 @@ Legt **einmal** fest, wie im Projekt gebaut, geprüft, abgenommen und ausgeliefe
 
 Der Agent schlägt vor, mit kurzer Begründung; **der Nutzer entscheidet** (so fragen wie in `_agent-process/skills/ap-requirement-refine/klaeren.md`). Ergebnis in `_context/projekt.md`, Design-System in `_context/design.md`, Architektur (optional) in `_context/architektur.md`.
 
-1.  **Zweck und Anspruch** — wofür das Projekt da ist, in zwei, drei Sätzen; dazu der **Anspruch**, an dem Prüfer-Befunde und Bugs gemessen werden (`_agent-process/anweisungen/rollen/README.md`, „Einstufung"), mit kurzer Begründung aus Nutzerkreis, Art der Daten und Folgen eines Ausfalls:
+1.  **Zweck und Anspruch** — wofür das Projekt da ist, in zwei, drei Sätzen; dazu der **Anspruch**, an dem Prüfer-Befunde und Bugs gemessen werden (`_agent-process/anweisungen/einstufung.md`), mit kurzer Begründung aus Nutzerkreis, Art der Daten und Folgen eines Ausfalls:
     -   **einfach** — nur der Nutzer selbst oder wenige Bekannte, keine fremden persönlichen Daten, ein Ausfall ist ärgerlich, aber folgenlos (z. B. ein eigener Server);
     -   **normal** — weitere Nutzer oder persönliche Daten, ein Ausfall ist spürbar;
     -   **hoch** — viele Nutzer, sensible Daten oder Geld, ein Ausfall ist teuer.

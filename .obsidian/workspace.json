@@ -41,14 +41,14 @@
             "id": "f1c0d999ddb6305e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "skills/ap-requirement-build/qa.md",
-                "bFile": "skills/ap-requirement-build/qa.md",
-                "aRef": ""
+                "file": "anweisungen/rollen/README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: qa  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ],
@@ -114,7 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.05078125
+    "width": 200
   },
   "right": {
     "id": "5f5a0b3fc6bc6173",
@@ -130,6 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "anweisungen/rollen/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,6 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "anweisungen/rollen/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -190,6 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "anweisungen/rollen/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -229,6 +232,19 @@
   },
   "active": "f1c0d999ddb6305e",
   "lastOpenFiles": [
+    "anweisungen/rollen/reviewer.md",
+    "anweisungen/rollen/barrierefreiheit.md",
+    "anweisungen/rollen/challenger.md",
+    "anweisungen/rollen/planung.md",
+    "anweisungen/einstufung.md",
+    "anweisungen/rollen/README.md",
+    "anweisungen/rollen/devops.md",
+    "anweisungen/vorlagen/release.md",
+    "anweisungen/vorlagen/idee.md",
+    "anweisungen/vorlagen/bug.md",
+    "anweisungen/vorlagen/architektur.md",
+    "anweisungen/vorlagen/anforderung.md",
+    "README.md",
     "AGENTS.md",
     ".obsidian/plugins/obsidian-git/styles.css",
     ".obsidian/plugins/obsidian-git/manifest.json",
@@ -251,16 +267,6 @@
     ".claude/agents/devops.md",
     ".claude/agents/architekt.md",
     ".qa/agents-review/repo.tgz",
-    ".qa/AGENTS.alt.md",
-    "anweisungen/rollen/challenger.md",
-    "skills/ap-prompter/SKILL.md",
-    "skills/ap-planning/SKILL.md",
-    "anweisungen/rollen/planung.md",
-    "skills/ap-requirement-build/kurzer-weg.md",
-    "skills/ap-requirement-build/planen.md",
-    "skills/ap-requirement-build/qa.md",
-    "skills/ap-requirement-refine/klaeren.md",
-    "skills/ap-requirement-build/umsetzen.md",
-    "skills/ap-requirement-refine/entwerfen.md"
+    ".qa/AGENTS.alt.md"
   ]
 }

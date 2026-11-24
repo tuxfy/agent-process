@@ -81,7 +81,7 @@ Derselbe Prozess, nur kürzer — Track nach den vier Punkten in Schritt 6, bei 
     - **Welche Prüfung hätte diesen Fehler finden müssen?:** 
         - Antwort ins Dokument; daraus folgt der Test, der den Fehler zeigt (Regel und Ausnahme: `AGENTS.md`, „Tests")
     - **Schwere:** 
-        - aus dem Issue bestätigen lassen bzw., wenn sie fehlt, vorschlagen (Skala wie in `_agent-process/anweisungen/rollen/README.md`, „Einstufung"); sie steht im Abschnitt „Hintergrund" und zeigt dem Nutzer, wie dringend der Bug ist; was zuerst behoben wird, entscheidet er.
+        - aus dem Issue bestätigen lassen bzw., wenn sie fehlt, vorschlagen (Skala wie in `_agent-process/anweisungen/einstufung.md`); sie steht im Abschnitt „Hintergrund" und zeigt dem Nutzer, wie dringend der Bug ist; was zuerst behoben wird, entscheidet er.
 2.  **Design (Stufe 3):** 
     - meist nicht nötig — bei einem UI-Bug steht das erwartete Aussehen schon fest (freigegebener Entwurf, Design-System); korrigiert wird dorthin. 
     - **Nötig:** 
