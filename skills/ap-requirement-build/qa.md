@@ -45,8 +45,8 @@ Reviewer, Testwirkung, Klicktester und Security laut Umfang-Tabelle
 
 - **Reihenfolge:** 
 	- zuerst dem Nutzer vorlegen, was laut „Einstufung" zu ihm geht;
-	- nach seiner Antwort die Schweregrade blockierend und mittel zusammen mit Entscheidungen des Nutzers zur Korrektur geben
-	- Niedrige Befunde nicht automatisch korrigieren lassen
+	- nach seiner Antwort umsetzen: die Gruppe „umsetzen" und was der Nutzer umgesetzt haben will
+	- „zurückstellen" und „vermerken" sonst nicht umsetzen
 	- Maximal 3 Durchläufe, spätestens danach Meldung an Nutzer
 - **Entscheiden:** 
 	- Was er umgesetzt haben will, wie „umsetzen"; 

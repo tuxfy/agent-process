@@ -11,14 +11,14 @@
             "id": "4eee0dacac432f1e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "anweisungen/rollen/challenger.md",
-                "mode": "source",
-                "source": false
+                "aFile": "skills/ap-requirement-build/qa.md",
+                "bFile": "skills/ap-requirement-build/qa.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "challenger"
+              "icon": "diff",
+              "title": "Diff: qa  (Working Tree)"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 205.7421875
+    "width": 256.05078125
   },
   "right": {
     "id": "5f5a0b3fc6bc6173",
@@ -99,7 +99,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "anweisungen/rollen/challenger.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +117,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "anweisungen/rollen/challenger.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +159,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "anweisungen/rollen/challenger.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,7 +182,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 519.765625
+    "width": 328.56640625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,7 +196,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a258b834b6aa56dd",
+  "active": "4eee0dacac432f1e",
   "lastOpenFiles": [
     "anweisungen/rollen/challenger.md",
     "skills/ap-prompter/SKILL.md",
