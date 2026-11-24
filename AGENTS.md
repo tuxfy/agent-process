@@ -55,7 +55,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wenn ja Nutzer darüber informieren und entscheiden lassen
 	 - wegräumen, was nicht mehr gebraucht wird
  - Tests:
-	- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
+	- Rand- und Fehlerfälle nur, wenn sie im echten Betrieb vorkommen können (z. B. leere Liste, ungültige Eingabe, offline); keine künstlichen Fälle, nur reale Logik
 	- keine Tests für Fehler, die der Agent macht und nicht Logik sind
 	- Verhalten testen, nicht Quelltext (`grep` auf das Skript) und nicht Konfiguration Zeile für Zeile
 	- gemeinsame Logik nur einmal testen, dort, wo sie liegt

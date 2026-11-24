@@ -43,12 +43,12 @@
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": "anweisungen/rollen/architekt.md",
-                "bFile": "anweisungen/rollen/architekt.md",
+                "aFile": "AGENTS.md",
+                "bFile": "AGENTS.md",
                 "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: architekt  (Working Tree)"
+              "title": "Diff: AGENTS  (Working Tree)"
             }
           }
         ],
@@ -229,6 +229,11 @@
   },
   "active": "f1c0d999ddb6305e",
   "lastOpenFiles": [
+    "anweisungen/rollen/reviewer.md",
+    ".claude/agents/architekt.md",
+    ".claude/agents/barrierefreiheit.md",
+    ".claude/agents/challenger.md",
+    ".claude/agents/devops.md",
     "AGENTS.md",
     "skills/ap-requirement-build/umsetzen.md",
     "skills/ap-requirement-build/planen.md",
@@ -240,7 +245,6 @@
     "anweisungen/rollen/senior-dev.md",
     "anweisungen/rollen/architekt.md",
     "anweisungen/rollen/README.md",
-    "anweisungen/rollen/reviewer.md",
     "anweisungen/rollen/barrierefreiheit.md",
     "anweisungen/rollen/challenger.md",
     "anweisungen/rollen/planung.md",
@@ -258,12 +262,8 @@
     ".obsidian/plugins/unhide/main.js",
     ".obsidian/plugins/unhide/manifest.json",
     ".obsidian/plugins/unhide/styles.css",
-    ".claude/agents/planung.md",
     ".obsidian/plugins/obsidian-git",
     ".obsidian/plugins/unhide",
-    ".claude/agents/testwirkung.md",
-    ".claude/agents/reviewer.md",
-    ".claude/agents/security.md",
     ".qa/agents-review/repo.tgz"
   ]
 }

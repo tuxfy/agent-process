@@ -12,8 +12,6 @@ Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „sp�
 ## 5c: Test zuerst (rot)
 
 Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bugs: die Regression) absichert — Art laut Teststrategie der Anforderung.
-- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
-- keine Tests für Fehler, die der Agent macht und nicht Logik sind
 - Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein
 - committet wird erst, wenn es grün ist
 - Ergebnis unter `# Testnachweis → Rot`: Befehl, Anzahl bestanden/fehlgeschlagen, Namen der roten Tests
