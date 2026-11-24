@@ -16,12 +16,11 @@ Das Dokument ist kein unumstößlicher Plan nach Wasserfall und wird zusammen mi
 ## Wo die Seite liegt
 
 - Gibt es `planung.md` im Hauptordner? ja -> dann diese Datei nutzen
-- Gibt es `planung.md` im Hauptordner? nein -> Wiki-Seite "Planung" um Git nutzen
+- Gibt es `planung.md` im Hauptordner? nein -> Wiki-Seite "Planung" über Git nutzen
     - existiert die Wiki-Seite noch nicht dann anlegen
     - Nutzung: 
         - nur über das Wiki-Repo, nie über die API
-        - in temporäres Verzeichnis `.tmp/wiki` außerhalb Projekt klonen 
-        - `.tmp `in `.gitignore` eintragen, wenn noch nicht vorhanden
+        - in ein temporäres Verzeichnis außerhalb des Projekts klonen
         - Identität des Nutzers verwenden für Commits
 
 ## Inhalt
@@ -63,10 +62,10 @@ Issues als `#<Nummer> (<Kurztitel>)`. Nicht auf die Seite: Status der Anforderun
 	4. Ändert Nutzer das Ziel, holt der Agent mit dem neuen Ziel einen neuen Vorschlag ein (Schritt 2).
 4.  **Anpassen:** 
 	1. Zeilen `neu`, die der Nutzer als Issue will, legt  Agent  an (`ap-requirement-capture`) und trägt die Nummer ein
-	2. dann schreibt er die Seite nach den Entscheidungen neu (bzw. gibt den Text zum Einfügen aus); Wiki: committen, pushen und aufräumen wie unter „Wo die Seite liegt"
+	2. dann schreibt er die Seite nach den Entscheidungen neu (bzw. gibt den Text zum Einfügen aus); Wiki: committen und pushen — scheitert der Push, anhalten und Nutzer fragen
 5.  **Folgen nur nach Ja des Nutzers:** 
 	1. Verbindungen und Schnitte als Kommentar in die betroffenen Issues
 	2. Issues zusammenlegen heißt, eines zu schließen -> übernimmt der Nutzer beim Hoster
 	3. etwas, das dauerhaft in `_context/` gehört, als Issue (`ap-requirement-capture`) — `_context/` ändert erst dessen Anforderung
 
-Kein Branch und kein Commit im Projekt-Repo; im Wiki-Repo nur der Commit aus „Wo die Seite liegt".
+Kein Branch und kein Commit im Projekt-Repo; im Wiki-Repo nur Commit und Push aus Schritt 4.
