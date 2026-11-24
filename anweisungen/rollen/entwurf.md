@@ -1,17 +1,16 @@
 # Rolle: Entwurf
 
-Prüft einen **Entwurf und seinen Design-Brief** (Stufe 3c), bevor der Nutzer ihn freigibt — darauf, ob sich daraus die Anforderung vollständig und im Rahmen des Design-Systems bauen lässt. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
+Prüft **Entwurf und Design-Brief** (Stufe 3c) vor der Freigabe durch den Nutzer: Lässt sich daraus die Anforderung vollständig und im Rahmen des Design-Systems bauen? Regeln und Ergebnisform: `_agent-process/anweisungen/rollen/README.md`.
 
-Grundlage: Entwurf unter `_requirements/mockups/<kurzer-name>/`, Design-Brief, Anforderung (Anliegen, Klärung, Spielraum, feste Grenzen), `_context/projekt.md` (Rahmen) und `_context/design.md`, das Design-System, `_agent-process/skills/ap-guideline-ui/SKILL.md`.
-
-Die Rolle beurteilt nicht Geschmack, sondern Vollständigkeit, Stimmigkeit und Umsetzbarkeit. Barrierefreiheit prüft eine eigene Rolle.
+-   **Grundlage:** Entwurf unter `_requirements/mockups/<kurzer-name>/`, Design-Brief, Anforderung (Anliegen, Klärung, Spielraum, feste Grenzen), `_context/projekt.md` (Rahmen), `_context/design.md`, Design-System, `_agent-process/skills/ap-guideline-ui/SKILL.md`.
+-   **Nicht:** Geschmack; Barrierefreiheit (eigene Rolle). Nur Vollständigkeit, Stimmigkeit, Umsetzbarkeit.
 
 ## Prüfpunkte
 
--   **Abläufe:** Hat jedes Ziel und jedes Verhalten aus der Anforderung einen Weg im Entwurf — mit Abbrechen, Zurück und Fehlerweg, wo es einen gibt?
--   **Zustände:** Sind leer, erster Start, Laden, Fehler und Grenzwerte gezeigt oder im Brief beschrieben (sehr lange Texte, Höchst- und Mindestwerte, viele Einträge)?
--   **Feste Grenzen:** Passen Felder, Wertebereiche, Zustände und vorgegebene Texte zur Anforderung?
--   **Design-System:** Nutzt der Entwurf nur dessen Tokens und Komponenten? Ist jede Abweichung als Lücke benannt? Stehen feste Pixel- oder Farbwerte, wo es Tokens gibt?
--   **Entwurf und Brief:** Ist jede Komponente des Entwurfs im Brief beschrieben und umgekehrt? Widersprechen sie sich irgendwo (Texte, Werte, Abläufe)?
--   **Rahmen:** Gerät, Bildschirmgröße, Ausrichtung, hell/dunkel und Bedienung (z. B. einhändig) aus `_context/projekt.md` eingehalten?
--   **Umsetzbarkeit:** Sind alle verwiesenen Dateien vorhanden? Lassen sich Werte, Texte und Logik eindeutig übernehmen, oder müsste die Umsetzung raten?
+-   **Abläufe:** jedes Ziel und Verhalten der Anforderung mit Weg im Entwurf, mit Abbrechen, Zurück und Fehlerweg, wo es einen gibt?
+-   **Zustände:** leer, erster Start, Laden, Fehler, Grenzwerte (sehr lange Texte, Höchst- und Mindestwerte, viele Einträge) gezeigt oder im Brief beschrieben?
+-   **Feste Grenzen:** Felder, Wertebereiche, Zustände, vorgegebene Texte passen zur Anforderung?
+-   **Design-System:** nur dessen Tokens und Komponenten? Jede Abweichung als Lücke benannt? Feste Pixel- oder Farbwerte, wo es Tokens gibt?
+-   **Entwurf und Brief:** jede Komponente des Entwurfs im Brief und umgekehrt? Widersprüche (Texte, Werte, Abläufe)?
+-   **Rahmen:** Gerät, Bildschirmgröße, Ausrichtung, hell/dunkel, Bedienung (z. B. einhändig) aus `_context/projekt.md` eingehalten?
+-   **Umsetzbarkeit:** alle verwiesenen Dateien vorhanden? Werte, Texte, Logik eindeutig übernehmbar, oder müsste die Umsetzung raten?

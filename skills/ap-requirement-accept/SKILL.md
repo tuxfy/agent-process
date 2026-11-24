@@ -5,7 +5,9 @@ description: Stufe 7 des Agent-Prozesses (`_agent-process`) – der Nutzer nimmt
 
 # Stufe 7: Abnahme
 
-Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraussetzung: Stufe 6 abgeschlossen, Abnahmepaket liegt vor, Status `review`.
+Der Nutzer nimmt eine Anforderung ab, auf ihrem Feature-Branch, lokal.
+
+**Voraussetzung:** Stufe 6 abgeschlossen, Abnahmepaket liegt vor, Status `review`.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
@@ -16,26 +18,32 @@ Der Nutzer nimmt eine Anforderung ab — auf ihrem Feature-Branch, lokal. Voraus
 
 ## 7a: Prüfen
 
--   Der Nutzer startet die App lokal (Befehl in `_context/projekt.md`) und geht die Checkliste des Abnahmepakets durch — vor allem, was sich nicht automatisch prüfen lässt (z. B. am Gerät).
--   Zur UI-Richtlinie bleibt von Hand zu prüfen, was Prüflauf und QA nicht erkennen.
+-   Nutzer startet die App lokal (Befehl in `_context/projekt.md`), geht die Checkliste des Abnahmepakets durch; vor allem, was nicht automatisch prüfbar ist (z. B. am Gerät).
+-   Zur UI-Richtlinie von Hand prüfen, was Prüflauf und QA nicht erkennen.
 
 ## 7b: Befunde
 
--   Befunde des Nutzers zuerst unter `# Abnahme → Befunde` ins Dokument (je Befund ein Punkt), dann zurück zu Stufe 5 (mit Test, wo möglich), je umgesetztem Befund ein eigener Commit (`_agent-process/skills/ap-requirement-build/umsetzen.md`, Abschnitt „Commits"); danach Stufe 6 für die betroffenen Teile erneut, der Reviewer immer. Bei Track `quick` gelten die Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
--   Neue Wünsche, die über die Anforderung hinausgehen: als Issue festhalten (Stufe 1), nicht in diese Anforderung. Ein Befund, den der Nutzer bewusst verschiebt: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem Commit aus 7c.
+1.  Befunde des Nutzers zuerst unter `# Abnahme → Befunde` ins Dokument (je Befund ein Punkt).
+2.  Zurück zu Stufe 5 (mit Test, wo möglich); je umgesetztem Befund ein eigener Commit (`_agent-process/skills/ap-requirement-build/umsetzen.md`, „Commits").
+3.  Danach Stufe 6 für die betroffenen Teile erneut, Reviewer immer.
+
+-   Track `quick`: Abbruchgründe aus `_agent-process/skills/ap-requirement-build/kurzer-weg.md`.
+-   Neue Wünsche über die Anforderung hinaus: als Issue (Stufe 1), nicht in diese Anforderung.
+-   Befund, den der Nutzer bewusst verschiebt: Eintrag in `_requirements/deferred/` (Regeln in der `README.md` dort), committet mit dem Commit aus 7c.
 
 ## 7c: Abgenommen
 
--   Der Nutzer gibt ausdrücklich frei.
--   **Ein Commit, vor dem Zusammenführen:** Status `accepted`, Ergebnis unter `# Abnahme` (Datum, was geprüft wurde), Rückblick (7d), Dokument nach `_requirements/done/` verschoben, ggf. Einträge in `_requirements/deferred/`. Der Agent committet und pusht; die CI im Pull Request läuft erneut.
--   **Erst bei grüner CI** meldet der Agent „bereit zum Zusammenführen“ — vorher nicht. Dazu sagt er: Zusammenführen nach `release-candidate` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
--   **Der Nutzer führt den Pull Request zusammen** (nach `release-candidate`). Der Agent wartet darauf und fragt nicht nach.
--   Ab dem Commit ist das Dokument eingefroren. Was danach noch auffällt, wird eine neue Idee bzw. ein Bug — kein zweiter Pull Request.
--   Ein Release-Dokument gibt es noch nicht — es entsteht erst in Stufe 8.
+1.  Nutzer gibt ausdrücklich frei.
+2.  **Ein Commit, vor dem Zusammenführen:** Status `accepted`; Ergebnis unter `# Abnahme` (Datum, was geprüft wurde); Rückblick (7d); Dokument nach `_requirements/done/` verschoben; ggf. Einträge in `_requirements/deferred/`. Committen und pushen; CI im Pull Request läuft erneut.
+3.  **Erst bei grüner CI** „bereit zum Zusammenführen“ melden, vorher nicht. Dazu sagen: Zusammenführen nach `release-candidate` heißt, kommt ins nächste Release; soll die Anforderung noch warten, bleibt der Pull Request offen.
+4.  **Nutzer führt den Pull Request zusammen** (nach `release-candidate`). Agent wartet, fragt nicht nach.
+
+-   Ab dem Commit ist das Dokument eingefroren. Was danach auffällt: neue Idee bzw. Bug, kein zweiter Pull Request.
+-   Release-Dokument gibt es noch nicht; entsteht erst in Stufe 8.
 
 ## 7d: Rückblick
 
-Kurz festhalten, was gehakt hat — fertig, bevor der Commit aus 7c entsteht:
+Kurz festhalten, was gehakt hat; fertig vor dem Commit aus 7c:
 
 -   **Projekt betreffend** → `_context/` ergänzen.
--   **Prozess betreffend** → als Vorschlag fürs Prozess-Repo notieren (nichts unter `_agent-process/` im Projekt ändern); steht der Fehler schon in einem früheren Rückblick, als Zeile für „Bekannte Fehler“ in `_agent-process/AGENTS.md` vorschlagen.
+-   **Prozess betreffend** → als Vorschlag fürs Prozess-Repo notieren (nichts unter `_agent-process/` im Projekt ändern). Fehler schon in einem früheren Rückblick → als Zeile für „Bekannte Fehler“ in `_agent-process/AGENTS.md` vorschlagen.

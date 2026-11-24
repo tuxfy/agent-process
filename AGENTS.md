@@ -21,6 +21,8 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 ## Halten
 
 -   **Angehalten wird nur an den Freigaben** des Nutzers — Klärung (2), Entwurf (3c), Plan (5a, nicht bei Track `quick`), Abnahme (7c), „release“ (8a) —, an seinen Handgriffen und wenn eine Entscheidung nötig ist. Sonst geht der Agent ohne Rückfrage weiter.
+-   **Challenger:** Vorlagen nur zur Freigabe von Klärung (2) und Plan (5a) prüft vorher der Challenger (`_agent-process/anweisungen/rollen/challenger.md`).
+-   **Höchstens 3 Korrekturrunden je Prüfung** (z. B. QA, CI, Abnahme). Findet die Prüfung danach noch etwas, hält der Agent an und fragt den Nutzer, wie es weitergeht.
 -   **Bestätigtes ändert nur der Nutzer:** Was er an einer Freigabe bestätigt hat (Ziel, Spielraum, Weg und Track, Anspruch, Entwurf, Plan), ändert der Agent nie selbst. Er stellt die Änderung als Frage — Eintrag mit altem und neuem Wert, Grund und Folgen (z. B. „Design nötig? ja → nein, Stufe 3 entfällt. Soll ich das ändern?“); bestätigt ist nur ein Ja auf diese Frage, nicht Zustimmung zu einer Idee im Gespräch. Dann trägt er es ein und committet (`chore(<kurzer-name>): <Eintrag> geändert`, z. B. `Weg geändert`). Ausnahmen, die der Agent selbst einträgt und dem Nutzer sagt: Wechsel aufs Strengere (Track `quick` → `complete`) und technische Abweichungen vom Plan innerhalb der Entscheidungen.
 -   **„Später“:** Sagt der Nutzer, eine Anforderung solle später umgesetzt werden, hält der Agent vor dem Start der Umsetzung an; vermerkt wird das nicht. Eine neue Sitzung arbeitet nur an der Anforderung, die der Nutzer nennt; nennt er keine, fragt der Agent (gilt nicht für `ap-planning`).
 -   **Am Ende jeder Stufe** sagt der Agent kurz: was erledigt ist, was als Nächstes kommt, was der Nutzer tun oder entscheiden muss.
@@ -48,13 +50,34 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 
 ## Grundsätze
 
--   **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
--   **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
--   **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
--   **Dokumente und Issues:** Sicherheitsthemen nur abstrakt, die konkrete Stelle nur im Gespräch. In `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen — sie soll Angreifern keine fertige Übersicht liefern. Verweise relativ; Pull Requests und Issues nur als `#<Nummer>`, keine Adressen beim Hoster, keine CI-Ergebnisse (die stehen im Pull Request).
+- Oberste Prämissen:
+	 - Umfang: das Minimum, das das Ziel erreicht; Best Practice, Standards und KISS bestimmen, wie es gebaut wird, nicht wie viel — mehr Umfang nur als Entscheidung des Nutzers im Refinement
+	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wenn ja Nutzer darüber informieren und entscheiden lassen
+	 - wegräumen, was nicht mehr gebraucht wird
+ - Tests:
+	- Rand- und Fehlerfälle nur, wenn sie im echten Betrieb vorkommen können (z. B. leere Liste, ungültige Eingabe, offline); keine künstlichen Fälle, nur reale Logik
+	- keine Tests für Fehler, die der Agent macht und nicht Logik sind
+	- Verhalten testen, nicht Quelltext (`grep` auf das Skript) und nicht Konfiguration Zeile für Zeile
+	- gemeinsame Logik nur einmal testen, dort, wo sie liegt
+	- **Bugs:** zuerst ein Test, der den Fehler zeigt; ohne Test nur, wenn sich der Fehler nicht sinnvoll automatisch nachstellen lässt — Grund ins Dokument
+	- **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen. Überflüssige Tests zu streichen ist kein Abschwächen, wenn es Ziel der Anforderung ist und die Abdeckung realer Logik bleibt.
+- **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
+- **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
+- **Dokumente und Issues:** 
+	- Sicherheitsthemen nur abstrakt 
+	- konkrete Stelle nur im Gespräch
+	- in `_context/architektur.md` zudem keine Adressen, Ports, Zugangsdaten, Versionen oder bekannten Schwachstellen -> sie soll Angreifern keine fertige Übersicht liefern
+	- Verweise relativ
+	- Pull Requests und Issues  als `#<Nummer>` - \<Titel\>
+	- keine Adressen beim Hoster
+	- keine CI-Ergebnisse (die stehen im Pull Request)
 
 ## Bekannte Fehler
 
 *Eine Zeile je Fehler, den Agenten zum zweiten Mal gemacht haben — eingetragen hier im Prozess-Repo, aus den Vorschlägen der Rückblicke (Stufe 7d).*
 
 -   **Befehle für den Nutzer** (Tag auf falschem Commit, 15.11.): Vorher prüft der Agent Branch und `git status` im Arbeitsverzeichnis, in dem der Nutzer sie ausführt; hat er dort nicht Committetes, das sie stören würde, nennt er es vorher. Die Befehle legen ihr Ziel selbst fest (Tag z. B. wie in `ap-release`, `ausliefern.md`) und sind mit `&&` verkettet, damit nach einem Fehler nichts weiterläuft.
+- Agent handelte mehrmals nicht nach  Best Practice, Standards und KISS
+	- siehe Grundsätze -> Oberste Prämissen
+- Agent schrieb mehrmals unnötige Tests
+	- siehe Grundsätze -> Tests

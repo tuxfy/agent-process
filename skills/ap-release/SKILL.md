@@ -5,9 +5,14 @@ description: Stufe 8 des Agent-Prozesses (`_agent-process`) – bringt den Stand
 
 # Stufe 8: Release
 
-Bringt den Stand von `release-candidate` — eine oder mehrere abgenommene Anforderungen — live. **Wann** released wird, entscheidet der Nutzer; **was** mitkommt, hat er schon entschieden: alles, was er nach `release-candidate` zusammengeführt hat (siehe `_agent-process/skills/ap-requirement-accept/SKILL.md`, 7c). Die **Version** wird erst jetzt bestimmt, aus dem Inhalt. Ein Release hat ein eigenes Dokument `_releases/<version>.md`. Auslieferung: `_context/projekt.md`.
+Bringt den Stand von `release-candidate` (eine oder mehrere abgenommene Anforderungen) live.
 
-**Grundsatz:** Was live ist, zeigt Git — der Tag `v<version>` und das Release-Dokument, das mit ihm nach `main` kam. Es gibt keinen Status „live" in Dokumenten und nach dem Tag keinen Commit mehr.
+-   **Wann:** entscheidet der Nutzer.
+-   **Was:** hat er schon entschieden: alles, was er nach `release-candidate` zusammengeführt hat (`_agent-process/skills/ap-requirement-accept/SKILL.md`, 7c).
+-   **Version:** erst jetzt, aus dem Inhalt.
+-   **Release-Dokument:** `_releases/<version>.md`.
+-   **Auslieferung:** `_context/projekt.md`.
+-   **Grundsatz:** Was live ist, zeigt Git: Tag `v<version>` und das Release-Dokument, das mit ihm nach `main` kam. Kein Status „live" in Dokumenten; nach dem Tag kein Commit mehr.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
@@ -16,7 +21,12 @@ Bringt den Stand von `release-candidate` — eine oder mehrere abgenommene Anfor
 | 8c Ausliefern | Nutzer | Pull Request als Merge-Commit zusammengeführt — **das ist die Freigabe**; Tag durch die CI (sonst durch den Nutzer) |
 | 8d Nachprüfen | CI + Agent + Nutzer | automatischer Test des ausgelieferten Stands, Gerät durch den Nutzer |
 
-Vor der Auswahl `release-candidate` auf aktuellen Stand bringen (`_agent-process/AGENTS.md`, Abschnitt „Git", „Aktueller Stand", mit Tags). Welche Datei dran ist, zeigen die Release-Dokumente unter `_releases/` auf `release-candidate`, die Tags `v*`, der Git-Verlauf von `release-candidate` und der Pull Request nach `main`. **Offenes Release** = ein Release-Dokument, zu dem es noch keinen Tag `v<version>` gibt. Es gilt die erste passende Zeile. Nur diese Datei laden — ganz:
+## Welche Datei
+
+-   Vorher `release-candidate` auf aktuellen Stand bringen (`_agent-process/AGENTS.md`, „Git", „Aktueller Stand", mit Tags).
+-   Stand zeigen: Release-Dokumente unter `_releases/` auf `release-candidate`, Tags `v*`, Git-Verlauf von `release-candidate`, Pull Request nach `main`.
+-   **Offenes Release** = Release-Dokument ohne Tag `v<version>`.
+-   Erste passende Zeile gilt. Nur diese Datei laden, ganz:
 
 | Stand | Datei |
 |---|---|
@@ -29,4 +39,8 @@ Vor der Auswahl `release-candidate` auf aktuellen Stand bringen (`_agent-process
 
 ## Abkürzung
 
-Ist im Projekt festgelegt, dass Zusammenführen bereits ausliefert (z. B. „jeder Stand auf `main` geht live"), gibt es kein `release-candidate`: Der Pull Request der Anforderung geht direkt nach `main`; der Nutzer führt ihn nach der Abnahme zusammen; Stufe 8 besteht dann nur aus 8b (auf dem Feature-Branch) und 8d, ein Release-Dokument entfällt.
+Im Projekt festgelegt, dass Zusammenführen bereits ausliefert (z. B. „jeder Stand auf `main` geht live"):
+
+-   kein `release-candidate`; Pull Request der Anforderung direkt nach `main`; Nutzer führt ihn nach der Abnahme zusammen;
+-   Stufe 8 nur 8b (auf dem Feature-Branch) und 8d;
+-   kein Release-Dokument.
