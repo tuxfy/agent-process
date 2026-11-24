@@ -55,7 +55,10 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
  - Tests:
 	- keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
 	- keine Tests für Fehler, die der Agent macht und nicht Logik sind
-	- **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen.
+	- Verhalten testen, nicht Quelltext (`grep` auf das Skript) und nicht Konfiguration Zeile für Zeile
+	- gemeinsame Logik nur einmal testen, dort, wo sie liegt
+	- Regressionstest nur, wenn der Fehler durch eine übliche Änderung wiederkommen kann
+	- **Tests nie abschwächen,** um grün zu werden (Prüfung entfernt, nur bedingt ausgeführt, Erwartung gelockert); passt ein Test nicht zur Umgebung, die Umgebung anpassen. Überflüssige Tests zu streichen ist kein Abschwächen, wenn es Ziel der Anforderung ist und die Abdeckung realer Logik bleibt.
 - **Pakete und Werkzeuge** installiert der Agent selbst in seiner Umgebung, nach Rückfrage — nie beim Nutzer und nie als Aufgabe an ihn.
 - **Eingefroren:** abgenommene Anforderungen (`_requirements/done/`) und Release-Dokumente ab dem Zusammenführen nach `main`; Nachträge in eine neue Anforderung bzw. ins nächste Release.
 - **Dokumente und Issues:** 

@@ -35,7 +35,11 @@ Das Dokument ist kein unumstößlicher Plan nach Wasserfall und wird zusammen mi
     2.  was das Ziel braucht;
     3.  eine Trennzeile („nützlich für das Ziel" in der Spalte Issue), darunter, was dem Ziel hilft, ohne nötig zu sein.
 
-    *Heute:* wie es jetzt ist, laut Issue. *Danach:* was nach dem Issue anders ist. *Warum hier:* der Bezug zum Ziel oder zu der späteren Zeile, die es braucht; bei Bugs ohne Bezug zum Ziel „Bug, Schwere hoch". Je ein Satz, verständlich ohne das Issue. Eine Zeile hängt nur von früheren Zeilen ab; hängt sie von einer späteren ab oder hängen zwei voneinander ab, gehört ein Neuschnitt unter „Verbindungen". Eine Zeile kann Zusammengehöriges oder einen Teil nennen (`#13 (…) mit #6 (…)`, `#27 (…) Teil a`).
+    *Heute:* wie es jetzt ist, laut Issue. 
+    *Danach:* was nach dem Issue anders ist. 
+    *Warum hier:* der Bezug zum Ziel oder zu der späteren Zeile, die es braucht; bei Bugs ohne Bezug zum Ziel „Bug, Schwere hoch". 
+    Je ein Satz, verständlich ohne das Issue. Eine Zeile hängt nur von früheren Zeilen ab; hängt sie von einer späteren ab oder hängen zwei voneinander ab, gehört ein Neuschnitt unter „Verbindungen". 
+    Eine Zeile kann Zusammengehöriges oder einen Teil nennen (`#13 (…) mit #6 (…)`, `#27 (…) Teil a`).
 
     *Zeilen `neu`:* Braucht das Ziel oder eine Zeile über der Trennzeile etwas, wofür es kein offenes Issue gibt (auch wenn es unter `_requirements/deferred/` steht), steht es als Zeile `neu: <Kurztitel>` dabei. *Heute* dann laut `_context/` oder mit „(Annahme)"; *Warum hier* nennt, welche Zeile oder ob das Ziel selbst es braucht, Vermutetes endet mit „(Annahme)". Für Nützliches und für „Übrige" keine Zeilen `neu`.
 -   **Verbindungen:** welche Issues zusammenhängen oder neu geschnitten werden sollen, je mit einem Satz.
