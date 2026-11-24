@@ -5,22 +5,27 @@ description: Stufe 1 des Agent-Prozesses (`_agent-process`) – hält eine neue 
 
 # Stufe 1: Idee oder Bug
 
-Festhalten, nicht lösen. Ein Issue ist bewusst kurz — es dient dem **Festhalten**, nicht dem Refinement.
+Festhalten, nicht lösen. Issue bewusst kurz: zum **Festhalten,** nicht Refinement.
 
 | Art | Label | Text nach | Inhalt |
 |---|---|---|---|
 | **Idee** — etwas Neues oder anders | `idee` | `_agent-process/anweisungen/vorlagen/idee.md` | was stört oder fehlt · Ziel · ggf. Idee zur Lösung |
 | **Bug** — etwas funktioniert nicht wie festgelegt | `bug` | `_agent-process/anweisungen/vorlagen/bug.md` | was passiert · was erwartet war · wie es auftritt · Stand · Schwere |
 
--   **Vorher suchen:** offene und geschlossene Issues nach dem Thema durchsuchen (`gh issue list --state all --search …` bzw. `glab issue list --all --search …`). Dasselbe Anliegen, Issue offen: dem Nutzer die Nummer nennen, Neues als Kommentar dazu (ist es schon aufgegriffen, auch den Branch nennen — der Kommentar erreicht das Dokument nicht von selbst); Issue geschlossen: neues Issue mit Verweis `#<alt>`; unklar, ob es dasselbe ist: fragen.
--   **Ziel statt Lösung** (nur Idee): Das Ziel bestimmt der Nutzer; eine genannte Lösung (z. B. eine Technik oder ein Format) kommt unter „Idee zur Lösung" — sonst wird sie gebaut, ohne dass jemand die übliche Lösung prüft. Fehlt das Ziel, fragt der Agent beim Festhalten einmal, was danach anders sein soll; weiß der Nutzer es nicht, steht dort `offen` — die Klärung holt es nach.
--   **Anlegen:** ein Issue beim Hoster des Projekts (`gh issue create` bzw. `glab issue create`) — Titel kurz und sprechend, Label laut Tabelle, Text nach der Vorlage mit ersetzten Platzhaltern. Kein Branch, kein Commit. Dem Nutzer die Nummer nennen (`#<Nummer>`).
--   **Geht das nicht** (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Titel, Label und Text zum Kopieren ausgeben; der Nutzer legt das Issue an, der Agent arbeitet weiter. Fehlt nur das Label: ohne Label anlegen und es dem Nutzer sagen.
--   Festhalten darf **jeder** — der Nutzer auch direkt beim Hoster, der Agent auch mitten im Gespräch; laufende Arbeit bleibt dabei, wie sie ist.
--   Der Agent schärft ein Issue **nicht von sich aus** aus; das passiert erst, wenn der Nutzer es aufgreift (→ Stufe 2).
--   **Meldet der Nutzer einen Fehler oder Wunsch** oder kommt im Gespräch etwas Neues auf: **zuerst** festhalten — nicht sofort beheben, planen oder Code schreiben. Auch nicht „schnell nebenbei".
--   Gehört ein Fehler zu einer Anforderung, die noch in Arbeit ist (vor der Abnahme): kein eigener Bug — zurück in deren Stufe 5. Gehört er zu etwas Abgenommenem oder Ausgeliefertem: eigener Bug.
+-   **Zuerst festhalten:** meldet der Nutzer einen Fehler oder Wunsch oder kommt im Gespräch Neues auf: nicht sofort beheben, planen oder Code schreiben; auch nicht „schnell nebenbei".
+-   **Fehler einer Anforderung in Arbeit** (vor der Abnahme): kein eigener Bug, zurück in deren Stufe 5. Fehler an Abgenommenem oder Ausgeliefertem: eigener Bug.
+-   **Vorher suchen:** offene und geschlossene Issues zum Thema (`gh issue list --state all --search …` bzw. `glab issue list --all --search …`):
+    -   dasselbe Anliegen, Issue offen → Nummer nennen, Neues als Kommentar dazu; ist es schon aufgegriffen, auch den Branch nennen (der Kommentar erreicht das Dokument nicht von selbst);
+    -   Issue geschlossen → neues Issue mit Verweis `#<alt>`;
+    -   unklar, ob dasselbe → fragen.
+-   **Ziel statt Lösung** (nur Idee):
+    -   Ziel bestimmt der Nutzer; genannte Lösung (z. B. Technik, Format) kommt unter „Idee zur Lösung"; sonst wird sie gebaut, ohne dass jemand die übliche Lösung prüft.
+    -   Ziel fehlt → beim Festhalten einmal fragen, was danach anders sein soll; weiß der Nutzer es nicht: `offen` (Klärung holt es nach).
+-   **Anlegen:** Issue beim Hoster des Projekts (`gh issue create` bzw. `glab issue create`): Titel kurz und sprechend, Label laut Tabelle, Text nach Vorlage mit ersetzten Platzhaltern. Kein Branch, kein Commit. Nummer nennen (`#<Nummer>`).
+-   **Anlegen geht nicht** (Befehl fehlt, keine Rechte, Hoster nicht erreichbar): Titel, Label, Text zum Kopieren ausgeben; Nutzer legt an, Agent arbeitet weiter. Fehlt nur das Label: ohne Label anlegen, dem Nutzer sagen.
+-   **Festhalten darf jeder:** Nutzer auch direkt beim Hoster, Agent auch mitten im Gespräch; laufende Arbeit bleibt, wie sie ist.
+-   **Nicht von sich aus ausschärfen;** erst, wenn der Nutzer das Issue aufgreift (→ Stufe 2).
 
 ## Weg eines Bugs
 
-Wie jede Anforderung ab der Klärung; die Besonderheiten stehen in `_agent-process/skills/ap-requirement-refine/klaeren.md`, Abschnitt „Bugs".
+Wie jede Anforderung ab der Klärung; Besonderheiten: `_agent-process/skills/ap-requirement-refine/klaeren.md`, „Bugs".

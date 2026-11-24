@@ -5,7 +5,7 @@ description: Stufen 5–6 des Agent-Prozesses (`_agent-process`) – plant, setz
 
 # Umsetzung und QA (Stufen 5–6)
 
-Welche Datei dran ist, zeigen das Anforderungsdokument und der Git-Verlauf des Branches. Es gilt die erste passende Zeile. Nur diese Datei laden — ganz:
+Welche Datei dran ist: laut Anforderungsdokument und Git-Verlauf des Branches; erste passende Zeile gilt. Nur diese Datei laden, ganz:
 
 | Stand | Datei |
 |---|---|
@@ -15,9 +15,9 @@ Welche Datei dran ist, zeigen das Anforderungsdokument und der Git-Verlauf des B
 | `in progress`, mit Commit `chore(<kurzer-name>): Track complete` und ohne Commit `chore(<kurzer-name>): Umsetzungsplan` nach dem letzten davon | `planen.md` (5a) |
 | `in progress` | `umsetzen.md`, ab dem ersten offenen Schritt |
 | `qa` | `qa.md` |
-| `review` | `_agent-process/skills/ap-requirement-accept/SKILL.md` — fehlt dort die Voraussetzung (CI grün, Abnahmepaket gegeben), zuerst `qa.md` ab 6d |
+| `review` | `_agent-process/skills/ap-requirement-accept/SKILL.md`; fehlt dort die Voraussetzung (CI grün, Abnahmepaket gegeben): zuerst `qa.md` ab 6d |
 
-Rote CI (6d), QA-Befunde der Gruppe „umsetzen" (6c, auch aus „entscheiden") und Befunde aus der Abnahme (7b) führen zurück zu `umsetzen.md` (5c/5d) — wie in `qa.md` bzw. `_agent-process/skills/ap-requirement-accept/SKILL.md` beschrieben.
+Zurück zu `umsetzen.md` (5c/5d) führen: rote CI (6d), QA-Befunde der Gruppe „umsetzen" (6c, auch aus „entscheiden"), Befunde aus der Abnahme (7b) — wie in `qa.md` bzw. `_agent-process/skills/ap-requirement-accept/SKILL.md` beschrieben.
 
 | Schritt | Wer | Ergebnis |
 |---|---|---|
