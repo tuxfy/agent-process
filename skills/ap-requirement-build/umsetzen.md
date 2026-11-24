@@ -2,13 +2,6 @@
 
 Voraussetzung: Plan freigegeben und committet (`planen.md`) bzw. Notiz aus dem kurzen Weg (`kurzer-weg.md`), Status `refined` (vor 5b) bzw. `in progress` — beim Rücksprung aus QA oder Abnahme auch `qa` bzw. `review`, dann ab 5c; Befehle in `_context/projekt.md`.
 
-**Oberste Prämissen:**
-- Best Practice prüfen und anwenden
-- Standards prüfen und anwenden
-- KISS
-- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
-- wegräumen, was nicht meher gebraucht wird
-
 ## 5b: Start
 
 Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „später" (`_agent-process/AGENTS.md`, Abschnitt „Halten"). 
@@ -21,7 +14,6 @@ Direkt nach der Freigabe des Plans, ohne weitere Freigabe — außer nach „sp�
 Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bugs: die Regression) absichert — Art laut Teststrategie der Anforderung.
 - keine Randfälle, keine künstlichen Komplexitäten, die in der realen Welt nicht vorkommen, nur für reale Logik
 - keine Tests für Fehler, die der Agent macht und nicht Logik sind
-- Best Practices, Standards sowie KISS folgen
 - Agent führt die Tests selbst aus; der neue Test muss **ohne die Änderung rot** sein
 - committet wird erst, wenn es grün ist
 - Ergebnis unter `# Testnachweis → Rot`: Befehl, Anzahl bestanden/fehlgeschlagen, Namen der roten Tests
@@ -29,7 +21,6 @@ Wo sinnvoll, zuerst einen Test schreiben, der das gewünschte Verhalten (bei Bug
 ## 5d: Umsetzen
 
 Nach dem freigegebenen **Plan**, den **Entscheidungen** der Anforderung und der **UI-Richtlinie** (`_agent-process/skills/ap-guideline-ui/SKILL.md`).
-- Best Practices, Standards sowie KISS folgen
 - **Abweichung vom Plan:** 
     - technisch und innerhalb der Entscheidungen → Plan aktualisieren und dem Nutzer sagen
     - berührt sie Umfang, Verhalten oder Entscheidungen → Grundsatzfrage, zurück ins Refinement

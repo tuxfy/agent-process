@@ -2,14 +2,6 @@
 
 Prüft den Umsetzungsplan auf **Aufbau und Schnitt**. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
 
-**Oberste Prämissen:**
-- Best Practice prüfen und anwenden
-- Standards prüfen und anwenden
-- KISS
-- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
-- wegräumen, was nicht meher gebraucht wird
-
-
 ## Prüfpunkte
 
 -   **Schnitt:** 

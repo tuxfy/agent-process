@@ -2,14 +2,6 @@
 
 Prüft eine umgesetzte Anforderung über die Tests hinaus, bevor der Nutzer sie abnimmt. Voraussetzung: Stufe 5 abgeschlossen, alle Tests und Prüflauf grün, Status `qa`, Arbeit auf dem Feature-Branch.
 
-**Oberste Prämissen:**
-- Best Practice wurden eingehalten
-- Standards wurden eingehalten
-- KISS wurde eingehalten
-- nichts Unnötiges wurde gebaut
-- es wurden keine fertigen Tools und Lösungen nachgebaut
-- es wurden keine Tests geschrieben für Nicht-Logik
-
 | Schritt | Wer | Ergebnis |
 |---|---|---|
 | 6a Automatische Prüfungen | Agent | Ergebnis unter `# QA → Automatisch` |

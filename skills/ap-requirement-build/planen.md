@@ -4,14 +4,6 @@ Voraussetzung: Status `refined` — bzw. `in progress` nach Abbruch des kurzen W
 
 Der Agent schreibt den Plan in den Abschnitt `# Umsetzungsplan` des Anforderungsdokuments (Gliederung dort) — **keine eigene Datei**, **knapp**, ohne zu wiederholen, was in der Anforderung schon steht. Dabei: Schritte in Reihenfolge, jeder klein genug für einen Testlauf; betroffene Dateien, bestehende und neue; Testfälle je Akzeptanzkriterium mit Name und erwartetem Ergebnis; bei Design, welches Entwurfselement zu welcher Komponente bzw. Code-Stelle wird; je externer Abhängigkeit (Schnittstellen, Dienste, Bibliotheken, Hosting), wo das **How-to** steht (siehe unten); „Nicht angefasst" aus Spielraum und Abgrenzung.
 
-**Oberste Prämissen:**
-- Best Practice prüfen und anwenden
-- Standards prüfen und anwenden
-- KISS
-- nichts unnötiges bauen, immer prüfen ob es etwas fertiges gibt, wann ja Nutzer darüber informieren und entscheiden lassen
-- wegräumen, was nicht meher gebraucht wird
-
-
 **Externe Abhängigkeiten — How-to vorher klären.** 
 - Bevor Code gegen eine externe Abhängigkeit geschrieben wird, ist geklärt und festgehalten (in `_context/` bzw. der Anforderung):
     -   wie sie funktioniert (Dokumentation, Formate, Beispiele),
@@ -26,10 +18,7 @@ Ist etwas davon offen: nicht anfangen, sondern mit dem Nutzer klären — ggf. z
 **Plan prüfen**, bevor er dem Nutzer vorgelegt wird:
 
 1.  **Selbstprüfung — immer:** 
-    - der Agent prüft den Plan mit den Prüfpunkten der Rollen (`_agent-process/anweisungen/rollen/`), soweit sie den Plan betreffen, und bessert nach:
-        - Best Practice prüfen und anwenden
-        - Standards prüfen und anwenden
-        - KISS
+    - der Agent prüft den Plan mit den Prüfpunkten der Rollen (`_agent-process/anweisungen/rollen/`), soweit sie den Plan betreffen, und bessert nach.
 2.  **Prüfung durch Rollen** (Prüfer-Rollen, siehe `_agent-process/anweisungen/rollen/README.md`):
     -   **Architekt** und **Senior Dev:** bei 
         - neuem Projekt oder Grundgerüst

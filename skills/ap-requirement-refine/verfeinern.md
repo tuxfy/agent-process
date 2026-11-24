@@ -13,7 +13,6 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
 2.  **Technik klären** 
     - vor `refined`
     - Grundlage: `_context/projekt.md` und, wenn es sie gibt, `_context/architektur.md`
-    - Best Practices und vorhandene Standards betrachten. KISS anwenden.
     - Best Practices und vorhandene Standards gegen den IST Zustand abwägen -> Best Practices und Standards haben Vorrang ggf. ist der Aufwand jedoch mit dem Nutzer abzustimmen, wenn der Scope des Tasks dadurch wächst
     - hier nur, was **diese Anforderung** zusätzlich braucht oder wo sie abweicht
     - Welche Lösung erreicht das Ziel (Zeile „Ziel" unter „Einordnung")? -> Ist Aufgabe des Agenten
@@ -22,7 +21,6 @@ Voraussetzung: Klärung committet und im committeten Dokument „Design nötig? 
             - Konfiguration und 
             - Daten des Projekts
         2.  **Übliche Praxis bzw. Standard nachschlagen:** 
-            - Best Practices und vorhandene Standards betrachten. KISS anwenden.
             - Nachschlagen. Nicht aus dem Gedächtnis
             - Nichts tun abwägen. Minimaler Aufwand bei höchsten Nutzen.
         3.  **Vergleich vorlegen:**, 

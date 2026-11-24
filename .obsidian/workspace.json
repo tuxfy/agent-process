@@ -43,12 +43,12 @@
             "state": {
               "type": "split-diff-view",
               "state": {
-                "aFile": "AGENTS.md",
-                "bFile": "AGENTS.md",
+                "aFile": "anweisungen/rollen/architekt.md",
+                "bFile": "anweisungen/rollen/architekt.md",
                 "aRef": ""
               },
               "icon": "diff",
-              "title": "Diff: AGENTS  (Working Tree)"
+              "title": "Diff: architekt  (Working Tree)"
             }
           }
         ],
@@ -229,10 +229,10 @@
   },
   "active": "f1c0d999ddb6305e",
   "lastOpenFiles": [
+    "AGENTS.md",
     "skills/ap-requirement-build/umsetzen.md",
     "skills/ap-requirement-build/planen.md",
     "skills/ap-prompter/SKILL.md",
-    "AGENTS.md",
     "anweisungen/rollen/entwurf.md",
     "anweisungen/rollen/devops.md",
     "anweisungen/rollen/klicktester.md",
