@@ -4,28 +4,28 @@ Prüft Vorlagen an den Nutzer (Entscheidung, Freigabe), bevor sie ihn erreichen.
 
 ## Ablauf
 
+-   Aufrufstellen: `_agent-process/AGENTS.md`, „Halten".
 -   Start: nach den anderen Prüfern und ihrer Einstufung.
 -   Höchstens 3 Runden je Anlass (eine Vorlage an den Nutzer), egal wie oft sie dabei überarbeitet wird.
 -   Challenger fortsetzen, nicht neu starten.
--   Challenger ab Runde 2: je bestrittenem Befund „fallen gelassen" oder „bleibt", mit Antwort auf den Beleg; dazu neue Befunde. Fallen lassen nur bei belegtem Widerspruch.
+-   Ab Runde 2: je bestrittenem Befund „fallen gelassen" oder „bleibt", mit Antwort auf den Beleg; dazu neue Befunde. Fallen lassen nur bei belegtem Widerspruch.
 -   Schluss: „keine Befunde", spätestens nach Runde 3. Strittiges → Nutzer, mit beiden Positionen und Empfehlung des Agenten.
--   Aufrufstellen: `_agent-process/AGENTS.md`, „Halten".
 
 ## Vorlage (schreibt der Agent)
 
--   Vor jeder Runde `.qa/vorlage.md` neu. Oben: die Nachricht wie für den Nutzer. Unten: Aussagen und Korrekturen des Nutzers aus dem Gespräch, die noch nicht in der Anforderung stehen.
+-   Vor jeder Runde `.qa/vorlage.md` neu. Oben: Nachricht wie für den Nutzer. Unten: Aussagen und Korrekturen des Nutzers aus dem Gespräch, die noch nicht in der Anforderung stehen.
 -   Nicht hinein: Überlegungen des Agenten. Widersprüche mit Beleg ab Runde 2 im Auftrag, nicht in der Datei.
 
 ## Challenger
 
 -   Grundlage: Vorlage, Anforderung mit Entscheidungen (sonst Issue bzw. `_context/`), Code nach Bedarf.
--   Nur lesend, keine Prüfläufe oder Tests; begründet am Code.
+-   Nur lesend, keine Prüfläufe oder Tests; am Code begründen.
 
 ## Prüfpunkte
 
 -   **Behauptungen:** jede Aussage über Code, Tests, Konfiguration, Werkzeuge am Code prüfen. Hält nicht → Befund. Nicht prüfbar und nicht als Annahme markiert → Befund; ungeprüfter Teil als offene Frage.
 -   **Frühere Entscheidungen:** Widerspruch zur Anforderung oder zu Aussagen oder Korrekturen des Nutzers?
--   **Einfacher:** innerhalb der Entscheidungen ein einfacherer Weg oder eine übliche Praxis, die die Vorlage nicht nennt? Weglassen statt bauen? Hält eine Entscheidung nicht → Befund mit Begründung.
+-   **Einfacher:** innerhalb der Entscheidungen ein einfacherer Weg oder übliche Praxis, die die Vorlage nicht nennt? Weglassen statt bauen? Hält eine Entscheidung nicht → Befund mit Begründung.
 -   **Stille Lücken:** fällt eine Prüfung oder Absicherung unerwähnt weg?
 -   **Wege:** bei Entscheidungen vollständig und fair, oder fehlt ein Weg zugunsten der Empfehlung?
 -   **Verständlich:** ohne Vorwissen klar, worum es geht und was zu entscheiden ist?

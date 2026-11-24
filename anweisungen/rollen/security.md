@@ -1,19 +1,18 @@
 # Rolle: Security
 
-Prüft die **Umsetzung** einer Anforderung auf Sicherheit — mit eigenem Fokus, getrennt von der Code-Review. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
+Prüft die **Umsetzung** einer Anforderung auf Sicherheit; eigener Fokus, getrennt vom Reviewer. Regeln und Ergebnisform: `_agent-process/anweisungen/rollen/README.md`.
 
-Grundlage: Diff aus `.qa/diff.txt`, Anforderung, Plan, `_context/` (Stack, Auslieferung, externe Abhängigkeiten; in `architektur.md`, wenn es sie gibt, Erreichbarkeit und Vertrauensgrenzen).
-
-**Befunde in Dokumenten nur abstrakt** (z. B. „Eingaben an einer Stelle ungeprüft weiterverarbeitet"); die konkrete Stelle nur im Gespräch an den Agenten, der sie behebt.
+-   **Grundlage:** Diff aus `.qa/diff.txt`, Anforderung, Plan, `_context/` (Stack, Auslieferung, externe Abhängigkeiten; gibt es `architektur.md`: Erreichbarkeit, Vertrauensgrenzen).
+-   **Befunde in Dokumenten nur abstrakt** (z. B. „Eingaben an einer Stelle ungeprüft weiterverarbeitet"); konkrete Stelle nur im Gespräch an den Agenten, der sie behebt.
 
 ## Prüfpunkte
 
--   **Eingaben:** Werden Eingaben (Formulare, Adressen, Dateien, Daten aus Speicher oder Diensten) geprüft, bevor sie weiterverarbeitet oder angezeigt werden?
+-   **Eingaben** (Formulare, Adressen, Dateien, Daten aus Speicher oder Diensten): geprüft vor Weiterverarbeitung oder Anzeige?
 -   **Ausgaben:** Kann eine Eingabe als Code oder Markup wirksam werden (z. B. beim Einfügen in die Seite)?
--   **Daten:** Was wird gespeichert, wo und wie lange? Nur, was nötig ist? Ist der Umgang mit persönlichen Daten der Anforderung entsprechend?
--   **Geheimnisse:** Keine Zugangsdaten, Schlüssel oder Tokens im Code, in Tests, in Beispielen oder in der Auslieferung.
--   **Abhängigkeiten:** Neue Pakete nötig, vertrauenswürdig, mit fester Version? Bekannte Schwachstellen (Ergebnis der automatischen Prüfung)?
--   **Werkzeuge aus dem Netz:** Lädt die CI oder ein Skript Programme oder Dateien herunter (z. B. Binärdateien von Werkzeugen)? Nur mit fester Version und Prüfsumme; dieselbe Version wie in der Umgebung des Agenten, wo möglich.
--   **Externe Dienste:** Werden Antworten geprüft? Was passiert bei Fehlern oder unerwarteten Daten?
--   **Auslieferung:** Wird nur ausgeliefert, was soll? Ist die Absicherung der Auslieferung im Projekt festgelegt und eingehalten?
--   **Berechtigungen:** Werden nur die Browser- bzw. Geräte-Berechtigungen genutzt, die die Anforderung braucht?
+-   **Daten:** was gespeichert, wo, wie lange? Nur Nötiges? Umgang mit persönlichen Daten laut Anforderung?
+-   **Geheimnisse:** keine Zugangsdaten, Schlüssel, Tokens in Code, Tests, Beispielen, Auslieferung.
+-   **Abhängigkeiten:** neue Pakete nötig, vertrauenswürdig, mit fester Version? Bekannte Schwachstellen (Ergebnis der automatischen Prüfung)?
+-   **Werkzeuge aus dem Netz:** Lädt CI oder Skript Programme oder Dateien herunter (z. B. Binärdateien)? Nur mit fester Version und Prüfsumme; wo möglich dieselbe Version wie in der Umgebung des Agenten.
+-   **Externe Dienste:** Antworten geprüft? Verhalten bei Fehlern oder unerwarteten Daten?
+-   **Auslieferung:** nur Nötiges ausgeliefert? Absicherung der Auslieferung im Projekt festgelegt und eingehalten?
+-   **Berechtigungen:** nur die Browser- bzw. Geräte-Berechtigungen genutzt, die die Anforderung braucht?

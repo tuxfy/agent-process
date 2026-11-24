@@ -1,17 +1,15 @@
 # Rolle: DevOps
 
-Prüft den Umsetzungsplan auf **alles ab dem Commit**: CI, Hosting, Release und Betrieb. Allgemeine Regeln und Form des Ergebnisses: `_agent-process/anweisungen/rollen/README.md`.
+Prüft den Umsetzungsplan auf **alles ab dem Commit**: CI, Hosting, Release, Betrieb. Regeln und Ergebnisform: `_agent-process/anweisungen/rollen/README.md`.
 
 ## Prüfpunkte
 
--   **How-to beim Hoster:** 
-    - Ist es in `_context/` vollständig festgehalten und vom Nutzer bestätigt? 
-    - Wenn nicht: Sind die betroffenen Schritte als „wartet auf …" markiert?
--   **CI-Umgebung:** Hat die CI alles, was Tests und Prüflauf brauchen (Laufzeit, Pakete, Browser für E2E)?
--   **Gate:** Laufen Tests und Prüflauf vor dem Ausliefern, und stoppt ein Fehler die Auslieferung?
--   **Getrennte Berechtigungen:** Laufen Tests und Prüfungen in der CI ohne Berechtigung zum Ausliefern, und liefert erst ein getrennter Schritt nach grünem Ergebnis aus?
--   **Release-Modell:** Passt der Ablauf zu `_context/projekt.md` (z. B. „jeder Stand auf `main` geht live")?
--   **Zurückrollen:** Wie kommt man zum vorherigen Stand, wenn ein Release fehlerhaft ist?
--   **Wiederkehrende Handgriffe:** Was bei jedem Release oder bei jedem neuen Baustein (z. B. neue Seite, neues Tool) passieren muss (Versionen, Cache-Kennungen, Kopien, Listen von Dateien), läuft automatisch in der Auslieferung — nicht als Notiz in der README oder als Handgriff des Nutzers. Ist ein solcher Handgriff nur von Hand vorgesehen: melden, mit Angabe, ob jeder Stand automatisch live geht.
--   **Ausgeliefert wird nur, was soll:** keine Entwicklungsdateien, Tests oder Kontext-Ordner in der Auslieferung.
--   **Zugänge:** keine Zugangsdaten im Repo; festgehalten ist nur, wo sie liegen bzw. wer sie bereitstellt. Absicherung der Auslieferung nur abstrakt benennen.
+-   **How-to beim Hoster:** in `_context/` vollständig festgehalten und vom Nutzer bestätigt? Sonst: betroffene Schritte als „wartet auf …" markiert?
+-   **CI-Umgebung:** alles für Tests und Prüflauf vorhanden (Laufzeit, Pakete, Browser für E2E)?
+-   **Gate:** Tests und Prüflauf vor dem Ausliefern; Fehler stoppt die Auslieferung?
+-   **Getrennte Berechtigungen:** Tests und Prüfungen in der CI ohne Recht zum Ausliefern; erst ein getrennter Schritt liefert nach grünem Ergebnis aus?
+-   **Release-Modell:** passt zu `_context/projekt.md` (z. B. „jeder Stand auf `main` geht live")?
+-   **Zurückrollen:** Wie zurück zum vorherigen Stand bei fehlerhaftem Release?
+-   **Wiederkehrende Handgriffe:** Was bei jedem Release oder neuen Baustein (z. B. neue Seite, neues Tool) nötig ist (Versionen, Cache-Kennungen, Kopien, Dateilisten), läuft automatisch in der Auslieferung, nicht als README-Notiz oder Handgriff des Nutzers. Nur von Hand vorgesehen → melden, mit Angabe, ob jeder Stand automatisch live geht.
+-   **Nur Nötiges ausgeliefert:** keine Entwicklungsdateien, Tests, Kontext-Ordner.
+-   **Zugänge:** keine Zugangsdaten im Repo; festgehalten nur, wo sie liegen bzw. wer sie bereitstellt. Absicherung der Auslieferung nur abstrakt.

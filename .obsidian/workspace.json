@@ -41,14 +41,14 @@
             "id": "f1c0d999ddb6305e",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "AGENTS.md",
-                "bFile": "AGENTS.md",
-                "aRef": ""
+                "file": "anweisungen/rollen/senior-dev.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: AGENTS  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "senior-dev"
             }
           }
         ],
@@ -130,6 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "anweisungen/rollen/senior-dev.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,6 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "anweisungen/rollen/senior-dev.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -190,6 +192,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "anweisungen/rollen/senior-dev.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -229,6 +232,21 @@
   },
   "active": "f1c0d999ddb6305e",
   "lastOpenFiles": [
+    "anweisungen/rollen/planung.md",
+    "anweisungen/rollen/klicktester.md",
+    "anweisungen/rollen/challenger.md",
+    "anweisungen/rollen/barrierefreiheit.md",
+    ".claude/agents/planung.md",
+    ".claude/agents/klicktester.md",
+    "anweisungen/rollen/.architekt.md.34137.2ob13j.tmp",
+    "skills/ap-requirement-build/kurzer-weg.md",
+    "skills/ap-requirement-accept/SKILL.md",
+    "anweisungen/einstufung.md",
+    ".claude/agents/entwurf.md",
+    ".claude/agents/security.md",
+    ".claude/agents/senior-dev.md",
+    ".claude/agents/testwirkung.md",
+    "anweisungen/vorlagen/anforderung.md",
     "anweisungen/rollen/reviewer.md",
     ".claude/agents/architekt.md",
     ".claude/agents/barrierefreiheit.md",
@@ -240,21 +258,7 @@
     "skills/ap-prompter/SKILL.md",
     "anweisungen/rollen/entwurf.md",
     "anweisungen/rollen/devops.md",
-    "anweisungen/rollen/klicktester.md",
     "anweisungen/rollen/testwirkung.md",
-    "anweisungen/rollen/senior-dev.md",
-    "anweisungen/rollen/architekt.md",
-    "anweisungen/rollen/README.md",
-    "anweisungen/rollen/barrierefreiheit.md",
-    "anweisungen/rollen/challenger.md",
-    "anweisungen/rollen/planung.md",
-    "anweisungen/einstufung.md",
-    "anweisungen/vorlagen/release.md",
-    "anweisungen/vorlagen/idee.md",
-    "anweisungen/vorlagen/bug.md",
-    "anweisungen/vorlagen/architektur.md",
-    "anweisungen/vorlagen/anforderung.md",
-    "README.md",
     ".obsidian/plugins/obsidian-git/styles.css",
     ".obsidian/plugins/obsidian-git/manifest.json",
     ".obsidian/plugins/obsidian-git/obsidian_askpass.sh",
@@ -263,7 +267,6 @@
     ".obsidian/plugins/unhide/manifest.json",
     ".obsidian/plugins/unhide/styles.css",
     ".obsidian/plugins/obsidian-git",
-    ".obsidian/plugins/unhide",
-    ".qa/agents-review/repo.tgz"
+    ".obsidian/plugins/unhide"
   ]
 }
