@@ -51,7 +51,7 @@ Vor jeder Arbeit `_context/projekt.md` lesen, bei Design-Arbeit auch `_context/d
 ## Grundsätze
 
 - Oberste Prämissen:
-	 - Best Practice, Standards und KISS haben Vorrang
+	 - Umfang: das Minimum, das das Ziel erreicht; Best Practice, Standards und KISS bestimmen, wie es gebaut wird, nicht wie viel — mehr Umfang nur als Entscheidung des Nutzers im Refinement
 	 - nichts unnötiges bauen, immer prüfen ob es etwas Fertiges gibt, wenn ja Nutzer darüber informieren und entscheiden lassen
 	 - wegräumen, was nicht mehr gebraucht wird
  - Tests:

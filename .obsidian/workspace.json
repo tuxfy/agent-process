@@ -41,14 +41,14 @@
             "id": "f1c0d999ddb6305e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "anweisungen/rollen/README.md",
-                "mode": "source",
-                "source": false
+                "aFile": "AGENTS.md",
+                "bFile": "AGENTS.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "README"
+              "icon": "diff",
+              "title": "Diff: AGENTS  (Working Tree)"
             }
           }
         ],
@@ -130,7 +130,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "anweisungen/rollen/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +148,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "anweisungen/rollen/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -192,7 +190,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "anweisungen/rollen/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -232,20 +229,28 @@
   },
   "active": "f1c0d999ddb6305e",
   "lastOpenFiles": [
+    "skills/ap-requirement-build/umsetzen.md",
+    "skills/ap-requirement-build/planen.md",
+    "skills/ap-prompter/SKILL.md",
+    "AGENTS.md",
+    "anweisungen/rollen/entwurf.md",
+    "anweisungen/rollen/devops.md",
+    "anweisungen/rollen/klicktester.md",
+    "anweisungen/rollen/testwirkung.md",
+    "anweisungen/rollen/senior-dev.md",
+    "anweisungen/rollen/architekt.md",
+    "anweisungen/rollen/README.md",
     "anweisungen/rollen/reviewer.md",
     "anweisungen/rollen/barrierefreiheit.md",
     "anweisungen/rollen/challenger.md",
     "anweisungen/rollen/planung.md",
     "anweisungen/einstufung.md",
-    "anweisungen/rollen/README.md",
-    "anweisungen/rollen/devops.md",
     "anweisungen/vorlagen/release.md",
     "anweisungen/vorlagen/idee.md",
     "anweisungen/vorlagen/bug.md",
     "anweisungen/vorlagen/architektur.md",
     "anweisungen/vorlagen/anforderung.md",
     "README.md",
-    "AGENTS.md",
     ".obsidian/plugins/obsidian-git/styles.css",
     ".obsidian/plugins/obsidian-git/manifest.json",
     ".obsidian/plugins/obsidian-git/obsidian_askpass.sh",
@@ -259,14 +264,6 @@
     ".claude/agents/testwirkung.md",
     ".claude/agents/reviewer.md",
     ".claude/agents/security.md",
-    ".claude/agents/senior-dev.md",
-    ".claude/agents/klicktester.md",
-    ".claude/agents/entwurf.md",
-    ".claude/agents/barrierefreiheit.md",
-    ".claude/agents/challenger.md",
-    ".claude/agents/devops.md",
-    ".claude/agents/architekt.md",
-    ".qa/agents-review/repo.tgz",
-    ".qa/AGENTS.alt.md"
+    ".qa/agents-review/repo.tgz"
   ]
 }
